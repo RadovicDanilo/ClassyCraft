@@ -15,5 +15,5 @@ public abstract class AbstractClassyAction extends AbstractAction{
             System.out.println("Resource not found " + imageURL);
         return icon;
     }
-    
+
 }
