@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("ClassyCrafT");
 
-        MyMenyBar menu = new MyMenyBar();
+        MyMenuBar menu = new MyMenuBar();
         setJMenuBar(menu);
 
         MyToolBar toolBar = new MyToolBar();

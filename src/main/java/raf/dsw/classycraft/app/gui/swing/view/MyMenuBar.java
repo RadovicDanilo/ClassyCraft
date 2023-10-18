@@ -1,14 +1,13 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
-import main.java.raf.dsw.classycraft.app.controller.ExitAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.ExitAction;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-public class MyMenyBar extends JMenuBar {
+public class MyMenuBar extends JMenuBar {
 
-    public MyMenyBar(){
+    public MyMenuBar(){
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
         ExitAction ea = new ExitAction();
