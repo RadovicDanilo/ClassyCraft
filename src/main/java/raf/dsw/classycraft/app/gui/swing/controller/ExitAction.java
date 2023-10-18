@@ -10,7 +10,7 @@ public class ExitAction extends AbstractClassyAction {
 
     public ExitAction(){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/exit.png"));
+        putValue(SMALL_ICON, loadIcon("src/main/resources/images/exit.png"));//TODO ikona se ne prikazuje. popraviti
         putValue(NAME, "Exit");
         putValue(SHORT_DESCRIPTION, "Exit");
     }

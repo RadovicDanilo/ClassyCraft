@@ -1,5 +1,8 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.AboutUsFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,5 +19,7 @@ public class AboutUsAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         //TODO pop up meni sa licnim podacima i slikom.
+
+        AboutUsFrame.getInstance().setVisible(true);
     }
 }
