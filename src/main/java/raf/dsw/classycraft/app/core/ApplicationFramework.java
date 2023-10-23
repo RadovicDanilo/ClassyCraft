@@ -42,7 +42,7 @@ public class ApplicationFramework {
             fr = new FileReader(settingsPath);
             br = new BufferedReader(fr);
             String[] darkThemeSetting = br.readLine().split("=");
-            this.isDarkTheme= Objects.equals(darkThemeSetting[1], "1");
+            this.isDarkTheme= Objects.equals(darkThemeSetting[1], "true");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }finally {

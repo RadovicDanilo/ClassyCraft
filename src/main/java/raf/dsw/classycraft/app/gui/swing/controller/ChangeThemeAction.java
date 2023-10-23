@@ -6,5 +6,9 @@ public class ChangeThemeAction extends AbstractClassyAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         //TODO implement
+        
+        //promeniti setting.txt
+
+        //obavestiti korisnika da mora da restartuje applikaciju da bi se promenila tema
     }
 }
