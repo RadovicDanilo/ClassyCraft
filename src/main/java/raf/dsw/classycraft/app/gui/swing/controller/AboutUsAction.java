@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-public class AboutUsAction extends AbstractAction {
+public class AboutUsAction extends AbstractClassyAction {
 
     public AboutUsAction() {
         putValue(SMALL_ICON, null); //TODO dodaj ikonu za about us
