@@ -16,9 +16,14 @@ public class AboutUsFrame extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("About us");
 
-        TextField tfDanilo = new TextField("Danilo Radović 63/22 RN");
-        TextField tfOgnjen = new TextField("Ognjen Tasić 139/22 RI");
-        //TODO dodati ova tekst polja i slike ako su neophodne.
+        //TODO dodati slike, napraviti bolji layout, povecati font na tf-ovim i ulepsati.
+        
+        JTextField tfDanilo = new JTextField("Danilo Radović 63/22 RN");
+        JTextField tfOgnjen = new JTextField("Ognjen Tasić 139/22 RI");
+        instance.add(tfDanilo);
+        instance.add(tfOgnjen);
+
+
     }
 
     public static AboutUsFrame getInstance() {
