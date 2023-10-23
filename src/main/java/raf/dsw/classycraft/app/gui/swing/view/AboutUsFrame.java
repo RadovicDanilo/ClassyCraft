@@ -17,7 +17,6 @@ public class AboutUsFrame extends JFrame {
         setTitle("About us");
 
         //TODO dodati slike, napraviti bolji layout, povecati font na tf-ovim i ulepsati.
-        
         JTextField tfDanilo = new JTextField("Danilo Radović 63/22 RN");
         JTextField tfOgnjen = new JTextField("Ognjen Tasić 139/22 RI");
         instance.add(tfDanilo);
