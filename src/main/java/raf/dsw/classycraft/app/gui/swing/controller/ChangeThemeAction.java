@@ -41,6 +41,8 @@ public class ChangeThemeAction extends AbstractClassyAction{
             }
         }
 
-       //TODO message generator
+
+        ApplicationFramework.getInstance().getMessageGenerator().addSubscriber(MainFrame.getInstance());
+        ApplicationFramework.getInstance().getMessageGenerator().notifySubscribers(new Message(MessageType.INFO,"Promene ce se primenit pri ponovno pokretanju aplikacije",SystemEvent.THEME_CHANGED));
     }
 }

@@ -14,7 +14,7 @@ public class ApplicationFramework {
     private static ApplicationFramework instance;
 
     private boolean isDarkTheme;
-
+    private MessageGenerator messageGenerator = new MessageGenerator();
 
     private ApplicationFramework(){
 
@@ -30,11 +30,6 @@ public class ApplicationFramework {
         }
         return instance;
     }
-
-    public boolean isDarkTheme() {
-        return isDarkTheme;
-    }
-
 
     public void loadThemeSettings() {
         FileReader fr = null;
@@ -59,4 +54,12 @@ public class ApplicationFramework {
             }
         }
     }
+
+    public boolean isDarkTheme() {
+        return isDarkTheme;
+    }
+    public MessageGenerator getMessageGenerator() {
+        return messageGenerator;
+    }
+
 }

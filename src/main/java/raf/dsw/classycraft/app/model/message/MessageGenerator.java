@@ -27,17 +27,10 @@ public class MessageGenerator implements IPublisher {
 
     @Override
     public void notifySubscribers(Object notification) {
-        if(notification instanceof SystemEvent){
-            if(notification==SystemEvent.THEME_CHANGED){
-                for(ISubscriber s : subscribers){
-                    s.update(new Message(MessageType.INFO,"Promene ce se primeniti pri ponovnom pokretanju aplikacije."));
-                }
-            }
-            if(notification==SystemEvent.NODE_CANNOT_BE_DELETED){
-
-            }
-            if(notification==SystemEvent.NAME_CANNOT_BE_EMPTY){
-
+        if(notification instanceof Message){
+            //TODO URADITI LOGGER OVDE. TREBA DA LOGUJE SVE MESSAGE KOJE SALJE
+            for(ISubscriber s: subscribers){
+                s.update(notification);
             }
         }
     }
