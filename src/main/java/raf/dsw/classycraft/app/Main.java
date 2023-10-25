@@ -6,8 +6,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 
 public class Main {
-
-
     public static void main(String[] args) {
         ApplicationFramework.getInstance().loadThemeSettings();
         if(ApplicationFramework.getInstance().isDarkTheme())
