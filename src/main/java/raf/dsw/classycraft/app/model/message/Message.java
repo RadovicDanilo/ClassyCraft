@@ -3,9 +3,9 @@ package main.java.raf.dsw.classycraft.app.model.message;
 import java.time.LocalDateTime;
 
 public class Message {
-    private MessageType messageType;
-    private String text;
-    private LocalDateTime timestamp;
+    private final MessageType messageType;
+    private final String text;
+    private final LocalDateTime timestamp;
     SystemEvent systemEvent;
 
     public Message(MessageType messageType,String text, SystemEvent systemEvent) {

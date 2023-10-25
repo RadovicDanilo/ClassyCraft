@@ -2,7 +2,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 

@@ -1,7 +1,6 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
-import main.java.raf.dsw.classycraft.app.Main;
-import main.java.raf.dsw.classycraft.app.gui.swing.controller.ExitAction;
+
 
 import javax.swing.*;
 
