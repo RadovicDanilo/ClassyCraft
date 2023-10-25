@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ApplicationFramework {
-    private final String settingsPath = "src/main/resources/settings/settings.txt";
+    public final String settingsPath = "src/main/resources/settings/settings.txt";
     private static ApplicationFramework instance;
 
     private boolean isDarkTheme;
