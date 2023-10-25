@@ -3,7 +3,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 import main.java.raf.dsw.classycraft.app.model.message.MessageType;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 
@@ -20,27 +19,16 @@ public class ChangeThemeAction extends AbstractClassyAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        PrintWriter pw = null;
-        BufferedWriter bw = null;
-        try {
-            pw = new PrintWriter(ApplicationFramework.getInstance().settingsPath);
+        BufferedWriter bw;
+        try (PrintWriter pw = new PrintWriter(ApplicationFramework.getInstance().settingsPath)) {
             bw = new BufferedWriter(pw);
-            bw.write("isDarktheme="+!ApplicationFramework.getInstance().isDarkTheme());
+            bw.write("isDarktheme=" + !ApplicationFramework.getInstance().isDarkTheme());
         } catch (IOException ex) {
             throw new RuntimeException(ex);
-        }finally {
-            try {
-                if (bw != null) {
-                    bw.close();
-                }
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            if (pw != null) {
-                pw.close();
-            }
         }
 
-       //TODO message generator
+
+        ApplicationFramework.getInstance().getMessageGenerator().addSubscriber(MainFrame.getInstance());
+        ApplicationFramework.getInstance().getMessageGenerator().notifySubscribers(new Message(MessageType.INFO,"Promene ce se primenit pri ponovno pokretanju aplikacije",SystemEvent.THEME_CHANGED));
     }
 }

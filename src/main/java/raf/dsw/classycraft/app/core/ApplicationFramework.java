@@ -4,7 +4,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
@@ -14,7 +13,7 @@ public class ApplicationFramework {
     private static ApplicationFramework instance;
 
     private boolean isDarkTheme;
-
+    private MessageGenerator messageGenerator = new MessageGenerator();
 
     private ApplicationFramework(){
 
@@ -31,11 +30,6 @@ public class ApplicationFramework {
         return instance;
     }
 
-    public boolean isDarkTheme() {
-        return isDarkTheme;
-    }
-
-
     public void loadThemeSettings() {
         FileReader fr = null;
         BufferedReader br = null;
@@ -48,6 +42,7 @@ public class ApplicationFramework {
             throw new RuntimeException(e);
         }finally {
             try {
+                assert br != null;
                 br.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -59,4 +54,12 @@ public class ApplicationFramework {
             }
         }
     }
+
+    public boolean isDarkTheme() {
+        return isDarkTheme;
+    }
+    public MessageGenerator getMessageGenerator() {
+        return messageGenerator;
+    }
+
 }

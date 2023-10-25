@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;

@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
+import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
 import javax.swing.*;
@@ -51,6 +52,13 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-        //TODO
+        if(!(notification instanceof Message)){
+            return;
+        }
+        if (((Message) notification).getSystemEvent() == SystemEvent.THEME_CHANGED) {
+            JOptionPane optionPane = new JOptionPane(((Message) notification).getText(),JOptionPane.INFORMATION_MESSAGE,JOptionPane.DEFAULT_OPTION);
+            JDialog dialog = optionPane.createDialog("change theme");
+            dialog.show();
+        }
     }
 }
