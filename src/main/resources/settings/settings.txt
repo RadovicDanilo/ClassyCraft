@@ -1,1 +1,1 @@
-isDarktheme=true
+isDarktheme=false

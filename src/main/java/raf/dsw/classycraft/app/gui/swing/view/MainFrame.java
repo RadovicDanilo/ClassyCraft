@@ -1,11 +1,14 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
+import main.java.raf.dsw.classycraft.app.model.message.Message;
+import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+@SuppressWarnings("ALL")
+public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
@@ -46,4 +49,8 @@ public class MainFrame extends JFrame {
         return actionManager;
     }
 
+    @Override
+    public void update(Object notification) {
+        //TODO
+    }
 }

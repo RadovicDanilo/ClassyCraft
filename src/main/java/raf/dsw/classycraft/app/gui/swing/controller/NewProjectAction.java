@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class NewProjectAction extends AbstractClassyAction{
     public NewProjectAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON,null);//TODO dodati ikonu za new project
+        putValue(SMALL_ICON,null); //TODO dodati ikonu za new project
         putValue(NAME, "New project");
         putValue(SHORT_DESCRIPTION, "New project");
     }

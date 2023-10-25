@@ -1,10 +1,14 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.model.message.Message;
+import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
+import main.java.raf.dsw.classycraft.app.model.message.MessageType;
+import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 
 import java.awt.event.ActionEvent;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -36,6 +40,7 @@ public class ChangeThemeAction extends AbstractClassyAction{
                 pw.close();
             }
         }
-        //obavestiti korisnika da mora da restartuje applikaciju da bi se promenila tema
+
+       //TODO message generator
     }
 }
