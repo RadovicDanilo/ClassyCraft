@@ -6,6 +6,7 @@ public class ActionManager {
     private ExitAction exitAction;
     private NewProjectAction newProjectAction;
     private AboutUsAction aboutUsAction;
+    private ChangeThemeAction changeThemeAction;
 
     public ActionManager(){
         initialiseActions();
@@ -15,6 +16,7 @@ public class ActionManager {
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
         aboutUsAction = new AboutUsAction();
+        changeThemeAction = new ChangeThemeAction();
     }
 
     public Action getExitAction() {
@@ -23,8 +25,10 @@ public class ActionManager {
     public Action getNewProjectAction() {
         return newProjectAction;
     }
-
-    public AboutUsAction getAboutUsAction() {
+    public Action getAboutUsAction() {
         return aboutUsAction;
+    }
+    public Action getChangeThemeAction() {
+        return changeThemeAction;
     }
 }
