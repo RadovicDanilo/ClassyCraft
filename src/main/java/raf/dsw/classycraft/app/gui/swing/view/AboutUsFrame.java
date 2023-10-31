@@ -5,23 +5,42 @@ import java.awt.*;
 
 public class AboutUsFrame extends JFrame {
     private static AboutUsFrame instance;
-
+    private ImageIcon ognjenSlika;
+    private JLabel ognjenSlikaContainer;
+    private ImageIcon daniloSlika;
+    private JLabel daniloSlikaContainer;
+    private JLabel ognjenIme;
+    private JLabel daniloIme;
     public void initialize(){
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth / 2, screenHeight / 2);
+        setSize(screenWidth * 9/10, screenHeight * 9/10);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("About us");
-
-        //TODO dodati slike, napraviti bolji layout, povecati font na tf-ovim i ulepsati.
-        JTextField tfDanilo = new JTextField("Danilo Radović 63/22 RN");
-        JTextField tfOgnjen = new JTextField("Ognjen Tasić 139/22 RI");
-        instance.add(tfDanilo);
-        instance.add(tfOgnjen);
-
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        ognjenSlika = new ImageIcon("src/main/resources/images/ognjentasic.jpg");
+        ognjenSlikaContainer = new JLabel(ognjenSlika);
+        daniloSlika = new ImageIcon("src/main/resources/images/daniloradovic.jpg");
+        daniloSlika.setDescription("Danilo Radovic 63/22 RN");
+        daniloSlikaContainer = new JLabel(daniloSlika);
+        //TODO centrirati tekst.
+        ognjenIme = new JLabel("Ognjen Tasic 135/23 RN");
+        daniloIme = new JLabel("Danilo Radovic 63/22 RN");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.ipadx = 400;
+        c.ipady = 0;
+        add(ognjenSlikaContainer, c);
+        c.gridx = 1;
+        add(daniloSlikaContainer, c);
+        c.gridy = 1;
+        add(daniloIme, c);
+        c.gridx = 0;
+        add(ognjenIme, c);
 
     }
 
