@@ -3,9 +3,9 @@ package main.java.raf.dsw.classycraft.app.model.logger;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class FileLogger implements ISubscriber {
 
@@ -23,12 +23,9 @@ public class FileLogger implements ISubscriber {
     @Override
     public void update(Object notification) {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(ApplicationFramework.getInstance().LOG_PATH, true));
-            bw.append(notification.toString());
-            bw.newLine();
-            //FileWriter fw = new FileWriter(ApplicationFramework.getInstance().LOG_PATH,true);
-            //PrintWriter pw = new PrintWriter(fw);
-            //pw.println(notification.toString());
+            PrintWriter pw = new PrintWriter(new FileWriter(ApplicationFramework.getInstance().LOG_PATH, true));
+            pw.println(notification.toString());
+            pw.close();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
