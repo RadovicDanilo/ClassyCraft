@@ -1,6 +1,10 @@
 package main.java.raf.dsw.classycraft.app.core;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.model.logger.ConsoleLogger;
+import main.java.raf.dsw.classycraft.app.model.logger.FileLogger;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 
 import java.io.BufferedReader;
@@ -9,11 +13,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ApplicationFramework {
-    public final String settingsPath = "src/main/resources/settings/settings.txt";
+    public final String SETTINGS_PATH = "src/main/resources/settings/settings.txt";
+    public final String LOG_PATH = "src/main/resources/log.txt";
     private static ApplicationFramework instance;
-
     private boolean isDarkTheme;
-    private MessageGenerator messageGenerator = new MessageGenerator();
+    private final MessageGenerator messageGenerator = new MessageGenerator();
 
     private ApplicationFramework(){
 
@@ -26,6 +30,10 @@ public class ApplicationFramework {
     public static ApplicationFramework getInstance(){
         if(instance==null){
             instance = new ApplicationFramework();
+            instance.loadThemeSettings();
+            instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
+            instance.getMessageGenerator().addSubscriber(ConsoleLogger.getInstance());
+            instance.getMessageGenerator().addSubscriber(FileLogger.getInstance());
         }
         return instance;
     }
@@ -34,7 +42,7 @@ public class ApplicationFramework {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            fr = new FileReader(settingsPath);
+            fr = new FileReader(SETTINGS_PATH);
             br = new BufferedReader(fr);
             String[] darkThemeSetting = br.readLine().split("=");
             this.isDarkTheme= Objects.equals(darkThemeSetting[1], "true");
@@ -53,6 +61,10 @@ public class ApplicationFramework {
                 throw new RuntimeException(e);
             }
         }
+        if(isDarkTheme)
+            FlatDarkLaf.setup();
+        else
+            FlatLightLaf.setup();
     }
 
     public boolean isDarkTheme() {

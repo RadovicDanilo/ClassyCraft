@@ -1,18 +1,19 @@
 package main.java.raf.dsw.classycraft.app.model.message;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Message {
+    private final SystemEvent systemEvent;
     private final MessageType messageType;
     private final String text;
     private final LocalDateTime timestamp;
-    SystemEvent systemEvent;
 
-    public Message(MessageType messageType,String text, SystemEvent systemEvent) {
+    public Message(SystemEvent systemEvent, MessageType messageType, String text) {
+        this.systemEvent = systemEvent;
         this.messageType = messageType;
         this.text = text;
         this.timestamp = LocalDateTime.now();
-        this.systemEvent = systemEvent;
     }
 
     public MessageType getMessageType() {
@@ -26,5 +27,11 @@ public class Message {
     }
     public SystemEvent getSystemEvent() {
         return systemEvent;
+    }
+
+    @Override
+    public String toString() {
+        String timestamp = getTimestamp().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        return "[" + this.messageType + "][" + timestamp + "] " + this.text;
     }
 }

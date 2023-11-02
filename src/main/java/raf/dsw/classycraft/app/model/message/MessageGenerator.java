@@ -19,7 +19,6 @@ public class MessageGenerator implements IPublisher {
             return;
         this.subscribers.add(sub);
     }
-
     @Override
     public void removeSubscriber(ISubscriber sub) {
         subscribers.remove(sub);
@@ -28,7 +27,6 @@ public class MessageGenerator implements IPublisher {
     @Override
     public void notifySubscribers(Object notification) {
         if(notification instanceof Message){
-            //TODO URADITI LOGGER OVDE. TREBA DA LOGUJE SVE MESSAGE KOJE SALJE
             for(ISubscriber s: subscribers){
                 s.update(notification);
             }

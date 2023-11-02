@@ -2,7 +2,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
 import javax.swing.*;
@@ -50,15 +49,29 @@ public class MainFrame extends JFrame implements ISubscriber {
         return actionManager;
     }
 
+
     @Override
     public void update(Object notification) {
+        //TODO Ovo moze bolje da se uradi ako je mainframe jedini koji prima poruke mozda ovo moze i u messageGenerator-u da stoji
         if(!(notification instanceof Message)){
             return;
         }
-        if (((Message) notification).getSystemEvent() == SystemEvent.THEME_CHANGED) {
-            JOptionPane optionPane = new JOptionPane(((Message) notification).getText(),JOptionPane.INFORMATION_MESSAGE,JOptionPane.DEFAULT_OPTION);
-            JDialog dialog = optionPane.createDialog("change theme");
-            dialog.show();
+        JOptionPane messageOptionPane = new JOptionPane();
+        JDialog messageDialog = new JDialog();
+        messageOptionPane.setMessage(((Message) notification).getText());
+        switch (((Message) notification).getMessageType()){
+            case INFO: messageOptionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            case WARNING: messageOptionPane.setMessageType(JOptionPane.WARNING_MESSAGE);
+            case ERROR: messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
+        switch (((Message) notification).getSystemEvent()){
+            case THEME_CHANGED:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Promena teme");
+            case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
+            case NODE_CANNOT_BE_DELETED:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Cvor ne moze biti obrisan");
+        }
+        messageDialog.show();
     }
 }
