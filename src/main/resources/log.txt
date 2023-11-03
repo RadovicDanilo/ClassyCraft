@@ -1,2 +1,5 @@
 [INFO][03-11-2023 22:18:32] Promene ce se primenit pri ponovno pokretanju aplikacije
 [INFO][03-11-2023 22:24:50] Promene ce se primenit pri ponovno pokretanju aplikacije
+[INFO][03-11-2023 22:31:41] Promene ce se primenit pri ponovno pokretanju aplikacije
+[INFO][03-11-2023 22:35:28] Promene ce se primenit pri ponovno pokretanju aplikacije
+[INFO][03-11-2023 22:35:36] Promene ce se primenit pri ponovno pokretanju aplikacije

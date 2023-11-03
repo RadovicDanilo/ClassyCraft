@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class ExitAction extends AbstractClassyAction {
     public ExitAction(){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-        putValue(SMALL_ICON, loadIcon("exit.png"));//TODO ikona se ne prikazuje. popraviti
+        putValue(SMALL_ICON, loadIcon("images/icons/exit.png"));//TODO ikona se ne prikazuje. popraviti
         putValue(NAME, "Exit");
         putValue(SHORT_DESCRIPTION, "Exit");
     }

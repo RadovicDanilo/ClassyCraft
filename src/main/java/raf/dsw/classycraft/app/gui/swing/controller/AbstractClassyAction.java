@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.net.URL;
 
 public abstract class AbstractClassyAction extends AbstractAction{
-
     public Icon loadIcon(String fileName){
         URL imageURL = getClass().getResource(fileName);
         Icon icon = null;
@@ -14,5 +13,4 @@ public abstract class AbstractClassyAction extends AbstractAction{
             System.out.println("Resource not found " + null);
         return icon;
     }
-
 }

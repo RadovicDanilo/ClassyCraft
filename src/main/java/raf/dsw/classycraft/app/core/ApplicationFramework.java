@@ -30,7 +30,7 @@ public class ApplicationFramework {
     public static ApplicationFramework getInstance(){
         if(instance==null){
             instance = new ApplicationFramework();
-            instance.loadThemeSettings();
+            //instance.loadThemeSettings();
             instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
             LoggerFactory loggerFactory = new LoggerFactory();
             instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.CONSOLE_LOGGER));
