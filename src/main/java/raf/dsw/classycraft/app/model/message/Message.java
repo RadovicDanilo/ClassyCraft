@@ -32,6 +32,6 @@ public class Message {
     @Override
     public String toString() {
         String timestamp = getTimestamp().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-        return "[" + this.messageType + "][" + timestamp + "] " + this.text;
+        return "["+this.messageType+"][" + this.messageType + "][" + timestamp + "] " + this.text;
     }
 }
