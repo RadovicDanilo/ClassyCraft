@@ -1,8 +1,6 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageType;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 
 import java.awt.event.ActionEvent;
@@ -25,6 +23,6 @@ public class ChangeThemeAction extends AbstractClassyAction{
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        ApplicationFramework.getInstance().getMessageGenerator().notifySubscribers(new Message(SystemEvent.THEME_CHANGED, MessageType.INFO,"Promene ce se primenit pri ponovno pokretanju aplikacije"));
+        ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.THEME_CHANGED);
     }
 }
