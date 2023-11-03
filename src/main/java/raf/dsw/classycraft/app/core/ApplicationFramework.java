@@ -3,8 +3,8 @@ package main.java.raf.dsw.classycraft.app.core;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.logger.ConsoleLogger;
-import main.java.raf.dsw.classycraft.app.model.logger.FileLogger;
+import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
+import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 
 import java.io.BufferedReader;
@@ -32,8 +32,9 @@ public class ApplicationFramework {
             instance = new ApplicationFramework();
             instance.loadThemeSettings();
             instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
-            instance.getMessageGenerator().addSubscriber(ConsoleLogger.getInstance());
-            instance.getMessageGenerator().addSubscriber(FileLogger.getInstance());
+            LoggerFactory loggerFactory = new LoggerFactory();
+            instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.CONSOLE_LOGGER));
+            instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.FILE_LOGGER));
         }
         return instance;
     }

@@ -1,24 +1,12 @@
 package main.java.raf.dsw.classycraft.app.model.logger;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class FileLogger implements ISubscriber {
-
-    private static FileLogger instance;
-    private FileLogger(){
-
-    }
-    public static FileLogger getInstance(){
-        if(instance==null){
-            instance = new FileLogger();
-        }
-        return instance;
-    }
+public class FileLogger extends Logger{
 
     @Override
     public void update(Object notification) {

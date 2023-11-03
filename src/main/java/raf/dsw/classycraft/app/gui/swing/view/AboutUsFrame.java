@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AboutUsFrame extends JFrame {
+    //TODO treba poboljsati izgled ovog frame-a. Povecati font i bolji raspored.
     private static AboutUsFrame instance;
     private ImageIcon ognjenSlika;
     private JLabel ognjenSlikaContainer;
@@ -22,7 +23,7 @@ public class AboutUsFrame extends JFrame {
         setTitle("About us");
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        ognjenSlika = new ImageIcon("src/main/resources/images/ognjentasic.jpg");
+        ognjenSlika = new ImageIcon("src/main/resources/images/ognjentasic.jpg");//TODO dodati sliku
         ognjenSlikaContainer = new JLabel(ognjenSlika);
         daniloSlika = new ImageIcon("src/main/resources/images/daniloradovic.jpg");
         daniloSlika.setDescription("Danilo Radovic 63/22 RN");
