@@ -12,6 +12,7 @@ public class AboutUsFrame extends JFrame {
     private JLabel daniloSlikaContainer;
     private JLabel ognjenIme;
     private JLabel daniloIme;
+    private AboutUsFrame() throws HeadlessException {}
     public void initialize(){
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
