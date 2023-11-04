@@ -20,6 +20,9 @@ public class MessageGenerator implements IPublisher {
             case NODE_CANNOT_BE_DELETED:
                 message = new Message(SystemEvent.NODE_CANNOT_BE_DELETED, MessageType.ERROR,"Cvor ne moze biti obrisan");
                 break;
+            case NODE_CANNOT_BE_DUPLICATE:
+                message = new Message(SystemEvent.NODE_CANNOT_BE_DUPLICATE, MessageType.ERROR,"Ne moze se dodati cvor koji vec postoji");
+                break;
         }
         notifySubscribers(message);
     }

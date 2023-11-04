@@ -1,10 +1,9 @@
 package main.java.raf.dsw.classycraft.app.core;
 
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
+import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 
 import java.io.BufferedReader;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ApplicationFramework {
+    public final String PROJECTS_PATH = "/projects";//TODO izmeniti ovo kad dodjemo do ovog dela
     public final String SETTINGS_PATH = "src/main/resources/settings/settings.txt";
     public final String LOG_PATH = "src/main/resources/log.txt";
     private static ApplicationFramework instance;
@@ -62,10 +62,10 @@ public class ApplicationFramework {
                 throw new RuntimeException(e);
             }
         }
-        if(isDarkTheme)
-            FlatDarkLaf.setup();
-        else
-            FlatLightLaf.setup();
+//        if(isDarkTheme)
+//            FlatDarkLaf.setup();
+//        else
+//            FlatLightLaf.setup();
     }
 
     public boolean isDarkTheme() {

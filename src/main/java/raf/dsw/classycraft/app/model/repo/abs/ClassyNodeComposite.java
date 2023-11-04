@@ -12,8 +12,8 @@ import java.util.List;
 public abstract class ClassyNodeComposite extends ClassyNode{
     private List<ClassyNode> children;
 
-    public ClassyNodeComposite(ClassyNode parent, String ime, NodeType type) {
-        super(parent, ime, type);
+    public ClassyNodeComposite(ClassyNode parent, String name, NodeType type) {
+        super(parent, name, type);
     }
 
     public List<ClassyNode> getChildren() {return children;}
@@ -24,18 +24,13 @@ public abstract class ClassyNodeComposite extends ClassyNode{
             this.children = new ArrayList<>();
         }
         if(this.children.contains(c)){
-            ApplicationFramework.getInstance().getMessageGenerator().notifySubscribers(new Message(SystemEvent.NODE_CANNOT_BE_ADDED, MessageType.ERROR, "To ime je zauzeto, izaberi drugo."));
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NODE_CANNOT_BE_DUPLICATE);
             return false;
         }
         this.children.add(c);
         return true;
     }
-    private boolean removeChild(ClassyNode c){
-        if(this.children.contains(c)){
-            ApplicationFramework.getInstance().getMessageGenerator().notifySubscribers(new Message(SystemEvent.NODE_CANNOT_BE_DELETED, MessageType.ERROR, "Odabrani element se ne nalazi na ocekivanom mestu. Mozda je obrisan, pomeren ili mu je ime promenjeno."));
-            return false;
-        }
+    private void removeChild(ClassyNode c){
         this.children.remove(c);
-        return true;
     }
 }
