@@ -4,7 +4,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
-import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

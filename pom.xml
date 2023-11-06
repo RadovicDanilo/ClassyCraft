@@ -18,14 +18,5 @@
     <build>
         <sourceDirectory>${src.dir}</sourceDirectory>
     </build>
-
-    <profiles>
-        <profile>
-            <id>development</id>
-            <properties>
-                <src.dir>${project.build.directory}/new-src</src.dir>
-            </properties>
-        </profile>
-    </profiles>
     
 </project>
