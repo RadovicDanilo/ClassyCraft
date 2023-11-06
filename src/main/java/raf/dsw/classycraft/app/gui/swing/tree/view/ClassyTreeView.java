@@ -8,14 +8,12 @@ import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 
 public class ClassyTreeView extends JTree {
-
-
     public ClassyTreeView(DefaultTreeModel defaultTreeModel) {
         setModel(defaultTreeModel);
-        ClassyTreeCellRenderer ruTreeCellRenderer = new ClassyTreeCellRenderer();
+        ClassyTreeCellRenderer classyTreeCellRenderer = new ClassyTreeCellRenderer();
         addTreeSelectionListener(new ClassyTreeSelectionListener());
-        setCellEditor(new ClassyTreeCellEditor(this, ruTreeCellRenderer));
-        setCellRenderer(ruTreeCellRenderer);
+        setCellEditor(new ClassyTreeCellEditor(this, classyTreeCellRenderer));
+        setCellRenderer(classyTreeCellRenderer);
         setEditable(true);
     }
 }

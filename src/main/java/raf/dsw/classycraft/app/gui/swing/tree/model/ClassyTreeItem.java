@@ -12,20 +12,16 @@ public class ClassyTreeItem extends DefaultMutableTreeNode {
     public ClassyTreeItem(ClassyNode classyNode) {
         this.classyNode = classyNode;
     }
-
-    public ClassyNode getClassyNode() {
-        return classyNode;
-    }
-
-    public void setClassyNode(ClassyNode classyNode) {
-        this.classyNode = classyNode;
-    }
-
     @Override
     public String toString() {
         return classyNode.toString();
     }
-
+    public ClassyNode getClassyNode() {
+        return classyNode;
+    }
+    public void setClassyNode(ClassyNode classyNode) {
+        this.classyNode = classyNode;
+    }
     public void setName(String name) {
         classyNode.setName(name);
     }

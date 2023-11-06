@@ -24,4 +24,9 @@ public abstract class ClassyNode {
         ClassyNode node = (ClassyNode) obj;
         return this.name.equals(node.name) && this.type.equals(node.type)&& this.parent.equals(node.parent);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

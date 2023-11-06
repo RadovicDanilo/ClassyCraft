@@ -4,3 +4,4 @@
 [INFO][03-11-2023 22:35:28] Promene ce se primenit pri ponovno pokretanju aplikacije
 [INFO][03-11-2023 22:35:36] Promene ce se primenit pri ponovno pokretanju aplikacije
 [INFO][04-11-2023 21:41:02] Promene ce se primenit pri ponovno pokretanju aplikacije
+[INFO][06-11-2023 15:03:11] Promene ce se primenit pri ponovno pokretanju aplikacije

@@ -1,6 +1,9 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
@@ -13,6 +16,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private ClassyTree mapTree;//TODO refaktorisati ovo i sve ostalo sto sadrzi map
     private MainFrame(){
 
     }
@@ -30,10 +34,21 @@ public class MainFrame extends JFrame implements ISubscriber {
         setTitle("ClassyCrafT");
 
         MyMenuBar menu = new MyMenuBar();
-        setJMenuBar(menu);
-
         MyToolBar toolBar = new MyToolBar();
+
+        setJMenuBar(menu);
         add(toolBar, BorderLayout.NORTH);
+
+
+        JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer());
+        JPanel desktop = new JPanel();
+
+        JScrollPane scroll=new JScrollPane(projectExplorer);
+        scroll.setMinimumSize(new Dimension(200,150));
+        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+        getContentPane().add(split,BorderLayout.CENTER);
+        split.setDividerLocation(250);
+        split.setOneTouchExpandable(true);
     }
 
     public static MainFrame getInstance()
@@ -41,6 +56,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         if(instance == null)
         {
             instance = new MainFrame();
+            instance.mapTree = new ClassyTreeImplementation();
             instance.initialize();
         }
         return instance;

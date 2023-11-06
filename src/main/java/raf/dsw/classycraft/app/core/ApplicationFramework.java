@@ -4,6 +4,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
+import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,18 +19,21 @@ public class ApplicationFramework {
     private static ApplicationFramework instance;
     private boolean isDarkTheme;
     private final MessageGenerator messageGenerator = new MessageGenerator();
+    private ClassyRepository classyRepository;
 
     private ApplicationFramework(){
 
     }
 
     public void initialize(){
+
         MainFrame.getInstance().setVisible(true);
     }
 
     public static ApplicationFramework getInstance(){
         if(instance==null){
             instance = new ApplicationFramework();
+            instance.classyRepository = new ClassyRepositoryImplementation();
             //instance.loadThemeSettings();
             instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
             LoggerFactory loggerFactory = new LoggerFactory();
@@ -74,4 +79,11 @@ public class ApplicationFramework {
         return messageGenerator;
     }
 
+    public ClassyRepository getClassyRepository() {
+        return classyRepository;
+    }
+
+    public void setClassyRepository(ClassyRepository classyRepository) {
+        this.classyRepository = classyRepository;
+    }
 }
