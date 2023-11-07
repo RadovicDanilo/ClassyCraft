@@ -1,5 +1,7 @@
 package main.java.raf.dsw.classycraft.app.core;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
@@ -34,7 +36,7 @@ public class ApplicationFramework {
         if(instance==null){
             instance = new ApplicationFramework();
             instance.classyRepository = new ClassyRepositoryImplementation();
-            //instance.loadThemeSettings();
+            instance.loadThemeSettings();
             instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
             LoggerFactory loggerFactory = new LoggerFactory();
             instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.CONSOLE_LOGGER));
@@ -66,10 +68,10 @@ public class ApplicationFramework {
                 throw new RuntimeException(e);
             }
         }
-//        if(isDarkTheme)
-//            FlatDarkLaf.setup();
-//        else
-//            FlatLightLaf.setup();
+        if(isDarkTheme)
+            FlatDarkLaf.setup();
+        else
+           FlatLightLaf.setup();
     }
 
     public boolean isDarkTheme() {

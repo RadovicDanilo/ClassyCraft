@@ -6,3 +6,6 @@
 [INFO][04-11-2023 21:41:02] Promene ce se primenit pri ponovno pokretanju aplikacije
 [INFO][06-11-2023 15:03:11] Promene ce se primenit pri ponovno pokretanju aplikacije
 [INFO][07-11-2023 13:28:11] Promene ce se primenit pri ponovno pokretanju aplikacije
+[ERROR][07-11-2023 14:25:48] Ne moze se dodati cvor koji vec postoji
+[ERROR][07-11-2023 14:25:48] Ne moze se dodati cvor koji vec postoji
+[INFO][07-11-2023 14:47:17] Promene ce se primenit pri ponovno pokretanju aplikacije

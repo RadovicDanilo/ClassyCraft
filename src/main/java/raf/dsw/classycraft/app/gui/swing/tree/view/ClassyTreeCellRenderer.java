@@ -17,10 +17,10 @@ public class ClassyTreeCellRenderer extends DefaultTreeCellRenderer {
             URL imageURL = null;
 
             if (((ClassyTreeItem)value).getClassyNode() instanceof ProjectExplorer) {
-                imageURL = getClass().getResource("/images/icons/favourite.png");
+                imageURL = getClass().getResource("/images/icons/project_explorer.png");
             }
             else if (((ClassyTreeItem)value).getClassyNode() instanceof Project) {
-                imageURL = getClass().getResource("/images/icons/folder.png");
+                imageURL = getClass().getResource("/images/icons/project.png");
             }
             Icon icon = null;
             if (imageURL != null)

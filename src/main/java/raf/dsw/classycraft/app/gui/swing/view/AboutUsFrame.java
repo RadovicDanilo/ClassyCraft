@@ -27,9 +27,9 @@ public class AboutUsFrame extends JFrame {
         setTitle("About us");
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        ImageIcon ognjenSlika = new ImageIcon("src/main/resources/images/ognjentasic.jpg");  //TODO dodati sliku
+        ImageIcon ognjenSlika = new ImageIcon("/images/about/ognjentasic.jpg");  //TODO dodati sliku
         JLabel ognjenSlikaContainer = new JLabel(ognjenSlika);
-        ImageIcon daniloSlika = new ImageIcon("src/main/resources/images/daniloradovic.jpg");
+        ImageIcon daniloSlika = new ImageIcon("/images/about/daniloradovic.jpg");
         daniloSlika.setDescription("Danilo Radovic 63/22 RN");
         JLabel daniloSlikaContainer = new JLabel(daniloSlika);
         //TODO centrirati tekst.
