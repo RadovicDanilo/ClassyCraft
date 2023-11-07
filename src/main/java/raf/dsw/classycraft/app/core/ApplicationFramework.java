@@ -1,9 +1,13 @@
 package main.java.raf.dsw.classycraft.app.core;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
 import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
+import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,25 +15,28 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ApplicationFramework {
-    public final String PROJECTS_PATH = "/projects";//TODO izmeniti ovo kad dodjemo do ovog dela
+    public final String PROJECTS_PATH = "/projects";
     public final String SETTINGS_PATH = "src/main/resources/settings/settings.txt";
     public final String LOG_PATH = "src/main/resources/log.txt";
     private static ApplicationFramework instance;
     private boolean isDarkTheme;
     private final MessageGenerator messageGenerator = new MessageGenerator();
+    private ClassyRepository classyRepository;
 
     private ApplicationFramework(){
 
     }
 
     public void initialize(){
+
         MainFrame.getInstance().setVisible(true);
     }
 
     public static ApplicationFramework getInstance(){
         if(instance==null){
             instance = new ApplicationFramework();
-            //instance.loadThemeSettings();
+            instance.classyRepository = new ClassyRepositoryImplementation();
+            instance.loadThemeSettings();
             instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
             LoggerFactory loggerFactory = new LoggerFactory();
             instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.CONSOLE_LOGGER));
@@ -61,10 +68,10 @@ public class ApplicationFramework {
                 throw new RuntimeException(e);
             }
         }
-//        if(isDarkTheme)
-//            FlatDarkLaf.setup();
-//        else
-//            FlatLightLaf.setup();
+        if(isDarkTheme)
+            FlatDarkLaf.setup();
+        else
+           FlatLightLaf.setup();
     }
 
     public boolean isDarkTheme() {
@@ -74,4 +81,11 @@ public class ApplicationFramework {
         return messageGenerator;
     }
 
+    public ClassyRepository getClassyRepository() {
+        return classyRepository;
+    }
+
+    public void setClassyRepository(ClassyRepository classyRepository) {
+        this.classyRepository = classyRepository;
+    }
 }

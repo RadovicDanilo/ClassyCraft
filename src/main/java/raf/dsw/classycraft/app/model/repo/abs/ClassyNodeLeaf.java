@@ -6,4 +6,5 @@ public abstract class ClassyNodeLeaf extends ClassyNode{
     public ClassyNodeLeaf(ClassyNode parent, String ime, NodeType type) {
         super(parent, ime, type);
     }
+
 }

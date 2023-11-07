@@ -16,10 +16,7 @@ public abstract class ClassyNodeComposite extends ClassyNode{
         super(parent, name, type);
     }
 
-    public List<ClassyNode> getChildren() {return children;}
-    public void setChildren(List<ClassyNode> children) {this.children = children;}
-
-    private boolean addChild(ClassyNode c){
+    public boolean addChild(ClassyNode c){
         if(this.children == null) {
             this.children = new ArrayList<>();
         }
@@ -30,7 +27,15 @@ public abstract class ClassyNodeComposite extends ClassyNode{
         this.children.add(c);
         return true;
     }
-    private void removeChild(ClassyNode c){
+    public void removeChild(ClassyNode c){
         this.children.remove(c);
+    }
+
+    public List<ClassyNode> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<ClassyNode> children) {
+        this.children = children;
     }
 }
