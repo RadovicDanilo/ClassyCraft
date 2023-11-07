@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ClassyCrafT" target="10" />
       <module name="dizajn-softvera-projekat-tim_daniloradovic_ognjentasic" target="10" />
     </bytecodeTargetLevel>
   </component>

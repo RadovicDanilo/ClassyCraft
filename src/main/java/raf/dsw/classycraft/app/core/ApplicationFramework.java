@@ -68,10 +68,11 @@ public class ApplicationFramework {
                 throw new RuntimeException(e);
             }
         }
-        if(isDarkTheme)
+        if(isDarkTheme){
             FlatDarkLaf.setup();
-        else
-           FlatLightLaf.setup();
+        }else{
+            FlatLightLaf.setup();
+        }
     }
 
     public boolean isDarkTheme() {
