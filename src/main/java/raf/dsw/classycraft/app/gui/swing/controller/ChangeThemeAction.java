@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ChangeThemeAction extends AbstractClassyAction{
     public ChangeThemeAction() {
-        putValue(SMALL_ICON, null); //TODO dodaj ikonu za theme
+        putValue(SMALL_ICON, loadIcon("/images/icons/theme.png"));
         putValue(NAME, "Switch theme");
         putValue(SHORT_DESCRIPTION, "Switch theme");
     }

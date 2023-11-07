@@ -11,19 +11,17 @@ import java.awt.*;
 import java.net.URL;
 
 public class ClassyTreeCellRenderer extends DefaultTreeCellRenderer {
-
         public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
 
             super.getTreeCellRendererComponent(tree, value, sel,expanded, leaf, row, hasFocus);
             URL imageURL = null;
 
             if (((ClassyTreeItem)value).getClassyNode() instanceof ProjectExplorer) {
-                imageURL = getClass().getResource("/images/tdiagram.gif");
+                imageURL = getClass().getResource("/images/icons/favourite.png");
             }
             else if (((ClassyTreeItem)value).getClassyNode() instanceof Project) {
-                imageURL = getClass().getResource("/images/tproject.gif");
+                imageURL = getClass().getResource("/images/icons/folder.png");
             }
-
             Icon icon = null;
             if (imageURL != null)
                 icon = new ImageIcon(imageURL);

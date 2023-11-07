@@ -22,6 +22,6 @@ public class ClassyRepositoryImplementation implements ClassyRepository {
 
     @Override
     public void addChild(ClassyNodeComposite parent, ClassyNode child) {
-        //TODO: implement add Child method
+        parent.addChild(child);
     }
 }

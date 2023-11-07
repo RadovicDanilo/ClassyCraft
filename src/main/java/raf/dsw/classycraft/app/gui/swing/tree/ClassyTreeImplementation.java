@@ -28,10 +28,11 @@ public class ClassyTreeImplementation implements ClassyTree {
 
     @Override
     public void addChild(ClassyTreeItem parent) {
+        if(parent==null)
+            return;
         if (!(parent.getClassyNode() instanceof ClassyNodeComposite))
             return;
-
-        ClassyNode child = createChild((ClassyNode) parent.getClassyNode());
+        ClassyNode child = createChild(parent.getClassyNode());
         parent.add(new ClassyTreeItem(child));
         ((ClassyNodeComposite) parent.getClassyNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
@@ -45,7 +46,8 @@ public class ClassyTreeImplementation implements ClassyTree {
 
     private ClassyNode createChild(ClassyNode parent) {
         if (parent instanceof ProjectExplorer)
-            return  new Project("Project " +new Random().nextInt(100), parent);
+            return  new Project("Project " +new Random().nextInt(100), parent);//TODO dodati if tako da proveri da nema konflikta
+
         return null;
     }
 

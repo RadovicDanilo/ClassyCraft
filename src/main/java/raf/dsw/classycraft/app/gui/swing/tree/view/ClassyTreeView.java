@@ -11,9 +11,9 @@ public class ClassyTreeView extends JTree {
     public ClassyTreeView(DefaultTreeModel defaultTreeModel) {
         setModel(defaultTreeModel);
         ClassyTreeCellRenderer classyTreeCellRenderer = new ClassyTreeCellRenderer();
-        addTreeSelectionListener(new ClassyTreeSelectionListener());
-        setCellEditor(new ClassyTreeCellEditor(this, classyTreeCellRenderer));
         setCellRenderer(classyTreeCellRenderer);
+        setCellEditor(new ClassyTreeCellEditor(this, classyTreeCellRenderer));
+        addTreeSelectionListener(new ClassyTreeSelectionListener());
         setEditable(true);
     }
 }

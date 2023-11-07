@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ApplicationFramework {
-    public final String PROJECTS_PATH = "/projects";//TODO izmeniti ovo kad dodjemo do ovog dela
+    public final String PROJECTS_PATH = "/projects";
     public final String SETTINGS_PATH = "src/main/resources/settings/settings.txt";
     public final String LOG_PATH = "src/main/resources/log.txt";
     private static ApplicationFramework instance;

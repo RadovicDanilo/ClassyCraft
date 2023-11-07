@@ -7,4 +7,5 @@ public class ProjectExplorer extends ClassyNodeComposite {
     public ProjectExplorer(String name) {
         super(null, name, NodeType.PROJECT_EXPLORER);
     }
+
 }

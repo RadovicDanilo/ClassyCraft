@@ -14,8 +14,6 @@ public class AboutUsAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //TODO pop up meni sa licnim podacima i slikom.
-
         AboutUsFrame.getInstance().setVisible(true);
     }
 }
