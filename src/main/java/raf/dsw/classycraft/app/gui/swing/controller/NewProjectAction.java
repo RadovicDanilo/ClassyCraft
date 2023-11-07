@@ -1,10 +1,13 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.desktop.AppForegroundListener;
@@ -22,7 +25,16 @@ public class NewProjectAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-        MainFrame.getInstance().getClassyTree().addChild(selectedNode);
+        ClassyNode classyNode = null;
+        int i = 0;
+        while(true){
+            classyNode = new Project("project " + i,ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer(),"");
+            if(!ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer().getChildren().contains(classyNode)){
+                ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer().addChild(classyNode);
+                break;
+            }
+            i++;
+        }
+        MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).getRoot(),new ClassyTreeItem(classyNode));
     }
 }

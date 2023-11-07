@@ -7,7 +7,6 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplor
 public interface ClassyTree {
 
     ClassyTreeView generateTree(ProjectExplorer projectExplorer);
-    void addChild(ClassyTreeItem parent);
+    void addChild(ClassyTreeItem parent, ClassyTreeItem classyTreeItem);
     ClassyTreeItem getSelectedNode();
-
 }

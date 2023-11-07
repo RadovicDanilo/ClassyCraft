@@ -1,19 +1,17 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageType;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.NodeType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ClassyNodeComposite extends ClassyNode{
-    private List<ClassyNode> children;
+    private List<ClassyNode> children = new ArrayList<>();
 
-    public ClassyNodeComposite(ClassyNode parent, String name, NodeType type) {
-        super(parent, name, type);
+    public ClassyNodeComposite(ClassyNode parent, String name) {
+        super(parent, name);
+
     }
 
     public boolean addChild(ClassyNode c){
