@@ -1,7 +1,5 @@
 package main.java.raf.dsw.classycraft.app.core;
 
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerFactory;
 import main.java.raf.dsw.classycraft.app.model.logger.LoggerType;
@@ -69,9 +67,9 @@ public class ApplicationFramework {
             }
         }
         if(isDarkTheme){
-            FlatDarkLaf.setup();
+            //FlatDarkLaf.setup();
         }else{
-            FlatLightLaf.setup();
+            //FlatLightLaf.setup();
         }
     }
 
