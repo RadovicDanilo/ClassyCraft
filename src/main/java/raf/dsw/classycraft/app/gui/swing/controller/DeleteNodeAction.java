@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
@@ -21,5 +22,6 @@ public class DeleteNodeAction extends AbstractClassyAction{
             //TODO error nema uklanjanja exlorera
             return;
         ApplicationFramework.getInstance().getClassyRepository().getRoot().removeChild(selectedNode.getClassyNode());
+        ((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).removeNode(selectedNode);
     }
 }

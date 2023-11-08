@@ -30,6 +30,12 @@ public class ClassyTreeImplementation implements ClassyTree {
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
+    public void removeNode(ClassyTreeItem classyTreeItem) {
+        classyTreeItem.removeFromParent();
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
     @Override
     public ClassyTreeItem getSelectedNode() {
         return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
