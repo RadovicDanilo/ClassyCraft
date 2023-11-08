@@ -10,6 +10,8 @@ public class ActionManager {
     private NewPackageAction newPackageAction;
     private NewDiagramAction newDiagramAction;
     private DeleteNodeAction deleteNodeAction;
+    private ChangeAuthorShowViewAction changeAuthorShowViewAction;
+
 
     public ActionManager(){
         initialiseActions();
@@ -23,6 +25,7 @@ public class ActionManager {
         deleteNodeAction = new DeleteNodeAction();
         newPackageAction = new NewPackageAction();
         newDiagramAction = new NewDiagramAction();
+        changeAuthorShowViewAction = new ChangeAuthorShowViewAction();
     }
 
     public Action getExitAction() {
@@ -46,4 +49,8 @@ public class ActionManager {
     public NewDiagramAction getNewDiagramAction() {
         return newDiagramAction;
     }
+    public ChangeAuthorShowViewAction getChangeAuthorShowViewAction() {
+        return changeAuthorShowViewAction;
+    }
+
 }
