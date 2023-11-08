@@ -101,6 +101,7 @@ public class MainFrame extends JFrame implements ISubscriber {
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
                 break;
+            default: return;
         }
         messageDialog.show();
     }
