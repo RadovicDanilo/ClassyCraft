@@ -4,7 +4,10 @@ import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.NodeType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
 import javax.swing.*;
@@ -24,8 +27,8 @@ public class NewProjectAction extends AbstractClassyAction{
         ClassyNode classyNode;
         int i = 0;
         while(true){
-            classyNode = new Project("project " + i,"" );
-            if(!ApplicationFramework.getInstance().getClassyRepository().getRoot().getChildren().contains(classyNode)){
+            classyNode = ((ClassyRepositoryImplementation)ApplicationFramework.getInstance().getClassyRepository()).getClassyNodeFactory().classyNode(NodeType.PROJECT, "project " + i, null);
+            if(!((ClassyNodeComposite)ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)){
                 ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
                 break;
             }

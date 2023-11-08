@@ -9,9 +9,11 @@ import java.io.File;
 public class Project extends ClassyNodeComposite {
     private String author;
     private String resourcePath;
-    public Project(String name, String author) {
-        super(ApplicationFramework.getInstance().getClassyRepository().getRoot(), name);
-        this.author = author;
+
+    protected Project(String name) {
+        super(ApplicationFramework.getInstance().getClassyRepository().getRoot(),name);
+        this.author="";
+        this.resourcePath=ApplicationFramework.getInstance().PROJECTS_PATH+name;
     }
 
     @Override

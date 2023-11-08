@@ -30,3 +30,9 @@
 [ERROR][08-11-2023 15:11:53] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][08-11-2023 15:11:57] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][08-11-2023 15:11:59] Diagram se mogu praviti samo u projektima ili paketima
+[INFO][08-11-2023 20:44:22] Promene ce se primenit pri ponovno pokretanju aplikacije
+[ERROR][08-11-2023 20:44:28] Project Explorer ne moze da se ukloni
+[ERROR][08-11-2023 20:44:35] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][08-11-2023 20:44:39] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 20:44:44] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 20:44:47] Diagram se mogu praviti samo u projektima ili paketima

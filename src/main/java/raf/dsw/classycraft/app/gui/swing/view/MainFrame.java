@@ -6,6 +6,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +42,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         add(toolBar, BorderLayout.NORTH);
 
 
-        JTree projectExplorer = classyTree.generateTree(ApplicationFramework.getInstance().getClassyRepository().getRoot());
+        JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
         JPanel desktop = new JPanel();
 
         JScrollPane scroll=new JScrollPane(projectExplorer);
