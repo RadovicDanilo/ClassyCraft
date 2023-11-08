@@ -15,3 +15,18 @@
 [ERROR][07-11-2023 18:50:01] Ne moze se dodati cvor koji vec postoji
 [INFO][07-11-2023 22:06:28] Promene ce se primenit pri ponovno pokretanju aplikacije
 [INFO][08-11-2023 13:34:00] Promene ce se primenit pri ponovno pokretanju aplikacije
+[ERROR][08-11-2023 15:08:24] Project Explorer ne moze da se ukloni
+[ERROR][08-11-2023 15:08:31] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 15:08:37] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 15:08:37] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][08-11-2023 15:08:48] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][08-11-2023 15:09:32] Project Explorer ne moze da se ukloni
+[ERROR][08-11-2023 15:09:35] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 15:10:02] Project Explorer ne moze da se ukloni
+[ERROR][08-11-2023 15:11:21] Project Explorer ne moze da se ukloni
+[ERROR][08-11-2023 15:11:24] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 15:11:27] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][08-11-2023 15:11:45] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][08-11-2023 15:11:53] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 15:11:57] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][08-11-2023 15:11:59] Diagram se mogu praviti samo u projektima ili paketima

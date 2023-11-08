@@ -92,6 +92,15 @@ public class MainFrame extends JFrame implements ISubscriber {
             case NODE_CANNOT_BE_DELETED:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Cvor ne moze biti obrisan");
                 break;
+            case CANNOT_REMOVE_ROOT:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Project explore ne moze da se ukloni");
+                break;
+            case CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Diagram ne moze da se kreira");
+                break;
+            case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
+                break;
         }
         messageDialog.show();
     }

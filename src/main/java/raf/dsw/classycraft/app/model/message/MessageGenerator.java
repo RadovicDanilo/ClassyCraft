@@ -12,16 +12,25 @@ public class MessageGenerator implements IPublisher {
         Message message = null;
         switch (systemEvent){
             case THEME_CHANGED:
-                message = new Message(SystemEvent.THEME_CHANGED, MessageType.INFO,"Promene ce se primenit pri ponovno pokretanju aplikacije");
+                message = new Message(systemEvent, MessageType.INFO,"Promene ce se primenit pri ponovno pokretanju aplikacije");
                 break;
             case NAME_CANNOT_BE_EMPTY:
-                message = new Message(SystemEvent.NAME_CANNOT_BE_EMPTY, MessageType.ERROR,"Naziv nesme biti prazan");
+                message = new Message(systemEvent, MessageType.ERROR,"Naziv nesme biti prazan");
                 break;
             case NODE_CANNOT_BE_DELETED:
-                message = new Message(SystemEvent.NODE_CANNOT_BE_DELETED, MessageType.ERROR,"Cvor ne moze biti obrisan");
+                message = new Message(systemEvent, MessageType.ERROR,"Cvor ne moze biti obrisan");
                 break;
             case NODE_CANNOT_BE_DUPLICATE:
-                message = new Message(SystemEvent.NODE_CANNOT_BE_DUPLICATE, MessageType.ERROR,"Ne moze se dodati cvor koji vec postoji");
+                message = new Message(systemEvent, MessageType.ERROR,"Ne moze se dodati cvor koji vec postoji");
+                break;
+            case CANNOT_REMOVE_ROOT:
+                message = new Message(systemEvent, MessageType.ERROR,"Project Explorer ne moze da se ukloni");
+                break;
+            case CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM:
+                message = new Message(systemEvent, MessageType.ERROR,"Diagram se mogu praviti samo u projektima ili paketima");
+                break;
+            case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:
+                message = new Message(systemEvent, MessageType.ERROR,"Paketi se mogu praviti samo u projektima ili drugim paketima");
                 break;
         }
         notifySubscribers(message);

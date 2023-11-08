@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.Objects;
 
 public class AboutUsFrame extends JFrame {
-    //TODO treba poboljsati izgled ovog frame-a. Povecati font i bolji raspored.
+    //TODO ULEPSATI
     private static AboutUsFrame instance;
 
     public static AboutUsFrame getInstance() {
