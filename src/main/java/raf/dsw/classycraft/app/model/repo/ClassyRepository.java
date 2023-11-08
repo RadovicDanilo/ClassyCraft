@@ -5,7 +5,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 public interface ClassyRepository {
-    ProjectExplorer getProjectExplorer();
+    ProjectExplorer getRoot();
     void addChild(ClassyNode child);
     void removeChild(ClassyNode child);
 }

@@ -7,5 +7,6 @@ public enum SystemEvent {
     THEME_CHANGED,
     NODE_ADDED,
     NODE_REMOVED,
-    NODE_SELECTED
+    NODE_SELECTED,
+    CANNOT_ADD_DUPLICATE_NODE
 }

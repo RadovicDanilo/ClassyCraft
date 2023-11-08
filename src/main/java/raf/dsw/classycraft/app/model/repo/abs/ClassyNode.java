@@ -7,14 +7,6 @@ public abstract class ClassyNode {
         this.parent = parent;
         this.name = name;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if(!(obj instanceof  ClassyNode)) return false;
-        ClassyNode node = (ClassyNode) obj;
-        return  this.parent==node.parent && this.name.equals(node.name);
-    }
-
     @Override
     public String toString() {
         return name;

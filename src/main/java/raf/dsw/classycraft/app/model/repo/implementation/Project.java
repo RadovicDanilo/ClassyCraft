@@ -9,10 +9,8 @@ import java.io.File;
 public class Project extends ClassyNodeComposite {
     private String author;
     private String resourcePath;
-
-
-    public Project(String name, ClassyNode parent, String author) {
-        super(parent, name);
+    public Project(String name, String author) {
+        super(ApplicationFramework.getInstance().getClassyRepository().getRoot(), name);
         this.author = author;
     }
 

@@ -1,10 +1,15 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree.model;
 
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.Objects;
 
 public class ClassyTreeItem extends DefaultMutableTreeNode {
 
@@ -13,11 +18,15 @@ public class ClassyTreeItem extends DefaultMutableTreeNode {
     public ClassyTreeItem(ClassyNode classyNode) {
         this.classyNode = classyNode;
     }
-    public void remove(){
 
-        //obrisi this
-
-        //Obrisis this.classynode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        ClassyTreeItem that = (ClassyTreeItem) o;
+        return Objects.equals(classyNode, that.classyNode);
     }
     @Override
     public String toString() {

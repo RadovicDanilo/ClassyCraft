@@ -18,7 +18,7 @@ public class ApplicationFramework {
     public final String LOG_PATH = "src/main/resources/log.txt";
     private static ApplicationFramework instance;
     private boolean isDarkTheme;
-    private final MessageGenerator messageGenerator = new MessageGenerator();
+    private MessageGenerator messageGenerator;
     private ClassyRepository classyRepository;
 
     private ApplicationFramework(){
@@ -33,6 +33,7 @@ public class ApplicationFramework {
     public static ApplicationFramework getInstance(){
         if(instance==null){
             instance = new ApplicationFramework();
+            instance.messageGenerator = new MessageGenerator();
             instance.classyRepository = new ClassyRepositoryImplementation();
             instance.loadThemeSettings();
             instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());

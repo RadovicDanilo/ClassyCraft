@@ -20,20 +20,20 @@ public class NewDiagramAction extends AbstractClassyAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-        if (!(selectedNode.getClassyNode() instanceof Project || selectedNode.getClassyNode() instanceof Package)) {
+        if(!(selectedNode.getClassyNode() instanceof Project || selectedNode.getClassyNode() instanceof Package)){
             return;
             //TODO ERROR
         }
         ClassyNode classyNode;
         int i = 0;
-        while (true) {
-            classyNode = new Diagram(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer(), "diagram  "+i);
-            if (!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)) {
-                ((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().add(classyNode);
+        while(true){
+            classyNode = new Diagram(selectedNode.getClassyNode(), "diagram " + i);
+            if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)){
+                ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
                 break;
             }
             i++;
         }
-        MainFrame.getInstance().getClassyTree().addChild(selectedNode, new ClassyTreeItem(classyNode));
+        MainFrame.getInstance().getClassyTree().addChild(selectedNode,new ClassyTreeItem(classyNode));
     }
 }

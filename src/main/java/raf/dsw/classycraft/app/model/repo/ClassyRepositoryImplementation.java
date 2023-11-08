@@ -8,15 +8,15 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplor
 
 public class ClassyRepositoryImplementation implements ClassyRepository {
 
-    private ProjectExplorer projectExplorer;
+    private final ProjectExplorer root;
 
     public ClassyRepositoryImplementation() {
-        projectExplorer = new ProjectExplorer("My Project Explorer");
+        root = new ProjectExplorer("My Project Explorer");
     }
 
     @Override
-    public ProjectExplorer getProjectExplorer() {
-        return projectExplorer;
+    public ProjectExplorer getRoot() {
+        return root;
     }
 
     @Override

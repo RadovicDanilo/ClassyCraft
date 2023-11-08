@@ -5,15 +5,11 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
-import java.awt.desktop.AppForegroundListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.net.URL;
 
 public class NewProjectAction extends AbstractClassyAction{
     public NewProjectAction() {
@@ -25,12 +21,12 @@ public class NewProjectAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ClassyNode classyNode = null;
+        ClassyNode classyNode;
         int i = 0;
         while(true){
-            classyNode = new Project("project " + i,ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer(),"");
-            if(!ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer().getChildren().contains(classyNode)){
-                ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer().addChild(classyNode);
+            classyNode = new Project("project " + i,"" );
+            if(!ApplicationFramework.getInstance().getClassyRepository().getRoot().getChildren().contains(classyNode)){
+                ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
                 break;
             }
             i++;

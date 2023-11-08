@@ -11,9 +11,7 @@ public abstract class ClassyNodeComposite extends ClassyNode{
 
     public ClassyNodeComposite(ClassyNode parent, String name) {
         super(parent, name);
-
     }
-
     public boolean addChild(ClassyNode c){
         if(this.children == null) {
             this.children = new ArrayList<>();

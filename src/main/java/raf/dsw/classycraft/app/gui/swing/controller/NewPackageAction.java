@@ -1,7 +1,6 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -24,12 +23,12 @@ public class NewPackageAction extends AbstractClassyAction{
             return;
             //TODO ERROR
         }
-        ClassyNode classyNode = null;
+        ClassyNode classyNode;
         int i = 0;
         while(true){
-            classyNode = new Package(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer(), "package " + i);
+            classyNode = new Package(selectedNode.getClassyNode(), "package " + i);
             if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)){
-                ((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().add(classyNode);
+                ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
                 break;
             }
             i++;

@@ -14,3 +14,4 @@
 [ERROR][07-11-2023 18:27:21] Ne moze se dodati cvor koji vec postoji
 [ERROR][07-11-2023 18:50:01] Ne moze se dodati cvor koji vec postoji
 [INFO][07-11-2023 22:06:28] Promene ce se primenit pri ponovno pokretanju aplikacije
+[INFO][08-11-2023 13:34:00] Promene ce se primenit pri ponovno pokretanju aplikacije
