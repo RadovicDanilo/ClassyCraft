@@ -3,7 +3,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 import javax.swing.*;
 
 public class ActionManager {
-    private ChangeThemeAction changeThemeAction;
     private ExitAction exitAction;
     private AboutUsAction aboutUsAction;
     private NewProjectAction newProjectAction;
@@ -21,7 +20,6 @@ public class ActionManager {
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
         aboutUsAction = new AboutUsAction();
-        changeThemeAction = new ChangeThemeAction();
         deleteNodeAction = new DeleteNodeAction();
         newPackageAction = new NewPackageAction();
         newDiagramAction = new NewDiagramAction();
@@ -36,9 +34,6 @@ public class ActionManager {
     }
     public Action getAboutUsAction() {
         return aboutUsAction;
-    }
-    public Action getChangeThemeAction() {
-        return changeThemeAction;
     }
     public DeleteNodeAction getDeleteNodeAction() {
         return deleteNodeAction;
