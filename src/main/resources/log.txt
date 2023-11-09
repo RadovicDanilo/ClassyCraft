@@ -36,3 +36,6 @@
 [ERROR][08-11-2023 20:44:39] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][08-11-2023 20:44:44] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][08-11-2023 20:44:47] Diagram se mogu praviti samo u projektima ili paketima
+[INFO][09-11-2023 12:10:13] Promene ce se primenit pri ponovno pokretanju aplikacije
+[INFO][09-11-2023 12:15:06] Promene ce se primenit pri ponovno pokretanju aplikacije
+[ERROR][09-11-2023 12:15:24] Diagram se mogu praviti samo u projektima ili paketima
