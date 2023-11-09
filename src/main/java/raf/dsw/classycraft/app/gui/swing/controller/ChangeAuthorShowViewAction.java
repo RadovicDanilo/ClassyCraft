@@ -21,7 +21,8 @@ public class ChangeAuthorShowViewAction extends AbstractClassyAction{
         }
         ClassyNode classyNode = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         if(classyNode instanceof Project){
-            ChangeAuthorView.getInstance().setVisible(true);
+            ChangeAuthorView changeAuthorView = new ChangeAuthorView();
+            changeAuthorView.setVisible(true);
         }
     }
 }
