@@ -85,9 +85,6 @@ public class MainFrame extends JFrame implements ISubscriber {
         }
         JDialog messageDialog = new JDialog();
         switch (((Message) notification).getSystemEvent()){
-            case THEME_CHANGED:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-                messageDialog = messageOptionPane.createDialog("Promena teme");
-                break;
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
                 break;

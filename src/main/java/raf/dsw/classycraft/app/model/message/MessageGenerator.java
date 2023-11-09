@@ -11,9 +11,6 @@ public class MessageGenerator implements IPublisher {
     public void GenerateMessage(SystemEvent systemEvent){
         Message message = null;
         switch (systemEvent){
-            case THEME_CHANGED:
-                message = new Message(systemEvent, MessageType.INFO,"Promene ce se primenit pri ponovno pokretanju aplikacije");
-                break;
             case NAME_CANNOT_BE_EMPTY:
                 message = new Message(systemEvent, MessageType.ERROR,"Naziv nesme biti prazan");
                 break;
