@@ -8,10 +8,12 @@ public class Main {
         main.initialize();
     }
 
-    //**********PITANJA
-    //FILE I CONSOLE LOGGER PORUKE I SYS EVENTOVI
+    //classy factory constructocty metode
     //NEW [NODE] ACTION:
     //DELETE NODE ACTION: metoda u classyIMPL ili u compsite??
     //CLASSY TREE:
-    //Project path
+    //Project pat
+    //TABBED PANE u main frame
+    //GRIDPANE
+
 }

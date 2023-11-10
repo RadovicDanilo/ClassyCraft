@@ -32,10 +32,6 @@ public class MessageGenerator implements IPublisher {
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:
                 message = new Message(systemEvent, MessageType.ERROR,"Paketi se mogu praviti samo u projektima ili drugim paketima");
                 break;
-            case NODE_SELECTED:
-                message = new Message(systemEvent, MessageType.INFO,"Selektovan cvor: " + 1 +" getPath: " + 2);
-
-                break;
             default: return;
         }
         notifySubscribers(message);
