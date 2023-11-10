@@ -8,10 +8,10 @@ import java.awt.event.ActionEvent;
 
 
 public class ChangeAuthorAction extends AbstractClassyAction{
-    private String author;
+
     ChangeAuthorView changeAuthorView;
 
-    public ChangeAuthorAction(String author, ChangeAuthorView changeAuthorView) {
+    public ChangeAuthorAction(ChangeAuthorView changeAuthorView) {
         this.changeAuthorView=changeAuthorView;
     }
 
@@ -19,7 +19,7 @@ public class ChangeAuthorAction extends AbstractClassyAction{
     public void actionPerformed(ActionEvent e) {
         Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         System.out.println("Projekat "+project.getName()+" Prethodni autor: "+ project.getAuthor());
-        project.setAuthor(author);
+        project.setAuthor(changeAuthorView.getTfAuthor().getText());
         System.out.println("Projekat "+project.getName()+" Novi autor: "+ project.getAuthor());
         changeAuthorView.dispose();
     }

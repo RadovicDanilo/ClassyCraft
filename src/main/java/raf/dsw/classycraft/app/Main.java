@@ -7,4 +7,12 @@ public class Main {
         ApplicationFramework main = ApplicationFramework.getInstance();
         main.initialize();
     }
+
+    //**********PITANJA
+    //CHANGE AUTHOR ACTION
+    //FILE I CONSOLE LOGGER PORUKE I SYS EVENTOVI
+    //NEW [NODE] ACTION
+    //DELETE NODE ACTION
+    //CLASSY TREE
+    //
 }

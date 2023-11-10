@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChangeAuthorView extends JFrame {
+    private JTextField tfAuthor;
 
     public ChangeAuthorView() {
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -23,14 +24,18 @@ public class ChangeAuthorView extends JFrame {
         c.gridy = 0;
         add(new JLabel("Ime autora:"),c);
         c.gridy = 1;
-        JTextField tfAuthor = new JTextField();
+        tfAuthor = new JTextField();
         tfAuthor.setPreferredSize(new Dimension(100,30));
         add(tfAuthor,c);
         c.gridy = 2;
         JButton btEnter = new JButton();
-        btEnter.setPreferredSize(new Dimension(100,30));
-        btEnter.setText("ENTER");
-        btEnter.setAction(new ChangeAuthorAction(tfAuthor.getText(),this));
+        btEnter.setPreferredSize(new Dimension(100,40));
+        btEnter.setText("Enter");
+        btEnter.setAction(new ChangeAuthorAction(this));
         add(btEnter,c);
+    }
+
+    public JTextField getTfAuthor() {
+        return tfAuthor;
     }
 }
