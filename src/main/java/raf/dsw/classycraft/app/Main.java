@@ -8,12 +8,5 @@ public class Main {
         main.initialize();
     }
 
-    //classy factory constructocty metode
-    //NEW [NODE] ACTION:
-    //DELETE NODE ACTION: metoda u classyIMPL ili u compsite??
-    //CLASSY TREE:
-    //Project pat
-    //TABBED PANE u main frame
-    //GRIDPANE
 
 }

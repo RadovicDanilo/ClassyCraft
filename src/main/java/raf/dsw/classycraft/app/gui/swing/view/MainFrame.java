@@ -91,6 +91,7 @@ public class MainFrame extends JFrame implements ISubscriber {
             case ERROR: messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
             break;
         }
+        //TODO NA KRAJU DODATI SVE ERRORE
         JDialog messageDialog = new JDialog();
         switch (((Message) notification).getSystemEvent()){
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
@@ -119,6 +120,11 @@ public class MainFrame extends JFrame implements ISubscriber {
         return classyTree;
     }
 
+    //TODO OVO TREBA DA BUDE ODBOJENA KLASA
+    //TODO DODAJE SE JPANEL U MAIN I NA NJEGA JTABEDPANE
+    //TODO NE DODAJE DIJAGRAME U PROJEKTIMA I NIJE DODDAT ERROR KAD JE PAKET/PROJEKT PRAZAN
+    //TODO NEMA OPCIJA ZA OTVARANJE SAMO DIJAGRAM DODATI
+    //TODO
     public void openTabs(List<Diagram> diagrams){
         this.tabbedPane.removeAll();
         ClassyNode project = diagrams.get(0);

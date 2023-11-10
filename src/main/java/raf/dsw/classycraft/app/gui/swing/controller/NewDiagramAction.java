@@ -38,5 +38,6 @@ public class NewDiagramAction extends AbstractClassyAction{
             i++;
         }
         MainFrame.getInstance().getClassyTree().addChild(selectedNode,new ClassyTreeItem(classyNode));
+        //TODO ISTO KAO I ONA DRUGA STVAR
     }
 }

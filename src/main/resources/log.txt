@@ -4,3 +4,6 @@
 [ERROR][10-11-2023 15:55:08] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][10-11-2023 15:58:58] Mora te selektovati projekat da bi ste mogli da promentie autora
 [ERROR][10-11-2023 15:59:13] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][10-11-2023 16:26:59] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][10-11-2023 16:27:03] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][10-11-2023 16:27:07] Mora te selektovati projekat da bi ste mogli da promentie autora

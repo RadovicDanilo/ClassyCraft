@@ -24,6 +24,7 @@ public class DeleteNodeAction extends AbstractClassyAction{
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
             return;
         }
+        //TODO ISTO KORISTIT ONO U CLASY REPO IMPL A NE KORISTIT ONO IZ COMPOZITA I IZ SAMOG REPO MODELA
         ((ProjectExplorer)ApplicationFramework.getInstance().getClassyRepository().getRoot()).removeChild(selectedNode.getClassyNode());
         ((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).removeNode(selectedNode);
     }

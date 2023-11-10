@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.model.logger;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;

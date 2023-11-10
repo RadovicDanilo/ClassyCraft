@@ -35,6 +35,7 @@ public class NewProjectAction extends AbstractClassyAction{
             i++;
         }
         MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).getRoot(),new ClassyTreeItem(classyNode));
+        //TODO SAMO ROOT OVDE
 
     }
 }

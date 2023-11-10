@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.Objects;
 
 public class AboutUsFrame extends JFrame {
-    //TODO ULEPSATI
+    //TODO ULEPSATI OVO PLS
     private static AboutUsFrame instance;
 
     public static AboutUsFrame getInstance() {

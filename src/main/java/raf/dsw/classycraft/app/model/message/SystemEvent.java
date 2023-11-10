@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.model.message;
 
 public enum SystemEvent {
+    //TODO SVI MOGUCI SYS EVENTOVI I ERROR DODATI AN AKRAJu
     NODE_CANNOT_BE_DELETED,
     NODE_CANNOT_BE_DUPLICATE,
     NAME_CANNOT_BE_EMPTY,

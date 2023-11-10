@@ -37,5 +37,6 @@ public class NewPackageAction extends AbstractClassyAction{
             i++;
         }
         MainFrame.getInstance().getClassyTree().addChild(selectedNode,new ClassyTreeItem(classyNode));
+        //TODO NE PRAVI SE OVED CLASSYTREEITEM NEGO U NJEMU
     }
 }

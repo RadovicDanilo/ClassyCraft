@@ -10,6 +10,7 @@ public class MessageGenerator implements IPublisher {
     private ArrayList<ISubscriber> subscribers;
     public void GenerateMessage(SystemEvent systemEvent){
         Message message = null;
+        //TODO DODATI SVE OSTALE SYS EVENTOVE OVDE NA KRAJU AAAAAAAAAAAAAAAAAAAA
         switch (systemEvent){
             case NAME_CANNOT_BE_EMPTY:
                 message = new Message(systemEvent, MessageType.ERROR,"Naziv nesme biti prazan");
