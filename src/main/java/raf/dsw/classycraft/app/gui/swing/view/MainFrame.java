@@ -6,11 +6,14 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 @SuppressWarnings("ALL")
 public class MainFrame extends JFrame implements ISubscriber {
@@ -18,6 +21,8 @@ public class MainFrame extends JFrame implements ISubscriber {
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private JTabbedPane tabbedPane;
+    private JLabel selectedProject;
     private ClassyTree classyTree;
     private MainFrame(){
 
@@ -43,11 +48,15 @@ public class MainFrame extends JFrame implements ISubscriber {
 
 
         JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
-        JPanel desktop = new JPanel();
+        JPanel desktop = new JPanel(new BorderLayout());
+        this.tabbedPane = new JTabbedPane();
+        this.selectedProject = new JLabel();
 
         JScrollPane scroll=new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
-        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll, desktop);
+        desktop.add(this.selectedProject, BorderLayout.NORTH);
+        desktop.add(tabbedPane, BorderLayout.CENTER);
         getContentPane().add(split,BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
@@ -135,5 +144,32 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     public void setClassyTree(ClassyTree classyTree) {
         this.classyTree = classyTree;
+    }
+    public void openTabs(List<Diagram> diagrams){
+        this.tabbedPane.removeAll();
+        ClassyNode project = diagrams.get(0);
+        while(!(project instanceof Project)){
+            project = project.getParent();
+        }
+        this.getSelectedProject().setText(project.getName());
+        for(Diagram diagram: diagrams){
+            this.tabbedPane.addTab(diagram.getName(), new JPanel());
+        }
+    }
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public void setTabbedPane(JTabbedPane tabbedPane) {
+        this.tabbedPane = tabbedPane;
+    }
+
+    public JLabel getSelectedProject() {
+        return selectedProject;
+    }
+
+    public void setSelectedProject(JLabel selectedProject) {
+        this.selectedProject = selectedProject;
     }
 }
