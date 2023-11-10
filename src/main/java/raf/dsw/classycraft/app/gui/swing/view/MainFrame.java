@@ -109,6 +109,9 @@ public class MainFrame extends JFrame implements ISubscriber {
                 messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
                 break;
             default: return;
+            case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Promena autora");
+                break;
         }
         messageDialog.show();
     }

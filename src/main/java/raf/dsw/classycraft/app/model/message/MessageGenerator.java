@@ -1,11 +1,8 @@
 package main.java.raf.dsw.classycraft.app.model.message;
 
-import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 
-import java.awt.desktop.AppForegroundListener;
 import java.util.ArrayList;
 
 public class MessageGenerator implements IPublisher {
@@ -31,6 +28,9 @@ public class MessageGenerator implements IPublisher {
                 break;
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:
                 message = new Message(systemEvent, MessageType.ERROR,"Paketi se mogu praviti samo u projektima ili drugim paketima");
+                break;
+            case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:
+                message = new Message(systemEvent, MessageType.ERROR,"Mora te selektovati projekat da bi ste mogli da promentie autora");
                 break;
             default: return;
         }
