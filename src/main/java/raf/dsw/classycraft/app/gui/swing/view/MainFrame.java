@@ -15,7 +15,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ActionManager actionManager;
@@ -113,38 +112,10 @@ public class MainFrame extends JFrame implements ISubscriber {
         }
         messageDialog.show();
     }
-
-    public static void setInstance(MainFrame instance) {
-        MainFrame.instance = instance;
-    }
-
-    public void setActionManager(ActionManager actionManager) {
-        this.actionManager = actionManager;
-    }
-
-    public JMenuBar getMenu() {
-        return menu;
-    }
-
-    public void setMenu(JMenuBar menu) {
-        this.menu = menu;
-    }
-
-    public JToolBar getToolBar() {
-        return toolBar;
-    }
-
-    public void setToolBar(JToolBar toolBar) {
-        this.toolBar = toolBar;
-    }
-
     public ClassyTree getClassyTree() {
         return classyTree;
     }
 
-    public void setClassyTree(ClassyTree classyTree) {
-        this.classyTree = classyTree;
-    }
     public void openTabs(List<Diagram> diagrams){
         this.tabbedPane.removeAll();
         ClassyNode project = diagrams.get(0);

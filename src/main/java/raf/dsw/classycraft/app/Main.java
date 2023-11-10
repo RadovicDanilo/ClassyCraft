@@ -10,8 +10,8 @@ public class Main {
 
     //**********PITANJA
     //FILE I CONSOLE LOGGER PORUKE I SYS EVENTOVI
-    //NEW [NODE] ACTION
-    //DELETE NODE ACTION
-    //CLASSY TREE
-    //
+    //NEW [NODE] ACTION:
+    //DELETE NODE ACTION: metoda u classyIMPL ili u compsite??
+    //CLASSY TREE:
+    //Project path
 }
