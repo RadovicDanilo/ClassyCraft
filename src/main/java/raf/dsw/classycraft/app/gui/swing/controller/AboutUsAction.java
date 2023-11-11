@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 public class AboutUsAction extends AbstractClassyAction {
 
     public AboutUsAction() {
-        putValue(SMALL_ICON, loadIcon("/images/icons/about.png")); //TODO dodaj ikonu za about us
+        putValue(SMALL_ICON, loadIcon("/images/icons/about.png"));
         putValue(NAME, "About us");
         putValue(SHORT_DESCRIPTION, "About us");
     }

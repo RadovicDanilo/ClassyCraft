@@ -1,11 +1,9 @@
-[INFO][03-11-2023 22:18:32] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][03-11-2023 22:24:50] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][03-11-2023 22:31:41] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][03-11-2023 22:35:28] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][03-11-2023 22:35:36] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][04-11-2023 21:41:02] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][06-11-2023 15:03:11] Promene ce se primenit pri ponovno pokretanju aplikacije
-[INFO][07-11-2023 13:28:11] Promene ce se primenit pri ponovno pokretanju aplikacije
-[ERROR][07-11-2023 14:25:48] Ne moze se dodati cvor koji vec postoji
-[ERROR][07-11-2023 14:25:48] Ne moze se dodati cvor koji vec postoji
-[INFO][07-11-2023 14:47:17] Promene ce se primenit pri ponovno pokretanju aplikacije
+[ERROR][10-11-2023 15:33:00] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][10-11-2023 15:54:58] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][10-11-2023 15:55:01] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][10-11-2023 15:55:08] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][10-11-2023 15:58:58] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][10-11-2023 15:59:13] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][10-11-2023 16:26:59] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][10-11-2023 16:27:03] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][10-11-2023 16:27:07] Mora te selektovati projekat da bi ste mogli da promentie autora

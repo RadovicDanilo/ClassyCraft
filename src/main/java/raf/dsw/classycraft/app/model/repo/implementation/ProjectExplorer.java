@@ -4,8 +4,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
 public class ProjectExplorer extends ClassyNodeComposite {
-    public ProjectExplorer(String name) {
-        super(null, name, NodeType.PROJECT_EXPLORER);
+    protected ProjectExplorer(String name) {
+        super(null, name);
     }
-
 }

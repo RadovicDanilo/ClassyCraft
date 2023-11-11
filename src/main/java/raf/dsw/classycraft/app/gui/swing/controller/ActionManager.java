@@ -4,9 +4,13 @@ import javax.swing.*;
 
 public class ActionManager {
     private ExitAction exitAction;
-    private NewProjectAction newProjectAction;
     private AboutUsAction aboutUsAction;
-    private ChangeThemeAction changeThemeAction;
+    private NewProjectAction newProjectAction;
+    private NewPackageAction newPackageAction;
+    private NewDiagramAction newDiagramAction;
+    private DeleteNodeAction deleteNodeAction;
+    private ChangeAuthorAction changeAuthorShowViewAction;
+
 
     public ActionManager(){
         initialiseActions();
@@ -16,7 +20,10 @@ public class ActionManager {
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
         aboutUsAction = new AboutUsAction();
-        changeThemeAction = new ChangeThemeAction();
+        deleteNodeAction = new DeleteNodeAction();
+        newPackageAction = new NewPackageAction();
+        newDiagramAction = new NewDiagramAction();
+        changeAuthorShowViewAction = new ChangeAuthorAction();
     }
 
     public Action getExitAction() {
@@ -28,7 +35,17 @@ public class ActionManager {
     public Action getAboutUsAction() {
         return aboutUsAction;
     }
-    public Action getChangeThemeAction() {
-        return changeThemeAction;
+    public DeleteNodeAction getDeleteNodeAction() {
+        return deleteNodeAction;
     }
+    public NewPackageAction getNewPackageAction() {
+        return newPackageAction;
+    }
+    public NewDiagramAction getNewDiagramAction() {
+        return newDiagramAction;
+    }
+    public ChangeAuthorAction getChangeAuthorShowViewAction() {
+        return changeAuthorShowViewAction;
+    }
+
 }

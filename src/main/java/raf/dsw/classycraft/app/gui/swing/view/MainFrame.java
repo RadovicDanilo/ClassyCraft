@@ -6,16 +6,22 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-@SuppressWarnings("ALL")
 public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private JTabbedPane tabbedPane;
+    private JLabel selectedProject;
     private ClassyTree classyTree;
     private MainFrame(){
 
@@ -28,7 +34,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth, screenHeight);
+        setSize(screenWidth*6/10, screenHeight*6/10);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("ClassyCrafT");
@@ -40,12 +46,16 @@ public class MainFrame extends JFrame implements ISubscriber {
         add(toolBar, BorderLayout.NORTH);
 
 
-        JTree projectExplorer = classyTree.generateTree(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer());
-        JPanel desktop = new JPanel();
+        JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
+        JPanel desktop = new JPanel(new BorderLayout());
+        this.tabbedPane = new JTabbedPane();
+        this.selectedProject = new JLabel();
 
         JScrollPane scroll=new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
-        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll, desktop);
+        desktop.add(this.selectedProject, BorderLayout.NORTH);
+        desktop.add(tabbedPane, BorderLayout.CENTER);
         getContentPane().add(split,BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
@@ -81,50 +91,65 @@ public class MainFrame extends JFrame implements ISubscriber {
             case ERROR: messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
             break;
         }
+        //TODO NA KRAJU DODATI SVE ERRORE
         JDialog messageDialog = new JDialog();
         switch (((Message) notification).getSystemEvent()){
-            case THEME_CHANGED:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-                messageDialog = messageOptionPane.createDialog("Promena teme");
-                break;
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
                 break;
             case NODE_CANNOT_BE_DELETED:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Cvor ne moze biti obrisan");
                 break;
+            case CANNOT_REMOVE_ROOT:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Project explore ne moze da se ukloni");
+                break;
+            case CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Diagram ne moze da se kreira");
+                break;
+            case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
+                break;
+            default: return;
+            case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Promena autora");
+                break;
         }
         messageDialog.show();
     }
-
-    public static void setInstance(MainFrame instance) {
-        MainFrame.instance = instance;
-    }
-
-    public void setActionManager(ActionManager actionManager) {
-        this.actionManager = actionManager;
-    }
-
-    public JMenuBar getMenu() {
-        return menu;
-    }
-
-    public void setMenu(JMenuBar menu) {
-        this.menu = menu;
-    }
-
-    public JToolBar getToolBar() {
-        return toolBar;
-    }
-
-    public void setToolBar(JToolBar toolBar) {
-        this.toolBar = toolBar;
-    }
-
     public ClassyTree getClassyTree() {
         return classyTree;
     }
 
-    public void setClassyTree(ClassyTree classyTree) {
-        this.classyTree = classyTree;
+    //TODO OVO TREBA DA BUDE ODBOJENA KLASA
+    //TODO DODAJE SE JPANEL U MAIN I NA NJEGA JTABEDPANE
+    //TODO NE DODAJE DIJAGRAME U PROJEKTIMA I NIJE DODDAT ERROR KAD JE PAKET/PROJEKT PRAZAN
+    //TODO NEMA OPCIJA ZA OTVARANJE SAMO DIJAGRAM DODATI
+    //TODO
+    public void openTabs(List<Diagram> diagrams){
+        this.tabbedPane.removeAll();
+        ClassyNode project = diagrams.get(0);
+        while(!(project instanceof Project)){
+            project = project.getParent();
+        }
+        this.getSelectedProject().setText(project.getName());
+        for(Diagram diagram: diagrams){
+            this.tabbedPane.addTab(diagram.getName(), new JPanel());
+        }
+    }
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public void setTabbedPane(JTabbedPane tabbedPane) {
+        this.tabbedPane = tabbedPane;
+    }
+
+    public JLabel getSelectedProject() {
+        return selectedProject;
+    }
+
+    public void setSelectedProject(JLabel selectedProject) {
+        this.selectedProject = selectedProject;
     }
 }

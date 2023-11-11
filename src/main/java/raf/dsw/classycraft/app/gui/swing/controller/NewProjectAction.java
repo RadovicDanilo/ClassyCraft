@@ -1,16 +1,18 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.NodeType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
 import javax.swing.*;
-import java.awt.desktop.AppForegroundListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.net.URL;
 
 public class NewProjectAction extends AbstractClassyAction{
     public NewProjectAction() {
@@ -22,7 +24,18 @@ public class NewProjectAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-        MainFrame.getInstance().getClassyTree().addChild(selectedNode);
+        ClassyNode classyNode;
+        int i = 0;
+        while(true){
+            classyNode = ((ClassyRepositoryImplementation)ApplicationFramework.getInstance().getClassyRepository()).getClassyNodeFactory().classyNode(NodeType.PROJECT, "project " + i, null);
+            if(!((ClassyNodeComposite)ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)){
+                ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+                break;
+            }
+            i++;
+        }
+        MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).getRoot(),new ClassyTreeItem(classyNode));
+        //TODO SAMO ROOT OVDE
+
     }
 }
