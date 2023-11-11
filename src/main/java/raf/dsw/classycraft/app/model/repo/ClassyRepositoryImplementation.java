@@ -13,12 +13,10 @@ public class ClassyRepositoryImplementation implements ClassyRepository {
     public ClassyRepositoryImplementation() {
         root = new ProjectExplorer();
     }
-
     @Override
     public ClassyNode getRoot() {
         return root;
     }
-    //TODO OVE METODE MORAJU DA SE KORISTE A DA ONE POZIVAJU ONE IZ COMPOSITE
     @Override
     public void addChild(ClassyNode child) {
         if(!(child.getParent() instanceof ClassyNodeComposite))
