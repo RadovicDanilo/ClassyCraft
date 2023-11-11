@@ -4,8 +4,6 @@ import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
-import java.io.File;
-
 public class Project extends ClassyNodeComposite {
     private String author;
     private String resourcePath;
@@ -31,11 +29,4 @@ public class Project extends ClassyNodeComposite {
         this.author = author;
     }
 
-    public String getResourcePath() {
-        return resourcePath;
-    }
-
-    public void setResourcePath(String resourcePath) {
-        this.resourcePath = resourcePath;
-    }
 }

@@ -8,9 +8,6 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 
 import javax.swing.tree.TreePath;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -22,8 +19,14 @@ public class ClassyTreeOpenTabsListener implements MouseListener {
         if(e.getClickCount()!=2) return;
         ClassyTreeView tree = (ClassyTreeView) e.getSource();
         TreePath path = tree.getPathForLocation(e.getX(), e.getY());
-        ClassyTreeItem treeItem = (ClassyTreeItem) path.getLastPathComponent();
-        ClassyNode node = treeItem.getClassyNode();
+        ClassyTreeItem treeItem = null;
+        if (path != null) {
+            treeItem = (ClassyTreeItem) path.getLastPathComponent();
+        }
+        ClassyNode node = null;
+        if (treeItem != null) {
+            node = treeItem.getClassyNode();
+        }
 
         if(!(node instanceof Package)) return;
         List<Diagram> diagrams = new ArrayList<>();

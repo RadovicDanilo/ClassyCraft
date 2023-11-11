@@ -7,6 +7,4 @@ public class Main {
         ApplicationFramework main = ApplicationFramework.getInstance();
         main.initialize();
     }
-
-
 }

@@ -5,7 +5,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import java.awt.event.ActionEvent;

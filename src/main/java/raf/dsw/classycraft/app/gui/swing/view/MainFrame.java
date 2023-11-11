@@ -18,15 +18,12 @@ import java.util.List;
 public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ActionManager actionManager;
-    private JMenuBar menu;
-    private JToolBar toolBar;
     private JTabbedPane tabbedPane;
     private JLabel selectedProject;
-    private ClassyTree classyTree;
+    private ClassyTreeImplementation classyTree;
     private MainFrame(){
 
     }
-
     private void initialize(){
         actionManager = new ActionManager();
 
@@ -38,13 +35,10 @@ public class MainFrame extends JFrame implements ISubscriber {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("ClassyCrafT");
-
         MyMenuBar menu = new MyMenuBar();
         MyToolBar toolBar = new MyToolBar();
-
         setJMenuBar(menu);
         add(toolBar, BorderLayout.NORTH);
-
 
         JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
         JPanel desktop = new JPanel(new BorderLayout());
@@ -53,7 +47,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 
         JScrollPane scroll=new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
-        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll, desktop);
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll, desktop);
         desktop.add(this.selectedProject, BorderLayout.NORTH);
         desktop.add(tabbedPane, BorderLayout.CENTER);
         getContentPane().add(split,BorderLayout.CENTER);
@@ -92,7 +86,7 @@ public class MainFrame extends JFrame implements ISubscriber {
             break;
         }
         //TODO NA KRAJU DODATI SVE ERRORE
-        JDialog messageDialog = new JDialog();
+        JDialog messageDialog;
         switch (((Message) notification).getSystemEvent()){
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
@@ -114,7 +108,7 @@ public class MainFrame extends JFrame implements ISubscriber {
                 messageDialog = messageOptionPane.createDialog("Promena autora");
                 break;
         }
-        messageDialog.show();
+        messageDialog.setVisible(true);
     }
     public ClassyTree getClassyTree() {
         return classyTree;
@@ -136,20 +130,7 @@ public class MainFrame extends JFrame implements ISubscriber {
             this.tabbedPane.addTab(diagram.getName(), new JPanel());
         }
     }
-
-    public JTabbedPane getTabbedPane() {
-        return tabbedPane;
-    }
-
-    public void setTabbedPane(JTabbedPane tabbedPane) {
-        this.tabbedPane = tabbedPane;
-    }
-
     public JLabel getSelectedProject() {
         return selectedProject;
-    }
-
-    public void setSelectedProject(JLabel selectedProject) {
-        this.selectedProject = selectedProject;
     }
 }

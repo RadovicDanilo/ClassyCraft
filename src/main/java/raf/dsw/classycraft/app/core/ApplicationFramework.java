@@ -15,7 +15,7 @@ public class ApplicationFramework {
     public final String LOG_PATH = "src/main/resources/log.txt";
     private static ApplicationFramework instance;
     private MessageGenerator messageGenerator;
-    private ClassyRepository classyRepository;
+    private ClassyRepositoryImplementation classyRepository;
 
     private ApplicationFramework(){
 
