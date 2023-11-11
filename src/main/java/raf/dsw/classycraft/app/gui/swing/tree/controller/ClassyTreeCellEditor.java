@@ -27,9 +27,7 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
     }
     public boolean isCellEditable(EventObject eventObject) {
         if (eventObject instanceof MouseEvent)
-            if (((MouseEvent)eventObject).getClickCount()==3){
-                return true;
-            }
+            return ((MouseEvent) eventObject).getClickCount() == 3;
         return false;
     }
     public void actionPerformed(ActionEvent e){

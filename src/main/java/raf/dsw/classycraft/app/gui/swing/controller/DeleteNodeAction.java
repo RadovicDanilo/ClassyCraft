@@ -19,13 +19,14 @@ public class DeleteNodeAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //TODO OVDE VEROVATNO JTABBEDPANE TREBA DA GLEDA JEL IMA PROMENA
+
         ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
         if(selectedNode.getClassyNode() instanceof ProjectExplorer){
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
             return;
         }
-        //TODO ISTO KORISTIT ONO U CLASY REPO IMPL A NE KORISTIT ONO IZ COMPOZITA I IZ SAMOG REPO MODELA
-        ((ProjectExplorer)ApplicationFramework.getInstance().getClassyRepository().getRoot()).removeChild(selectedNode.getClassyNode());
+        (ApplicationFramework.getInstance().getClassyRepository()).removeChild(selectedNode.getClassyNode());
         ((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).removeNode(selectedNode);
     }
 }

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class FileLogger extends Logger{
-
     @Override
     public void update(Object notification) {
         try {

@@ -4,6 +4,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
@@ -24,8 +25,8 @@ public class ClassyTreeImplementation implements ClassyTree {
     }
 
     @Override
-    public void addChild(ClassyTreeItem parent, ClassyTreeItem classyTreeItem) {
-        parent.add(classyTreeItem);
+    public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
+        parent.add(new ClassyTreeItem(classyNode));
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }
