@@ -16,10 +16,6 @@ public abstract class ClassyNode {
         return parent;
     }
 
-    public void setParent(ClassyNode parent) {
-        this.parent = parent;
-    }
-
     public String getName() {
         return name;
     }

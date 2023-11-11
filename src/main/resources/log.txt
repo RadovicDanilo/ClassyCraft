@@ -8,3 +8,5 @@
 [ERROR][10-11-2023 16:27:03] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][10-11-2023 16:27:07] Mora te selektovati projekat da bi ste mogli da promentie autora
 [ERROR][11-11-2023 12:15:10] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][11-11-2023 17:50:15] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][11-11-2023 17:50:18] Paketi se mogu praviti samo u projektima ili drugim paketima

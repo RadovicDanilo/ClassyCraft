@@ -13,13 +13,12 @@ import javax.swing.tree.DefaultTreeModel;
 public class ClassyTreeImplementation implements ClassyTree {
 
     private ClassyTreeView treeView;
-    private DefaultTreeModel treeModel;
     private ClassyTreeItem root;
 
     @Override
     public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
         root = new ClassyTreeItem(projectExplorer);
-        treeModel = new DefaultTreeModel(root);
+        DefaultTreeModel treeModel = new DefaultTreeModel(root);
         treeView = new ClassyTreeView(treeModel);
         return treeView;
     }
@@ -46,19 +45,4 @@ public class ClassyTreeImplementation implements ClassyTree {
         return root;
     }
 
-    public ClassyTreeView getTreeView() {
-        return treeView;
-    }
-
-    public void setTreeView(ClassyTreeView treeView) {
-        this.treeView = treeView;
-    }
-
-    public DefaultTreeModel getTreeModel() {
-        return treeModel;
-    }
-
-    public void setTreeModel(DefaultTreeModel treeModel) {
-        this.treeModel = treeModel;
-    }
 }
