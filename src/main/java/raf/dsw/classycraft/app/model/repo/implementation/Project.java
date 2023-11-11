@@ -10,7 +10,7 @@ public class Project extends ClassyNodeComposite {
     private String author;
     private String resourcePath;
 
-    protected Project(String name) {
+    public Project(String name) {
         super(ApplicationFramework.getInstance().getClassyRepository().getRoot(),name);
         this.author="";
         this.resourcePath=ApplicationFramework.getInstance().PROJECTS_PATH+name;
