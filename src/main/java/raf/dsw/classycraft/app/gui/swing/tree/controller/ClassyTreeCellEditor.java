@@ -1,6 +1,12 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
+import main.java.raf.dsw.classycraft.app.model.message.Message;
+import main.java.raf.dsw.classycraft.app.model.message.MessageType;
+import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -40,5 +46,8 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
         ClassyTreeItem clicked = (ClassyTreeItem) clickedOn;
         clicked.setName(e.getActionCommand());
 
+        ClassyNode node = clicked.getClassyNode();
+        if(node instanceof Package) ((Package)node).notifySubscribers(new Message(SystemEvent.NODE_NAME_CHANGED, MessageType.INFO, ""));
+        if(node instanceof Diagram) ((Package)node.getParent()).notifySubscribers(new Message(SystemEvent.NODE_NAME_CHANGED, MessageType.INFO, ""));
     }
 }

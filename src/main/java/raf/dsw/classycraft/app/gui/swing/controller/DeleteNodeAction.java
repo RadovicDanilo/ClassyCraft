@@ -4,8 +4,13 @@ import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.model.message.Message;
+import main.java.raf.dsw.classycraft.app.model.message.MessageType;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import java.awt.event.ActionEvent;
@@ -24,6 +29,10 @@ public class DeleteNodeAction extends AbstractClassyAction{
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
             return;
         }
+        ClassyNodeComposite parent = (ClassyNodeComposite) selectedNode.getClassyNode().getParent();
+        parent.removeChild(selectedNode.getClassyNode());
+        if(selectedNode.getClassyNode() instanceof Diagram && parent instanceof Package) ((Package)parent).notifySubscribers(new Message(SystemEvent.CHILD_DELETED, MessageType.INFO, ""));
+
         ((ProjectExplorer)ApplicationFramework.getInstance().getClassyRepository().getRoot()).removeChild(selectedNode.getClassyNode());
         ((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).removeNode(selectedNode);
     }

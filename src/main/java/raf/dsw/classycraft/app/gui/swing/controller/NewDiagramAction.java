@@ -3,6 +3,8 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.model.message.Message;
+import main.java.raf.dsw.classycraft.app.model.message.MessageType;
 import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -38,5 +40,6 @@ public class NewDiagramAction extends AbstractClassyAction{
             i++;
         }
         MainFrame.getInstance().getClassyTree().addChild(selectedNode,new ClassyTreeItem(classyNode));
+        ((Package)classyNode.getParent()).notifySubscribers(new Message(SystemEvent.DIAGRAM_ADDED, MessageType.INFO, ""));
     }
 }

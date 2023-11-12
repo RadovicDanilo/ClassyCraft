@@ -25,12 +25,23 @@ public class ClassyTreeOpenTabsListener implements MouseListener {
         ClassyTreeItem treeItem = (ClassyTreeItem) path.getLastPathComponent();
         ClassyNode node = treeItem.getClassyNode();
 
-        if(!(node instanceof Package)) return;
         List<Diagram> diagrams = new ArrayList<>();
-        for(ClassyNode diagram: ((Package) node).getChildren()){
-            if(diagram instanceof Diagram) diagrams.add((Diagram) diagram);
+        Package selectedPackage = null;
+
+        if(node instanceof Package){
+            selectedPackage = (Package) node;
+            for(ClassyNode diagram: ((Package) node).getChildren()){
+                if(diagram instanceof Diagram) diagrams.add((Diagram) diagram);
+            }
         }
-        MainFrame.getInstance().openTabs(diagrams);
+        if(node instanceof Diagram){
+            selectedPackage = (Package) node.getParent();
+            diagrams.add((Diagram)node);
+        }
+        if(!(node instanceof Package || node instanceof Diagram))return;
+        if(diagrams.size() == 0) return;
+
+        MainFrame.getInstance().getPackageView().openTabs(diagrams, selectedPackage);
     }
 
     @Override
