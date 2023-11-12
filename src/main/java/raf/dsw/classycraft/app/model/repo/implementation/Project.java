@@ -29,4 +29,11 @@ public class Project extends ClassyNodeComposite {
         this.author = author;
     }
 
+    public String getResourcePath() {
+        return resourcePath;
+    }
+
+    public void setResourcePath(String resourcePath) {
+        this.resourcePath = resourcePath;
+    }
 }
