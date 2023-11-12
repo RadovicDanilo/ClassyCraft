@@ -1,7 +1,7 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 import java.util.List;

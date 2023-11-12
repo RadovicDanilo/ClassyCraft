@@ -1,12 +1,11 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageType;
-import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -15,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.EventObject;
 
 public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {
@@ -36,15 +36,23 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
         return false;
     }
     public void actionPerformed(ActionEvent e){
-
         if (!(clickedOn instanceof ClassyTreeItem))
             return;
-
         ClassyTreeItem clicked = (ClassyTreeItem) clickedOn;
         clicked.setName(e.getActionCommand());
-
-        ClassyNode node = clicked.getClassyNode();
-        if(node instanceof Package) ((Package)node).notifySubscribers(new Message(SystemEvent.NODE_NAME_CHANGED, MessageType.INFO, ""));
-        if(node instanceof Diagram) ((Package)node.getParent()).notifySubscribers(new Message(SystemEvent.NODE_NAME_CHANGED, MessageType.INFO, ""));
+        clicked.getClassyNode().setName(e.getActionCommand());
+        if(clicked.getClassyNode() instanceof Diagram){
+            ((Package)clicked.getClassyNode().getParent()).notifySubscribers(PackageViewEvent.RENAME_DIAGRAM);
+        }else if(clicked.getClassyNode() instanceof Project){
+            changeProjectNameUpdate((ArrayList<ClassyNode>) ((Project)clicked.getClassyNode()).getChildren());
+        }
+    }
+    public void changeProjectNameUpdate(ArrayList<ClassyNode> children){
+        for(ClassyNode classyNode: children){
+            if(classyNode instanceof Package){
+                ((Package) classyNode).notifySubscribers(PackageViewEvent.RENAME_PROJECT);
+                changeProjectNameUpdate((ArrayList<ClassyNode>) ((Package) classyNode).getChildren());
+            }
+        }
     }
 }

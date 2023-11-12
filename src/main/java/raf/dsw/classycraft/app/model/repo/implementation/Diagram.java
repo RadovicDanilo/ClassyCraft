@@ -32,6 +32,7 @@ public class Diagram extends ClassyNodeLeaf implements IPublisher {
 
     @Override
     public void notifySubscribers(Object notification) {
-        for(ISubscriber sub: this.subscribers) sub.update(notification);
+        for(ISubscriber sub: this.subscribers)
+            sub.update(notification);
     }
 }

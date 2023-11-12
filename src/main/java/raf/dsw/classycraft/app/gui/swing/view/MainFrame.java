@@ -6,26 +6,21 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ActionManager actionManager;
-    private JMenuBar menu;
-    private JToolBar toolBar;
     private PackageView packageView;
     private ClassyTreeImplementation classyTree;
     private MainFrame(){
 
     }
     private void initialize(){
+
         actionManager = new ActionManager();
 
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -36,17 +31,18 @@ public class MainFrame extends JFrame implements ISubscriber {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("ClassyCrafT");
+
         MyMenuBar menu = new MyMenuBar();
         MyToolBar toolBar = new MyToolBar();
         setJMenuBar(menu);
         add(toolBar, BorderLayout.NORTH);
 
         JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
-        this.packageView = new PackageView();
-
-        JScrollPane scroll=new JScrollPane(projectExplorer);
+        JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
-        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll, packageView);
+
+        this.packageView = new PackageView();
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, packageView);
         getContentPane().add(split,BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
@@ -66,25 +62,26 @@ public class MainFrame extends JFrame implements ISubscriber {
         return actionManager;
     }
 
-
     @Override
     public void update(Object notification) {
-        if(!(notification instanceof Message)){
-            return;
+        if(notification instanceof Message){
+            displayMessage((Message) notification);
         }
+    }
+    public void displayMessage(Message message){
         JOptionPane messageOptionPane = new JOptionPane();
-        messageOptionPane.setMessage(((Message) notification).getText());
-        switch (((Message) notification).getMessageType()){
+        messageOptionPane.setMessage(message.getText());
+        switch (message.getMessageType()){
             case INFO: messageOptionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-            break;
+                break;
             case WARNING: messageOptionPane.setMessageType(JOptionPane.WARNING_MESSAGE);
-            break;
+                break;
             case ERROR: messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-            break;
+                break;
         }
         //TODO NA KRAJU DODATI SVE ERRORE
         JDialog messageDialog;
-        switch (((Message) notification).getSystemEvent()){
+        switch (message.getSystemEvent()){
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
                 break;
@@ -94,7 +91,7 @@ public class MainFrame extends JFrame implements ISubscriber {
             case CANNOT_REMOVE_ROOT:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Project explore ne moze da se ukloni");
                 break;
-            case CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+            case DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Diagram ne moze da se kreira");
                 break;
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);

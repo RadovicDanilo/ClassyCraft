@@ -1,4 +1,4 @@
-package main.java.raf.dsw.classycraft.app.model.message;
+package main.java.raf.dsw.classycraft.app.model.observer.notifications;
 
 public enum SystemEvent {
     //TODO SVI MOGUCI SYS EVENTOVI I ERROR DODATI AN AKRAJu
@@ -6,7 +6,7 @@ public enum SystemEvent {
     NODE_CANNOT_BE_DUPLICATE,
     NAME_CANNOT_BE_EMPTY,
     CANNOT_REMOVE_ROOT,
-    CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM,
+    DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE,
     CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM,
     NODE_NAME_CHANGED,
     DIAGRAM_ADDED,
