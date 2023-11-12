@@ -70,7 +70,7 @@ public class PackageView extends JPanel implements ISubscriber {
         }
         switch ((PackageViewEvent)notification){
             case ADD_DIAGRAM:
-                addDiagram();
+                reloadPackage();
                 break;
             case REMOVE_ALL:
                 removePackageOrProject();
@@ -118,7 +118,14 @@ public class PackageView extends JPanel implements ISubscriber {
         lbProjectName.setFont(new Font("Calibri",Font.BOLD, 14));
     }
     public void addDiagram(){
-        if(selectedPackage.getChildren().size()==tabbedPane.getTabCount()+1){
+        int amountOfDiagrams = 0;
+        for(ClassyNode classyNode: selectedPackage.getChildren()){
+            if(classyNode instanceof  Diagram){
+                amountOfDiagrams++;
+            }
+        }
+
+        if(amountOfDiagrams == tabbedPane.getTabCount()+1){
             reloadPackage();
         }
     }
