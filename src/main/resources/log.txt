@@ -11,3 +11,5 @@
 [ERROR][11-11-2023 12:15:10] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][11-11-2023 17:50:15] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][11-11-2023 17:50:18] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][12-11-2023 16:34:49] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][12-11-2023 16:34:57] Mora te selektovati projekat da bi ste mogli da promentie autora

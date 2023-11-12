@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Package extends ClassyNodeComposite implements IPublisher {
     private List<ISubscriber> subscribers = new ArrayList<>();
-    protected Package(ClassyNode parent, String name) {
+    public Package(ClassyNode parent, String name) {
         super(parent, name);
     }
     @Override

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Diagram extends ClassyNodeLeaf implements IPublisher {
     private List<ISubscriber> subscribers = new ArrayList<>();
-    protected Diagram(ClassyNode parent, String name) {
+    public Diagram(ClassyNode parent, String name) {
         super(parent, name);
     }
     @Override
