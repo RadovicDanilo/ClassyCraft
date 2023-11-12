@@ -24,6 +24,8 @@ public class DeleteNodeAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //TODO OVDE VEROVATNO JTABBEDPANE TREBA DA GLEDA JEL IMA PROMENA
+
         ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
         if(selectedNode.getClassyNode() instanceof ProjectExplorer){
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
@@ -34,6 +36,7 @@ public class DeleteNodeAction extends AbstractClassyAction{
         if(selectedNode.getClassyNode() instanceof Diagram && parent instanceof Package) ((Package)parent).notifySubscribers(new Message(SystemEvent.CHILD_DELETED, MessageType.INFO, ""));
 
         ((ProjectExplorer)ApplicationFramework.getInstance().getClassyRepository().getRoot()).removeChild(selectedNode.getClassyNode());
+        (ApplicationFramework.getInstance().getClassyRepository()).removeChild(selectedNode.getClassyNode());
         ((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).removeNode(selectedNode);
     }
 }

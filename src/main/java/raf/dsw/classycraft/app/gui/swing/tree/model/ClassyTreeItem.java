@@ -1,12 +1,7 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree.model;
 
 
-import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.Objects;

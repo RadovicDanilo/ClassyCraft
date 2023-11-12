@@ -19,7 +19,6 @@ import java.util.EventObject;
 
 public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {
     private Object clickedOn = null;
-    private JTextField edit = null;
 
     public ClassyTreeCellEditor(JTree jTree, DefaultTreeCellRenderer defaultTreeCellRenderer) {
         super(jTree, defaultTreeCellRenderer);
@@ -27,15 +26,13 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
     public Component getTreeCellEditorComponent(JTree jTree, Object clickedOn, boolean isSelected, boolean expanded, boolean leaf, int row) {
         super.getTreeCellEditorComponent(jTree,clickedOn,isSelected,expanded,leaf,row);
         this.clickedOn =clickedOn;
-        this.edit=new JTextField(clickedOn.toString());
-        this.edit.addActionListener(this);
+        JTextField edit = new JTextField(clickedOn.toString());
+        edit.addActionListener(this);
         return edit;
     }
     public boolean isCellEditable(EventObject eventObject) {
         if (eventObject instanceof MouseEvent)
-            if (((MouseEvent)eventObject).getClickCount()==3){
-                return true;
-            }
+            return ((MouseEvent) eventObject).getClickCount() == 3;
         return false;
     }
     public void actionPerformed(ActionEvent e){

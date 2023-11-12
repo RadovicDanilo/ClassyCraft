@@ -15,18 +15,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
     private PackageView packageView;
-    private ClassyTree classyTree;
+    private ClassyTreeImplementation classyTree;
     private MainFrame(){
 
     }
-
     private void initialize(){
         actionManager = new ActionManager();
 
@@ -38,13 +36,10 @@ public class MainFrame extends JFrame implements ISubscriber {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("ClassyCrafT");
-
         MyMenuBar menu = new MyMenuBar();
         MyToolBar toolBar = new MyToolBar();
-
         setJMenuBar(menu);
         add(toolBar, BorderLayout.NORTH);
-
 
         JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
         this.packageView = new PackageView();
@@ -87,7 +82,8 @@ public class MainFrame extends JFrame implements ISubscriber {
             case ERROR: messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
             break;
         }
-        JDialog messageDialog = new JDialog();
+        //TODO NA KRAJU DODATI SVE ERRORE
+        JDialog messageDialog;
         switch (((Message) notification).getSystemEvent()){
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
@@ -105,39 +101,16 @@ public class MainFrame extends JFrame implements ISubscriber {
                 messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
                 break;
             default: return;
+            case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Promena autora");
+                break;
         }
-        messageDialog.show();
+        messageDialog.setVisible(true);
     }
-
-    public static void setInstance(MainFrame instance) {
-        MainFrame.instance = instance;
-    }
-
-    public void setActionManager(ActionManager actionManager) {
-        this.actionManager = actionManager;
-    }
-
-    public JMenuBar getMenu() {
-        return menu;
-    }
-
-    public void setMenu(JMenuBar menu) {
-        this.menu = menu;
-    }
-
-    public JToolBar getToolBar() {
-        return toolBar;
-    }
-
-    public void setToolBar(JToolBar toolBar) {
-        this.toolBar = toolBar;
-    }
-
     public ClassyTree getClassyTree() {
         return classyTree;
     }
-
-    public void setClassyTree(ClassyTree classyTree) {
+    public void setClassyTree(ClassyTreeImplementation classyTree) {
         this.classyTree = classyTree;
     }
 

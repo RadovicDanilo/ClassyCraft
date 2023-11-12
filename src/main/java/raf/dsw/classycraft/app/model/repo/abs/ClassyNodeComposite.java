@@ -12,16 +12,15 @@ public abstract class ClassyNodeComposite extends ClassyNode{
     public ClassyNodeComposite(ClassyNode parent, String name) {
         super(parent, name);
     }
-    public boolean addChild(ClassyNode c){
+    public void addChild(ClassyNode c){
         if(this.children == null) {
             this.children = new ArrayList<>();
         }
         if(this.children.contains(c)){
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NODE_CANNOT_BE_DUPLICATE);
-            return false;
+            return;
         }
         this.children.add(c);
-        return true;
     }
     public void removeChild(ClassyNode c){
         this.children.remove(c);
@@ -31,7 +30,4 @@ public abstract class ClassyNodeComposite extends ClassyNode{
         return children;
     }
 
-    public void setChildren(List<ClassyNode> children) {
-        this.children = children;
-    }
 }

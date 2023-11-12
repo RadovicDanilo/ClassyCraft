@@ -9,7 +9,8 @@ public class MessageGenerator implements IPublisher {
 
     private ArrayList<ISubscriber> subscribers;
     public void GenerateMessage(SystemEvent systemEvent){
-        Message message = null;
+        Message message;
+        //TODO DODATI SVE OSTALE SYS EVENTOVE OVDE NA KRAJU AAAAAAAAAAAAAAAAAAAA
         switch (systemEvent){
             case NAME_CANNOT_BE_EMPTY:
                 message = new Message(systemEvent, MessageType.ERROR,"Naziv nesme biti prazan");
@@ -28,6 +29,9 @@ public class MessageGenerator implements IPublisher {
                 break;
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:
                 message = new Message(systemEvent, MessageType.ERROR,"Paketi se mogu praviti samo u projektima ili drugim paketima");
+                break;
+            case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:
+                message = new Message(systemEvent, MessageType.ERROR,"Mora te selektovati projekat da bi ste mogli da promentie autora");
                 break;
             default: return;
         }

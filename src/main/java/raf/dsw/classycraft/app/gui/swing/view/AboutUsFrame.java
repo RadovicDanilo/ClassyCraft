@@ -4,15 +4,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
 public class AboutUsFrame extends JFrame {
-    //TODO ULEPSATI
     private static AboutUsFrame instance;
-
     public static AboutUsFrame getInstance() {
         if(instance == null)
         {
@@ -21,22 +18,21 @@ public class AboutUsFrame extends JFrame {
         }
         return instance;
     }
-
     public void initialize() {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth * 6/10, screenHeight * 6/10);
+        setSize(screenWidth * 4/10, screenHeight * 6/10);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("About us");
+
         setLayout(new GridBagLayout());
-
-        GridBagConstraints c = new GridBagConstraints();
-
-        BufferedImage daniloSlika = null;
-        BufferedImage ognjenSlika = null;
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.ipadx = 64;
+        BufferedImage daniloSlika;
+        BufferedImage ognjenSlika;
         URL imageURLDanilo = getClass().getResource("/images/about/daniloradovic.png");
         URL imageURLOgnjen = getClass().getResource("/images/about/ognjentasic.jpg");
         try {
@@ -45,22 +41,35 @@ public class AboutUsFrame extends JFrame {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        JLabel daniloSlikaContainer = new JLabel(new ImageIcon(daniloSlika));
-        JLabel ognjenSlikaContainer = new JLabel(new ImageIcon(ognjenSlika));
-        JLabel ognjenIme = new JLabel("Ognjen Tasic 135/23 RN");
-        JLabel daniloIme = new JLabel("Danilo Radovic 63/22 RN");
-        c.gridx = 0;
-        c.gridy = 0;
-        c.ipadx = 400;
-        c.ipady = 0;
-        add(ognjenSlikaContainer, c);
-        c.gridx = 1;
-        add(daniloSlikaContainer, c);
-        c.gridy = 1;
-        add(daniloIme, c);
-        c.gridx = 0;
-        add(ognjenIme, c);
 
+        JLabel lbSlikaOgnjen =new JLabel(new ImageIcon(ognjenSlika));
+        lbSlikaOgnjen.setVerticalAlignment(SwingConstants.CENTER);
+        lbSlikaOgnjen.setHorizontalAlignment(SwingConstants.CENTER);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        add(lbSlikaOgnjen,gridBagConstraints);
+
+        JLabel lbSlikaDanilo =new JLabel(new ImageIcon(daniloSlika));
+        lbSlikaDanilo.setVerticalAlignment(SwingConstants.CENTER);
+        lbSlikaDanilo.setHorizontalAlignment(SwingConstants.CENTER);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        add(lbSlikaDanilo,gridBagConstraints);
+
+        JLabel lbOgnjen = new JLabel("Ognjen Tasić 135/23 RN");
+        lbOgnjen.setFont(new Font("Calibri", Font.BOLD, 20));
+        lbOgnjen.setVerticalAlignment(SwingConstants.CENTER);
+        lbOgnjen.setHorizontalAlignment(SwingConstants.CENTER);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        add(lbOgnjen,gridBagConstraints);
+
+        JLabel lbDanilo = new JLabel("Danilo Radović 63/22 RN");
+        lbDanilo.setFont(new Font("Calibri", Font.BOLD, 20));
+        lbDanilo.setVerticalAlignment(SwingConstants.CENTER);
+        lbDanilo.setHorizontalAlignment(SwingConstants.CENTER);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        add(lbDanilo,gridBagConstraints);
     }
-
 }
