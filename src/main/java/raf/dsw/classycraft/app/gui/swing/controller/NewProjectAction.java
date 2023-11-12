@@ -22,7 +22,6 @@ public class NewProjectAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //TODO OVDE VEROVATNO JTABBEDPANE TREBA DA GLEDA JEL IMA PROMENA
 
         ClassyNode classyNode;
         int i = 0;

@@ -79,7 +79,6 @@ public class MainFrame extends JFrame implements ISubscriber {
             case ERROR: messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
                 break;
         }
-        //TODO NA KRAJU DODATI SVE ERRORE
         JDialog messageDialog;
         switch (message.getSystemEvent()){
             case NAME_CANNOT_BE_EMPTY:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
@@ -97,10 +96,13 @@ public class MainFrame extends JFrame implements ISubscriber {
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
                 break;
-            default: return;
             case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
                 messageDialog = messageOptionPane.createDialog("Promena autora");
                 break;
+            case NODE_CANNOT_BE_DUPLICATE:messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+                messageDialog = messageOptionPane.createDialog("Cvor sa ovim imenom vec postoji");
+                break;
+            default: return;
         }
         messageDialog.setVisible(true);
     }
