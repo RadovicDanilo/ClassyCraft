@@ -39,7 +39,9 @@ public class PackageView extends JPanel implements ISubscriber {
     public void openTabs(List<Diagram> diagrams, Package selectedPackage){
         this.tabbedPane.removeAll();
 
-        if(this.getSelectedPackage()!= null) this.getSelectedPackage().removeSubscriber(this);
+        if(this.getSelectedPackage()!= null){
+            this.getSelectedPackage().removeSubscriber(this);
+        }
         this.setSelectedPackage(selectedPackage);
         this.getSelectedPackage().addSubscriber(this);
 
@@ -47,10 +49,18 @@ public class PackageView extends JPanel implements ISubscriber {
         while(!(project instanceof Project)){
             project = project.getParent();
         }
+
+        if(diagrams.size() == 0){
+
+            return;
+        }
         this.getProjectName().setText(project.getName());
 
+        DiagramView dv;
         for(Diagram diagram: diagrams){
-            this.tabbedPane.addTab(diagram.getName(), new JPanel());
+            dv = new DiagramView(diagram);
+            diagram.addSubscriber(dv);
+            this.tabbedPane.addTab(diagram.getName(), dv);
         }
     }
 
