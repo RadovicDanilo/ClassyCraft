@@ -11,7 +11,6 @@ public class MessageGenerator implements IPublisher {
     private ArrayList<ISubscriber> subscribers;
     public void GenerateMessage(SystemEvent systemEvent){
         Message message;
-        //TODO DODATI SVE OSTALE SYS EVENTOVE OVDE NA KRAJU AAAAAAAAAAAAAAAAAAAA
         switch (systemEvent){
             case NAME_CANNOT_BE_EMPTY:
                 message = new Message(systemEvent, MessageType.ERROR,"Naziv nesme biti prazan");
@@ -20,7 +19,7 @@ public class MessageGenerator implements IPublisher {
                 message = new Message(systemEvent, MessageType.ERROR,"Cvor ne moze biti obrisan");
                 break;
             case NODE_CANNOT_BE_DUPLICATE:
-                message = new Message(systemEvent, MessageType.ERROR,"Ne moze se dodati cvor koji vec postoji");
+                message = new Message(systemEvent, MessageType.ERROR,"Vec postoji cvor sa datim imenom");
                 break;
             case CANNOT_REMOVE_ROOT:
                 message = new Message(systemEvent, MessageType.ERROR,"Project Explorer ne moze da se ukloni");

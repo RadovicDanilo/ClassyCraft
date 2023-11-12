@@ -23,3 +23,36 @@
 [ERROR][12-11-2023 21:26:58] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][12-11-2023 21:40:16] Project Explorer ne moze da se ukloni
 [ERROR][12-11-2023 21:40:31] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][12-11-2023 22:52:18] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:52:22] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:52:26] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:54:29] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:54:31] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:54:33] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:54:58] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:55:03] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:56:35] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:56:37] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:56:43] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 22:56:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:04:32] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:04:40] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:38] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:42] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:45] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:46] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:47] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:06:49] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:09:33] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:09:45] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:10:38] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:10:48] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:10:49] Vec postoji cvor sa datim imenom
+[ERROR][12-11-2023 23:11:08] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][12-11-2023 23:11:30] Diagram se mogu praviti samo u projektima ili paketima
