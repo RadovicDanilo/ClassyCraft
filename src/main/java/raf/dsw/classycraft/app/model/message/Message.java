@@ -1,5 +1,7 @@
 package main.java.raf.dsw.classycraft.app.model.message;
 
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

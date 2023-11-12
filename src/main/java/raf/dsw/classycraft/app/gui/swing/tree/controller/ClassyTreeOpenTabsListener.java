@@ -16,7 +16,8 @@ import java.util.List;
 public class ClassyTreeOpenTabsListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getClickCount()!=2) return;
+        if(e.getClickCount()!=2)
+            return;
         ClassyTreeView tree = (ClassyTreeView) e.getSource();
         TreePath path = tree.getPathForLocation(e.getX(), e.getY());
         ClassyTreeItem treeItem = null;
@@ -41,8 +42,10 @@ public class ClassyTreeOpenTabsListener implements MouseListener {
             selectedPackage = (Package) node.getParent();
             diagrams.add((Diagram)node);
         }
-        if(!(node instanceof Package || node instanceof Diagram))return;
-        if(diagrams.size() == 0) return;
+        if(!(node instanceof Package || node instanceof Diagram))
+            return;
+        if(diagrams.size() == 0)
+            return;
 
         MainFrame.getInstance().getPackageView().openTabs(diagrams, selectedPackage);
     }

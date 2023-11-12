@@ -4,13 +4,13 @@ import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageType;
-import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import java.awt.event.ActionEvent;
@@ -24,16 +24,29 @@ public class DeleteNodeAction extends AbstractClassyAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //TODO OVDE VEROVATNO JTABBEDPANE TREBA DA GLEDA JEL IMA PROMENA
-
         ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
+
         if(selectedNode.getClassyNode() instanceof ProjectExplorer){
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
             return;
         }
+
         ClassyNodeComposite parent = (ClassyNodeComposite) selectedNode.getClassyNode().getParent();
         parent.removeChild(selectedNode.getClassyNode());
-        if(selectedNode.getClassyNode() instanceof Diagram && parent instanceof Package) ((Package)parent).notifySubscribers(new Message(SystemEvent.CHILD_DELETED, MessageType.INFO, ""));
+
+        if(selectedNode.getClassyNode() instanceof Diagram){
+            ((Package)parent).notifySubscribers(PackageViewEvent.REMOVE_DIAGRAM);
+
+        }else if(selectedNode.getClassyNode() instanceof Package){
+            ((Package)selectedNode.getClassyNode()).notifySubscribers(PackageViewEvent.REMOVE_ALL);
+
+        }else {
+            for(ClassyNode classyNode : ((Project)selectedNode.getClassyNode()).getChildren()){
+                if(classyNode instanceof Package){
+                    ((Package) classyNode).notifySubscribers(PackageViewEvent.REMOVE_ALL);
+                }
+            }
+        }
 
         ((ProjectExplorer)ApplicationFramework.getInstance().getClassyRepository().getRoot()).removeChild(selectedNode.getClassyNode());
         (ApplicationFramework.getInstance().getClassyRepository()).removeChild(selectedNode.getClassyNode());

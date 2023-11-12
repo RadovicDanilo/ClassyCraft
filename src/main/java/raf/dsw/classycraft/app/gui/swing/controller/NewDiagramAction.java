@@ -3,9 +3,8 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.message.MessageType;
-import main.java.raf.dsw.classycraft.app.model.message.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.DiagramFactory;
@@ -22,11 +21,10 @@ public class NewDiagramAction extends AbstractClassyAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        //TODO OVDE VEROVATNO JTABBEDPANE TREBA DA GLEDA JEL IMA PROMENA
 
         ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
         if(!(selectedNode.getClassyNode() instanceof Project || selectedNode.getClassyNode() instanceof Package)){
-            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM);
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE);
             return;
         }
         ClassyNode classyNode;
@@ -36,11 +34,11 @@ public class NewDiagramAction extends AbstractClassyAction{
             classyNode = diagramFactory.classyNode( "diagram " + i, selectedNode.getClassyNode());
             if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)){
                 ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+                ((Package)classyNode.getParent()).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);
                 break;
             }
             i++;
         }
-        ((Package)classyNode.getParent()).notifySubscribers(new Message(SystemEvent.DIAGRAM_ADDED, MessageType.INFO, ""));
         MainFrame.getInstance().getClassyTree().addChild(selectedNode,classyNode);
     }
 }

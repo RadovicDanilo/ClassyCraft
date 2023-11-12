@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.model.message;
 
 import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class MessageGenerator implements IPublisher {
             case CANNOT_REMOVE_ROOT:
                 message = new Message(systemEvent, MessageType.ERROR,"Project Explorer ne moze da se ukloni");
                 break;
-            case CANNOT_ADD_DIAGRAM_TO_ROOT_OR_DIAGRAM:
+            case DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE:
                 message = new Message(systemEvent, MessageType.ERROR,"Diagram se mogu praviti samo u projektima ili paketima");
                 break;
             case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:

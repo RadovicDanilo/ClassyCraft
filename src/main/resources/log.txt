@@ -13,3 +13,11 @@
 [ERROR][11-11-2023 17:50:18] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][12-11-2023 16:34:49] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][12-11-2023 16:34:57] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][12-11-2023 19:14:16] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][12-11-2023 19:14:53] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][12-11-2023 19:30:21] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][12-11-2023 19:51:18] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][12-11-2023 19:59:25] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][12-11-2023 20:52:30] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][12-11-2023 21:26:45] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][12-11-2023 21:26:58] Diagram se mogu praviti samo u projektima ili paketima

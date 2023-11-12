@@ -1,16 +1,18 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
+import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
-public class Project extends ClassyNodeComposite {
+public class Project extends ClassyNodeComposite implements IPublisher {
     private String author;
     private String resourcePath;
 
     public Project(String name) {
         super(ApplicationFramework.getInstance().getClassyRepository().getRoot(),name);
-        this.author="";
+        this.author="Autor";
         this.resourcePath=ApplicationFramework.getInstance().PROJECTS_PATH+name;
     }
 
@@ -35,5 +37,20 @@ public class Project extends ClassyNodeComposite {
 
     public void setResourcePath(String resourcePath) {
         this.resourcePath = resourcePath;
+    }
+
+    @Override
+    public void addSubscriber(ISubscriber sub) {
+
+    }
+
+    @Override
+    public void removeSubscriber(ISubscriber sub) {
+
+    }
+
+    @Override
+    public void notifySubscribers(Object notification) {
+
     }
 }

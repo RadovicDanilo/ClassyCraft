@@ -13,9 +13,13 @@ public class DiagramView extends JPanel implements ISubscriber {
         diagram.addSubscriber(this);
     }
 
-    public Diagram getDiagram() {return diagram;}
+    public Diagram getDiagram() {
+        return diagram;
+    }
 
-    public void setDiagram(Diagram diagram) {this.diagram = diagram;}
+    public void setDiagram(Diagram diagram) {
+        this.diagram = diagram;
+    }
 
     @Override
     public void update(Object notification) {
