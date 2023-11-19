@@ -6,7 +6,7 @@ import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
-public class Project extends ClassyNodeComposite implements IPublisher {
+public class Project extends ClassyNodeComposite{
     private String author;
     private String resourcePath;
 
@@ -39,18 +39,4 @@ public class Project extends ClassyNodeComposite implements IPublisher {
         this.resourcePath = resourcePath;
     }
 
-    @Override
-    public void addSubscriber(ISubscriber sub) {
-
-    }
-
-    @Override
-    public void removeSubscriber(ISubscriber sub) {
-
-    }
-
-    @Override
-    public void notifySubscribers(Object notification) {
-
-    }
 }
