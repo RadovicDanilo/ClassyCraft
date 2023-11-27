@@ -5,6 +5,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyMenuBar;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MySideBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyToolBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.PackageView;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
@@ -39,9 +40,11 @@ public class MainFrame extends JFrame implements ISubscriber{
 		
 		MyMenuBar menu = new MyMenuBar();
 		MyToolBar toolBar = new MyToolBar();
+		MySideBar sideBar = new MySideBar();
+		
 		setJMenuBar(menu);
 		add(toolBar, BorderLayout.NORTH);
-		
+		add(sideBar,BorderLayout.EAST);
 		JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
 		JScrollPane scroll = new JScrollPane(projectExplorer);
 		scroll.setMinimumSize(new Dimension(200, 150));

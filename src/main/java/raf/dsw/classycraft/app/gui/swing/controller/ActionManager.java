@@ -1,7 +1,17 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.menu_and_toolbar.*;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.RemoveAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.SelectAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawAggregationAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawCompositionAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawDependencyAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawGeneralisationAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawClassAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawEnumAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawInterfaceAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.tree.*;
+import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawAggregationState;
 
 import javax.swing.*;
 
@@ -13,6 +23,15 @@ public class ActionManager{
 	private NewDiagramAction newDiagramAction;
 	private DeleteNodeAction deleteNodeAction;
 	private ChangeAuthorAction changeAuthorShowViewAction;
+	private SelectAction selectAction;
+	private RemoveAction removeAction;
+	private DrawClassAction drawClassAction;
+	private DrawEnumAction drawEnumAction;
+	private DrawInterfaceAction drawInterfaceAction;
+	private DrawGeneralisationAction drawGeneralisationAction;
+	private DrawCompositionAction drawCompositionAction;
+	private DrawAggregationAction drawAggregationAction;
+	private DrawDependencyAction drawDependencyAction;
 	
 	
 	public ActionManager(){
@@ -27,6 +46,16 @@ public class ActionManager{
 		newPackageAction = new NewPackageAction();
 		newDiagramAction = new NewDiagramAction();
 		changeAuthorShowViewAction = new ChangeAuthorAction();
+		
+		selectAction = new SelectAction();
+		removeAction = new RemoveAction();
+		drawClassAction = new DrawClassAction();
+		drawEnumAction = new DrawEnumAction();
+		drawInterfaceAction = new DrawInterfaceAction();
+		drawAggregationAction = new DrawAggregationAction();
+		drawCompositionAction = new DrawCompositionAction();
+		drawGeneralisationAction = new DrawGeneralisationAction();
+		drawDependencyAction = new DrawDependencyAction();
 	}
 	
 	public Action getExitAction(){
@@ -57,4 +86,39 @@ public class ActionManager{
 		return changeAuthorShowViewAction;
 	}
 	
+	public SelectAction getSelectAction(){
+		return selectAction;
+	}
+	
+	public RemoveAction getRemoveAction(){
+		return removeAction;
+	}
+	
+	public DrawClassAction getDrawClassAction(){
+		return drawClassAction;
+	}
+	
+	public DrawEnumAction getDrawEnumAction(){
+		return drawEnumAction;
+	}
+	
+	public DrawInterfaceAction getDrawInterfaceAction(){
+		return drawInterfaceAction;
+	}
+	
+	public DrawGeneralisationAction getDrawGeneralisationAction(){
+		return drawGeneralisationAction;
+	}
+	
+	public DrawCompositionAction getDrawCompositionAction(){
+		return drawCompositionAction;
+	}
+	
+	public DrawAggregationAction getDrawAggregationAction(){
+		return drawAggregationAction;
+	}
+	
+	public DrawDependencyAction getDrawDependencyAction(){
+		return drawDependencyAction;
+	}
 }

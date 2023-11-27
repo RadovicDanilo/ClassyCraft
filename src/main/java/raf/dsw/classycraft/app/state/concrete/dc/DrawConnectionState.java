@@ -1,4 +1,6 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc;
 
-public abstract class DrawConnectionState{
+import main.java.raf.dsw.classycraft.app.state.State;
+
+public abstract class DrawConnectionState implements State{
 }

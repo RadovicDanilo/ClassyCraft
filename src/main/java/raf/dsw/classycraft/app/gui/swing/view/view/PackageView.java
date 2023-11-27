@@ -6,6 +6,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,14 +17,39 @@ public class PackageView extends JPanel implements ISubscriber{
 	private JLabel lbProjectName;
 	private JTabbedPane tabbedPane;
 	private Package selectedPackage;
-	;
+	private StateManager stateManager;
 	
 	public PackageView(){
 		super(new BorderLayout());
+		stateManager = new StateManager();
 		tabbedPane = new JTabbedPane();
 		lbProjectName = new JLabel();
 		this.add(lbProjectName, BorderLayout.NORTH);
 		this.add(tabbedPane, BorderLayout.CENTER);
+	}
+	
+	public JLabel getLbProjectName(){
+		return lbProjectName;
+	}
+	
+	public void setLbProjectName(JLabel lbProjectName){
+		this.lbProjectName = lbProjectName;
+	}
+	
+	public JTabbedPane getTabbedPane(){
+		return tabbedPane;
+	}
+	
+	public void setTabbedPane(JTabbedPane tabbedPane){
+		this.tabbedPane = tabbedPane;
+	}
+	
+	public StateManager getStateManager(){
+		return stateManager;
+	}
+	
+	public void setStateManager(StateManager stateManager){
+		this.stateManager = stateManager;
 	}
 	
 	public Package getSelectedPackage(){
