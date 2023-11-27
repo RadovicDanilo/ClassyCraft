@@ -1,8 +1,6 @@
-package main.java.raf.dsw.classycraft.app.model.repo.diagram.conection;
+package main.java.raf.dsw.classycraft.app.model.repo.diagram;
 
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
-import main.java.raf.dsw.classycraft.app.model.repo.diagram.DiagramElement;
-import main.java.raf.dsw.classycraft.app.model.repo.diagram.interclass.InterClass;
 
 public abstract class Concection extends DiagramElement {
 

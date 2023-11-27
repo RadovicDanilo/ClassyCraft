@@ -2,7 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;

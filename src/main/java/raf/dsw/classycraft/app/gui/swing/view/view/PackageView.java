@@ -1,4 +1,4 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.view;
+package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;

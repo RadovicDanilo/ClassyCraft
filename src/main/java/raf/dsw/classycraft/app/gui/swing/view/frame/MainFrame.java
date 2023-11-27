@@ -1,9 +1,12 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.view;
+package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyMenuBar;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyToolBar;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.PackageView;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;

@@ -1,6 +1,8 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.view;
+package main.java.raf.dsw.classycraft.app.gui.swing.view.bar;
 
 
+
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 
 import javax.swing.*;
 

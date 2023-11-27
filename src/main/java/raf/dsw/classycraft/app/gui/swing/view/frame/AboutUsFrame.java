@@ -1,4 +1,4 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.view;
+package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
