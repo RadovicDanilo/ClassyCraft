@@ -1,6 +1,7 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.controller;
+package main.java.raf.dsw.classycraft.app.gui.swing.controller.tree;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
@@ -12,7 +13,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
 import java.awt.event.ActionEvent;
 
-public class NewPackageAction extends AbstractClassyAction{
+public class NewPackageAction extends AbstractClassyAction {
     public NewPackageAction() {
         putValue(SMALL_ICON,  loadIcon("/images/icons/add_package.png"));
         putValue(NAME, "New package");

@@ -17,24 +17,19 @@ public class PackageView extends JPanel implements ISubscriber {
     private JTabbedPane tabbedPane;
     private Package selectedPackage;
 ;
-    public JLabel getLbProjectName() {
-        return lbProjectName;
-    }
-
-    public Package getSelectedPackage() {
-        return selectedPackage;
-    }
-
-    public void setSelectedPackage(Package selectedPackage) {
-        this.selectedPackage = selectedPackage;
-    }
-
     public PackageView() {
         super(new BorderLayout());
         tabbedPane = new JTabbedPane();
         lbProjectName = new JLabel();
         this.add(lbProjectName, BorderLayout.NORTH);
         this.add(tabbedPane, BorderLayout.CENTER);
+    }
+    public Package getSelectedPackage() {
+        return selectedPackage;
+    }
+
+    public void setSelectedPackage(Package selectedPackage) {
+        this.selectedPackage = selectedPackage;
     }
     public void openTabs(List<Diagram> diagrams, Package selectedPackage){
         this.tabbedPane.removeAll();

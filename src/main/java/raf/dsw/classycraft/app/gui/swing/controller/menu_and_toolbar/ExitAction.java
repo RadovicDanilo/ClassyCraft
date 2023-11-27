@@ -1,4 +1,6 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.controller;
+package main.java.raf.dsw.classycraft.app.gui.swing.controller.menu_and_toolbar;
+
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

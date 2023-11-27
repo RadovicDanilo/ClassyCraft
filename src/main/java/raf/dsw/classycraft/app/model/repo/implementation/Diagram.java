@@ -3,11 +3,12 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeLeaf;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Diagram extends ClassyNodeLeaf implements IPublisher {
+public class Diagram extends ClassyNodeComposite implements IPublisher {
     private List<ISubscriber> subscribers = new ArrayList<>();
     public Diagram(ClassyNode parent, String name) {
         super(parent, name);

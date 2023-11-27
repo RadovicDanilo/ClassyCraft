@@ -1,5 +1,8 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.menu_and_toolbar.*;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.tree.*;
+
 import javax.swing.*;
 
 public class ActionManager {

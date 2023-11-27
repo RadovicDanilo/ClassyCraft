@@ -1,6 +1,7 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.controller;
+package main.java.raf.dsw.classycraft.app.gui.swing.controller.tree;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
@@ -13,7 +14,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
 import java.awt.event.ActionEvent;
 
-public class NewDiagramAction extends AbstractClassyAction{
+public class NewDiagramAction extends AbstractClassyAction {
     public NewDiagramAction() {
         putValue(SMALL_ICON,  loadIcon("/images/icons/add_diagram.png"));
         putValue(NAME, "New diagram");

@@ -1,6 +1,7 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.controller;
+package main.java.raf.dsw.classycraft.app.gui.swing.controller.tree;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
@@ -12,7 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
-public class ChangeAuthorAction extends AbstractClassyAction{
+public class ChangeAuthorAction extends AbstractClassyAction {
     public ChangeAuthorAction() {
         putValue(SMALL_ICON, loadIcon("/images/icons/user_plus.png"));
         putValue(NAME, "Change author");

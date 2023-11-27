@@ -56,3 +56,5 @@
 [ERROR][12-11-2023 23:10:49] Vec postoji cvor sa datim imenom
 [ERROR][12-11-2023 23:11:08] Mora te selektovati projekat da bi ste mogli da promentie autora
 [ERROR][12-11-2023 23:11:30] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][26-11-2023 14:28:03] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][26-11-2023 16:59:52] Paketi se mogu praviti samo u projektima ili drugim paketima
