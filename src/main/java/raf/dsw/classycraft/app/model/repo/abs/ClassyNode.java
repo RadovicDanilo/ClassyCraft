@@ -2,7 +2,6 @@ package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 public abstract class ClassyNode {
     private ClassyNode parent;
