@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawClassAction extends AbstractClassyAction{
 	public DrawClassAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/c.png"));
 		putValue(NAME, "draw class");
 		putValue(SHORT_DESCRIPTION, "draw class");
 	}

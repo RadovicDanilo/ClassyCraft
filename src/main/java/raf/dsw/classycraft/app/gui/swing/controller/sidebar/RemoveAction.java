@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 
 public class RemoveAction extends AbstractClassyAction{
 	public RemoveAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/remove.png"));
 		putValue(NAME, "remove");
 		putValue(SHORT_DESCRIPTION, "remove");
 	}

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class SelectAction extends AbstractClassyAction{
 	public SelectAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/select.png"));
 		putValue(NAME, "select");
 		putValue(SHORT_DESCRIPTION, "select");
 	}

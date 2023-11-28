@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawEnumAction extends AbstractClassyAction{
 	public DrawEnumAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/e.png"));
 		putValue(NAME, "draw enum");
 		putValue(SHORT_DESCRIPTION, "draw enum");
 	}

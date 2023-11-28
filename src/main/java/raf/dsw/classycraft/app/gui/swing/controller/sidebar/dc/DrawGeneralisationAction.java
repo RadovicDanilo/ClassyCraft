@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawGeneralisationAction extends AbstractClassyAction{
 	public DrawGeneralisationAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/gener.png"));
 		putValue(NAME, "draw generalisation");
 		putValue(SHORT_DESCRIPTION, "draw generalisation");
 	}

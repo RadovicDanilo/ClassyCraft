@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawCompositionAction extends AbstractClassyAction{
 	public DrawCompositionAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/comp.png"));
 		putValue(NAME, "draw composition");
 		putValue(SHORT_DESCRIPTION, "draw composition");
 	}

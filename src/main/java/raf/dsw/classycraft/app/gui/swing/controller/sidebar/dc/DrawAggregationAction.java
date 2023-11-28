@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawAggregationAction extends AbstractClassyAction{
 	public DrawAggregationAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/agr.png"));
 		putValue(NAME, "draw aggregation");
 		putValue(SHORT_DESCRIPTION, "draw aggregation");
 	}

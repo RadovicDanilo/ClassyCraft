@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawDependencyAction extends AbstractClassyAction{
 	public DrawDependencyAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/dep.png"));
 		putValue(NAME, "draw dependency");
 		putValue(SHORT_DESCRIPTION, "draw dependency");
 	}

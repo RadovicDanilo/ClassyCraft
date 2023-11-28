@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class DrawInterfaceAction extends AbstractClassyAction{
 	public DrawInterfaceAction(){
-		putValue(SMALL_ICON, loadIcon("/images/icons/draw_class.png"));
+		putValue(SMALL_ICON, loadIcon("/images/icons/i.png"));
 		putValue(NAME, "draw interface");
 		putValue(SHORT_DESCRIPTION, "draw interface");
 	}
