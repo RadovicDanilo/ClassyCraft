@@ -5,16 +5,15 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class SelectAction extends AbstractClassyAction {
-	public SelectAction() {
-		putValue(SMALL_ICON, loadIcon("/images/icons/select.png"));
-		putValue(NAME, "select");
-		putValue(SHORT_DESCRIPTION, "select");
+public class ZoomInAction extends AbstractClassyAction {
+	public ZoomInAction() {
+		putValue(SMALL_ICON, loadIcon("/images/icons/zoom_in.png"));
+		putValue(NAME, "zoom in");
+		putValue(SHORT_DESCRIPTION, "zoom in");
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setSelectState();
-		
+		MainFrame.getInstance().getPackageView().getStateManager().setZoomInState();
 	}
 }

@@ -7,10 +7,10 @@ import main.java.raf.dsw.classycraft.app.model.repo.diagram.interclass.content.M
 
 import java.util.ArrayList;
 
-public class Interface extends InterClass{
-	private ArrayList<Method> methods = new ArrayList<>();
+public class Interface extends InterClass {
+	private final ArrayList<Method> methods = new ArrayList<>();
 	
-	public Interface(ClassyNode parent, String name, Visibility visibility){
+	public Interface(ClassyNode parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
 	}
 }

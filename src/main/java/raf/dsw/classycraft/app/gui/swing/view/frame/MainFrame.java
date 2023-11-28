@@ -15,17 +15,17 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplor
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame implements ISubscriber{
+public class MainFrame extends JFrame implements ISubscriber {
 	private static MainFrame instance;
 	private ActionManager actionManager;
 	private PackageView packageView;
 	private ClassyTreeImplementation classyTree;
 	
-	private MainFrame(){
+	private MainFrame() {
 	
 	}
 	
-	private void initialize(){
+	private void initialize() {
 		
 		actionManager = new ActionManager();
 		
@@ -44,7 +44,7 @@ public class MainFrame extends JFrame implements ISubscriber{
 		
 		setJMenuBar(menu);
 		add(toolBar, BorderLayout.NORTH);
-		add(sideBar,BorderLayout.EAST);
+		add(sideBar, BorderLayout.EAST);
 		JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
 		JScrollPane scroll = new JScrollPane(projectExplorer);
 		scroll.setMinimumSize(new Dimension(200, 150));
@@ -56,8 +56,8 @@ public class MainFrame extends JFrame implements ISubscriber{
 		split.setOneTouchExpandable(true);
 	}
 	
-	public static MainFrame getInstance(){
-		if(instance == null){
+	public static MainFrame getInstance() {
+		if(instance == null) {
 			instance = new MainFrame();
 			instance.classyTree = new ClassyTreeImplementation();
 			instance.initialize();
@@ -65,21 +65,21 @@ public class MainFrame extends JFrame implements ISubscriber{
 		return instance;
 	}
 	
-	public ActionManager getActionManager(){
+	public ActionManager getActionManager() {
 		return actionManager;
 	}
 	
 	@Override
-	public void update(Object notification){
-		if(notification instanceof Message){
+	public void update(Object notification) {
+		if(notification instanceof Message) {
 			displayMessage((Message) notification);
 		}
 	}
 	
-	public void displayMessage(Message message){
+	public void displayMessage(Message message) {
 		JOptionPane messageOptionPane = new JOptionPane();
 		messageOptionPane.setMessage(message.getText());
-		switch(message.getMessageType()){
+		switch(message.getMessageType()) {
 			case INFO:
 				messageOptionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
 				break;
@@ -91,7 +91,7 @@ public class MainFrame extends JFrame implements ISubscriber{
 				break;
 		}
 		JDialog messageDialog;
-		switch(message.getSystemEvent()){
+		switch(message.getSystemEvent()) {
 			case NAME_CANNOT_BE_EMPTY:
 				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
 				messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
@@ -126,19 +126,19 @@ public class MainFrame extends JFrame implements ISubscriber{
 		messageDialog.setVisible(true);
 	}
 	
-	public ClassyTree getClassyTree(){
+	public ClassyTree getClassyTree() {
 		return classyTree;
 	}
 	
-	public void setClassyTree(ClassyTreeImplementation classyTree){
+	public void setClassyTree(ClassyTreeImplementation classyTree) {
 		this.classyTree = classyTree;
 	}
 	
-	public PackageView getPackageView(){
+	public PackageView getPackageView() {
 		return packageView;
 	}
 	
-	public void setPackageView(PackageView packageView){
+	public void setPackageView(PackageView packageView) {
 		this.packageView = packageView;
 	}
 }

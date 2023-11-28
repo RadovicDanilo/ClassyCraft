@@ -1,19 +1,19 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc.dcc;
 
-public class DrawMethod extends DrawClassContent{
+public class DrawMethod extends DrawClassContent {
 	
 	@Override
-	public void mouseClicked(){
+	public void mouseClicked() {
 	
 	}
 	
 	@Override
-	public void mouseDragged(){
+	public void mouseDragged() {
 	
 	}
 	
 	@Override
-	public void mouseRelease(){
+	public void mouseRelease() {
 	
 	}
 }

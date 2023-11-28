@@ -6,16 +6,16 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.Objects;
 
-public class ClassyTreeItem extends DefaultMutableTreeNode{
+public class ClassyTreeItem extends DefaultMutableTreeNode {
 	
 	private ClassyNode classyNode;
 	
-	public ClassyTreeItem(ClassyNode classyNode){
+	public ClassyTreeItem(ClassyNode classyNode) {
 		this.classyNode = classyNode;
 	}
 	
 	@Override
-	public boolean equals(Object o){
+	public boolean equals(Object o) {
 		if(this == o)
 			return true;
 		if(o == null || getClass() != o.getClass())
@@ -25,23 +25,23 @@ public class ClassyTreeItem extends DefaultMutableTreeNode{
 	}
 	
 	@Override
-	public String toString(){
+	public String toString() {
 		return classyNode.getName();
 	}
 	
-	public ClassyNode getClassyNode(){
+	public ClassyNode getClassyNode() {
 		return classyNode;
 	}
 	
-	public void setClassyNode(ClassyNode classyNode){
+	public void setClassyNode(ClassyNode classyNode) {
 		this.classyNode = classyNode;
 	}
 	
-	public void setName(String name){
+	public void setName(String name) {
 		classyNode.setName(name);
 	}
 	
-	public String getName(){
+	public String getName() {
 		return classyNode.getName();
 	}
 	

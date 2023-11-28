@@ -1,6 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.observer.notifications;
 
-public enum SystemEvent{
+public enum SystemEvent {
 	NODE_CANNOT_BE_DELETED,
 	NODE_CANNOT_BE_DUPLICATE,
 	NAME_CANNOT_BE_EMPTY,

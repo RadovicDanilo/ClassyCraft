@@ -10,13 +10,13 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplor
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 
-public class ClassyTreeImplementation implements ClassyTree{
+public class ClassyTreeImplementation implements ClassyTree {
 	
 	private ClassyTreeView treeView;
 	private ClassyTreeItem root;
 	
 	@Override
-	public ClassyTreeView generateTree(ProjectExplorer projectExplorer){
+	public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
 		root = new ClassyTreeItem(projectExplorer);
 		DefaultTreeModel treeModel = new DefaultTreeModel(root);
 		treeView = new ClassyTreeView(treeModel);
@@ -24,24 +24,24 @@ public class ClassyTreeImplementation implements ClassyTree{
 	}
 	
 	@Override
-	public void addChild(ClassyTreeItem parent, ClassyNode classyNode){
+	public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
 		parent.add(new ClassyTreeItem(classyNode));
 		treeView.expandPath(treeView.getSelectionPath());
 		SwingUtilities.updateComponentTreeUI(treeView);
 	}
 	
-	public void removeNode(ClassyTreeItem classyTreeItem){
+	public void removeNode(ClassyTreeItem classyTreeItem) {
 		classyTreeItem.removeFromParent();
 		treeView.expandPath(treeView.getSelectionPath());
 		SwingUtilities.updateComponentTreeUI(treeView);
 	}
 	
 	@Override
-	public ClassyTreeItem getSelectedNode(){
+	public ClassyTreeItem getSelectedNode() {
 		return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
 	}
 	
-	public ClassyTreeItem getRoot(){
+	public ClassyTreeItem getRoot() {
 		return root;
 	}
 	

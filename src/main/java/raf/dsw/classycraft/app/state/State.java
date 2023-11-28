@@ -1,6 +1,6 @@
 package main.java.raf.dsw.classycraft.app.state;
 
-public interface State{
+public interface State {
 	void mouseClicked();
 	
 	void mouseDragged();

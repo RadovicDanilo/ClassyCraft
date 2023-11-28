@@ -8,18 +8,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
-public class AboutUsFrame extends JFrame{
+public class AboutUsFrame extends JFrame {
 	private static AboutUsFrame instance;
 	
-	public static AboutUsFrame getInstance(){
-		if(instance == null){
+	public static AboutUsFrame getInstance() {
+		if(instance == null) {
 			instance = new AboutUsFrame();
 			instance.initialize();
 		}
 		return instance;
 	}
 	
-	public void initialize(){
+	public void initialize() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
@@ -36,10 +36,10 @@ public class AboutUsFrame extends JFrame{
 		BufferedImage ognjenSlika;
 		URL imageURLDanilo = getClass().getResource("/images/about/daniloradovic.png");
 		URL imageURLOgnjen = getClass().getResource("/images/about/ognjentasic.jpg");
-		try{
+		try {
 			daniloSlika = ImageIO.read(Objects.requireNonNull(imageURLDanilo));
 			ognjenSlika = ImageIO.read(Objects.requireNonNull(imageURLOgnjen));
-		}catch(IOException e){
+		}catch(IOException e) {
 			throw new RuntimeException(e);
 		}
 		

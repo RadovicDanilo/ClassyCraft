@@ -5,8 +5,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 
 import javax.swing.*;
 
-public class MyToolBar extends JToolBar{
-	public MyToolBar(){
+public class MyToolBar extends JToolBar {
+	public MyToolBar() {
 		super(HORIZONTAL);
 		setFloatable(false);
 		

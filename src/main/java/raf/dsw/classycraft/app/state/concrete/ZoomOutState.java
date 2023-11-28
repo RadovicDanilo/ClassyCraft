@@ -2,7 +2,7 @@ package main.java.raf.dsw.classycraft.app.state.concrete;
 
 import main.java.raf.dsw.classycraft.app.state.State;
 
-public class SelectState implements State {
+public class ZoomOutState implements State {
 	@Override
 	public void mouseClicked() {
 	

@@ -9,23 +9,23 @@ import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepository;
 import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
 
 
-public class ApplicationFramework{
+public class ApplicationFramework {
 	public final String PROJECTS_PATH = "/projects";
 	public final String LOG_PATH = "src/main/resources/log.txt";
 	private static ApplicationFramework instance;
 	private MessageGenerator messageGenerator;
 	private ClassyRepositoryImplementation classyRepository;
 	
-	private ApplicationFramework(){
+	private ApplicationFramework() {
 	
 	}
 	
-	public void initialize(){
+	public void initialize() {
 		MainFrame.getInstance().setVisible(true);
 	}
 	
-	public static ApplicationFramework getInstance(){
-		if(instance == null){
+	public static ApplicationFramework getInstance() {
+		if(instance == null) {
 			instance = new ApplicationFramework();
 			instance.messageGenerator = new MessageGenerator();
 			instance.classyRepository = new ClassyRepositoryImplementation();
@@ -37,11 +37,11 @@ public class ApplicationFramework{
 		return instance;
 	}
 	
-	public MessageGenerator getMessageGenerator(){
+	public MessageGenerator getMessageGenerator() {
 		return messageGenerator;
 	}
 	
-	public ClassyRepository getClassyRepository(){
+	public ClassyRepository getClassyRepository() {
 		return classyRepository;
 	}
 	

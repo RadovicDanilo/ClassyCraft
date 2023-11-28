@@ -6,9 +6,9 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
-public class MyMenuBar extends JMenuBar{
+public class MyMenuBar extends JMenuBar {
 	
-	public MyMenuBar(){
+	public MyMenuBar() {
 		JMenu fileMenu = new JMenu("File");
 		fileMenu.setMnemonic(KeyEvent.VK_F);
 		fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());

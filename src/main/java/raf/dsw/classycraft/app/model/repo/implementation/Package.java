@@ -8,15 +8,15 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Package extends ClassyNodeComposite implements IPublisher{
-	private List<ISubscriber> subscribers = new ArrayList<>();
+public class Package extends ClassyNodeComposite implements IPublisher {
+	private final List<ISubscriber> subscribers = new ArrayList<>();
 	
-	public Package(ClassyNode parent, String name){
+	public Package(ClassyNode parent, String name) {
 		super(parent, name);
 	}
 	
 	@Override
-	public boolean equals(Object obj){
+	public boolean equals(Object obj) {
 		if(!(obj instanceof Package))
 			return false;
 		Package node = (Package) obj;
@@ -24,17 +24,17 @@ public class Package extends ClassyNodeComposite implements IPublisher{
 	}
 	
 	@Override
-	public void addSubscriber(ISubscriber sub){
+	public void addSubscriber(ISubscriber sub) {
 		this.subscribers.add(sub);
 	}
 	
 	@Override
-	public void removeSubscriber(ISubscriber sub){
-		if(this.subscribers.contains(sub)) this.subscribers.remove(sub);
+	public void removeSubscriber(ISubscriber sub) {
+		this.subscribers.remove(sub);
 	}
 	
 	@Override
-	public void notifySubscribers(Object notification){
+	public void notifySubscribers(Object notification) {
 		for(ISubscriber sub : this.subscribers) sub.update(notification);
 	}
 }

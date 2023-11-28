@@ -13,32 +13,32 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassyTreeOpenTabsListener implements MouseListener{
+public class ClassyTreeOpenTabsListener implements MouseListener {
 	@Override
-	public void mouseClicked(MouseEvent e){
+	public void mouseClicked(MouseEvent e) {
 		if(e.getClickCount() != 2)
 			return;
 		ClassyTreeView tree = (ClassyTreeView) e.getSource();
 		TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 		ClassyTreeItem treeItem = null;
-		if(path != null){
+		if(path != null) {
 			treeItem = (ClassyTreeItem) path.getLastPathComponent();
 		}
 		ClassyNode node = null;
-		if(treeItem != null){
+		if(treeItem != null) {
 			node = treeItem.getClassyNode();
 		}
 		
 		List<Diagram> diagrams = new ArrayList<>();
 		Package selectedPackage = null;
 		
-		if(node instanceof Package){
+		if(node instanceof Package) {
 			selectedPackage = (Package) node;
-			for(ClassyNode diagram : ((Package) node).getChildren()){
+			for(ClassyNode diagram : ((Package) node).getChildren()) {
 				if(diagram instanceof Diagram) diagrams.add((Diagram) diagram);
 			}
 		}
-		if(node instanceof Diagram){
+		if(node instanceof Diagram) {
 			selectedPackage = (Package) node.getParent();
 			diagrams.add((Diagram) node);
 		}
@@ -51,22 +51,22 @@ public class ClassyTreeOpenTabsListener implements MouseListener{
 	}
 	
 	@Override
-	public void mousePressed(MouseEvent e){
+	public void mousePressed(MouseEvent e) {
 	
 	}
 	
 	@Override
-	public void mouseReleased(MouseEvent e){
+	public void mouseReleased(MouseEvent e) {
 	
 	}
 	
 	@Override
-	public void mouseEntered(MouseEvent e){
+	public void mouseEntered(MouseEvent e) {
 	
 	}
 	
 	@Override
-	public void mouseExited(MouseEvent e){
+	public void mouseExited(MouseEvent e) {
 	
 	}
 }

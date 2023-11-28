@@ -13,8 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
-public class NewProjectAction extends AbstractClassyAction{
-	public NewProjectAction(){
+public class NewProjectAction extends AbstractClassyAction {
+	public NewProjectAction() {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		putValue(SMALL_ICON, loadIcon("/images/icons/add_project.png"));
 		putValue(NAME, "New project");
@@ -22,14 +22,14 @@ public class NewProjectAction extends AbstractClassyAction{
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e){
+	public void actionPerformed(ActionEvent e) {
 		
 		ClassyNode classyNode;
 		int i = 0;
-		while(true){
+		while(true) {
 			ProjectFactory projectFactory = new ProjectFactory();
 			classyNode = projectFactory.classyNode("project " + i);
-			if(!((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)){
+			if(!((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)) {
 				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
 				break;
 			}

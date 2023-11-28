@@ -2,19 +2,19 @@ package main.java.raf.dsw.classycraft.app.state.concrete;
 
 import main.java.raf.dsw.classycraft.app.state.State;
 
-public class RemoveState implements State{
+public class RemoveState implements State {
 	@Override
-	public void mouseClicked(){
+	public void mouseClicked() {
 	
 	}
 	
 	@Override
-	public void mouseDragged(){
+	public void mouseDragged() {
 	
 	}
 	
 	@Override
-	public void mouseRelease(){
+	public void mouseRelease() {
 	
 	}
 }

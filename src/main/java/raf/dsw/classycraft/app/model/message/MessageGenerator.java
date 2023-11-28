@@ -6,13 +6,13 @@ import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEven
 
 import java.util.ArrayList;
 
-public class MessageGenerator implements IPublisher{
+public class MessageGenerator implements IPublisher {
 	
 	private ArrayList<ISubscriber> subscribers;
 	
-	public void GenerateMessage(SystemEvent systemEvent){
+	public void GenerateMessage(SystemEvent systemEvent) {
 		Message message;
-		switch(systemEvent){
+		switch(systemEvent) {
 			case NAME_CANNOT_BE_EMPTY:
 				message = new Message(systemEvent, MessageType.ERROR, "Naziv nesme biti prazan");
 				break;
@@ -41,7 +41,7 @@ public class MessageGenerator implements IPublisher{
 	}
 	
 	@Override
-	public void addSubscriber(ISubscriber sub){
+	public void addSubscriber(ISubscriber sub) {
 		if(sub == null)
 			return;
 		if(this.subscribers == null)
@@ -52,14 +52,14 @@ public class MessageGenerator implements IPublisher{
 	}
 	
 	@Override
-	public void removeSubscriber(ISubscriber sub){
+	public void removeSubscriber(ISubscriber sub) {
 		subscribers.remove(sub);
 	}
 	
 	@Override
-	public void notifySubscribers(Object notification){
-		if(notification instanceof Message){
-			for(ISubscriber s : subscribers){
+	public void notifySubscribers(Object notification) {
+		if(notification instanceof Message) {
+			for(ISubscriber s : subscribers) {
 				s.update(notification);
 			}
 		}

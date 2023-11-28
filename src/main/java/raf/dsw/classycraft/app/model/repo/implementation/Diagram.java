@@ -9,21 +9,21 @@ import main.java.raf.dsw.classycraft.app.model.repo.diagram.DiagramElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Diagram extends ClassyNodeComposite implements IPublisher{
-	private List<ISubscriber> subscribers = new ArrayList<>();
+public class Diagram extends ClassyNodeComposite implements IPublisher {
+	private final List<ISubscriber> subscribers = new ArrayList<>();
 	
-	public Diagram(ClassyNode parent, String name){
+	public Diagram(ClassyNode parent, String name) {
 		super(parent, name);
 	}
 	
 	@Override
-	public void addChild(ClassyNode c){
+	public void addChild(ClassyNode c) {
 		if(c instanceof DiagramElement)
 			super.addChild(c);
 	}
 	
 	@Override
-	public boolean equals(Object obj){
+	public boolean equals(Object obj) {
 		if(!(obj instanceof Diagram))
 			return false;
 		ClassyNode node = (ClassyNode) obj;
@@ -31,17 +31,17 @@ public class Diagram extends ClassyNodeComposite implements IPublisher{
 	}
 	
 	@Override
-	public void addSubscriber(ISubscriber sub){
+	public void addSubscriber(ISubscriber sub) {
 		this.subscribers.add(sub);
 	}
 	
 	@Override
-	public void removeSubscriber(ISubscriber sub){
-		if(this.subscribers.contains(sub)) this.subscribers.remove(sub);
+	public void removeSubscriber(ISubscriber sub) {
+		this.subscribers.remove(sub);
 	}
 	
 	@Override
-	public void notifySubscribers(Object notification){
+	public void notifySubscribers(Object notification) {
 		for(ISubscriber sub : this.subscribers)
 			sub.update(notification);
 	}

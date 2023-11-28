@@ -3,6 +3,8 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.menu_and_toolbar.*;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.RemoveAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.SelectAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.ZoomInAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.ZoomOutAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawAggregationAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawCompositionAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawDependencyAction;
@@ -11,11 +13,10 @@ import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawCl
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawEnumAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawInterfaceAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.tree.*;
-import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawAggregationState;
 
 import javax.swing.*;
 
-public class ActionManager{
+public class ActionManager {
 	private ExitAction exitAction;
 	private AboutUsAction aboutUsAction;
 	private NewProjectAction newProjectAction;
@@ -32,13 +33,15 @@ public class ActionManager{
 	private DrawCompositionAction drawCompositionAction;
 	private DrawAggregationAction drawAggregationAction;
 	private DrawDependencyAction drawDependencyAction;
+	private ZoomInAction zoomInAction;
+	private ZoomOutAction zoomOutAction;
 	
 	
-	public ActionManager(){
+	public ActionManager() {
 		initialiseActions();
 	}
 	
-	private void initialiseActions(){
+	private void initialiseActions() {
 		exitAction = new ExitAction();
 		newProjectAction = new NewProjectAction();
 		aboutUsAction = new AboutUsAction();
@@ -56,69 +59,79 @@ public class ActionManager{
 		drawCompositionAction = new DrawCompositionAction();
 		drawGeneralisationAction = new DrawGeneralisationAction();
 		drawDependencyAction = new DrawDependencyAction();
+		zoomInAction = new ZoomInAction();
+		zoomOutAction = new ZoomOutAction();
 	}
 	
-	public Action getExitAction(){
+	public Action getExitAction() {
 		return exitAction;
 	}
 	
-	public Action getNewProjectAction(){
+	public Action getNewProjectAction() {
 		return newProjectAction;
 	}
 	
-	public Action getAboutUsAction(){
+	public Action getAboutUsAction() {
 		return aboutUsAction;
 	}
 	
-	public DeleteNodeAction getDeleteNodeAction(){
+	public DeleteNodeAction getDeleteNodeAction() {
 		return deleteNodeAction;
 	}
 	
-	public NewPackageAction getNewPackageAction(){
+	public NewPackageAction getNewPackageAction() {
 		return newPackageAction;
 	}
 	
-	public NewDiagramAction getNewDiagramAction(){
+	public NewDiagramAction getNewDiagramAction() {
 		return newDiagramAction;
 	}
 	
-	public ChangeAuthorAction getChangeAuthorShowViewAction(){
+	public ChangeAuthorAction getChangeAuthorShowViewAction() {
 		return changeAuthorShowViewAction;
 	}
 	
-	public SelectAction getSelectAction(){
+	public SelectAction getSelectAction() {
 		return selectAction;
 	}
 	
-	public RemoveAction getRemoveAction(){
+	public RemoveAction getRemoveAction() {
 		return removeAction;
 	}
 	
-	public DrawClassAction getDrawClassAction(){
+	public DrawClassAction getDrawClassAction() {
 		return drawClassAction;
 	}
 	
-	public DrawEnumAction getDrawEnumAction(){
+	public DrawEnumAction getDrawEnumAction() {
 		return drawEnumAction;
 	}
 	
-	public DrawInterfaceAction getDrawInterfaceAction(){
+	public DrawInterfaceAction getDrawInterfaceAction() {
 		return drawInterfaceAction;
 	}
 	
-	public DrawGeneralisationAction getDrawGeneralisationAction(){
+	public DrawGeneralisationAction getDrawGeneralisationAction() {
 		return drawGeneralisationAction;
 	}
 	
-	public DrawCompositionAction getDrawCompositionAction(){
+	public DrawCompositionAction getDrawCompositionAction() {
 		return drawCompositionAction;
 	}
 	
-	public DrawAggregationAction getDrawAggregationAction(){
+	public DrawAggregationAction getDrawAggregationAction() {
 		return drawAggregationAction;
 	}
 	
-	public DrawDependencyAction getDrawDependencyAction(){
+	public DrawDependencyAction getDrawDependencyAction() {
 		return drawDependencyAction;
+	}
+	
+	public ZoomInAction getZoomInAction() {
+		return zoomInAction;
+	}
+	
+	public ZoomOutAction getZoomOutAction() {
+		return zoomOutAction;
 	}
 }
