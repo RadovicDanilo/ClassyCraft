@@ -15,8 +15,7 @@ public class ClassPainter extends ElementPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		g.setBackground(Color.BLACK);
-		g.drawRect(super.getStarPoint().x, super.getStarPoint().y, 100, 400);
+		g.drawRect(super.getStarPoint().x, super.getStarPoint().y, 100, 200);
 	}
 	
-
 }

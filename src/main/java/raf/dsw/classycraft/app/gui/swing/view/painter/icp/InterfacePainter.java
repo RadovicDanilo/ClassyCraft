@@ -1,4 +1,16 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.painter.icp;
 
-public class InterfacePainter {
+import main.java.raf.dsw.classycraft.app.gui.swing.view.painter.ElementPainter;
+
+import java.awt.*;
+
+public class InterfacePainter extends ElementPainter {
+	public InterfacePainter(Point starPoint) {
+		super(starPoint);
+	}
+	@Override
+	public void draw(Graphics2D g) {
+		g.setBackground(Color.BLACK);
+		g.drawRect(super.getStarPoint().x, super.getStarPoint().y, 100, 200);
+	}
 }
