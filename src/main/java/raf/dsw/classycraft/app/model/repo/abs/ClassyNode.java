@@ -4,10 +4,10 @@ import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 
 public abstract class ClassyNode {
-	private final ClassyNode parent;
+	private final ClassyNodeComposite parent;
 	private String name;
 	
-	public ClassyNode(ClassyNode parent, String name) {
+	public ClassyNode(ClassyNodeComposite parent, String name) {
 		this.parent = parent;
 		this.name = name;
 	}

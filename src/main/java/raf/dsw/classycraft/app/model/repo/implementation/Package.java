@@ -11,7 +11,7 @@ import java.util.List;
 public class Package extends ClassyNodeComposite implements IPublisher {
 	private final List<ISubscriber> subscribers = new ArrayList<>();
 	
-	public Package(ClassyNode parent, String name) {
+	public Package(ClassyNodeComposite parent, String name) {
 		super(parent, name);
 	}
 	

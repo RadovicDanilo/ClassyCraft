@@ -6,14 +6,16 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.state.State;
 import main.java.raf.dsw.classycraft.app.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PackageView extends JPanel implements ISubscriber {
+public class PackageView extends JPanel implements ISubscriber, State {
 	private JLabel lbProjectName;
 	private JTabbedPane tabbedPane;
 	private Package selectedPackage;
@@ -28,38 +30,6 @@ public class PackageView extends JPanel implements ISubscriber {
 		this.add(tabbedPane, BorderLayout.CENTER);
 	}
 	
-	public JLabel getLbProjectName() {
-		return lbProjectName;
-	}
-	
-	public void setLbProjectName(JLabel lbProjectName) {
-		this.lbProjectName = lbProjectName;
-	}
-	
-	public JTabbedPane getTabbedPane() {
-		return tabbedPane;
-	}
-	
-	public void setTabbedPane(JTabbedPane tabbedPane) {
-		this.tabbedPane = tabbedPane;
-	}
-	
-	public StateManager getStateManager() {
-		return stateManager;
-	}
-	
-	public void setStateManager(StateManager stateManager) {
-		this.stateManager = stateManager;
-	}
-	
-	public Package getSelectedPackage() {
-		return selectedPackage;
-	}
-	
-	public void setSelectedPackage(Package selectedPackage) {
-		this.selectedPackage = selectedPackage;
-	}
-	
 	public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
 		this.tabbedPane.removeAll();
 		
@@ -69,7 +39,7 @@ public class PackageView extends JPanel implements ISubscriber {
 		this.setSelectedPackage(selectedPackage);
 		this.getSelectedPackage().addSubscriber(this);
 		
-		ClassyNode project = selectedPackage;
+		ClassyNode project = selectedPackage;//TODO dodati getproject metoda u classyNode-u
 		while(!(project instanceof Project)) {
 			project = project.getParent();
 		}
@@ -106,7 +76,7 @@ public class PackageView extends JPanel implements ISubscriber {
 				updateProject();
 				break;
 			case RENAME_DIAGRAM:
-				renameDiagram();
+				reloadPackage();
 				break;
 			case CHANGE_AUTHOR:
 				updateProject();
@@ -158,8 +128,47 @@ public class PackageView extends JPanel implements ISubscriber {
 		}
 	}
 	
-	public void renameDiagram() {
-		reloadPackage();
+	public JLabel getLbProjectName() {
+		return lbProjectName;
 	}
 	
+	
+	public JTabbedPane getTabbedPane() {
+		return tabbedPane;
+	}
+	
+	public void setTabbedPane(JTabbedPane tabbedPane) {
+		this.tabbedPane = tabbedPane;
+	}
+	
+	public StateManager getStateManager() {
+		return stateManager;
+	}
+	
+	public void setStateManager(StateManager stateManager) {
+		this.stateManager = stateManager;
+	}
+	
+	public Package getSelectedPackage() {
+		return selectedPackage;
+	}
+	
+	public void setSelectedPackage(Package selectedPackage) {
+		this.selectedPackage = selectedPackage;
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
+		this.stateManager.getCurrentState().mouseClicked(e,diagramView);
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+		this.stateManager.getCurrentState().mouseClicked(e,diagramView);
+	}
+	
+	@Override
+	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+		this.stateManager.getCurrentState().mouseClicked(e,diagramView);
+	}
 }

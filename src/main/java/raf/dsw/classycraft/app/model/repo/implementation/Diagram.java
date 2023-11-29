@@ -12,14 +12,17 @@ import java.util.List;
 public class Diagram extends ClassyNodeComposite implements IPublisher {
 	private final List<ISubscriber> subscribers = new ArrayList<>();
 	
-	public Diagram(ClassyNode parent, String name) {
+	public Diagram(ClassyNodeComposite parent, String name) {
 		super(parent, name);
 	}
 	
 	@Override
 	public void addChild(ClassyNode c) {
-		if(c instanceof DiagramElement)
+		if(c instanceof DiagramElement){
 			super.addChild(c);
+			notifySubscribers("");
+		}
+		
 	}
 	
 	@Override

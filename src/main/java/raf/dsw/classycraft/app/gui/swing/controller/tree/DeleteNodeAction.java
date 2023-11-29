@@ -41,6 +41,7 @@ public class DeleteNodeAction extends AbstractClassyAction {
 			
 		}else if(selectedNode.getClassyNode() instanceof Package) {
 			((Package) selectedNode.getClassyNode()).notifySubscribers(PackageViewEvent.REMOVE_ALL);
+			deleteProjectUpdate((ArrayList<ClassyNode>) ((Package) selectedNode.getClassyNode()).getChildren());
 			
 		}else {
 			deleteProjectUpdate((ArrayList<ClassyNode>) ((Project) selectedNode.getClassyNode()).getChildren());

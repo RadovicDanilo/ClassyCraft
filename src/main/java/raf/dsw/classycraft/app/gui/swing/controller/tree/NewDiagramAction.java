@@ -33,7 +33,7 @@ public class NewDiagramAction extends AbstractClassyAction {
 		int i = 0;
 		while(true) {
 			DiagramFactory diagramFactory = new DiagramFactory();
-			classyNode = diagramFactory.classyNode("diagram " + i, selectedNode.getClassyNode());
+			classyNode = diagramFactory.classyNode("diagram " + i, (ClassyNodeComposite) selectedNode.getClassyNode());
 			if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)) {
 				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
 				((Package) classyNode.getParent()).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);

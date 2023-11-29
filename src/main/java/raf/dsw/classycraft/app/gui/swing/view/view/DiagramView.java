@@ -1,18 +1,32 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 public class DiagramView extends JPanel implements ISubscriber {
 	private Diagram diagram;
+	ArrayList<ElementPainter> elementPainters;
 	
 	public DiagramView(Diagram diagram) {
 		this.diagram = diagram;
+		elementPainters = new ArrayList<>();
+		this.addMouseListener(new MyMouseAdapter(this));
 		diagram.addSubscriber(this);
 	}
-	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		for(ElementPainter elementPainter: elementPainters){
+			elementPainter.draw((Graphics2D) g);
+		}
+	}
 	public Diagram getDiagram() {
 		return diagram;
 	}
@@ -23,6 +37,10 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	@Override
 	public void update(Object notification) {
+		repaint();
+	}
 	
+	public ArrayList<ElementPainter> getElementPainters() {
+		return elementPainters;
 	}
 }

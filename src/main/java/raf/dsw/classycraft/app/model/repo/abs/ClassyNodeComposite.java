@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class ClassyNodeComposite extends ClassyNode {
 	private List<ClassyNode> children = new ArrayList<>();
 	
-	public ClassyNodeComposite(ClassyNode parent, String name) {
+	public ClassyNodeComposite(ClassyNodeComposite parent, String name) {
 		super(parent, name);
 	}
 	

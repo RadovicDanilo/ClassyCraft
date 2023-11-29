@@ -8,7 +8,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplor
 
 public class ClassyRepositoryImplementation implements ClassyRepository {
 	
-	private final ClassyNode root;
+	private final ClassyNodeComposite root;
 	
 	public ClassyRepositoryImplementation() {
 		root = new ProjectExplorer();
