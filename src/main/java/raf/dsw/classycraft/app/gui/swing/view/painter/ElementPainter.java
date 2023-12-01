@@ -12,7 +12,9 @@ public abstract class ElementPainter {
     public void draw(Graphics2D g) {
 
     }
+    public void addElement(){
 
+    }
 
     public Point getStarPoint() {
         return starPoint;

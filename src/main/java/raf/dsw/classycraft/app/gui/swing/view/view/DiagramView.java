@@ -19,22 +19,14 @@ public class DiagramView extends JPanel implements ISubscriber {
         this.diagram = diagram;
         elementPainters = new ArrayList<>();
         this.addMouseListener(new MyMouseAdapter(this));
-        diagram.addSubscriber(this);
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (ElementPainter elementPainter : elementPainters) {
             elementPainter.draw((Graphics2D) g);
         }
-    }
-
-    public Diagram getDiagram() {
-        return diagram;
-    }
-
-    public void setDiagram(Diagram diagram) {
-        this.diagram = diagram;
     }
 
     @Override
@@ -44,5 +36,13 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     public ArrayList<ElementPainter> getElementPainters() {
         return elementPainters;
+    }
+
+    public Diagram getDiagram() {
+        return diagram;
+    }
+
+    public void setDiagram(Diagram diagram) {
+        this.diagram = diagram;
     }
 }

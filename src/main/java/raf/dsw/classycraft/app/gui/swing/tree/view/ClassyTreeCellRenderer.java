@@ -6,6 +6,13 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Agregation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Generalisation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -29,6 +36,29 @@ public class ClassyTreeCellRenderer extends DefaultTreeCellRenderer {
         }
         if (((ClassyTreeItem) value).getClassyNode() instanceof Diagram) {
             imageURL = getClass().getResource("/images/icons/diagram.png");
+        }
+
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Klasa) {
+            imageURL = getClass().getResource("/images/icons/c.png");
+        }
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Enum) {
+            imageURL = getClass().getResource("/images/icons/e.png");
+        }
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Interface) {
+            imageURL = getClass().getResource("/images/icons/i.png");
+        }
+
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Generalisation) {
+            imageURL = getClass().getResource("/images/icons/gener.png");
+        }
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Agregation) {
+            imageURL = getClass().getResource("/images/icons/agr.png");
+        }
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Composition) {
+            imageURL = getClass().getResource("/images/icons/comp.png");
+        }
+        if (((ClassyTreeItem) value).getClassyNode() instanceof Dependency) {
+            imageURL = getClass().getResource("/images/icons/dep.png");
         }
         Icon icon = null;
         if (imageURL != null)
