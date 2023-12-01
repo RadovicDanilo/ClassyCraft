@@ -11,38 +11,38 @@ import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 
 public class ClassyTreeImplementation implements ClassyTree {
-	
-	private ClassyTreeView treeView;
-	private ClassyTreeItem root;
-	
-	@Override
-	public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
-		root = new ClassyTreeItem(projectExplorer);
-		DefaultTreeModel treeModel = new DefaultTreeModel(root);
-		treeView = new ClassyTreeView(treeModel);
-		return treeView;
-	}
-	
-	@Override
-	public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
-		parent.add(new ClassyTreeItem(classyNode));
-		treeView.expandPath(treeView.getSelectionPath());
-		SwingUtilities.updateComponentTreeUI(treeView);
-	}
-	
-	public void removeNode(ClassyTreeItem classyTreeItem) {
-		classyTreeItem.removeFromParent();
-		treeView.expandPath(treeView.getSelectionPath());
-		SwingUtilities.updateComponentTreeUI(treeView);
-	}
-	
-	@Override
-	public ClassyTreeItem getSelectedNode() {
-		return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
-	}
-	
-	public ClassyTreeItem getRoot() {
-		return root;
-	}
-	
+
+    private ClassyTreeView treeView;
+    private ClassyTreeItem root;
+
+    @Override
+    public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
+        root = new ClassyTreeItem(projectExplorer);
+        DefaultTreeModel treeModel = new DefaultTreeModel(root);
+        treeView = new ClassyTreeView(treeModel);
+        return treeView;
+    }
+
+    @Override
+    public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
+        parent.add(new ClassyTreeItem(classyNode));
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    public void removeNode(ClassyTreeItem classyTreeItem) {
+        classyTreeItem.removeFromParent();
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    @Override
+    public ClassyTreeItem getSelectedNode() {
+        return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    public ClassyTreeItem getRoot() {
+        return root;
+    }
+
 }
