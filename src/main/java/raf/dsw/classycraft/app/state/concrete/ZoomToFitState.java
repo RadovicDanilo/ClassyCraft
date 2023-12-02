@@ -5,7 +5,7 @@ import main.java.raf.dsw.classycraft.app.state.State;
 
 import java.awt.event.MouseEvent;
 
-public class ZoomInState implements State {
+public class ZoomToFitState implements State {
 	@Override
 	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
 	

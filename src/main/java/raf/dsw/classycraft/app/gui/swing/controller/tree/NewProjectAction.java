@@ -23,16 +23,8 @@ public class NewProjectAction extends AbstractClassyAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ClassyNode classyNode;
-		int i = 0;
-		while(true) {
-			ProjectFactory projectFactory = new ProjectFactory();
-			classyNode = projectFactory.classyNode("project " + i);
-			if(!((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)) {
-				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
-				break;
-			}
-			i++;
-		}
-		
+		ProjectFactory projectFactory = new ProjectFactory();
+		classyNode = projectFactory.classyNode();
+		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
 	}
 }

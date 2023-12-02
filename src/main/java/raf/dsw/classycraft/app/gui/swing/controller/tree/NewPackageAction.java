@@ -30,17 +30,8 @@ public class NewPackageAction extends AbstractClassyAction {
 			return;
 		}
 		ClassyNode classyNode;
-		int i = 0;
-		while(true) {
-			PackageFactory packageFactory = new PackageFactory();
-			classyNode = packageFactory.classyNode("package " + i, (ClassyNodeComposite) selectedNode.getClassyNode());
-			if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)) {
-				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
-				break;
-			}
-			i++;
-		}
-		
-		
+		PackageFactory packageFactory = new PackageFactory();
+		classyNode = packageFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
+		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
 	}
 }

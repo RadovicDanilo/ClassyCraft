@@ -2,12 +2,10 @@ package main.java.raf.dsw.classycraft.app.state;
 
 import main.java.raf.dsw.classycraft.app.state.concrete.RemoveState;
 import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
-import main.java.raf.dsw.classycraft.app.state.concrete.ZoomInState;
-import main.java.raf.dsw.classycraft.app.state.concrete.ZoomOutState;
+import main.java.raf.dsw.classycraft.app.state.concrete.ZoomToFitState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dc.*;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawClassState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawEnumState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawInterClassState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawInterfaceState;
 
 public class StateManager {
@@ -21,8 +19,8 @@ public class StateManager {
 	private final DrawDependencyState drawDependencyState;
 	private final DrawCompositionState drawCompositionState;
 	private final DrawAggregationState drawAggregationState;
-	private final ZoomInState zoomInState;
-	private final ZoomOutState zoomOutState;
+	private final ZoomToFitState zoomToFitState;
+	
 	
 	public StateManager() {
 		selectState = new SelectState();
@@ -34,8 +32,7 @@ public class StateManager {
 		drawDependencyState = new DrawDependencyState();
 		drawCompositionState = new DrawCompositionState();
 		drawAggregationState = new DrawAggregationState();
-		zoomInState = new ZoomInState();
-		zoomOutState = new ZoomOutState();
+		zoomToFitState = new ZoomToFitState();
 		currentState = selectState;
 	}
 	
@@ -91,13 +88,7 @@ public class StateManager {
 		currentState = drawDependencyState;
 	}
 	
-	public void setZoomInState() {
-		System.out.println("CURRENT STATE: ZOOM IN");
-		currentState = zoomInState;
-	}
-	
-	public void setZoomOutState() {
-		System.out.println("CURRENT STATE: ZOOM OUT");
-		currentState = zoomOutState;
+	public void setZoomToFitState() {
+		currentState = zoomToFitState;
 	}
 }

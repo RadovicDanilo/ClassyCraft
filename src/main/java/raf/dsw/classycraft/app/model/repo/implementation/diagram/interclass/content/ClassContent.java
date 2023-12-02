@@ -1,5 +1,21 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content;
 
-public abstract class ClassContent {
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
+public abstract class ClassContent {
+	private String name;
+	private Visibility visibility;
+	
+	public ClassContent(String name, Visibility visibility) {
+		this.name = name;
+		this.visibility = visibility;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Visibility getVisibility() {
+		return visibility;
+	}
 }

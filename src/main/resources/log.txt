@@ -64,3 +64,7 @@
 [ERROR][02-12-2023 12:04:15] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][02-12-2023 12:04:16] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][02-12-2023 12:11:42] Vec postoji cvor sa datim imenom
+[ERROR][02-12-2023 14:47:35] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][02-12-2023 20:36:39] Vec postoji cvor sa datim imenom
+[ERROR][02-12-2023 20:36:44] Vec postoji cvor sa datim imenom
+[ERROR][02-12-2023 20:36:46] Vec postoji cvor sa datim imenom

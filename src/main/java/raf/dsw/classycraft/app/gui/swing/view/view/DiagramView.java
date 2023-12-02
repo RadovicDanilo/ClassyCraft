@@ -17,6 +17,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	public DiagramView(Diagram diagram) {
 		this.diagram = diagram;
+		diagram.addSubscriber(this);//TODO PITANJE
 		elementPainters = new ArrayList<>();
 		this.addMouseListener(new MyMouseAdapter(this));
 	}

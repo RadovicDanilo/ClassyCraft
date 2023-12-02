@@ -8,9 +8,21 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.util.ArrayList;
 
 public class Interface extends InterClass {
-	private final ArrayList<Method> methods = new ArrayList<>();
+	private final ArrayList<Method> methods;
 	
 	public Interface(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
+		methods = new ArrayList<>();
+	}
+	
+	public ArrayList<Method> getMethods() {
+		return methods;
+	}
+	public void addMethod(Method m){
+		if(m == null)
+			return;
+		if(!methods.contains(m)){
+			methods.add(m);
+		}
 	}
 }

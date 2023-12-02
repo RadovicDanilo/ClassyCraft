@@ -3,7 +3,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyMenuBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MySideBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyToolBar;
@@ -33,7 +32,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
-		setSize(screenWidth * 6 / 10, screenHeight * 6 / 10);
+		setSize(screenWidth * 55 / 100, screenHeight * 55 / 100);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("ClassyCrafT");
@@ -126,7 +125,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 		messageDialog.setVisible(true);
 	}
 	
-	public ClassyTree getClassyTree() {
+	public ClassyTreeImplementation getClassyTree() {
 		return classyTree;
 	}
 	

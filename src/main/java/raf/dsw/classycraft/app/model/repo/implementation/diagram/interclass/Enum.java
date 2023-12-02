@@ -4,8 +4,23 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
+import java.util.ArrayList;
+
 public class Enum extends InterClass {
+	ArrayList<String> contents;
 	public Enum(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
+		contents = new ArrayList<>();
+	}
+	
+	public ArrayList<String> getContents() {
+		return contents;
+	}
+	public void addEnum(String e){
+		if(e == null)
+			return;
+		if(!contents.contains(e)){
+			contents.add(e);
+		}
 	}
 }

@@ -37,7 +37,7 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		}
 		this.selectedPackage = selectedPackage;
 		if(selectedPackage != null) {
-			selectedPackage.openedPane();
+			selectedPackage.addSubscriber(this);//TODO pitanje
 		}
 		ClassyNode project = selectedPackage;//TODO dodati getproject metoda u classyNode-u
 		while(!(project instanceof Project)) {
@@ -52,7 +52,6 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		DiagramView dv;
 		for(Diagram diagram : diagrams) {
 			dv = new DiagramView(diagram);
-			diagram.openedDiagram(dv);
 			this.tabbedPane.addTab(diagram.getName(), dv);
 		}
 	}

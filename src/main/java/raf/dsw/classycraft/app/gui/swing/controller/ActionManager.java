@@ -3,8 +3,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.menu_and_toolbar.*;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.RemoveAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.SelectAction;
-import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.ZoomInAction;
-import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.ZoomOutAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.ZoomToFitAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawAggregationAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawCompositionAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawDependencyAction;
@@ -33,8 +32,7 @@ public class ActionManager {
 	private DrawCompositionAction drawCompositionAction;
 	private DrawAggregationAction drawAggregationAction;
 	private DrawDependencyAction drawDependencyAction;
-	private ZoomInAction zoomInAction;
-	private ZoomOutAction zoomOutAction;
+	private ZoomToFitAction zoomToFitAction;
 	
 	
 	public ActionManager() {
@@ -59,8 +57,7 @@ public class ActionManager {
 		drawCompositionAction = new DrawCompositionAction();
 		drawGeneralisationAction = new DrawGeneralisationAction();
 		drawDependencyAction = new DrawDependencyAction();
-		zoomInAction = new ZoomInAction();
-		zoomOutAction = new ZoomOutAction();
+		zoomToFitAction = new ZoomToFitAction();
 	}
 	
 	public Action getExitAction() {
@@ -127,11 +124,7 @@ public class ActionManager {
 		return drawDependencyAction;
 	}
 	
-	public ZoomInAction getZoomInAction() {
-		return zoomInAction;
-	}
-	
-	public ZoomOutAction getZoomOutAction() {
-		return zoomOutAction;
+	public ZoomToFitAction getzoomToFitAction() {
+		return zoomToFitAction;
 	}
 }

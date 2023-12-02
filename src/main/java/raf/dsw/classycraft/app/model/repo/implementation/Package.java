@@ -40,12 +40,8 @@ public class Package extends ClassyNodeComposite implements IPublisher {
 	}
 	
 	public void closedPane() {
-		for(ISubscriber subscribe: subscribers){
-			removeSubscriber(subscribe);
-		}
+		subscribers = new ArrayList<>();
 	}
 	
-	public void openedPane() {
-		subscribers.add(MainFrame.getInstance().getPackageView());
-	}
+	
 }

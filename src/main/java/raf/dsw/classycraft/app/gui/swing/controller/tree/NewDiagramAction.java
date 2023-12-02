@@ -30,15 +30,8 @@ public class NewDiagramAction extends AbstractClassyAction {
 			return;
 		}
 		ClassyNode classyNode;
-		int i = 0;
-		while(true) {
-			DiagramFactory diagramFactory = new DiagramFactory();
-			classyNode = diagramFactory.classyNode("diagram " + i, (ClassyNodeComposite) selectedNode.getClassyNode());
-			if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)) {
-				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
-				break;
-			}
-			i++;
-		}
+		DiagramFactory diagramFactory = new DiagramFactory();
+		classyNode = diagramFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
+		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
 	}
 }

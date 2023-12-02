@@ -10,15 +10,16 @@ public class MySideBar extends JToolBar {
 		setFloatable(false);
 		add(MainFrame.getInstance().getActionManager().getSelectAction());
 		add(MainFrame.getInstance().getActionManager().getRemoveAction());
+		
 		add(MainFrame.getInstance().getActionManager().getDrawClassAction());
 		add(MainFrame.getInstance().getActionManager().getDrawInterfaceAction());
 		add(MainFrame.getInstance().getActionManager().getDrawEnumAction());
+		
 		add(MainFrame.getInstance().getActionManager().getDrawAggregationAction());
 		add(MainFrame.getInstance().getActionManager().getDrawCompositionAction());
 		add(MainFrame.getInstance().getActionManager().getDrawDependencyAction());
 		add(MainFrame.getInstance().getActionManager().getDrawGeneralisationAction());
-		add(MainFrame.getInstance().getActionManager().getZoomInAction());
-		add(MainFrame.getInstance().getActionManager().getZoomOutAction());
+		add(MainFrame.getInstance().getActionManager().getzoomToFitAction());
 		
 	}
 }
