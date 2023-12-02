@@ -45,4 +45,5 @@ public class ClassyTreeItem extends DefaultMutableTreeNode {
 		return classyNode.getName();
 	}
 	
+	
 }

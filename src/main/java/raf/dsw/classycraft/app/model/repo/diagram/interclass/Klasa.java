@@ -13,4 +13,8 @@ public class Klasa extends InterClass {
 	public Klasa(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
 	}
+	
+	public ArrayList<ClassContent> getContents() {
+		return contents;
+	}
 }

@@ -1,5 +1,8 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dic;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.painter.icp.ClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -31,8 +34,12 @@ public class DrawClassState extends DrawInterClassState {
 			i++;
 		}
 		Klasa klasa = new Klasa(diagramView.getDiagram(), name, Visibility.PUBLIC);
-		diagramView.getElementPainters().add(new ClassPainter(e.getPoint()));
+		diagramView.getElementPainters().add(new ClassPainter(e.getPoint(),klasa));
 		diagramView.getDiagram().addChild(klasa);
+		ClassyTreeItem parent = MainFrame.getInstance().getClassyTree().getChild(diagramView.getDiagram());
+		MainFrame.getInstance().getClassyTree().addChild(parent, klasa);
+		
+		
 	}
 	
 	@Override

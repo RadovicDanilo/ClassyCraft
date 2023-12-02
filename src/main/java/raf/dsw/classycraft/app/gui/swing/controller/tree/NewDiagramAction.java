@@ -13,7 +13,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
 import java.awt.event.ActionEvent;
-
+//TODO POPRAVITI OVO KRSENJE MVC-a SA NOTIFY SUBSCRIBER I OSTALIM SRANJIMA
 public class NewDiagramAction extends AbstractClassyAction {
 	public NewDiagramAction() {
 		putValue(SMALL_ICON, loadIcon("/images/icons/add_diagram.png"));

@@ -1,10 +1,11 @@
-package main.java.raf.dsw.classycraft.app.state.concrete.dc.dcc;
+package main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 
 import java.awt.event.MouseEvent;
 
-public class DrawField extends DrawClassContent {
+public class DrawMethod extends DrawClassContent {
+	
 	@Override
 	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
 	
