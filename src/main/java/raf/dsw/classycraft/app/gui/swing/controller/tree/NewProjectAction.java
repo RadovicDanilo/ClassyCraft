@@ -14,27 +14,27 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class NewProjectAction extends AbstractClassyAction {
-	public NewProjectAction() {
-		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-		putValue(SMALL_ICON, loadIcon("/images/icons/add_project.png"));
-		putValue(NAME, "New project");
-		putValue(SHORT_DESCRIPTION, "New project");
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		ClassyNode classyNode;
-		int i = 0;
-		while(true) {
-			ProjectFactory projectFactory = new ProjectFactory();
-			classyNode = projectFactory.classyNode("project " + i);
-			if(!((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)) {
-				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
-				break;
-			}
-			i++;
-		}
-		MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).getRoot(), classyNode);
-	}
+    public NewProjectAction() {
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+        putValue(SMALL_ICON, loadIcon("/images/icons/add_project.png"));
+        putValue(NAME, "New project");
+        putValue(SHORT_DESCRIPTION, "New project");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        ClassyNode classyNode;
+        int i = 0;
+        while (true) {
+            ProjectFactory projectFactory = new ProjectFactory();
+            classyNode = projectFactory.classyNode("project " + i);
+            if (!((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot()).getChildren().contains(classyNode)) {
+                ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+                break;
+            }
+            i++;
+        }
+        MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).getRoot(), classyNode);
+    }
 }
