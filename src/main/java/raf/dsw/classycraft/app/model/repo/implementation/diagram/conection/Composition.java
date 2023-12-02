@@ -5,7 +5,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Conce
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 
 public class Composition extends Concection {
-    public Composition(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
-        super(parent, name, from, to);
-    }
+	public Composition(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
+		super(parent, name, from, to);
+	}
 }

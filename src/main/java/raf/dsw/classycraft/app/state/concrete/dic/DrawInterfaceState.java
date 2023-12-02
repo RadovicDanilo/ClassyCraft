@@ -9,35 +9,35 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.awt.event.MouseEvent;
 
 public class DrawInterfaceState extends DrawInterClassState {
-    @Override
-    public void mouseClicked(MouseEvent e, DiagramView diagramView) {
-        int i = 1;
-        String name;
-        while (true) {
-            name = "interfejs " + i;
-            boolean flag = true;
-            for (ClassyNode classyNode : diagramView.getDiagram().getChildren()) {
-                if (classyNode.getName().equals(name)) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag)
-                break;
-            i++;
-        }
-        Interface interfejs = new Interface(diagramView.getDiagram(), name, Visibility.PUBLIC);
-        diagramView.getElementPainters().add(new EnumPainter(e.getPoint()));
-        diagramView.getDiagram().addChild(interfejs);
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-
-    }
-
-    @Override
-    public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-
-    }
+	@Override
+	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
+		int i = 1;
+		String name;
+		while(true) {
+			name = "interfejs " + i;
+			boolean flag = true;
+			for(ClassyNode classyNode : diagramView.getDiagram().getChildren()) {
+				if(classyNode.getName().equals(name)) {
+					flag = false;
+					break;
+				}
+			}
+			if(flag)
+				break;
+			i++;
+		}
+		Interface interfejs = new Interface(diagramView.getDiagram(), name, Visibility.PUBLIC);
+		diagramView.getElementPainters().add(new EnumPainter(e.getPoint()));
+		diagramView.getDiagram().addChild(interfejs);
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+	
+	}
+	
+	@Override
+	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+	
+	}
 }

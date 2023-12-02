@@ -9,37 +9,37 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.awt.event.MouseEvent;
 
 public class DrawClassState extends DrawInterClassState {
-
-    @Override
-    public void mouseClicked(MouseEvent e, DiagramView diagramView) {
-        int i = 1;
-        String name;
-        while (true) {
-            name = "klasa " + i;
-            boolean flag = true;
-            for (ClassyNode classyNode : diagramView.getDiagram().getChildren()) {
-                if (classyNode.getName().equals(name)) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag)
-                break;
-            i++;
-        }
-        Klasa klasa = new Klasa(diagramView.getDiagram(), name, Visibility.PUBLIC);
-
-        diagramView.getElementPainters().add(new ClassPainter(e.getPoint()));
-        diagramView.getDiagram().addChild(klasa);
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-
-    }
-
-    @Override
-    public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-
-    }
+	
+	@Override
+	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
+		int i = 1;
+		String name;
+		while(true) {
+			name = "klasa " + i;
+			boolean flag = true;
+			for(ClassyNode classyNode : diagramView.getDiagram().getChildren()) {
+				if(classyNode.getName().equals(name)) {
+					flag = false;
+					break;
+				}
+			}
+			if(flag)
+				break;
+			i++;
+		}
+		Klasa klasa = new Klasa(diagramView.getDiagram(), name, Visibility.PUBLIC);
+		
+		diagramView.getElementPainters().add(new ClassPainter(e.getPoint()));
+		diagramView.getDiagram().addChild(klasa);
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+	
+	}
+	
+	@Override
+	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+	
+	}
 }
