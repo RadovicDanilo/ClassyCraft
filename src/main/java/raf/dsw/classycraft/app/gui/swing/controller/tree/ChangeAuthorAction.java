@@ -6,6 +6,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
@@ -19,31 +20,18 @@ public class ChangeAuthorAction extends AbstractClassyAction {
 		putValue(NAME, "Change author");
 		putValue(SHORT_DESCRIPTION, "Change author");
 	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
+		ClassyNode classyNode = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
+		if(classyNode == null) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS);
 			return;
 		}
-		ClassyNode classyNode = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
-		if(classyNode instanceof Project) {
-			String author = JOptionPane.showInputDialog(null, "Ime autora");
-			Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
-			project.setAuthor(author);
-			changeAuthorUpdate((ArrayList<ClassyNode>) project.getChildren());
-		}else {
+		if(!(classyNode instanceof Project)){
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS);
+			return;
 		}
-	}
-	
-	public void changeAuthorUpdate(ArrayList<ClassyNode> children) {
-		for(ClassyNode classyNode : children) {
-			if(classyNode instanceof Package) {
-				//TODO OBSERVER UKLONI
-				((Package) classyNode).notifySubscribers(PackageViewEvent.CHANGE_AUTHOR);
-				changeAuthorUpdate((ArrayList<ClassyNode>) ((Package) classyNode).getChildren());
-			}
-		}
+		String author = JOptionPane.showInputDialog(null, "Ime autora");
+		((Project) classyNode).setAuthor(author);
 	}
 }

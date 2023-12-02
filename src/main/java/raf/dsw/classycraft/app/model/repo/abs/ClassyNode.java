@@ -1,7 +1,13 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+
+import java.util.ArrayList;
 
 public abstract class ClassyNode {
 	private final ClassyNodeComposite parent;
@@ -26,15 +32,26 @@ public abstract class ClassyNode {
 	}
 	
 	public void setName(String name) {
-		for(ClassyNode c : ((ClassyNodeComposite) this.parent).getChildren()) {
-			System.out.println(name + " | | " + c.getName());
+		for(ClassyNode c : this.parent.getChildren()) {
 			if(c.getName().equals(name)) {
-				System.out.println("IME NIJE PROMENJENO");
 				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NODE_CANNOT_BE_DUPLICATE);
 				return;
 			}
 		}
-		System.out.println("IME PROMENJENO");
 		this.name = name;
+		if(this instanceof Diagram) {
+			((Package) this.getParent()).notifySubscribers(PackageViewEvent.RENAME_DIAGRAM);
+		}else if(this instanceof Project) {
+			changeProjectNameUpdate((ArrayList<ClassyNode>) ((Project) this).getChildren());
+		}
+	}
+	
+	public void changeProjectNameUpdate(ArrayList<ClassyNode> children) {
+		for(ClassyNode classyNode : children) {
+			if(classyNode instanceof Package) {
+				((Package) classyNode).notifySubscribers(PackageViewEvent.RENAME_PROJECT);
+				changeProjectNameUpdate((ArrayList<ClassyNode>) ((Package) classyNode).getChildren());
+			}
+		}
 	}
 }

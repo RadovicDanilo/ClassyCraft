@@ -28,8 +28,6 @@ public class ClassyRepositoryImplementation implements ClassyRepository {
 	
 	@Override
 	public void removeChild(ClassyNode child) {
-		if(!(child.getParent() instanceof ClassyNodeComposite))
-			return;
 		((ClassyNodeComposite) child.getParent()).removeChild(child);
 	}
 	

@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Package extends ClassyNodeComposite implements IPublisher {
-	private final List<ISubscriber> subscribers = new ArrayList<>();
+	private List<ISubscriber> subscribers = new ArrayList<>();
 	
 	public Package(ClassyNodeComposite parent, String name) {
 		super(parent, name);
@@ -36,5 +37,15 @@ public class Package extends ClassyNodeComposite implements IPublisher {
 	@Override
 	public void notifySubscribers(Object notification) {
 		for(ISubscriber sub : this.subscribers) sub.update(notification);
+	}
+	
+	public void closedPane() {
+		for(ISubscriber subscribe: subscribers){
+			removeSubscriber(subscribe);
+		}
+	}
+	
+	public void openedPane() {
+		subscribers.add(MainFrame.getInstance().getPackageView());
 	}
 }

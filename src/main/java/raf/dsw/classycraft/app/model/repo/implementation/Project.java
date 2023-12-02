@@ -3,8 +3,11 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+
+import java.util.ArrayList;
 
 public class Project extends ClassyNodeComposite {
 	private String author;
@@ -30,8 +33,16 @@ public class Project extends ClassyNodeComposite {
 	
 	public void setAuthor(String author) {
 		this.author = author;
+		changeAuthorUpdate((ArrayList<ClassyNode>) this.getChildren());
 	}
-	
+	public void changeAuthorUpdate(ArrayList<ClassyNode> children) {
+		for(ClassyNode classyNode : children) {
+			if(classyNode instanceof Package) {
+				((Package) classyNode).notifySubscribers(PackageViewEvent.CHANGE_AUTHOR);
+				changeAuthorUpdate((ArrayList<ClassyNode>) ((Package) classyNode).getChildren());
+			}
+		}
+	}
 	public String getResourcePath() {
 		return resourcePath;
 	}

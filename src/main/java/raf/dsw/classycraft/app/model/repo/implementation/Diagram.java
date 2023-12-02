@@ -1,10 +1,10 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +14,6 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 	
 	public Diagram(ClassyNodeComposite parent, String name) {
 		super(parent, name);
-	}
-	
-	@Override
-	public void addChild(ClassyNode c) {
-		if(c instanceof DiagramElement) {
-			super.addChild(c);
-			notifySubscribers("");
-		}
-		
 	}
 	
 	@Override
@@ -47,5 +38,9 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 	public void notifySubscribers(Object notification) {
 		for(ISubscriber sub : this.subscribers)
 			sub.update(notification);
+	}
+	
+	public void openedDiagram(DiagramView dv) {
+		addSubscriber(dv);
 	}
 }

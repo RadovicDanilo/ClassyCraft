@@ -59,3 +59,8 @@
 [ERROR][26-11-2023 14:28:03] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][26-11-2023 16:59:52] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][28-11-2023 17:27:41] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][02-12-2023 11:53:58] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][02-12-2023 12:00:51] Mora te selektovati projekat da bi ste mogli da promentie autora
+[ERROR][02-12-2023 12:04:15] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][02-12-2023 12:04:16] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][02-12-2023 12:11:42] Vec postoji cvor sa datim imenom

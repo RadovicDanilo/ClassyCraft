@@ -37,9 +37,6 @@ public class NewDiagramAction extends AbstractClassyAction {
 			classyNode = diagramFactory.classyNode("diagram " + i, (ClassyNodeComposite) selectedNode.getClassyNode());
 			if(!((ClassyNodeComposite) selectedNode.getClassyNode()).getChildren().contains(classyNode)) {
 				ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
-				//TODO OBSERVER UKLONI
-				
-				((Package) classyNode.getParent()).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);
 				break;
 			}
 			i++;

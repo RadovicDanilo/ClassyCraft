@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackageView extends JPanel implements ISubscriber, State {
-	private JLabel lbProjectName;
-	private JTabbedPane tabbedPane;
 	private Package selectedPackage;
 	private StateManager stateManager;
+	private JLabel lbProjectName;
+	private JTabbedPane tabbedPane;
 	
 	public PackageView() {
 		super(new BorderLayout());
@@ -32,13 +32,13 @@ public class PackageView extends JPanel implements ISubscriber, State {
 	
 	public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
 		this.tabbedPane.removeAll();
-		
-		if(this.getSelectedPackage() != null) {
-			this.getSelectedPackage().removeSubscriber(this);
+		if(selectedPackage != null) {
+			selectedPackage.closedPane();
 		}
-		this.setSelectedPackage(selectedPackage);
-		this.getSelectedPackage().addSubscriber(this);
-		
+		this.selectedPackage = selectedPackage;
+		if(selectedPackage != null) {
+			selectedPackage.openedPane();
+		}
 		ClassyNode project = selectedPackage;//TODO dodati getproject metoda u classyNode-u
 		while(!(project instanceof Project)) {
 			project = project.getParent();
@@ -52,7 +52,7 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		DiagramView dv;
 		for(Diagram diagram : diagrams) {
 			dv = new DiagramView(diagram);
-			diagram.addSubscriber(dv);
+			diagram.openedDiagram(dv);//TODO REMOVE
 			this.tabbedPane.addTab(diagram.getName(), dv);
 		}
 	}
@@ -115,18 +115,6 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		lbProjectName.setFont(new Font("Calibri", Font.BOLD, 14));
 	}
 	
-	public void addDiagram() {
-		int amountOfDiagrams = 0;
-		for(ClassyNode classyNode : selectedPackage.getChildren()) {
-			if(classyNode instanceof Diagram) {
-				amountOfDiagrams++;
-			}
-		}
-		
-		if(amountOfDiagrams == tabbedPane.getTabCount() + 1) {
-			reloadPackage();
-		}
-	}
 	
 	public JLabel getLbProjectName() {
 		return lbProjectName;

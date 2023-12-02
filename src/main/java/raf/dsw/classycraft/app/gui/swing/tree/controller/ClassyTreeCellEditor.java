@@ -1,11 +1,14 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -41,22 +44,13 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
 	public void actionPerformed(ActionEvent e) {
 		if(!(clickedOn instanceof ClassyTreeItem))
 			return;
+		if(((ClassyTreeItem) clickedOn).getClassyNode() instanceof ProjectExplorer){
+			//TODO sys event cannot rename root;
+			return;
+		}
 		ClassyTreeItem clicked = (ClassyTreeItem) clickedOn;
 		clicked.setName(e.getActionCommand());
-		
-		if(clicked.getClassyNode() instanceof Diagram) {
-			((Package) clicked.getClassyNode().getParent()).notifySubscribers(PackageViewEvent.RENAME_DIAGRAM);
-		}else if(clicked.getClassyNode() instanceof Project) {
-			changeProjectNameUpdate((ArrayList<ClassyNode>) ((Project) clicked.getClassyNode()).getChildren());
-		}
 	}
 	
-	public void changeProjectNameUpdate(ArrayList<ClassyNode> children) {
-		for(ClassyNode classyNode : children) {
-			if(classyNode instanceof Package) {
-				((Package) classyNode).notifySubscribers(PackageViewEvent.RENAME_PROJECT);
-				changeProjectNameUpdate((ArrayList<ClassyNode>) ((Package) classyNode).getChildren());
-			}
-		}
-	}
+	
 }
