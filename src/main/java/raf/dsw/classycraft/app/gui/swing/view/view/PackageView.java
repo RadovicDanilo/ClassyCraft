@@ -52,7 +52,7 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		DiagramView dv;
 		for(Diagram diagram : diagrams) {
 			dv = new DiagramView(diagram);
-			diagram.openedDiagram(dv);//TODO REMOVE
+			diagram.openedDiagram(dv);
 			this.tabbedPane.addTab(diagram.getName(), dv);
 		}
 	}

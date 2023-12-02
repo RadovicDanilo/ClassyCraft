@@ -20,6 +20,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 	}
 	
 	public void addChild(ClassyNode c) {
+		
 		if(this.children == null) {
 			this.children = new ArrayList<>();
 		}
@@ -27,9 +28,20 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NODE_CANNOT_BE_DUPLICATE);
 			return;
 		}
+		
 		this.children.add(c);
+		
+		if(c instanceof Project){
+			MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).getRoot(), c);
+		}else{
+			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getSelectedNode(), c);
+		}
+		
 		if(c instanceof Diagram){
 			((Package) this).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);
+		}
+		if(c instanceof ClassyNodeLeaf){
+			((Diagram)getParent()).notifySubscribers("");
 		}
 	}
 	

@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.controller.tree;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
@@ -39,6 +40,7 @@ public class NewPackageAction extends AbstractClassyAction {
 			}
 			i++;
 		}
-		MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
+		
+		
 	}
 }

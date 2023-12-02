@@ -27,7 +27,7 @@ public class DeleteNodeAction extends AbstractClassyAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-		if(selectedNode.getClassyNode() == null){
+		if(selectedNode.getClassyNode() == null) {
 			//TODO Napraviti event za ne selektovan node/ null node
 			return;
 		}
@@ -35,11 +35,9 @@ public class DeleteNodeAction extends AbstractClassyAction {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
 			return;
 		}
-		
 		ClassyNodeComposite parent = (ClassyNodeComposite) selectedNode.getClassyNode().getParent();
 		parent.removeChild(selectedNode.getClassyNode());
 		
-
 	}
 	
 	
