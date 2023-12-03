@@ -5,20 +5,29 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visib
 import java.util.ArrayList;
 
 public class Method extends ClassContent {
-	private String returnValue;
-	private ArrayList<Field> args;
+	private final String returnValue;
 	
-	public Method(String name, Visibility visibility, String returnValue, ArrayList<Field> args) {
+	public Method(String name, Visibility visibility, String returnValue) {
 		super(name, visibility);
 		this.returnValue = returnValue;
-		this.args = args;
+		
+	}
+	
+	@Override
+	public String toString() {
+		return getVisibility().toString() + " " + getName() + "()" + ": " + returnValue;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Method){
+			return ((Method) obj).getName().equals(this.getName()) && ((Method) obj).getReturnValue().equals(this.getReturnValue());
+		}
+		return false;
 	}
 	
 	public String getReturnValue() {
 		return returnValue;
 	}
-	
-	public ArrayList<Field> getArgs() {
-		return args;
-	}
+
 }

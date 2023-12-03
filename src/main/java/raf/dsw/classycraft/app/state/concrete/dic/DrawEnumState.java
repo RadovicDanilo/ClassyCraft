@@ -20,10 +20,7 @@ public class DrawEnumState extends DrawInterClassState {
 		Enum enumeracija = (Enum) elementFactory.createInterClass(InterClassType.ENUM, diagramView.getDiagram(), Visibility.PUBLIC);
 		
 		EnumPainter enumPainter = new EnumPainter(enumeracija, e.getX(), e.getY());
-		
-		for(ElementPainter ep: diagramView.getElementPainters()){
-		
-		}
+
 		
 		enumPainter.addElement(enumeracija);
 		diagramView.getElementPainters().add(enumPainter);

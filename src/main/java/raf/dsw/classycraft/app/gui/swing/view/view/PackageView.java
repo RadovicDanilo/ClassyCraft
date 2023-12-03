@@ -11,6 +11,8 @@ import main.java.raf.dsw.classycraft.app.state.State;
 import main.java.raf.dsw.classycraft.app.state.StateManager;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -168,4 +170,6 @@ public class PackageView extends JPanel implements ISubscriber, State {
 	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
 		this.stateManager.getCurrentState().mouseClicked(e, diagramView);
 	}
+	
+
 }

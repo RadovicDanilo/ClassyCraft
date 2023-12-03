@@ -10,6 +10,19 @@ public class Field extends ClassContent {
 		this.type = type;
 	}
 	
+	@Override
+	public String toString() {
+		return getVisibility().toString() + " " + getName() + ": " + type;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Field){
+			return ((Field) obj).type.equals(this.type) && ((Field) obj).getName().equals(this.getName());
+		}
+		return false;
+	}
+	
 	public String getType() {
 		return type;
 	}

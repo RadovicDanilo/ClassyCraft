@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass;
 
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
@@ -24,5 +25,6 @@ public class Interface extends InterClass {
 		if(!methods.contains(m)){
 			methods.add(m);
 		}
+		((Diagram)getParent()).notifySubscribers("");
 	}
 }

@@ -8,8 +8,7 @@ import java.awt.*;
 public abstract class ElementPainter {
 
 	private final DiagramElement diagramElement;
-	private int currentWidth;
-	private int currentHeight;
+	
 	
 	public ElementPainter(DiagramElement diagramElement) {
 		this.diagramElement = diagramElement;
@@ -25,11 +24,6 @@ public abstract class ElementPainter {
 		return diagramElement;
 	}
 	
-	public int getCurrentWidth() {
-		return currentWidth;
-	}
 	
-	public int getCurrentHeight() {
-		return currentHeight;
-	}
+	
 }

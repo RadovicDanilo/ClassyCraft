@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass;
 
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
@@ -26,12 +27,15 @@ public class Klasa extends InterClass {
 		if(!contents.contains(m)){
 			contents.add(m);
 		}
+		((Diagram)getParent()).notifySubscribers("");
+		
 	}
 	public void addField(Field f){
 		if(f == null)
 			return;
-		if(!contents.contains(f)){
+		if(!(contents.contains(f))){
 			contents.add(f);
 		}
+		((Diagram)getParent()).notifySubscribers("");
 	}
 }

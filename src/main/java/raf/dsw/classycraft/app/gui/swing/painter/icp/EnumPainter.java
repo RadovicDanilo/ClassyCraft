@@ -37,30 +37,9 @@ public class EnumPainter extends InterClassPainter {
 		}
 		width += 4;
 		
-		for(ElementPainter de : MainFrame.getInstance().getCurrentDiagramView().getElementPainters()) {
-			if(de == this) {
-				break;
-			}
-			if(de instanceof InterClassPainter) {
-				int x1 = getX();
-				int y1 = getY();
-				
-				int x2 = x1 + width;
-				int y2 = y1 + height;
-				
-				int x3 = ((InterClassPainter) de).getX();
-				int y3 = ((InterClassPainter) de).getY();
-				
-				int x4 = x3 + de.getCurrentWidth();
-				int y4 = y3 + de.getCurrentHeight();
-				
-				if(!(x2 < x3 || y2 < y3 || x1 > x4 || y1 > y4)){
-					MainFrame.getInstance().getCurrentDiagramView().getElementPainters().remove(this);
-					return;
-				}
-			}
-			
-		}
+		
+		setCurrentHeight(height);
+		setCurrentWidth(width);
 		
 		g.drawRect(getX(), getY(), width, height);
 		
@@ -77,7 +56,7 @@ public class EnumPainter extends InterClassPainter {
 		for(String e : ((Enum) getDiagramElement()).getContents()) {
 			i++;
 			xOffset = (width - g.getFontMetrics().stringWidth(e)) / 2;
-			g.drawString(e, getX() + xOffset, getY() + yOffset * i);
+			g.drawString(e, getX() +2, getY() + yOffset * i);
 		}
 		
 	}
