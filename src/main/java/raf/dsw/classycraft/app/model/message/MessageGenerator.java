@@ -1,8 +1,8 @@
 package main.java.raf.dsw.classycraft.app.model.message;
 
-import main.java.raf.dsw.classycraft.app.model.observer.IPublisher;
-import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
-import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
+import main.java.raf.dsw.classycraft.app.observer.IPublisher;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 

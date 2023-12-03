@@ -1,16 +1,12 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
-import main.java.raf.dsw.classycraft.app.gui.swing.view.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
-import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 public class DiagramView extends JPanel implements ISubscriber {

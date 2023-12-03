@@ -1,16 +1,14 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
-import jdk.jshell.Diag;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
-import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
+import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.util.ArrayList;

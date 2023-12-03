@@ -2,12 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
-import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
@@ -17,7 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.EventObject;
 
 public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {

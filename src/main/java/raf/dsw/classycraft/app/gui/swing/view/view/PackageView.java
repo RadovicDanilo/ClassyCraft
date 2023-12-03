@@ -1,8 +1,8 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
-import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;

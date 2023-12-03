@@ -1,7 +1,7 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
+import main.java.raf.dsw.classycraft.app.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyMenuBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MySideBar;
@@ -9,7 +9,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyToolBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.PackageView;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 	private PackageView packageView;
 	private ArrayList<DiagramView> diagramViews;
 	private ClassyTreeImplementation classyTree;
+	private DiagramView currentDiagramView;
 	
 	private MainFrame() {
 	
@@ -156,5 +158,12 @@ public class MainFrame extends JFrame implements ISubscriber {
 			return;
 		}
 		diagramViews.add(d);
+	}
+	
+	public DiagramView getCurrentDiagramView() {
+		return currentDiagramView;
+	}
+	public void setCurrentDiagramView(DiagramView currentDiagramView) {
+		this.currentDiagramView = currentDiagramView;
 	}
 }
