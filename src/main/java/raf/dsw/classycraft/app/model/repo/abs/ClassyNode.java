@@ -6,6 +6,7 @@ import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEven
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.util.ArrayList;
 
@@ -39,7 +40,9 @@ public abstract class ClassyNode {
 			}
 		}
 		this.name = name;
-		if(this instanceof Diagram) {
+		if(this instanceof DiagramElement){
+			((Diagram)(this.getParent())).notifySubscribers("");
+		}else if(this instanceof Diagram) {
 			((Package) this.getParent()).notifySubscribers(PackageViewEvent.RENAME_DIAGRAM);
 		}else if(this instanceof Project) {
 			changeProjectNameUpdate((ArrayList<ClassyNode>) ((Project) this).getChildren());

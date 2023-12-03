@@ -6,7 +6,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Agregation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Generalisation;
@@ -15,31 +15,46 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 
 public class ElementFactory extends AbstractElementFactory{
+	private static int c = 0;
+	private static int i = 0;
+	private static int e = 0;
+	private static int a = 0;
+	private static int d = 0;
+	private static int co = 0;
+	private static int g = 0;
+	
 	@Override
-	public InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, String name, Visibility visibility) {
+	public InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, Visibility visibility) {
 		switch(interClassType) {
 			case CLASS:
-				return new Klasa(parent, name, visibility);
+				c++;
+				return new Klasa(parent, "klasa "+c, visibility);
 			case INTERFACE:
-				return new Interface(parent, name, visibility);
+				i++;
+				return new Interface(parent, "interfejs "+i, visibility);
 			case ENUM:
-				return new Enum(parent, name, visibility);
+				e++;
+				return new Enum(parent, "enum "+e, Visibility.PUBLIC);
 			default:
 				return null;
 		}
 	}
 	
 	@Override
-	public Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
+	public Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to) {
 		switch(connectionType){
 			case AGGREGATION:
-				return new Agregation(parent,name,from,to);
+				a++;
+				return new Aggregation(parent,"agr " + a ,from,to);
 			case DEPENDENCY:
-				return new Dependency(parent,name,from,to);
+				d++;
+				return new Dependency(parent,"dep " + d,from,to);
 			case COMPOSITION:
-				return new Composition(parent,name,from,to);
+				co++;
+				return new Composition(parent,"comp " + co,from,to);
 			case GENERALISATION:
-				return new Generalisation(parent,name,from,to);
+				g++;
+				return new Generalisation(parent,"gener "+g,from,to);
 			default:
 				return null;
 		}

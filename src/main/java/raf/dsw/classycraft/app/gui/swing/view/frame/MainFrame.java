@@ -6,6 +6,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyMenuBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MySideBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyToolBar;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.PackageView;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
@@ -13,11 +14,13 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplor
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ISubscriber {
 	private static MainFrame instance;
 	private ActionManager actionManager;
 	private PackageView packageView;
+	private ArrayList<DiagramView> diagramViews;
 	private ClassyTreeImplementation classyTree;
 	
 	private MainFrame() {
@@ -58,6 +61,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 	public static MainFrame getInstance() {
 		if(instance == null) {
 			instance = new MainFrame();
+			instance.diagramViews = new ArrayList<>();
 			instance.classyTree = new ClassyTreeImplementation();
 			instance.initialize();
 		}
@@ -139,5 +143,18 @@ public class MainFrame extends JFrame implements ISubscriber {
 	
 	public void setPackageView(PackageView packageView) {
 		this.packageView = packageView;
+	}
+	
+	public ArrayList<DiagramView> getDiagramViews() {
+		return diagramViews;
+	}
+	public void addDiagramView(DiagramView d){
+		if(d == null){
+			return;
+		}
+		if(diagramViews.contains(d)){
+			return;
+		}
+		diagramViews.add(d);
 	}
 }

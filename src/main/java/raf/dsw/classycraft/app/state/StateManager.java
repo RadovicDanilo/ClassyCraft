@@ -7,18 +7,27 @@ import main.java.raf.dsw.classycraft.app.state.concrete.dc.*;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawClassState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawEnumState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawInterfaceState;
+import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawFieldState;
+import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawMethodState;
 
 public class StateManager {
 	private State currentState;
+	
 	private final SelectState selectState;
 	private final RemoveState removeState;
+	
 	private final DrawClassState drawClassState;
 	private final DrawInterfaceState drawInterfaceState;
 	private final DrawEnumState drawEnumState;
+	
+	private final DrawFieldState drawFieldState;
+	private final DrawMethodState drawMethodState;
+	
 	private final DrawGeneralisationState drawGeneralisationState;
 	private final DrawDependencyState drawDependencyState;
 	private final DrawCompositionState drawCompositionState;
 	private final DrawAggregationState drawAggregationState;
+	
 	private final ZoomToFitState zoomToFitState;
 	
 	
@@ -28,6 +37,8 @@ public class StateManager {
 		drawClassState = new DrawClassState();
 		drawEnumState = new DrawEnumState();
 		drawInterfaceState = new DrawInterfaceState();
+		drawFieldState = new DrawFieldState();
+		drawMethodState = new DrawMethodState();
 		drawGeneralisationState = new DrawGeneralisationState();
 		drawDependencyState = new DrawDependencyState();
 		drawCompositionState = new DrawCompositionState();
@@ -50,6 +61,7 @@ public class StateManager {
 		System.out.println("CURRENT STATE: REMOVE");
 		currentState = removeState;
 	}
+	//=================================================================
 	
 	public void setDrawClassState() {
 		
@@ -68,6 +80,18 @@ public class StateManager {
 		currentState = drawEnumState;
 	}
 	
+	//=================================================================
+	public void setDrawFieldState() {
+		System.out.println("CURRENT STATE: DRAW FIELD");
+		currentState = drawFieldState;
+	}
+	
+	public void setDrawMethodState() {
+		System.out.println("CURRENT STATE: DRAW METHOD");
+		currentState = drawMethodState;
+	}
+	
+	//=================================================================
 	public void setDrawAggregationState() {
 		System.out.println("CURRENT STATE: DRAW AGGREGATION");
 		currentState = drawAggregationState;
@@ -88,7 +112,9 @@ public class StateManager {
 		currentState = drawDependencyState;
 	}
 	
-	public void setZoomToFitState() {
+	//=================================================================
+	public void setZoomToFitState() {//TODO jel ovo potrebno uopste? proveriti kasnije
+		System.out.println("CURRENT STATE: ZoomToFit");
 		currentState = zoomToFitState;
 	}
 }

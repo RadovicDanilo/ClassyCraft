@@ -4,6 +4,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree.model;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ClassyTreeItem extends DefaultMutableTreeNode {
@@ -45,4 +46,21 @@ public class ClassyTreeItem extends DefaultMutableTreeNode {
 		return classyNode.getName();
 	}
 	
+	public ClassyTreeItem getNode(ClassyNode c) {
+		ArrayList<ClassyTreeItem> list1 = new ArrayList<>();
+		list1.add(this);
+		while(list1.size() != 0){
+			ArrayList<ClassyTreeItem> list2 = new ArrayList<>();
+			for(ClassyTreeItem classyTreeItem: list1){
+				if(classyTreeItem.getClassyNode().equals(c)){
+					return classyTreeItem;
+				}
+				for(int i = 0; i < classyTreeItem.getChildCount(); i++) {
+					list2.add((ClassyTreeItem) classyTreeItem.getChildAt(i));
+				}
+			}
+			list1 = list2;
+		}
+		return null;
+	}
 }

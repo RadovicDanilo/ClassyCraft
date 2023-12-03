@@ -15,10 +15,14 @@ public class MySideBar extends JToolBar {
 		add(MainFrame.getInstance().getActionManager().getDrawInterfaceAction());
 		add(MainFrame.getInstance().getActionManager().getDrawEnumAction());
 		
+		add(MainFrame.getInstance().getActionManager().getDrawFieldAction());
+		add(MainFrame.getInstance().getActionManager().getDrawMethodAction());
+		
 		add(MainFrame.getInstance().getActionManager().getDrawAggregationAction());
 		add(MainFrame.getInstance().getActionManager().getDrawCompositionAction());
 		add(MainFrame.getInstance().getActionManager().getDrawDependencyAction());
 		add(MainFrame.getInstance().getActionManager().getDrawGeneralisationAction());
+		
 		add(MainFrame.getInstance().getActionManager().getzoomToFitAction());
 		
 	}

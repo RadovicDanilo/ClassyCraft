@@ -5,6 +5,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyActi
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -28,7 +29,7 @@ public class DeleteNodeAction extends AbstractClassyAction {
 	public void actionPerformed(ActionEvent e) {
 		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
 		if(selectedNode.getClassyNode() == null) {
-			//TODO Napraviti event za ne selektovan node/ null node
+			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
 			return;
 		}
 		if(selectedNode.getClassyNode() instanceof ProjectExplorer) {
@@ -37,6 +38,10 @@ public class DeleteNodeAction extends AbstractClassyAction {
 		}
 		ClassyNodeComposite parent = (ClassyNodeComposite) selectedNode.getClassyNode().getParent();
 		parent.removeChild(selectedNode.getClassyNode());
+		if(selectedNode.getClassyNode() instanceof Diagram){
+			DiagramView dv = new DiagramView((Diagram) selectedNode.getClassyNode());
+			MainFrame.getInstance().getDiagramViews().remove(dv);
+		}
 		
 	}
 	

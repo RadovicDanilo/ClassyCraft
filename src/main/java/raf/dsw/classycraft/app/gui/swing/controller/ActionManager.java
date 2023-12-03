@@ -11,6 +11,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dc.DrawGen
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawClassAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawEnumAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.DrawInterfaceAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.dcc.DrawFieldAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.controller.sidebar.dic.dcc.DrawMethodAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.controller.tree.*;
 
 import javax.swing.*;
@@ -33,6 +35,8 @@ public class ActionManager {
 	private DrawAggregationAction drawAggregationAction;
 	private DrawDependencyAction drawDependencyAction;
 	private ZoomToFitAction zoomToFitAction;
+	private DrawFieldAction drawFieldAction;
+	private DrawMethodAction drawMethodAction;
 	
 	
 	public ActionManager() {
@@ -50,13 +54,19 @@ public class ActionManager {
 		
 		selectAction = new SelectAction();
 		removeAction = new RemoveAction();
+		
 		drawClassAction = new DrawClassAction();
 		drawEnumAction = new DrawEnumAction();
 		drawInterfaceAction = new DrawInterfaceAction();
+		
+		drawFieldAction = new DrawFieldAction();
+		drawMethodAction = new DrawMethodAction();
+		
 		drawAggregationAction = new DrawAggregationAction();
 		drawCompositionAction = new DrawCompositionAction();
 		drawGeneralisationAction = new DrawGeneralisationAction();
 		drawDependencyAction = new DrawDependencyAction();
+		
 		zoomToFitAction = new ZoomToFitAction();
 	}
 	
@@ -126,5 +136,13 @@ public class ActionManager {
 	
 	public ZoomToFitAction getzoomToFitAction() {
 		return zoomToFitAction;
+	}
+	
+	public DrawFieldAction getDrawFieldAction() {
+		return drawFieldAction;
+	}
+	
+	public DrawMethodAction getDrawMethodAction() {
+		return drawMethodAction;
 	}
 }

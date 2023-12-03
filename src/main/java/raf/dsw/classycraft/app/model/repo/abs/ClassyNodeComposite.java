@@ -1,7 +1,9 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
+import jdk.jshell.Diag;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.SystemEvent;
@@ -9,6 +11,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,11 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		this.children.add(c);
 		
 		if(c instanceof Project){
-			MainFrame.getInstance().getClassyTree().addChild(((ClassyTreeImplementation)MainFrame.getInstance().getClassyTree()).getRoot(), c);
+			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getRoot(), c);
+		}else if(c instanceof DiagramElement){
+			ClassyTreeItem parent = MainFrame.getInstance().getClassyTree().getRoot().getNode(this);
+			MainFrame.getInstance().getClassyTree().addChild(parent, c);
+			
 		}else{
 			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getSelectedNode(), c);
 		}
@@ -40,15 +47,15 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		if(c instanceof Diagram){
 			((Package) this).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);
 		}
-		if(c instanceof ClassyNodeLeaf){
-			((Diagram)getParent()).notifySubscribers("");
+		if(c instanceof DiagramElement){
+			((Diagram)c.getParent()).notifySubscribers("");
 		}
 	}
 	
 	public void removeChild(ClassyNode c) {
 		this.children.remove(c);
-		if(c instanceof  ClassyNodeLeaf){
-			((Diagram)this).notifySubscribers("");
+		if(c instanceof  DiagramElement){
+			((Diagram)this).notifySubscribers(c);
 		}
 		if(c instanceof Diagram) {
 			((Package) this).notifySubscribers(PackageViewEvent.REMOVE_DIAGRAM);

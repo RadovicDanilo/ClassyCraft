@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -31,6 +32,9 @@ public class PackageView extends JPanel implements ISubscriber, State {
 	}
 	
 	public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
+		for(Component dv: tabbedPane.getComponents()){
+			MainFrame.getInstance().addDiagramView((DiagramView) dv);
+		}
 		this.tabbedPane.removeAll();
 		if(selectedPackage != null) {
 			selectedPackage.closedPane();
@@ -39,7 +43,7 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		if(selectedPackage != null) {
 			selectedPackage.addSubscriber(this);//TODO pitanje
 		}
-		ClassyNode project = selectedPackage;//TODO dodati getproject metoda u classyNode-u
+		ClassyNode project = selectedPackage;
 		while(!(project instanceof Project)) {
 			project = project.getParent();
 		}
@@ -52,6 +56,12 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		DiagramView dv;
 		for(Diagram diagram : diagrams) {
 			dv = new DiagramView(diagram);
+			for(int i = 0; i < MainFrame.getInstance().getDiagramViews().size(); i++) {
+				if(dv.equals(MainFrame.getInstance().getDiagramViews().get(i))){
+					dv = MainFrame.getInstance().getDiagramViews().get(i);
+					break;
+				}
+			}
 			this.tabbedPane.addTab(diagram.getName(), dv);
 		}
 	}

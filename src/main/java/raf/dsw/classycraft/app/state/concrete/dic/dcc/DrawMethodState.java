@@ -4,7 +4,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 
 import java.awt.event.MouseEvent;
 
-public class DrawMethod extends DrawClassContent {
+public class DrawMethodState extends DrawClassContentState {
 	
 	@Override
 	public void mouseClicked(MouseEvent e, DiagramView diagramView) {

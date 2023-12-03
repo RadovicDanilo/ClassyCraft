@@ -2,7 +2,9 @@ package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.view.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.model.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +34,23 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	@Override
 	public void update(Object notification) {
+		if(notification instanceof DiagramElement){
+			for(ElementPainter e: elementPainters){
+				if(e.getDiagramElement() == notification){
+					elementPainters.remove(e);
+					break;
+				}
+			}
+		}
 		repaint();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof DiagramView){
+			return this.diagram.equals(((DiagramView) obj).getDiagram());
+		}
+		return false;
 	}
 	
 	public ArrayList<ElementPainter> getElementPainters() {

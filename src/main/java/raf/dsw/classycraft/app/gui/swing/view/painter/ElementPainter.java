@@ -1,27 +1,25 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.painter;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.AbstractElementFactory;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+
 import java.awt.*;
 
 public abstract class ElementPainter {
-	private Point starPoint;
-	
-	public ElementPainter(Point starPoint) {
-		this.starPoint = starPoint;
+
+	private final DiagramElement diagramElement;
+	public ElementPainter(DiagramElement diagramElement) {
+		this.diagramElement = diagramElement;
 	}
-	
+	public void addElement(DiagramElement element){
+		ApplicationFramework.getInstance().getClassyRepository().addChild(element);
+	}
 	public void draw(Graphics2D g) {
 	
 	}
 	
-	public void addElement() {
-	
-	}
-	
-	public Point getStarPoint() {
-		return starPoint;
-	}
-	
-	public void setStarPoint(Point starPoint) {
-		this.starPoint = starPoint;
+	public DiagramElement getDiagramElement() {
+		return diagramElement;
 	}
 }

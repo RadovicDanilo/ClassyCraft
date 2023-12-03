@@ -25,7 +25,7 @@ public class NewDiagramAction extends AbstractClassyAction {
 	public void actionPerformed(ActionEvent e) {
 		
 		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-		if(!(selectedNode.getClassyNode() instanceof Project || selectedNode.getClassyNode() instanceof Package)) {
+		if(!(selectedNode.getClassyNode() instanceof Package)) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE);
 			return;
 		}
