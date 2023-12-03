@@ -17,6 +17,7 @@ public class NewProjectAction extends AbstractClassyAction {
 		putValue(NAME, "New project");
 		putValue(SHORT_DESCRIPTION, "New project");
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ClassyNode classyNode;

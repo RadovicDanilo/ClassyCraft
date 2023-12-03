@@ -49,10 +49,10 @@ public class ClassyTreeItem extends DefaultMutableTreeNode {
 	public ClassyTreeItem getNode(ClassyNode c) {
 		ArrayList<ClassyTreeItem> list1 = new ArrayList<>();
 		list1.add(this);
-		while(list1.size() != 0){
+		while(list1.size() != 0) {
 			ArrayList<ClassyTreeItem> list2 = new ArrayList<>();
-			for(ClassyTreeItem classyTreeItem: list1){
-				if(classyTreeItem.getClassyNode().equals(c)){
+			for(ClassyTreeItem classyTreeItem : list1) {
+				if(classyTreeItem.getClassyNode().equals(c)) {
 					return classyTreeItem;
 				}
 				for(int i = 0; i < classyTreeItem.getChildCount(); i++) {

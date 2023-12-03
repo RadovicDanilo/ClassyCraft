@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Enum extends InterClass {
 	ArrayList<String> contents;
+	
 	public Enum(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
 		contents = new ArrayList<>();
@@ -17,13 +18,14 @@ public class Enum extends InterClass {
 	public ArrayList<String> getContents() {
 		return contents;
 	}
-	public void addEnum(String e){
+	
+	public void addEnum(String e) {
 		if(e == null)
 			return;
-		if(!contents.contains(e)){
+		if(!contents.contains(e)) {
 			contents.add(e);
 		}
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 		
 	}
 }

@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.cp;
 
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.ConnectionPainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 public class DependencyPainter extends ConnectionPainter {

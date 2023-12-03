@@ -150,11 +150,12 @@ public class MainFrame extends JFrame implements ISubscriber {
 	public ArrayList<DiagramView> getDiagramViews() {
 		return diagramViews;
 	}
-	public void addDiagramView(DiagramView d){
-		if(d == null){
+	
+	public void addDiagramView(DiagramView d) {
+		if(d == null) {
 			return;
 		}
-		if(diagramViews.contains(d)){
+		if(diagramViews.contains(d)) {
 			return;
 		}
 		diagramViews.add(d);
@@ -163,6 +164,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 	public DiagramView getCurrentDiagramView() {
 		return currentDiagramView;
 	}
+	
 	public void setCurrentDiagramView(DiagramView currentDiagramView) {
 		this.currentDiagramView = currentDiagramView;
 	}

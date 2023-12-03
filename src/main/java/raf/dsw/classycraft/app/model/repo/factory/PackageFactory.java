@@ -6,6 +6,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 
 public class PackageFactory {
 	private static int counter = 0;
+	
 	public ClassyNode classyNode(ClassyNodeComposite parent) {
 		counter++;
 		return new Package(parent, "Package " + counter);

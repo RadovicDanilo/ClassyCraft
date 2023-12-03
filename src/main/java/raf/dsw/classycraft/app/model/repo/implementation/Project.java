@@ -33,6 +33,7 @@ public class Project extends ClassyNodeComposite {
 		this.author = author;
 		changeAuthorUpdate((ArrayList<ClassyNode>) this.getChildren());
 	}
+	
 	public void changeAuthorUpdate(ArrayList<ClassyNode> children) {
 		for(ClassyNode classyNode : children) {
 			if(classyNode instanceof Package) {
@@ -41,6 +42,7 @@ public class Project extends ClassyNodeComposite {
 			}
 		}
 	}
+	
 	public String getResourcePath() {
 		return resourcePath;
 	}

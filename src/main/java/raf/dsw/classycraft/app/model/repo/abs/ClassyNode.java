@@ -40,8 +40,8 @@ public abstract class ClassyNode {
 			}
 		}
 		this.name = name;
-		if(this instanceof DiagramElement){
-			((Diagram)(this.getParent())).notifySubscribers("");
+		if(this instanceof DiagramElement) {
+			((Diagram) (this.getParent())).notifySubscribers("");
 		}else if(this instanceof Diagram) {
 			((Package) this.getParent()).notifySubscribers(PackageViewEvent.RENAME_DIAGRAM);
 		}else if(this instanceof Project) {

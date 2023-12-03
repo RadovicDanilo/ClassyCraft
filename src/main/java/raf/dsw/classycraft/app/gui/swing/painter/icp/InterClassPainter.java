@@ -1,26 +1,30 @@
-package main.java.raf.dsw.classycraft.app.gui.swing.painter;
+package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.awt.*;
 
-public class InterClassPainter extends ElementPainter{
+public abstract class InterClassPainter extends ElementPainter {
 	private int x;
 	private int y;
 	private int currentWidth;
 	private int currentHeight;
-	public InterClassPainter(DiagramElement diagramElement,int x,int y) {
+	
+	public InterClassPainter(DiagramElement diagramElement, int x, int y) {
 		super(diagramElement);
 		this.x = x;
 		this.y = y;
 	}
-	public boolean intersects(Rectangle r){
+	
+	public boolean intersects(Rectangle r) {
 		return r.intersects(getRectangle());
 	}
-	public Rectangle getRectangle(){
+	
+	public Rectangle getRectangle() {
 		Rectangle r = new Rectangle();
-		r.setSize(currentWidth,currentHeight);
-		r.setLocation(x,y);
+		r.setSize(currentWidth, currentHeight);
+		r.setLocation(x, y);
 		return r;
 	}
 	
@@ -39,7 +43,6 @@ public class InterClassPainter extends ElementPainter{
 	public void setY(int y) {
 		this.y = y;
 	}
-	
 	
 	
 	public void setCurrentWidth(int currentWidth) {

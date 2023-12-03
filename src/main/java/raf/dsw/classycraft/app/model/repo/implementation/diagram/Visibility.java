@@ -5,11 +5,15 @@ public enum Visibility {
 	
 	@Override
 	public String toString() {
-		switch(this){
-			case PRIVATE:return "-";
-			case PUBLIC:return "+";
-			case DEFAULT:return "~";
-			case PROTECTED:return "#";
+		switch(this) {
+			case PRIVATE:
+				return "-";
+			case PUBLIC:
+				return "+";
+			case DEFAULT:
+				return "~";
+			case PROTECTED:
+				return "#";
 		}
 		return super.toString();
 	}

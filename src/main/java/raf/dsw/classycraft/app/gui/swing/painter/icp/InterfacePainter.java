@@ -1,9 +1,10 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.InterClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
 
@@ -33,6 +34,21 @@ public class InterfacePainter extends InterClassPainter {
 		setCurrentHeight(height);
 		setCurrentWidth(width);
 		
+		boolean flag = true;
+		Rectangle r = this.getRectangle();
+		
+		do {//TODO popraviti ovu glupost
+			flag = true;
+			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
+					((InterClassPainter) dp).setX(getX() + width + 10);
+					((InterClassPainter) dp).setY(getY() + height + 10);
+					flag = false;
+					break;
+				}
+			}
+		}while(!flag);
+		
 		g.drawRect(getX(), getY(), width, height);
 		
 		int yOffset = g.getFontMetrics().getHeight() + 2;
@@ -48,7 +64,10 @@ public class InterfacePainter extends InterClassPainter {
 		for(ClassContent c : ((Interface) getDiagramElement()).getMethods()) {
 			i++;
 			xOffset = (width - g.getFontMetrics().stringWidth(c.toString())) / 2;
-			g.drawString(c.toString(), getX()+2, getY() + yOffset * i);
+			g.drawString(c.toString(), getX() + 2, getY() + yOffset * i);
 		}
+		System.out.println("I");
+		System.out.println(height);
+		System.out.println(width);
 	}
 }

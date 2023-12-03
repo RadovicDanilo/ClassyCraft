@@ -38,7 +38,7 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
 	public void actionPerformed(ActionEvent e) {
 		if(!(clickedOn instanceof ClassyTreeItem))
 			return;
-		if(((ClassyTreeItem) clickedOn).getClassyNode() instanceof ProjectExplorer){
+		if(((ClassyTreeItem) clickedOn).getClassyNode() instanceof ProjectExplorer) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_RENAME_ROOT);
 			return;
 		}

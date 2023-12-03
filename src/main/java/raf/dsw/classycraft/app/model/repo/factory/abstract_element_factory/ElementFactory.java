@@ -14,7 +14,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 
-public class ElementFactory extends AbstractElementFactory{
+public class ElementFactory extends AbstractElementFactory {
 	private static int c = 0;
 	private static int i = 0;
 	private static int e = 0;
@@ -28,13 +28,13 @@ public class ElementFactory extends AbstractElementFactory{
 		switch(interClassType) {
 			case CLASS:
 				c++;
-				return new Klasa(parent, "klasa "+c, visibility);
+				return new Klasa(parent, "klasa " + c, visibility);
 			case INTERFACE:
 				i++;
-				return new Interface(parent, "interfejs "+i, visibility);
+				return new Interface(parent, "interfejs " + i, visibility);
 			case ENUM:
 				e++;
-				return new Enum(parent, "enum "+e, Visibility.PUBLIC);
+				return new Enum(parent, "enum " + e, Visibility.PUBLIC);
 			default:
 				return null;
 		}
@@ -42,19 +42,19 @@ public class ElementFactory extends AbstractElementFactory{
 	
 	@Override
 	public Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to) {
-		switch(connectionType){
+		switch(connectionType) {
 			case AGGREGATION:
 				a++;
-				return new Aggregation(parent,"agr " + a ,from,to);
+				return new Aggregation(parent, "agr " + a, from, to);
 			case DEPENDENCY:
 				d++;
-				return new Dependency(parent,"dep " + d,from,to);
+				return new Dependency(parent, "dep " + d, from, to);
 			case COMPOSITION:
 				co++;
-				return new Composition(parent,"comp " + co,from,to);
+				return new Composition(parent, "comp " + co, from, to);
 			case GENERALISATION:
 				g++;
-				return new Generalisation(parent,"gener "+g,from,to);
+				return new Generalisation(parent, "gener " + g, from, to);
 			default:
 				return null;
 		}

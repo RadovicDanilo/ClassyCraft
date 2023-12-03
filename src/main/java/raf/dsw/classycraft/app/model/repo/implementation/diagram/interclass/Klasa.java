@@ -21,21 +21,23 @@ public class Klasa extends InterClass {
 	public ArrayList<ClassContent> getContents() {
 		return contents;
 	}
-	public void addMethod(Method m){
+	
+	public void addMethod(Method m) {
 		if(m == null)
 			return;
-		if(!contents.contains(m)){
+		if(!contents.contains(m)) {
 			contents.add(m);
 		}
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 		
 	}
-	public void addField(Field f){
+	
+	public void addField(Field f) {
 		if(f == null)
 			return;
-		if(!(contents.contains(f))){
+		if(!(contents.contains(f))) {
 			contents.add(f);
 		}
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 	}
 }

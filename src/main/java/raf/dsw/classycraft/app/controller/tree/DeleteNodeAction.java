@@ -32,7 +32,7 @@ public class DeleteNodeAction extends AbstractClassyAction {
 		}
 		ClassyNodeComposite parent = (ClassyNodeComposite) selectedNode.getClassyNode().getParent();
 		parent.removeChild(selectedNode.getClassyNode());
-		if(selectedNode.getClassyNode() instanceof Diagram){
+		if(selectedNode.getClassyNode() instanceof Diagram) {
 			DiagramView dv = new DiagramView((Diagram) selectedNode.getClassyNode());
 			MainFrame.getInstance().getDiagramViews().remove(dv);
 		}

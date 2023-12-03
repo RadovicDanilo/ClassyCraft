@@ -32,9 +32,9 @@ public class DiagramView extends JPanel implements ISubscriber {
 	@Override
 	public void update(Object notification) {
 		MainFrame.getInstance().setCurrentDiagramView(this);
-		if(notification instanceof DiagramElement){
-			for(ElementPainter e: elementPainters){
-				if(e.getDiagramElement() == notification){
+		if(notification instanceof DiagramElement) {
+			for(ElementPainter e : elementPainters) {
+				if(e.getDiagramElement() == notification) {
 					elementPainters.remove(e);
 					break;
 				}
@@ -45,7 +45,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof DiagramView){
+		if(obj instanceof DiagramView) {
 			return this.diagram.equals(((DiagramView) obj).getDiagram());
 		}
 		return false;

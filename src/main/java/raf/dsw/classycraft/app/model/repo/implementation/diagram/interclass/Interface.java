@@ -19,12 +19,13 @@ public class Interface extends InterClass {
 	public ArrayList<Method> getMethods() {
 		return methods;
 	}
-	public void addMethod(Method m){
+	
+	public void addMethod(Method m) {
 		if(m == null)
 			return;
-		if(!methods.contains(m)){
+		if(!methods.contains(m)) {
 			methods.add(m);
 		}
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 	}
 }

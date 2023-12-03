@@ -1,15 +1,12 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 
 import java.awt.*;
-import java.awt.geom.Area;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RectangularShape;
 
 public class EnumPainter extends InterClassPainter {
 	
@@ -41,6 +38,21 @@ public class EnumPainter extends InterClassPainter {
 		setCurrentHeight(height);
 		setCurrentWidth(width);
 		
+		boolean flag = true;
+		Rectangle r = this.getRectangle();
+		
+		do {//TODO popraviti ovu glupost
+			flag = true;
+			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
+					((InterClassPainter) dp).setX(getX() + width + 10);
+					((InterClassPainter) dp).setY(getY() + height + 10);
+					flag = false;
+					break;
+				}
+			}
+		}while(!flag);
+		
 		g.drawRect(getX(), getY(), width, height);
 		
 		int yOffset = g.getFontMetrics().getHeight() + 2;
@@ -52,12 +64,16 @@ public class EnumPainter extends InterClassPainter {
 		int i = 2;
 		xOffset = (width - g.getFontMetrics().stringWidth(getDiagramElement().getName())) / 2;
 		g.drawString(getDiagramElement().getName(), getX() + xOffset, getY() + yOffset * i);
-		
+		System.out.println(height);
+		System.out.println(width);
 		for(String e : ((Enum) getDiagramElement()).getContents()) {
 			i++;
 			xOffset = (width - g.getFontMetrics().stringWidth(e)) / 2;
-			g.drawString(e, getX() +2, getY() + yOffset * i);
+			g.drawString(e, getX() + 2, getY() + yOffset * i);
 		}
+		System.out.println("E");
+		System.out.println(height);
+		System.out.println(width);
 		
 	}
 }

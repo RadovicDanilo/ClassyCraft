@@ -34,7 +34,7 @@ public class PackageView extends JPanel implements ISubscriber, State {
 	}
 	
 	public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
-		for(Component dv: tabbedPane.getComponents()){
+		for(Component dv : tabbedPane.getComponents()) {
 			MainFrame.getInstance().addDiagramView((DiagramView) dv);
 		}
 		this.tabbedPane.removeAll();
@@ -59,7 +59,7 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		for(Diagram diagram : diagrams) {
 			dv = new DiagramView(diagram);
 			for(int i = 0; i < MainFrame.getInstance().getDiagramViews().size(); i++) {
-				if(dv.equals(MainFrame.getInstance().getDiagramViews().get(i))){
+				if(dv.equals(MainFrame.getInstance().getDiagramViews().get(i))) {
 					dv = MainFrame.getInstance().getDiagramViews().get(i);
 					break;
 				}
@@ -171,5 +171,5 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		this.stateManager.getCurrentState().mouseClicked(e, diagramView);
 	}
 	
-
+	
 }

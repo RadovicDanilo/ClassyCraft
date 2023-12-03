@@ -1,8 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc;
 
-import main.java.raf.dsw.classycraft.app.Main;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.InterClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.ClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.EnumPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
@@ -18,19 +17,19 @@ import java.awt.event.MouseEvent;
 public class DrawFieldState extends DrawClassContentState {
 	@Override
 	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
-		for(ElementPainter elementPainter: ((DiagramView)MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()){
-			if(elementPainter instanceof ClassPainter){
-				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())){
+		for(ElementPainter elementPainter : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+			if(elementPainter instanceof ClassPainter) {
+				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
 					String name = JOptionPane.showInputDialog("Field name:");
 					String type = JOptionPane.showInputDialog("Field type:");
-					Visibility visibility = (Visibility) JOptionPane.showInputDialog(null,"Visbili","v",JOptionPane.QUESTION_MESSAGE,null,Visibility.values(),Visibility.PUBLIC);
-					((Klasa)elementPainter.getDiagramElement()).addField(new Field(name, visibility, type));
+					Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visbili", "v", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
+					((Klasa) elementPainter.getDiagramElement()).addField(new Field(name, visibility, type));
 				}
 			}
-			if(elementPainter instanceof EnumPainter){
-				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())){
+			if(elementPainter instanceof EnumPainter) {
+				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
 					String name = JOptionPane.showInputDialog("Enum name:");
-					((Enum)elementPainter.getDiagramElement()).addEnum(name);
+					((Enum) elementPainter.getDiagramElement()).addEnum(name);
 				}
 			}
 		}

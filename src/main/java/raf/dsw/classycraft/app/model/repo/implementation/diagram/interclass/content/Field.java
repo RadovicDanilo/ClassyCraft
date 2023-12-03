@@ -17,7 +17,7 @@ public class Field extends ClassContent {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Field){
+		if(obj instanceof Field) {
 			return ((Field) obj).type.equals(this.type) && ((Field) obj).getName().equals(this.getName());
 		}
 		return false;

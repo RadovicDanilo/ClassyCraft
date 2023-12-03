@@ -6,16 +6,18 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Diagr
 import java.awt.*;
 
 public abstract class ElementPainter {
-
+	
 	private final DiagramElement diagramElement;
 	
 	
 	public ElementPainter(DiagramElement diagramElement) {
 		this.diagramElement = diagramElement;
 	}
-	public void addElement(DiagramElement element){
+	
+	public void addElement(DiagramElement element) {
 		ApplicationFramework.getInstance().getClassyRepository().addChild(element);
 	}
+	
 	public void draw(Graphics2D g) {
 	
 	}
@@ -23,7 +25,6 @@ public abstract class ElementPainter {
 	public DiagramElement getDiagramElement() {
 		return diagramElement;
 	}
-	
 	
 	
 }

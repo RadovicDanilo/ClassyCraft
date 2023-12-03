@@ -16,6 +16,7 @@ public class ChangeAuthorAction extends AbstractClassyAction {
 		putValue(NAME, "Change author");
 		putValue(SHORT_DESCRIPTION, "Change author");
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ClassyNode classyNode = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
@@ -23,7 +24,7 @@ public class ChangeAuthorAction extends AbstractClassyAction {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS);
 			return;
 		}
-		if(!(classyNode instanceof Project)){
+		if(!(classyNode instanceof Project)) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS);
 			return;
 		}

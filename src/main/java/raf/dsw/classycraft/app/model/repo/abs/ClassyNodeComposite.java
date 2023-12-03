@@ -16,6 +16,7 @@ import java.util.List;
 
 public abstract class ClassyNodeComposite extends ClassyNode {
 	private List<ClassyNode> children = new ArrayList<>();
+	
 	public ClassyNodeComposite(ClassyNodeComposite parent, String name) {
 		super(parent, name);
 	}
@@ -32,28 +33,28 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		
 		this.children.add(c);
 		
-		if(c instanceof Project){
+		if(c instanceof Project) {
 			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getRoot(), c);
-		}else if(c instanceof DiagramElement){
+		}else if(c instanceof DiagramElement) {
 			ClassyTreeItem parent = MainFrame.getInstance().getClassyTree().getRoot().getNode(this);
 			MainFrame.getInstance().getClassyTree().addChild(parent, c);
 			
-		}else{
+		}else {
 			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getSelectedNode(), c);
 		}
 		
-		if(c instanceof Diagram){
+		if(c instanceof Diagram) {
 			((Package) this).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);
 		}
-		if(c instanceof DiagramElement){
-			((Diagram)c.getParent()).notifySubscribers("");
+		if(c instanceof DiagramElement) {
+			((Diagram) c.getParent()).notifySubscribers("");
 		}
 	}
 	
 	public void removeChild(ClassyNode c) {
 		this.children.remove(c);
-		if(c instanceof  DiagramElement){
-			((Diagram)this).notifySubscribers(c);
+		if(c instanceof DiagramElement) {
+			((Diagram) this).notifySubscribers(c);
 		}
 		if(c instanceof Diagram) {
 			((Package) this).notifySubscribers(PackageViewEvent.REMOVE_DIAGRAM);
@@ -67,6 +68,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		}
 		((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).removeNode(MainFrame.getInstance().getClassyTree().getSelectedNode());
 	}
+	
 	public void deleteNodeUpdate(ArrayList<ClassyNode> children) {
 		for(ClassyNode classyNode : children) {
 			if(classyNode instanceof Package) {
@@ -75,6 +77,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 			}
 		}
 	}
+	
 	public List<ClassyNode> getChildren() {
 		return children;
 	}

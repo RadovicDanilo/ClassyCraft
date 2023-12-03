@@ -20,7 +20,7 @@ public class Method extends ClassContent {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Method){
+		if(obj instanceof Method) {
 			return ((Method) obj).getName().equals(this.getName()) && ((Method) obj).getReturnValue().equals(this.getReturnValue());
 		}
 		return false;
@@ -29,5 +29,5 @@ public class Method extends ClassContent {
 	public String getReturnValue() {
 		return returnValue;
 	}
-
+	
 }
