@@ -39,6 +39,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 				}
 			}
 		}
+		System.out.println("REPAINT");
 		repaint();
 	}
 	

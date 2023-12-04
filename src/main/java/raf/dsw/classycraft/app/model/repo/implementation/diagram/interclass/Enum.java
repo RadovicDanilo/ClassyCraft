@@ -25,8 +25,8 @@ public class Enum extends InterClass {
 			return;
 		if(!contents.contains(e)) {
 			contents.add(e);
+			((Diagram) getParent()).notifySubscribers("");
 		}
-		((Diagram) getParent()).notifySubscribers("");
 		
 	}
 	

@@ -31,25 +31,23 @@ public class ClassPainter extends InterClassPainter {
 		}
 		width += 4;
 		
-		
 		setCurrentHeight(height);
 		setCurrentWidth(width);
 		
-		boolean flag = true;
+		boolean flag;
 		Rectangle r = this.getRectangle();
 		
-		do {//TODO popraviti ovu glupost
-			flag = true;
+		do {
+			flag = false;
 			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
 					((InterClassPainter) dp).setX(getX() + width + 10);
 					((InterClassPainter) dp).setY(getY() + height + 10);
-					flag = false;
+					flag = true;
 					break;
 				}
 			}
-		}while(!flag);
-		
+		}while(flag);
 		
 		g.drawRect(getX(), getY(), width, height);
 		

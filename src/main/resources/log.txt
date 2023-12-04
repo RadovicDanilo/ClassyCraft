@@ -76,3 +76,4 @@
 [ERROR][04-12-2023 11:56:09] Vec postoji cvor sa datim imenom
 [ERROR][04-12-2023 12:47:00] Vec postoji cvor sa datim imenom
 [ERROR][04-12-2023 12:47:06] Vec postoji cvor sa datim imenom
+[ERROR][04-12-2023 13:41:47] Vec postoji cvor sa datim imenom

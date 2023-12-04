@@ -18,7 +18,7 @@ public abstract class InterClassPainter extends ElementPainter {
 	}
 	
 	public boolean intersects(Rectangle r) {
-		return r.intersects(getRectangle());
+		return r.intersects(this.getRectangle());
 	}
 	
 	public Rectangle getRectangle() {
