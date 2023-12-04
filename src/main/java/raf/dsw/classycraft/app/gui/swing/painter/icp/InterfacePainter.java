@@ -37,7 +37,7 @@ public class InterfacePainter extends InterClassPainter {
 		boolean flag = true;
 		Rectangle r = this.getRectangle();
 		
-		do {//TODO popraviti ovu glupost
+		do {//TODO poboljsati ovu glupost ako je to uopste moguce
 			flag = true;
 			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {

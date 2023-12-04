@@ -23,7 +23,6 @@ public class MainFrame extends JFrame implements ISubscriber {
 	private PackageView packageView;
 	private ArrayList<DiagramView> diagramViews;
 	private ClassyTreeImplementation classyTree;
-	private DiagramView currentDiagramView;
 	
 	private MainFrame() {
 	
@@ -160,12 +159,5 @@ public class MainFrame extends JFrame implements ISubscriber {
 		}
 		diagramViews.add(d);
 	}
-	
-	public DiagramView getCurrentDiagramView() {
-		return currentDiagramView;
-	}
-	
-	public void setCurrentDiagramView(DiagramView currentDiagramView) {
-		this.currentDiagramView = currentDiagramView;
-	}
+
 }

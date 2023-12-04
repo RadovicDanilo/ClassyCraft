@@ -13,6 +13,7 @@ import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.DrawEnumAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.DrawInterfaceAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.DrawFieldAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.DrawMethodAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.EditContentAction;
 import main.java.raf.dsw.classycraft.app.controller.tree.*;
 
 import javax.swing.*;
@@ -37,6 +38,7 @@ public class ActionManager {
 	private ZoomToFitAction zoomToFitAction;
 	private DrawFieldAction drawFieldAction;
 	private DrawMethodAction drawMethodAction;
+	private EditContentAction editContentAction;
 	
 	
 	public ActionManager() {
@@ -61,6 +63,7 @@ public class ActionManager {
 		
 		drawFieldAction = new DrawFieldAction();
 		drawMethodAction = new DrawMethodAction();
+		editContentAction = new EditContentAction();
 		
 		drawAggregationAction = new DrawAggregationAction();
 		drawCompositionAction = new DrawCompositionAction();
@@ -134,7 +137,7 @@ public class ActionManager {
 		return drawDependencyAction;
 	}
 	
-	public ZoomToFitAction getzoomToFitAction() {
+	public ZoomToFitAction getZoomToFitAction() {
 		return zoomToFitAction;
 	}
 	
@@ -145,4 +148,10 @@ public class ActionManager {
 	public DrawMethodAction getDrawMethodAction() {
 		return drawMethodAction;
 	}
+	
+	
+	public EditContentAction getEditContentAction() {
+		return editContentAction;
+	}
 }
+

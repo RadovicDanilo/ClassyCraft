@@ -9,6 +9,7 @@ import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawEnumState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawInterfaceState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawFieldState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawMethodState;
+import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.EditContentState;
 
 public class StateManager {
 	private State currentState;
@@ -27,7 +28,7 @@ public class StateManager {
 	private final DrawDependencyState drawDependencyState;
 	private final DrawCompositionState drawCompositionState;
 	private final DrawAggregationState drawAggregationState;
-	
+	private final EditContentState editContentState;
 	private final ZoomToFitState zoomToFitState;
 	
 	
@@ -44,6 +45,7 @@ public class StateManager {
 		drawCompositionState = new DrawCompositionState();
 		drawAggregationState = new DrawAggregationState();
 		zoomToFitState = new ZoomToFitState();
+		editContentState = new EditContentState();
 		currentState = selectState;
 	}
 	
@@ -89,6 +91,10 @@ public class StateManager {
 	public void setDrawMethodState() {
 		System.out.println("CURRENT STATE: DRAW METHOD");
 		currentState = drawMethodState;
+	}
+	public void setEditContentState(){
+		System.out.println("CURRENT STATE: EDIT CONTENT");
+		currentState = editContentState;
 	}
 	
 	//=================================================================

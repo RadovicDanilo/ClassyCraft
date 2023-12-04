@@ -31,7 +31,6 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	@Override
 	public void update(Object notification) {
-		MainFrame.getInstance().setCurrentDiagramView(this);
 		if(notification instanceof DiagramElement) {
 			for(ElementPainter e : elementPainters) {
 				if(e.getDiagramElement() == notification) {

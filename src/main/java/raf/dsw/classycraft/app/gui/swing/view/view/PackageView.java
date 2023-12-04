@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PackageView extends JPanel implements ISubscriber, State {
+public class PackageView extends JPanel implements ISubscriber {
 	private Package selectedPackage;
 	private StateManager stateManager;
 	private JLabel lbProjectName;
@@ -156,19 +156,19 @@ public class PackageView extends JPanel implements ISubscriber, State {
 		this.selectedPackage = selectedPackage;
 	}
 	
-	@Override
+	
 	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
 		this.stateManager.getCurrentState().mouseClicked(e, diagramView);
 	}
 	
-	@Override
+	
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		this.stateManager.getCurrentState().mouseClicked(e, diagramView);
+		this.stateManager.getCurrentState().mouseRelease(e, diagramView);
 	}
 	
-	@Override
+	
 	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-		this.stateManager.getCurrentState().mouseClicked(e, diagramView);
+		this.stateManager.getCurrentState().mouseRelease(e, diagramView);
 	}
 	
 	

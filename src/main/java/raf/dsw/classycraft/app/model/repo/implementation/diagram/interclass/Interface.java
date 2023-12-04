@@ -9,7 +9,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.util.ArrayList;
 
 public class Interface extends InterClass {
-	private final ArrayList<Method> methods;
+	private ArrayList<Method> methods;
 	
 	public Interface(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
@@ -27,5 +27,11 @@ public class Interface extends InterClass {
 			methods.add(m);
 		}
 		((Diagram) getParent()).notifySubscribers("");
+	}
+	
+	public void setMethods(ArrayList<Method> methods) {
+		this.methods = methods;
+		((Diagram) getParent()).notifySubscribers("");
+		
 	}
 }

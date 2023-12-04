@@ -13,6 +13,7 @@ public class Enum extends InterClass {
 	public Enum(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
 		contents = new ArrayList<>();
+		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	public ArrayList<String> getContents() {
@@ -25,6 +26,12 @@ public class Enum extends InterClass {
 		if(!contents.contains(e)) {
 			contents.add(e);
 		}
+		((Diagram) getParent()).notifySubscribers("");
+		
+	}
+	
+	public void setContents(ArrayList<String> contents) {
+		this.contents = contents;
 		((Diagram) getParent()).notifySubscribers("");
 		
 	}

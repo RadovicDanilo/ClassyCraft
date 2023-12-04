@@ -9,9 +9,10 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Klasa extends InterClass {
-	private final ArrayList<ClassContent> contents;
+	private ArrayList<ClassContent> contents;
 	
 	public Klasa(ClassyNodeComposite parent, String name, Visibility visibility) {
 		super(parent, name, visibility);
@@ -28,7 +29,16 @@ public class Klasa extends InterClass {
 		if(!contents.contains(m)) {
 			contents.add(m);
 		}
+		
+		Comparator<? super ClassContent> comparator = (Comparator<ClassContent>) (o1, o2)->{
+			if(o1 instanceof Method)
+				return 1;
+			return -1;
+		};
+		contents.sort(comparator);
+		
 		((Diagram) getParent()).notifySubscribers("");
+		
 		
 	}
 	
@@ -38,6 +48,23 @@ public class Klasa extends InterClass {
 		if(!(contents.contains(f))) {
 			contents.add(f);
 		}
+		
+		Comparator<? super ClassContent> comparator = (Comparator<ClassContent>) (o1, o2)->{
+			if(o1 instanceof Method && o2 instanceof Field)
+				return 1;
+			if(o1 instanceof Field && o2 instanceof Method)
+				return -1;
+			return 0;
+			
+		};
+		contents.sort(comparator);
+		
 		((Diagram) getParent()).notifySubscribers("");
+	}
+	
+	public void setContents(ArrayList<ClassContent> contents) {
+		this.contents = contents;
+		((Diagram) getParent()).notifySubscribers("");
+		
 	}
 }
