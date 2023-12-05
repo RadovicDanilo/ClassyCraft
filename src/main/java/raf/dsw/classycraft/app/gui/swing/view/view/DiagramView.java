@@ -65,6 +65,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 			g2d.setColor(Color.RED);
 			g2d.drawLine(connectionFrom.x, connectionFrom.y, connectionTo.x, connectionTo.y);
 		}
+
 		Rectangle r = null;
 		if(selectFrom != null && selectTo != null) {
 			r = new Rectangle();
@@ -89,7 +90,6 @@ public class DiagramView extends JPanel implements ISubscriber {
 				r.setLocation(selectFrom.x, selectTo.y);
 				r.setSize(- selectFrom.x + selectTo.x,- selectTo.y + selectFrom.y);
 				g.drawRect(selectFrom.x, selectTo.y, - selectFrom.x + selectTo.x,- selectTo.y + selectFrom.y);
-
 			}
 		}
 		if(r != null ) {
@@ -194,6 +194,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 	}
 	
 	public void moveSelectedBy(Point point) {
+		//TODO u model
 		for(ElementPainter e : selected) {
 			if(e instanceof InterClassPainter) {
 				((InterClassPainter) e).setX(((InterClassPainter) e).getX() + point.x);
