@@ -5,7 +5,10 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 
 public class DiagramFactory {
-    public ClassyNode classyNode(String name, ClassyNodeComposite parent) {
-        return new Diagram(parent, name);
-    }
+	private static int counter = 0;
+	
+	public ClassyNode classyNode(ClassyNodeComposite parent) {
+		counter++;
+		return new Diagram(parent, "diagram " + counter);
+	}
 }
