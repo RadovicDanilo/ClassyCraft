@@ -9,7 +9,7 @@ public abstract class InterClass extends DiagramElement {
 		super(parent, name);
 		this.visibility = visibility;
 	}
-	
+
 	public Visibility getVisibility() {
 		return visibility;
 	}

@@ -19,7 +19,13 @@ public class InterfacePainter extends InterClassPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		
+		if(((DiagramView)MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+			g.setColor(Color.RED);
+			g.setStroke(strokeDashed);
+		}else{
+			g.setColor(Color.BLACK);
+			g.setStroke(normalStroke);
+		}
 		int height = (2 + ((Interface) getDiagramElement()).getMethods().size()) * (g.getFontMetrics().getHeight() + 2);
 		height += 2;
 		
@@ -66,8 +72,5 @@ public class InterfacePainter extends InterClassPainter {
 			xOffset = (width - g.getFontMetrics().stringWidth(c.toString())) / 2;
 			g.drawString(c.toString(), getX() + 2, getY() + yOffset * i);
 		}
-		System.out.println("I");
-		System.out.println(height);
-		System.out.println(width);
 	}
 }

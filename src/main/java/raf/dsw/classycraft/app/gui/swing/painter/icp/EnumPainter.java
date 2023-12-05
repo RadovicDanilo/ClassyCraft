@@ -22,7 +22,13 @@ public class EnumPainter extends InterClassPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		
+		if(((DiagramView)MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+			g.setColor(Color.RED);
+			g.setStroke(strokeDashed);
+		}else{
+			g.setColor(Color.BLACK);
+			g.setStroke(normalStroke);
+		}
 		int height = (2 + ((Enum) getDiagramElement()).getContents().size()) * (g.getFontMetrics().getHeight() + 2);
 		height += 2;
 		
@@ -64,16 +70,13 @@ public class EnumPainter extends InterClassPainter {
 		int i = 2;
 		xOffset = (width - g.getFontMetrics().stringWidth(getDiagramElement().getName())) / 2;
 		g.drawString(getDiagramElement().getName(), getX() + xOffset, getY() + yOffset * i);
-		System.out.println(height);
-		System.out.println(width);
+		
 		for(String e : ((Enum) getDiagramElement()).getContents()) {
 			i++;
 			xOffset = (width - g.getFontMetrics().stringWidth(e)) / 2;
 			g.drawString(e, getX() + 2, getY() + yOffset * i);
 		}
-		System.out.println("E");
-		System.out.println(height);
-		System.out.println(width);
+	
 		
 	}
 }

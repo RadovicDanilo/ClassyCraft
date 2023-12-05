@@ -18,7 +18,13 @@ public class Klasa extends InterClass {
 		super(parent, name, visibility);
 		contents = new ArrayList<>();
 	}
-	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Klasa){
+			return ((Klasa) obj).getName().equals(this.getName());
+		}
+		return false;
+	}
 	public ArrayList<ClassContent> getContents() {
 		return contents;
 	}

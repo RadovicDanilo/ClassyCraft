@@ -1,5 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.concrete.RemoveState;
 import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
 import main.java.raf.dsw.classycraft.app.state.concrete.ZoomToFitState;
@@ -61,6 +63,9 @@ public class StateManager {
 	
 	public void setRemoveState() {
 		System.out.println("CURRENT STATE: REMOVE");
+		if(MainFrame.getInstance().getPackageView() != null && MainFrame.getInstance().getPackageView().getTabbedPane() != null && ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()) != null) {
+			((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).removeSelected();
+		}
 		currentState = removeState;
 	}
 	//=================================================================
@@ -92,7 +97,8 @@ public class StateManager {
 		System.out.println("CURRENT STATE: DRAW METHOD");
 		currentState = drawMethodState;
 	}
-	public void setEditContentState(){
+	
+	public void setEditContentState() {
 		System.out.println("CURRENT STATE: EDIT CONTENT");
 		currentState = editContentState;
 	}

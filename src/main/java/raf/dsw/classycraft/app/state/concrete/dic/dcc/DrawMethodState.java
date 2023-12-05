@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 public class DrawMethodState extends DrawClassContentState {
 	
 	@Override
-	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
+	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 			if(elementPainter instanceof ClassPainter) {
 				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {

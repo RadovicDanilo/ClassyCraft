@@ -13,8 +13,8 @@ public class MyMouseAdapter extends MouseAdapter {
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		MainFrame.getInstance().getPackageView().mouseClicked(e, diagramView);
+	public void mousePressed(MouseEvent e) {
+		MainFrame.getInstance().getPackageView().mousePressed(e, diagramView);
 	}
 	
 	@Override

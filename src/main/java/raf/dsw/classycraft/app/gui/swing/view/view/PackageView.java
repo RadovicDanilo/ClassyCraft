@@ -7,12 +7,9 @@ import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
-import main.java.raf.dsw.classycraft.app.state.State;
 import main.java.raf.dsw.classycraft.app.state.StateManager;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -103,7 +100,6 @@ public class PackageView extends JPanel implements ISubscriber {
 		}
 		this.openTabs(diagrams, this.getSelectedPackage());
 	}
-	
 	public void removePackageOrProject() {
 		super.removeAll();
 		super.revalidate();
@@ -157,19 +153,19 @@ public class PackageView extends JPanel implements ISubscriber {
 	}
 	
 	
-	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
-		this.stateManager.getCurrentState().mouseClicked(e, diagramView);
+	public void mousePressed(MouseEvent e, DiagramView diagramView) {
+		this.stateManager.getCurrentState().mousePressed(e, diagramView);
 	}
-	
-	
-	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		this.stateManager.getCurrentState().mouseRelease(e, diagramView);
-	}
-	
 	
 	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
 		this.stateManager.getCurrentState().mouseRelease(e, diagramView);
 	}
+	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+		this.stateManager.getCurrentState().mouseDragged(e, diagramView);
+	}
+	
+	
+
 	
 	
 }

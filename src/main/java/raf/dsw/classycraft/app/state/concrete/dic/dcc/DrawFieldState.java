@@ -16,8 +16,8 @@ import java.awt.event.MouseEvent;
 
 public class DrawFieldState extends DrawClassContentState {
 	@Override
-	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
-		for(ElementPainter elementPainter : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+	public void mousePressed(MouseEvent e, DiagramView diagramView) {
+		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(elementPainter instanceof ClassPainter) {
 				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
 					String name = JOptionPane.showInputDialog("Field name:");

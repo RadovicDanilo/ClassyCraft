@@ -17,12 +17,11 @@ public class ClassyTreeItem extends DefaultMutableTreeNode {
 	
 	@Override
 	public boolean equals(Object o) {
-		if(this == o)
-			return true;
-		if(o == null || getClass() != o.getClass())
+		if(o == null)
 			return false;
-		ClassyTreeItem that = (ClassyTreeItem) o;
-		return Objects.equals(classyNode, that.classyNode);
+		if(!(o instanceof ClassyTreeItem))
+			return false;
+		return Objects.equals(classyNode, ((ClassyTreeItem) o).getClassyNode());
 	}
 	
 	@Override

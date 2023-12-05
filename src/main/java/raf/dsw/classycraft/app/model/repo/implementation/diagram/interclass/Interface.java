@@ -19,7 +19,13 @@ public class Interface extends InterClass {
 	public ArrayList<Method> getMethods() {
 		return methods;
 	}
-	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Interface){
+			return ((Interface) obj).getName().equals(this.getName());
+		}
+		return false;
+	}
 	public void addMethod(Method m) {
 		if(m == null)
 			return;

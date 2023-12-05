@@ -22,7 +22,13 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 		ClassyNode node = (ClassyNode) obj;
 		return super.getParent() == node.getParent() && super.getName().equals(node.getName());
 	}
-	
+//	@Override
+//	public void removeChild(ClassyNode c){
+//		this.getChildren().remove(c);
+//
+//		notifySubscribers("");
+//
+//	}
 	@Override
 	public void addSubscriber(ISubscriber sub) {
 		this.subscribers.add(sub);

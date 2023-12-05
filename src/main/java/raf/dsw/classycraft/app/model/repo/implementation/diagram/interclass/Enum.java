@@ -16,6 +16,14 @@ public class Enum extends InterClass {
 		((Diagram) getParent()).notifySubscribers("");
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Enum){
+			return ((Enum) obj).getName().equals(this.getName());
+		}
+		return false;
+	}
+	
 	public ArrayList<String> getContents() {
 		return contents;
 	}

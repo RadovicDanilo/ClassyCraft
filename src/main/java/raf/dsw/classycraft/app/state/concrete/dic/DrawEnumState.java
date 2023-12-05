@@ -18,7 +18,7 @@ public class DrawEnumState extends DrawInterClassState {
 	private final int DEFAULT_WIDTH = 110;
 	
 	@Override
-	public void mouseClicked(MouseEvent e, DiagramView diagramView) {
+	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementFactory elementFactory = new ElementFactory();
 		
 		Enum enumeracija = (Enum) elementFactory.createInterClass(InterClassType.ENUM, diagramView.getDiagram(), Visibility.PUBLIC);

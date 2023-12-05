@@ -50,6 +50,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 			((Diagram) c.getParent()).notifySubscribers("");
 		}
 	}
+
 	
 	public void removeChild(ClassyNode c) {
 		this.children.remove(c);
@@ -66,7 +67,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		if(c instanceof Project) {
 			deleteNodeUpdate((ArrayList<ClassyNode>) ((Project) c).getChildren());
 		}
-		((ClassyTreeImplementation) MainFrame.getInstance().getClassyTree()).removeNode(MainFrame.getInstance().getClassyTree().getSelectedNode());
+		MainFrame.getInstance().getClassyTree().removeNode(MainFrame.getInstance().getClassyTree().getNode(c));
 	}
 	
 	public void deleteNodeUpdate(ArrayList<ClassyNode> children) {

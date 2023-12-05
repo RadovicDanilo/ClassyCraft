@@ -5,7 +5,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import java.awt.event.MouseEvent;
 
 public interface State {
-	void mouseClicked(MouseEvent e, DiagramView diagramView);
+	void mousePressed(MouseEvent e, DiagramView diagramView);
 	
 	void mouseDragged(MouseEvent e, DiagramView diagramView);
 	

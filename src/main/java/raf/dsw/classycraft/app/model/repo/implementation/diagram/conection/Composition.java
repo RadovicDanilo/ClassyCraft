@@ -8,4 +8,5 @@ public class Composition extends Connection {
 	public Composition(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
 		super(parent, name, from, to);
 	}
+	
 }
