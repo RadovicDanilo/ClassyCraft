@@ -65,24 +65,38 @@ public class DiagramView extends JPanel implements ISubscriber {
 			g2d.setColor(Color.RED);
 			g2d.drawLine(connectionFrom.x, connectionFrom.y, connectionTo.x, connectionTo.y);
 		}
-
+		Rectangle r = null;
 		if(selectFrom != null && selectTo != null) {
+			r = new Rectangle();
 			g2d.setStroke(strokeDashed);
 			g2d.setColor(Color.RED);
 			if(selectFrom.x < selectTo.x && selectFrom.y < selectTo.y){
+				r.setLocation(selectFrom.x, selectFrom.y);
+				r.setSize(selectTo.x - selectFrom.x,selectTo.y - selectFrom.y);
 				g.drawRect(selectFrom.x, selectFrom.y, selectTo.x - selectFrom.x,selectTo.y - selectFrom.y);
+
 			}else if(selectFrom.x > selectTo.x && selectFrom.y > selectTo.y){
+				r.setLocation(selectTo.x, selectTo.y);
+				r.setSize(selectFrom.x - selectTo.x,selectFrom.y - selectTo.y);
 				g.drawRect(selectTo.x, selectTo.y, selectFrom.x - selectTo.x,selectFrom.y - selectTo.y);
+
 			}else if(selectFrom.x > selectTo.x && selectFrom.y < selectTo.y){
+				r.setLocation(selectTo.x, selectFrom.y);
+				r.setSize(selectFrom.x - selectTo.x,selectTo.y - selectFrom.y);
 				g.drawRect(selectTo.x, selectFrom.y, selectFrom.x - selectTo.x,selectTo.y - selectFrom.y);
+
 			}else {
+				r.setLocation(selectFrom.x, selectTo.y);
+				r.setSize(- selectFrom.x + selectTo.x,- selectTo.y + selectFrom.y);
 				g.drawRect(selectFrom.x, selectTo.y, - selectFrom.x + selectTo.x,- selectTo.y + selectFrom.y);
 
 			}
 		}
 
 		for(ElementPainter elementPainter : elementPainters) {
-			//TODO if intersect /w rectangle -> sleceted.add(this)
+			if(r != null && r.intersects(elementPainter.getRectangle())) {
+				addSelectedElement(elementPainter);
+			}
 			elementPainter.draw((Graphics2D) g);
 		}
 	}
