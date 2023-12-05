@@ -7,9 +7,9 @@ import java.awt.event.ActionEvent;
 
 public class ZoomToFitAction extends AbstractClassyAction {
 	public ZoomToFitAction() {
-		putValue(SMALL_ICON, loadIcon("/images/icons/zoom_out.png"));//TODO icon
-		putValue(NAME, "zoom out");
-		putValue(SHORT_DESCRIPTION, "zoom out");
+		putValue(SMALL_ICON, loadIcon("/images/icons/zoom_to_fit.png"));//TODO icon
+		putValue(NAME, "zoom to fit");
+		putValue(SHORT_DESCRIPTION, "zoom to fit");
 	}
 	
 	@Override

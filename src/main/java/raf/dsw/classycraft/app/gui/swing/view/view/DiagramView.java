@@ -58,22 +58,24 @@ public class DiagramView extends JPanel implements ISubscriber {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for(ElementPainter elementPainter : elementPainters) {
-			elementPainter.draw((Graphics2D) g);
-		}
+
 		Graphics2D g2d = (Graphics2D) g;
 		if(connectionFrom != null && connectionTo != null) {
 			g2d.setStroke(strokeDashed);
 			g2d.setColor(Color.RED);
 			g2d.drawLine(connectionFrom.x, connectionFrom.y, connectionTo.x, connectionTo.y);
 		}
-		
+
 		if(selectFrom != null && selectTo != null) {
 			g2d.setStroke(strokeDashed);
-			g2d.drawRect(selectFrom.x, selectFrom.y, selectTo.x, selectTo.y);
+			//TODO draw this
+			//g2d.drawRect(selectFrom.x, selectFrom.y, selectTo.x, selectTo.y);
 		}
-		
-		
+
+		for(ElementPainter elementPainter : elementPainters) {
+			//TODO if intersect /w rectangle -> sleceted.add(this)
+			elementPainter.draw((Graphics2D) g);
+		}
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ public class MySideBar extends JToolBar {
 		super(VERTICAL);
 		setFloatable(false);
 		add(MainFrame.getInstance().getActionManager().getSelectAction());
+		add(MainFrame.getInstance().getActionManager().getMultiSelectStateAction());
 		add(MainFrame.getInstance().getActionManager().getRemoveAction());
 		
 		add(MainFrame.getInstance().getActionManager().getDrawClassAction());

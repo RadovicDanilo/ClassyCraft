@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.controller;
 
 import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.*;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.MultiSelectStateAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.RemoveAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.SelectAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.ZoomToFitAction;
@@ -39,6 +40,7 @@ public class ActionManager {
 	private DrawFieldAction drawFieldAction;
 	private DrawMethodAction drawMethodAction;
 	private EditContentAction editContentAction;
+	private MultiSelectStateAction multiSelectStateAction;
 	
 	
 	public ActionManager() {
@@ -53,7 +55,7 @@ public class ActionManager {
 		newPackageAction = new NewPackageAction();
 		newDiagramAction = new NewDiagramAction();
 		changeAuthorShowViewAction = new ChangeAuthorAction();
-		
+		multiSelectStateAction = new MultiSelectStateAction();
 		selectAction = new SelectAction();
 		removeAction = new RemoveAction();
 		
@@ -72,7 +74,11 @@ public class ActionManager {
 		
 		zoomToFitAction = new ZoomToFitAction();
 	}
-	
+
+	public MultiSelectStateAction getMultiSelectStateAction() {
+		return multiSelectStateAction;
+	}
+
 	public Action getExitAction() {
 		return exitAction;
 	}

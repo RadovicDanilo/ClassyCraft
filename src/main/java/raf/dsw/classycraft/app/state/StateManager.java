@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.state;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
+import main.java.raf.dsw.classycraft.app.state.concrete.MultiSelectState;
 import main.java.raf.dsw.classycraft.app.state.concrete.RemoveState;
 import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
 import main.java.raf.dsw.classycraft.app.state.concrete.ZoomToFitState;
@@ -17,6 +18,7 @@ public class StateManager {
 	private State currentState;
 	
 	private final SelectState selectState;
+	private final MultiSelectState multiSelectState;
 	private final RemoveState removeState;
 	
 	private final DrawClassState drawClassState;
@@ -36,6 +38,7 @@ public class StateManager {
 	
 	public StateManager() {
 		selectState = new SelectState();
+		multiSelectState = new MultiSelectState();
 		removeState = new RemoveState();
 		drawClassState = new DrawClassState();
 		drawEnumState = new DrawEnumState();
@@ -59,6 +62,10 @@ public class StateManager {
 	public void setSelectState() {
 		System.out.println("CURRENT STATE: SELECT");
 		currentState = selectState;
+	}
+	public void setMultiSelectState() {
+		System.out.println("CURRENT STATE: MULTI SELECT");
+		currentState = multiSelectState;
 	}
 	
 	public void setRemoveState() {
