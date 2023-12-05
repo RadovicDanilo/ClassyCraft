@@ -92,7 +92,9 @@ public class DiagramView extends JPanel implements ISubscriber {
 
 			}
 		}
-
+		if(r != null ) {
+			selected = new ArrayList<>();
+		}
 		for(ElementPainter elementPainter : elementPainters) {
 			if(r != null && r.intersects(elementPainter.getRectangle())) {
 				addSelectedElement(elementPainter);
