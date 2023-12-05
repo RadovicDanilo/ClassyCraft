@@ -68,8 +68,17 @@ public class DiagramView extends JPanel implements ISubscriber {
 
 		if(selectFrom != null && selectTo != null) {
 			g2d.setStroke(strokeDashed);
-			//TODO draw this
-			//g2d.drawRect(selectFrom.x, selectFrom.y, selectTo.x, selectTo.y);
+			g2d.setColor(Color.RED);
+			if(selectFrom.x < selectTo.x && selectFrom.y < selectTo.y){
+				g.drawRect(selectFrom.x, selectFrom.y, selectTo.x - selectFrom.x,selectTo.y - selectFrom.y);
+			}else if(selectFrom.x > selectTo.x && selectFrom.y > selectTo.y){
+				g.drawRect(selectTo.x, selectTo.y, selectFrom.x - selectTo.x,selectFrom.y - selectTo.y);
+			}else if(selectFrom.x > selectTo.x && selectFrom.y < selectTo.y){
+				g.drawRect(selectTo.x, selectFrom.y, selectFrom.x - selectTo.x,selectTo.y - selectFrom.y);
+			}else {
+				g.drawRect(selectFrom.x, selectTo.y, - selectFrom.x + selectTo.x,- selectTo.y + selectFrom.y);
+
+			}
 		}
 
 		for(ElementPainter elementPainter : elementPainters) {
