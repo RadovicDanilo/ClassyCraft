@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.controller.tree;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.ProjectFactory;
 
@@ -20,9 +21,8 @@ public class NewProjectAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ClassyNode classyNode;
 		ProjectFactory projectFactory = new ProjectFactory();
-		classyNode = projectFactory.classyNode();
-		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+		ClassyNode classyNode = projectFactory.classyNode();
+		MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getRoot(), classyNode);
 	}
 }

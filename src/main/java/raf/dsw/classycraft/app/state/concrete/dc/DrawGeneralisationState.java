@@ -34,8 +34,8 @@ public class DrawGeneralisationState extends DrawConnectionState {
 				ElementFactory elementFactory = new ElementFactory();
 				Generalisation composition = (Generalisation) elementFactory.createConnection(ConnectionType.GENERALISATION, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				GeneralisationPainter ap = new GeneralisationPainter(composition);
+				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
-				diagramView.getDiagram().addChild(composition);
 				
 				break;
 			}

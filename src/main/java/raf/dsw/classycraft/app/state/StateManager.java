@@ -1,5 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.concrete.MultiSelectState;
@@ -70,8 +72,15 @@ public class StateManager {
 	
 	public void setRemoveState() {
 		System.out.println("CURRENT STATE: REMOVE");
+		
 		if(MainFrame.getInstance().getPackageView() != null && MainFrame.getInstance().getPackageView().getTabbedPane() != null && ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()) != null) {
-			((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).removeSelected();
+			DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
+			for(ElementPainter elementPainter: dv.getElementPainters()){
+				if(dv.getSelected().contains(elementPainter)){
+					dv.getElementPainters().remove(elementPainter);
+					MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
+				}
+			}
 		}
 		currentState = removeState;
 	}

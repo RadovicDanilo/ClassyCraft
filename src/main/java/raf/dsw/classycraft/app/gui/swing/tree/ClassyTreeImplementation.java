@@ -1,14 +1,19 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree;
 
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import java.awt.desktop.AppForegroundListener;
 import java.util.ArrayList;
 
 public class ClassyTreeImplementation implements ClassyTree {
@@ -26,18 +31,29 @@ public class ClassyTreeImplementation implements ClassyTree {
 	@Override
 	public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
 		parent.add(new ClassyTreeItem(classyNode));
+		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
 		treeView.expandPath(treeView.getSelectionPath());
 		SwingUtilities.updateComponentTreeUI(treeView);
 	}
 	
 	public void removeNode(ClassyTreeItem classyTreeItem) {
-		if(getNode(classyTreeItem.getClassyNode()) == null)
+		if(classyTreeItem == null)
 			return;
-		getNode(classyTreeItem.getClassyNode()).removeFromParent();
+		classyTreeItem = getNode(classyTreeItem.getClassyNode());
+		classyTreeItem.removeFromParent();
+		
+		ApplicationFramework.getInstance().getClassyRepository().removeChild(classyTreeItem.getClassyNode());
+		
+		if(classyTreeItem.getClassyNode() instanceof Diagram) {
+			DiagramView dv = new DiagramView((Diagram) classyTreeItem.getClassyNode());
+			MainFrame.getInstance().getDiagramViews().remove(dv);
+		}
 		treeView.expandPath(treeView.getSelectionPath());
 		SwingUtilities.updateComponentTreeUI(treeView);
 	}
+	
 	public ClassyTreeItem getNode(ClassyNode c){
+		//BFS
 		ArrayList<ClassyTreeItem > a = new ArrayList<>();
 		a.add(root);
 		while(a.size() != 0){

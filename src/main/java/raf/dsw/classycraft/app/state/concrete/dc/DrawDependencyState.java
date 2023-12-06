@@ -34,8 +34,8 @@ public class DrawDependencyState extends DrawConnectionState {
 				ElementFactory elementFactory = new ElementFactory();
 				Dependency composition = (Dependency) elementFactory.createConnection(ConnectionType.DEPENDENCY, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				DependencyPainter ap = new DependencyPainter(composition);
+				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
-				diagramView.getDiagram().addChild(composition);
 				
 				break;
 			}

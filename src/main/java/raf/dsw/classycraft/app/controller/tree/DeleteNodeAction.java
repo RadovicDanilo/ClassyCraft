@@ -30,12 +30,7 @@ public class DeleteNodeAction extends AbstractClassyAction {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
 			return;
 		}
-		ClassyNodeComposite parent = (ClassyNodeComposite) selectedNode.getClassyNode().getParent();
-		parent.removeChild(selectedNode.getClassyNode());
-		if(selectedNode.getClassyNode() instanceof Diagram) {
-			DiagramView dv = new DiagramView((Diagram) selectedNode.getClassyNode());
-			MainFrame.getInstance().getDiagramViews().remove(dv);
-		}
+		MainFrame.getInstance().getClassyTree().removeNode(selectedNode);
 		
 	}
 	

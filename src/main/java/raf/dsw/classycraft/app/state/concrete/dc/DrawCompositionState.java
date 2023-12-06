@@ -34,8 +34,8 @@ public class DrawCompositionState extends DrawConnectionState {
 				ElementFactory elementFactory = new ElementFactory();
 				Composition composition = (Composition) elementFactory.createConnection(ConnectionType.COMPOSITION, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				CompositionPainter ap = new CompositionPainter(composition);
+				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
-				diagramView.getDiagram().addChild(composition);
 				break;
 			}
 		}

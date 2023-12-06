@@ -19,8 +19,8 @@ public class DrawClassState extends DrawInterClassState {
 	
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		ElementFactory elementFactory = new ElementFactory();
 		
+		ElementFactory elementFactory = new ElementFactory();
 		Klasa klasa = (Klasa) elementFactory.createInterClass(InterClassType.CLASS, diagramView.getDiagram(), Visibility.PUBLIC);
 		
 		ClassPainter classPainter = new ClassPainter(klasa, e.getX(), e.getY());
@@ -29,7 +29,7 @@ public class DrawClassState extends DrawInterClassState {
 				Rectangle r = new Rectangle();
 				r.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 				r.setLocation(e.getPoint());
-				if(((InterClassPainter) ep).intersects(r)) {
+				if(ep.intersects(r)) {
 					return;
 				}
 			}

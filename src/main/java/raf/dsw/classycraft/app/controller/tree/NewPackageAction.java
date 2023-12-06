@@ -28,9 +28,8 @@ public class NewPackageAction extends AbstractClassyAction {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM);
 			return;
 		}
-		ClassyNode classyNode;
 		PackageFactory packageFactory = new PackageFactory();
-		classyNode = packageFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
-		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+		ClassyNode classyNode = packageFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
+		MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
 	}
 }

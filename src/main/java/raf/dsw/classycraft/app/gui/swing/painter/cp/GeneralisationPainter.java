@@ -13,8 +13,6 @@ public class GeneralisationPainter extends ConnectionPainter {
 		super(diagramElement);
 	}
 	
-
-	
 	@Override
 	public void addElement(DiagramElement element) {
 		super.addElement(element);

@@ -27,9 +27,8 @@ public class NewDiagramAction extends AbstractClassyAction {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE);
 			return;
 		}
-		ClassyNode classyNode;
 		DiagramFactory diagramFactory = new DiagramFactory();
-		classyNode = diagramFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
-		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+		ClassyNode classyNode = diagramFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
+		MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
 	}
 }
