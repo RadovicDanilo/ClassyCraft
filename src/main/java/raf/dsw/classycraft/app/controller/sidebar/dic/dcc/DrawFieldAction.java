@@ -14,6 +14,6 @@ public class DrawFieldAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setDrawFieldState();
+		MainFrame.getInstance().getPackageView().startDrawFieldState();
 	}
 }

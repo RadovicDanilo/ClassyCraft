@@ -13,6 +13,6 @@ public class MultiSelectStateAction extends AbstractClassyAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getPackageView().getStateManager().setMultiSelectState();
+        MainFrame.getInstance().getPackageView().startMultiSelectState();
     }
 }

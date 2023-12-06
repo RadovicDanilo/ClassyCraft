@@ -14,7 +14,7 @@ public class EditContentAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setEditContentState();
+		MainFrame.getInstance().getPackageView().startEditContentState();
 		
 	}
 }

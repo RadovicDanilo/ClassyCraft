@@ -14,7 +14,7 @@ public class DrawClassAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setDrawClassState();
+		MainFrame.getInstance().getPackageView().startDrawClassState();
 		
 	}
 }

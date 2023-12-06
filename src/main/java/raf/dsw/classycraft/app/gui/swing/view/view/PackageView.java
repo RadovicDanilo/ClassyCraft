@@ -165,6 +165,74 @@ public class PackageView extends JPanel implements ISubscriber {
 	}
 	
 	
+	public void startSelectState(){
+		stateManager.setSelectState();
+	}
+	
+	public void startMultiSelectState(){
+		stateManager.setMultiSelectState();
+	}
+	public void startRemoveState(){
+		stateManager.setRemoveState();
+	}
+	
+	public void startDrawClassState() {
+		stateManager.setDrawClassState();
+		
+	}
+	
+	public void startDrawInterfaceState() {
+		stateManager.setDrawInterfaceState();
+		
+	}
+	
+	public void startDrawEnumState() {
+		stateManager.setDrawEnumState();
+		
+	}
+	
+	//=================================================================
+	public void startDrawFieldState() {
+		stateManager.setDrawFieldState();
+		
+	}
+	
+	public void startDrawMethodState() {
+		stateManager.setDrawMethodState();
+		
+	}
+	
+	public void startEditContentState() {
+		stateManager.setEditContentState();
+		
+	}
+	
+	//=================================================================
+	public void startDrawAggregationState() {
+		stateManager.setDrawAggregationState();
+		
+	}
+	
+	public void startDrawGeneralisationState() {
+		stateManager.setDrawGeneralisationState();
+		
+	}
+	
+	public void startDrawCompositionState() {
+		stateManager.setDrawCompositionState();
+		
+	}
+	
+	public void startDrawDependencyState() {
+		stateManager.setDrawDependencyState();
+		
+	}
+	
+	//=================================================================
+	public void startZoomToFitState() {
+		stateManager.setZoomToFitState();
+		
+	}
 
 	
 	

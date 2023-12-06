@@ -14,7 +14,7 @@ public class ZoomToFitAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setZoomToFitState();
+		MainFrame.getInstance().getPackageView().startZoomToFitState();
 		
 	}
 }

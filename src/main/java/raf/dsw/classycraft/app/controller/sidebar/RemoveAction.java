@@ -14,6 +14,6 @@ public class RemoveAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setRemoveState();
+		MainFrame.getInstance().getPackageView().startRemoveState();
 	}
 }
