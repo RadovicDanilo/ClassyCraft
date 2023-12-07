@@ -37,7 +37,6 @@ public class SelectState implements State {
 				}
 			}
 			last = e.getPoint();
-			diagramView.repaint();
 		}
 	}
 	

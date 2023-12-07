@@ -20,15 +20,21 @@ public class DiagramView extends JPanel implements ISubscriber {
 	private ArrayList<ElementPainter> selected;
 	
 	public DiagramView(Diagram diagram) {
-		this.diagram = diagram;
-		diagram.addSubscriber(this);
-		elementPainters = new ArrayList<>();
+		
 		this.addMouseListener(new MyMouseAdapter(this));
 		this.addMouseMotionListener(new MyMouseAdapter(this));
+		
+		this.diagram = diagram;
+		diagram.addSubscriber(this);
+		
+		elementPainters = new ArrayList<>();
+		
 		connectionFrom = null;
 		connectionTo = null;
+		
 		selectFrom = null;
 		selectTo = null;
+		
 		selected = new ArrayList<>();
 	}
 	
@@ -88,9 +94,9 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	@Override
 	public void update(Object notification) {
-		if(notification instanceof DiagramElement){
-			for(ElementPainter elementPainter: elementPainters){
-				if(elementPainter.getDiagramElement() == notification){
+		if(notification instanceof DiagramElement) {
+			for(ElementPainter elementPainter : elementPainters) {
+				if(elementPainter.getDiagramElement() == notification) {
 					elementPainters.remove(elementPainter);
 					break;
 				}

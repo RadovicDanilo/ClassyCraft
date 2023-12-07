@@ -90,3 +90,5 @@
 [ERROR][06-12-2023 17:51:03] Vec postoji cvor sa datim imenom
 [ERROR][07-12-2023 17:07:52] Project Explorer ne moze da se ukloni
 [ERROR][07-12-2023 19:11:08] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][07-12-2023 21:39:17] Paketi se mogu praviti samo u projektima ili drugim paketima
+[ERROR][07-12-2023 22:00:49] Diagram se mogu praviti samo u projektima ili paketima

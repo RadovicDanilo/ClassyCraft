@@ -35,9 +35,9 @@ public class StateManager {
 	private final DrawAggregationState drawAggregationState;
 	private final EditContentState editContentState;
 	private final ZoomToFitState zoomToFitState;
-	private DuplicateState duplicateState;
+	private final DuplicateState duplicateState;
 	private State currentState;
-
+	
 	
 	public StateManager() {
 		selectState = new SelectState();
@@ -82,7 +82,7 @@ public class StateManager {
 		}
 		ArrayList<InterClassPainter> removedElements = new ArrayList<>();
 		DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
-		for(int i = 0; i < dv.getElementPainters().size(); i++){
+		for(int i = 0; i < dv.getElementPainters().size(); i++) {
 			ElementPainter elementPainter = dv.getElementPainters().get(i);
 			if(dv.getSelected().contains(elementPainter)) {
 				if(elementPainter instanceof InterClassPainter)
@@ -92,7 +92,7 @@ public class StateManager {
 				i--;
 			}
 		}
-		for(ElementPainter removedElement: removedElements){
+		for(ElementPainter removedElement : removedElements) {
 			for(int i = 0; i < dv.getElementPainters().size(); i++) {
 				ElementPainter elementPainter = dv.getElementPainters().get(i);
 				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getFrom() == removedElement || ((ConnectionPainter) elementPainter).getTo() == removedElement)) {
@@ -167,6 +167,11 @@ public class StateManager {
 	
 	public void setDuplicateState() {
 		System.out.println("CURRENT STATE: DUPLICATE");
+		DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
+		if(dv.getSelected().size() == 1) {
+			duplicateState.duplicate(dv.getElementPainters().get(0), dv);
+			
+		}
 		currentState = duplicateState;
 	}
 }
