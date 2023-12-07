@@ -48,8 +48,8 @@ public class ClassPainter extends InterClassPainter {
 			flag = false;
 			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
-					((InterClassPainter) dp).getDiagramElement().setX(((InterClassPainter) dp).getDiagramElement().getX() + width + 10);
-					((InterClassPainter) dp).getDiagramElement().setY(((InterClassPainter) dp).getDiagramElement().getY() + height + 10);
+					((InterClassPainter) dp).getDiagramElement().setX(((InterClassPainter) dp).getDiagramElement().getX() + width + 1);
+					((InterClassPainter) dp).getDiagramElement().setY(((InterClassPainter) dp).getDiagramElement().getY() + height + 1);
 					flag = true;
 					break;
 				}

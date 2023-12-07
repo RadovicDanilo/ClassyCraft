@@ -89,3 +89,4 @@
 [ERROR][06-12-2023 17:50:59] Vec postoji cvor sa datim imenom
 [ERROR][06-12-2023 17:51:03] Vec postoji cvor sa datim imenom
 [ERROR][07-12-2023 17:07:52] Project Explorer ne moze da se ukloni
+[ERROR][07-12-2023 19:11:08] Paketi se mogu praviti samo u projektima ili drugim paketima

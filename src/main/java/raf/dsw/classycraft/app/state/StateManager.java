@@ -6,10 +6,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
-import main.java.raf.dsw.classycraft.app.state.concrete.MultiSelectState;
-import main.java.raf.dsw.classycraft.app.state.concrete.RemoveState;
-import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
-import main.java.raf.dsw.classycraft.app.state.concrete.ZoomToFitState;
+import main.java.raf.dsw.classycraft.app.state.concrete.*;
 import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawAggregationState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawCompositionState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawDependencyState;
@@ -38,7 +35,9 @@ public class StateManager {
 	private final DrawAggregationState drawAggregationState;
 	private final EditContentState editContentState;
 	private final ZoomToFitState zoomToFitState;
+	private DuplicateState duplicateState;
 	private State currentState;
+
 	
 	public StateManager() {
 		selectState = new SelectState();
@@ -55,6 +54,7 @@ public class StateManager {
 		drawAggregationState = new DrawAggregationState();
 		zoomToFitState = new ZoomToFitState();
 		editContentState = new EditContentState();
+		duplicateState = new DuplicateState();
 		currentState = selectState;
 	}
 	
@@ -161,7 +161,12 @@ public class StateManager {
 	
 	//=================================================================
 	public void setZoomToFitState() {
-		System.out.println("CURRENT STATE: ZoomToFit");
+		System.out.println("CURRENT STATE: ZOOM TO FIT");
 		currentState = zoomToFitState;
+	}
+	
+	public void setDuplicateState() {
+		System.out.println("CURRENT STATE: DUPLICATE");
+		currentState = duplicateState;
 	}
 }

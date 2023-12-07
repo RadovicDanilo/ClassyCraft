@@ -45,7 +45,6 @@ public class Klasa extends InterClass {
 		
 		((Diagram) getParent()).notifySubscribers("");
 		
-		
 	}
 	
 	public void addField(Field f) {
