@@ -88,3 +88,4 @@
 [ERROR][06-12-2023 13:46:21] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][06-12-2023 17:50:59] Vec postoji cvor sa datim imenom
 [ERROR][06-12-2023 17:51:03] Vec postoji cvor sa datim imenom
+[ERROR][07-12-2023 17:07:52] Project Explorer ne moze da se ukloni
