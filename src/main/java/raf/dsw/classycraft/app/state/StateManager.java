@@ -1,6 +1,8 @@
 package main.java.raf.dsw.classycraft.app.state;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
@@ -8,7 +10,10 @@ import main.java.raf.dsw.classycraft.app.state.concrete.MultiSelectState;
 import main.java.raf.dsw.classycraft.app.state.concrete.RemoveState;
 import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
 import main.java.raf.dsw.classycraft.app.state.concrete.ZoomToFitState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dc.*;
+import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawAggregationState;
+import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawCompositionState;
+import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawDependencyState;
+import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawGeneralisationState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawClassState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawEnumState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawInterfaceState;
@@ -16,27 +21,24 @@ import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawFieldState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawMethodState;
 import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.EditContentState;
 
+import java.util.ArrayList;
+
 public class StateManager {
-	private State currentState;
-	
 	private final SelectState selectState;
 	private final MultiSelectState multiSelectState;
 	private final RemoveState removeState;
-	
 	private final DrawClassState drawClassState;
 	private final DrawInterfaceState drawInterfaceState;
 	private final DrawEnumState drawEnumState;
-	
 	private final DrawFieldState drawFieldState;
 	private final DrawMethodState drawMethodState;
-	
 	private final DrawGeneralisationState drawGeneralisationState;
 	private final DrawDependencyState drawDependencyState;
 	private final DrawCompositionState drawCompositionState;
 	private final DrawAggregationState drawAggregationState;
 	private final EditContentState editContentState;
 	private final ZoomToFitState zoomToFitState;
-	
+	private State currentState;
 	
 	public StateManager() {
 		selectState = new SelectState();
@@ -65,6 +67,7 @@ public class StateManager {
 		System.out.println("CURRENT STATE: SELECT");
 		currentState = selectState;
 	}
+	
 	public void setMultiSelectState() {
 		System.out.println("CURRENT STATE: MULTI SELECT");
 		currentState = multiSelectState;
@@ -72,17 +75,33 @@ public class StateManager {
 	
 	public void setRemoveState() {
 		System.out.println("CURRENT STATE: REMOVE");
+		currentState = removeState;
 		
-		if(MainFrame.getInstance().getPackageView() != null && MainFrame.getInstance().getPackageView().getTabbedPane() != null && ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()) != null) {
-			DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
-			for(ElementPainter elementPainter: dv.getElementPainters()){
-				if(dv.getSelected().contains(elementPainter)){
-					dv.getElementPainters().remove(elementPainter);
+		if(MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane() == null || ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()) == null) {
+			return;
+		}
+		ArrayList<InterClassPainter> removedElements = new ArrayList<>();
+		DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
+		for(int i = 0; i < dv.getElementPainters().size(); i++){
+			ElementPainter elementPainter = dv.getElementPainters().get(i);
+			if(dv.getSelected().contains(elementPainter)) {
+				if(elementPainter instanceof InterClassPainter)
+					removedElements.add((InterClassPainter) elementPainter);
+				MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
+				dv.getElementPainters().remove(elementPainter);
+				i--;
+			}
+		}
+		for(ElementPainter removedElement: removedElements){
+			for(int i = 0; i < dv.getElementPainters().size(); i++) {
+				ElementPainter elementPainter = dv.getElementPainters().get(i);
+				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getFrom() == removedElement || ((ConnectionPainter) elementPainter).getTo() == removedElement)) {
 					MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
+					dv.getElementPainters().remove(elementPainter);
+					i--;
 				}
 			}
 		}
-		currentState = removeState;
 	}
 	//=================================================================
 	
@@ -141,7 +160,7 @@ public class StateManager {
 	}
 	
 	//=================================================================
-	public void setZoomToFitState() {//TODO jel ovo potrebno uopste? proveriti kasnije
+	public void setZoomToFitState() {
 		System.out.println("CURRENT STATE: ZoomToFit");
 		currentState = zoomToFitState;
 	}

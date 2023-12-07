@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class SelectState implements State {
-	//TODO Remake
 	private Point last = null;
 	
 	@Override
@@ -33,8 +32,8 @@ public class SelectState implements State {
 		if(last != null) {
 			for(ElementPainter elementPainter : diagramView.getSelected()) {
 				if(elementPainter instanceof InterClassPainter) {
-					((InterClassPainter) elementPainter).setX(((InterClassPainter) elementPainter).getX() + e.getX() - last.x);
-					((InterClassPainter) elementPainter).setY(((InterClassPainter) elementPainter).getY() + e.getY() - last.y);
+					((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + e.getX() - last.x);
+					((InterClassPainter) elementPainter).getDiagramElement().setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + e.getY() - last.y);
 				}
 			}
 			last = e.getPoint();

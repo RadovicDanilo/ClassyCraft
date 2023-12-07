@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree;
 
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTree;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
@@ -10,6 +11,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
@@ -43,7 +45,6 @@ public class ClassyTreeImplementation implements ClassyTree {
 		classyTreeItem.removeFromParent();
 		
 		ApplicationFramework.getInstance().getClassyRepository().removeChild(classyTreeItem.getClassyNode());
-		
 		if(classyTreeItem.getClassyNode() instanceof Diagram) {
 			DiagramView dv = new DiagramView((Diagram) classyTreeItem.getClassyNode());
 			MainFrame.getInstance().getDiagramViews().remove(dv);

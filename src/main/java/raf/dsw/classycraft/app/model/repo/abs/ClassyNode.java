@@ -34,6 +34,9 @@ public abstract class ClassyNode {
 	
 	public void setName(String name) {
 		for(ClassyNode c : this.parent.getChildren()) {
+			if(this.name.equals(name)){
+				break;
+			}
 			if(c.getName().equals(name)) {
 				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NODE_CANNOT_BE_DUPLICATE);
 				return;

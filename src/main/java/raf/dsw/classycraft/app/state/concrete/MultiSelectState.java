@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class MultiSelectState implements State {
-	//TODO remake
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		diagramView.setSelected(new ArrayList<>());

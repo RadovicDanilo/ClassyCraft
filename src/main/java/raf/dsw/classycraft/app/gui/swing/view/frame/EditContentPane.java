@@ -24,7 +24,7 @@ public class EditContentPane extends JFrame {
 	
 	private final Font myFont = new Font("Calibri", Font.PLAIN, 14);
 	
-	//TODO popraviti. Ovo izgleda odvratno
+	//TODO popraviti
 	public EditContentPane(ElementPainter c) throws HeadlessException {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();

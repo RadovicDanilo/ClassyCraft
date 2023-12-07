@@ -14,7 +14,7 @@ public abstract class DrawConnectionState implements State {
 		for(ElementPainter ep : diagramView.getElementPainters()) {
 			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
 				from = (InterClassPainter) ep;
-				diagramView.setConnectionFrom(((InterClassPainter) ep).getConnectionPoints().get(0));
+				diagramView.setConnectionFrom(((InterClassPainter) ep).getDiagramElement().getConnectionPoints().get(0));
 				diagramView.setConnectionTo(e.getPoint());
 				break;
 			}
@@ -24,7 +24,7 @@ public abstract class DrawConnectionState implements State {
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
 		
-		diagramView.setConnectionFrom(from.closestConnectionPoint(e.getPoint()));
+		diagramView.setConnectionFrom(from.getDiagramElement().closestConnectionPoint(e.getPoint()));
 		diagramView.setConnectionTo(e.getPoint());
 	}
 	

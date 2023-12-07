@@ -21,9 +21,9 @@ public class DrawInterfaceState extends DrawInterClassState {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementFactory elementFactory = new ElementFactory();
 		
-		Interface anInterface = (Interface) elementFactory.createInterClass(InterClassType.INTERFACE, diagramView.getDiagram(), Visibility.PUBLIC);
+		Interface anInterface = (Interface) elementFactory.createInterClass(InterClassType.INTERFACE, diagramView.getDiagram(), Visibility.PUBLIC, e.getX(), e.getY());
 		
-		InterfacePainter interfacePainter = new InterfacePainter(anInterface, e.getX(), e.getY());
+		InterfacePainter interfacePainter = new InterfacePainter(anInterface);
 		
 		for(ElementPainter ep : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 			if(ep instanceof InterClassPainter) {

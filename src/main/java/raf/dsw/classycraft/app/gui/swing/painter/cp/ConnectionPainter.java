@@ -17,10 +17,10 @@ public abstract class ConnectionPainter extends ElementPainter {
 	
 	@Override
 	public boolean contains(Point p) {
-		Point a = getFrom().getConnectionPoints().get(0);
-		Point b = getTo().getConnectionPoints().get(0);
-		for(Point p1 : getFrom().getConnectionPoints()) {
-			for(Point p2 : getTo().getConnectionPoints()) {
+		Point a = getFrom().getDiagramElement().getConnectionPoints().get(0);
+		Point b = getTo().getDiagramElement().getConnectionPoints().get(0);
+		for(Point p1 : getFrom().getDiagramElement().getConnectionPoints()) {
+			for(Point p2 : getTo().getDiagramElement().getConnectionPoints()) {
 				if(p1.distance(p2) < a.distance(b)) {
 					a = p1;
 					b = p2;
@@ -46,21 +46,10 @@ public abstract class ConnectionPainter extends ElementPainter {
 		
 	}
 	public boolean intersects(Rectangle r) {
-		Point2D.Double a = new Point2D.Double(from.getX(), from.getY());
-		Point2D.Double b = new Point2D.Double(to.getX(), to.getY());
-		Point2D.Double unitVectorFromAtoB = new Point2D.Double(((b.x - a.x) / Math.sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y))), ((b.y - a.y) / Math.sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y))));
-		double m = 0.2;
-		double dist = a.distance(b);
-		ArrayList<Point2D.Double> points = new ArrayList<>();
-		while(m < dist) {
-			points.add(new Point2D.Double(unitVectorFromAtoB.x * m, unitVectorFromAtoB.y * m));
-			m += 0.2;
-		}
-		for(Point2D.Double p: points){
-			if(r.contains(p)){
-				return  true;
-			}
-		}
+		Point a = new Point(from.getDiagramElement().getX(), from.getDiagramElement().getY());
+		Point b = new Point(to.getDiagramElement().getX(), to.getDiagramElement().getY());
+		ArrayList<Point> points = new ArrayList<>();
+
 		return false;
 	}
 	

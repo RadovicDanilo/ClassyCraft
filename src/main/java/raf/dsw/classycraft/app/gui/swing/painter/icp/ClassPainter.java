@@ -8,12 +8,12 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 public class ClassPainter extends InterClassPainter {
 	
-	
-	public ClassPainter(DiagramElement diagramElement, int x, int y) {
-		super(diagramElement, x, y);
+	public ClassPainter(Klasa diagramElement) {
+		super(diagramElement);
 	}
 	
 	@Override
@@ -38,8 +38,8 @@ public class ClassPainter extends InterClassPainter {
 		}
 		width += 4;
 		
-		setCurrentHeight(height);
-		setCurrentWidth(width);
+		getDiagramElement().setCurrentHeight(height);
+		getDiagramElement().setCurrentWidth(width);
 		
 		boolean flag;
 		Rectangle r = this.getRectangle();
@@ -48,30 +48,30 @@ public class ClassPainter extends InterClassPainter {
 			flag = false;
 			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
-					((InterClassPainter) dp).setX(getX() + width + 10);
-					((InterClassPainter) dp).setY(getY() + height + 10);
+					((InterClassPainter) dp).getDiagramElement().setX(((InterClassPainter) dp).getDiagramElement().getX() + width + 10);
+					((InterClassPainter) dp).getDiagramElement().setY(((InterClassPainter) dp).getDiagramElement().getY() + height + 10);
 					flag = true;
 					break;
 				}
 			}
 		}while(flag);
 		
-		g.drawRect(getX(), getY(), width, height);
+		g.drawRect( getDiagramElement().getX(), getDiagramElement().getY(), width, height);
 		
 		int yOffset = g.getFontMetrics().getHeight() + 2;
 		int xOffset;
 		
 		xOffset = (width - g.getFontMetrics().stringWidth("<<Class>>")) / 2;
-		g.drawString("<<Class>>", getX() + xOffset, getY() + yOffset);
+		g.drawString("<<Class>>", getDiagramElement().getX() + xOffset, getDiagramElement().getY() + yOffset);
 		
 		int i = 2;
 		xOffset = (width - g.getFontMetrics().stringWidth(getDiagramElement().getName())) / 2;
-		g.drawString(getDiagramElement().getName(), getX() + xOffset, getY() + yOffset * i);
+		g.drawString(getDiagramElement().getName(), getDiagramElement().getX() + xOffset, getDiagramElement().getY() + yOffset * i);
 		
 		for(ClassContent c : ((Klasa) getDiagramElement()).getContents()) {
 			i++;
 			xOffset = (width - g.getFontMetrics().stringWidth(c.toString())) / 2;
-			g.drawString(c.toString(), getX() + 2, getY() + yOffset * i);
+			g.drawString(c.toString(), getDiagramElement().getX() + 2, getDiagramElement().getY() + yOffset * i);
 		}
 	}
 }

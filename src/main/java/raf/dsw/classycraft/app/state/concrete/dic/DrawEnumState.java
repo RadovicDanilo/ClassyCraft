@@ -21,9 +21,9 @@ public class DrawEnumState extends DrawInterClassState {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementFactory elementFactory = new ElementFactory();
 		
-		Enum enumeracija = (Enum) elementFactory.createInterClass(InterClassType.ENUM, diagramView.getDiagram(), Visibility.PUBLIC);
+		Enum enumeracija = (Enum) elementFactory.createInterClass(InterClassType.ENUM, diagramView.getDiagram(), Visibility.PUBLIC, e.getX(), e.getY());
 		
-		EnumPainter enumPainter = new EnumPainter(enumeracija, e.getX(), e.getY());
+		EnumPainter enumPainter = new EnumPainter(enumeracija);
 		
 		for(ElementPainter ep : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 			if(ep instanceof InterClassPainter) {

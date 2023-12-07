@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class Interface extends InterClass {
 	private ArrayList<Method> methods;
 	
-	public Interface(ClassyNodeComposite parent, String name, Visibility visibility) {
-		super(parent, name, visibility);
-		methods = new ArrayList<>();
+	public Interface(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
+		super(parent, name, visibility, x, y);
+		this.methods =  new ArrayList<>();
 	}
 	
 	public ArrayList<Method> getMethods() {

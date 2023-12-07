@@ -20,7 +20,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	public DiagramView(Diagram diagram) {
 		this.diagram = diagram;
-		diagram.addSubscriber(this);//TODO PITANJE
+		diagram.addSubscriber(this);
 		elementPainters = new ArrayList<>();
 		this.addMouseListener(new MyMouseAdapter(this));
 		this.addMouseMotionListener(new MyMouseAdapter(this));
@@ -34,7 +34,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 	
 	public Rectangle getSelectionRectangle() {
 		Rectangle r = new Rectangle();
-		;
+		
 		if(selectFrom != null && selectTo != null) {
 			if(selectFrom.x < selectTo.x && selectFrom.y < selectTo.y) {
 				r.setLocation(selectFrom.x, selectFrom.y);

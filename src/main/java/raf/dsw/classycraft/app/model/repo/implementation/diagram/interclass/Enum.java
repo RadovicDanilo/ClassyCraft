@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Enum extends InterClass {
 	ArrayList<String> contents;
 	
-	public Enum(ClassyNodeComposite parent, String name, Visibility visibility) {
-		super(parent, name, visibility);
+	public Enum(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
+		super(parent, name, visibility,x,y);
 		contents = new ArrayList<>();
 		((Diagram) getParent()).notifySubscribers("");
 	}

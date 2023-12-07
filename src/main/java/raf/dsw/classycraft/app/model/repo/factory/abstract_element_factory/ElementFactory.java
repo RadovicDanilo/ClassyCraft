@@ -24,17 +24,17 @@ public class ElementFactory extends AbstractElementFactory {
 	private static int g = 0;
 	
 	@Override
-	public InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, Visibility visibility) {
+	public InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, Visibility visibility, int x, int y) {
 		switch(interClassType) {
 			case CLASS:
 				c++;
-				return new Klasa(parent, "klasa " + c, visibility);
+				return new Klasa(parent, "klasa " + c, visibility, x, y);
 			case INTERFACE:
 				i++;
-				return new Interface(parent, "interfejs " + i, visibility);
+				return new Interface(parent, "interfejs " + i, visibility, x, y);
 			case ENUM:
 				e++;
-				return new Enum(parent, "enum " + e, Visibility.PUBLIC);
+				return new Enum(parent, "enum " + e, Visibility.PUBLIC, x, y);
 			default:
 				return null;
 		}
