@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class EnumPainter extends InterClassPainter {
 	
-	public EnumPainter(DiagramElement diagramElement, int x, int y) {
-		super(diagramElement, x, y);
+	public EnumPainter(DiagramElement diagramElement) {
+		super(diagramElement);
 	}
 	
 	@Override
@@ -22,10 +22,10 @@ public class EnumPainter extends InterClassPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		if(((DiagramView)MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)) {
 			g.setColor(Color.RED);
 			g.setStroke(strokeDashed);
-		}else{
+		}else {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}
@@ -41,42 +41,42 @@ public class EnumPainter extends InterClassPainter {
 		width += 4;
 		
 		
-		setCurrentHeight(height);
-		setCurrentWidth(width);
+		getDiagramElement().setCurrentHeight(height);
+		getDiagramElement().setCurrentWidth(width);
 		
 		boolean flag = true;
 		Rectangle r = this.getRectangle();
 		
-		do {//TODO popraviti ovu glupost
+		do {
 			flag = true;
 			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
-					((InterClassPainter) dp).setX(getX() + width + 10);
-					((InterClassPainter) dp).setY(getY() + height + 10);
+					((InterClassPainter) dp).getDiagramElement().setX(getDiagramElement().getX() + width + 1);
+					((InterClassPainter) dp).getDiagramElement().setY(getDiagramElement().getY() + height + 1);
 					flag = false;
 					break;
 				}
 			}
 		}while(!flag);
 		
-		g.drawRect(getX(), getY(), width, height);
+		g.drawRect(getDiagramElement().getX(), getDiagramElement().getY(), width, height);
 		
 		int yOffset = g.getFontMetrics().getHeight() + 2;
 		int xOffset;
 		
 		xOffset = (width - g.getFontMetrics().stringWidth("<<Enumeration>>")) / 2;
-		g.drawString("<<Enumeration>>", getX() + xOffset, getY() + yOffset);
+		g.drawString("<<Enumeration>>", getDiagramElement().getX() + xOffset, getDiagramElement().getY() + yOffset);
 		
 		int i = 2;
 		xOffset = (width - g.getFontMetrics().stringWidth(getDiagramElement().getName())) / 2;
-		g.drawString(getDiagramElement().getName(), getX() + xOffset, getY() + yOffset * i);
+		g.drawString(getDiagramElement().getName(), getDiagramElement().getX() + xOffset, getDiagramElement().getY() + yOffset * i);
 		
 		for(String e : ((Enum) getDiagramElement()).getContents()) {
 			i++;
 			xOffset = (width - g.getFontMetrics().stringWidth(e)) / 2;
-			g.drawString(e, getX() + 2, getY() + yOffset * i);
+			g.drawString(e, getDiagramElement().getX() + 2, getDiagramElement().getY() + yOffset * i);
 		}
-	
+		
 		
 	}
 }

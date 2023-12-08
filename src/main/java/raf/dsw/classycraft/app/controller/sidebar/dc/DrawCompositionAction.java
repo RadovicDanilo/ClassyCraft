@@ -14,7 +14,7 @@ public class DrawCompositionAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setDrawCompositionState();
+		MainFrame.getInstance().getPackageView().startDrawCompositionState();
 		
 	}
 }

@@ -1,7 +1,7 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 
-import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.controller.ActionManager;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyMenuBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MySideBar;
@@ -9,9 +9,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.bar.MyToolBar;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.PackageView;
 import main.java.raf.dsw.classycraft.app.model.message.Message;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
-import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,6 +25,16 @@ public class MainFrame extends JFrame implements ISubscriber {
 	
 	private MainFrame() {
 	
+	}
+	
+	public static MainFrame getInstance() {
+		if(instance == null) {
+			instance = new MainFrame();
+			instance.diagramViews = new ArrayList<>();
+			instance.classyTree = new ClassyTreeImplementation();
+			instance.initialize();
+		}
+		return instance;
 	}
 	
 	private void initialize() {
@@ -57,16 +66,6 @@ public class MainFrame extends JFrame implements ISubscriber {
 		getContentPane().add(split, BorderLayout.CENTER);
 		split.setDividerLocation(250);
 		split.setOneTouchExpandable(true);
-	}
-	
-	public static MainFrame getInstance() {
-		if(instance == null) {
-			instance = new MainFrame();
-			instance.diagramViews = new ArrayList<>();
-			instance.classyTree = new ClassyTreeImplementation();
-			instance.initialize();
-		}
-		return instance;
 	}
 	
 	public ActionManager getActionManager() {
@@ -159,5 +158,5 @@ public class MainFrame extends JFrame implements ISubscriber {
 		}
 		diagramViews.add(d);
 	}
-
+	
 }

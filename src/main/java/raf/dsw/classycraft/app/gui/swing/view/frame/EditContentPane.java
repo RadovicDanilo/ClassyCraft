@@ -2,8 +2,8 @@ package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 
 
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateClassAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateInterfaceAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateEnumAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateInterfaceAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.ClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.EnumPainter;
@@ -24,7 +24,7 @@ public class EditContentPane extends JFrame {
 	
 	private final Font myFont = new Font("Calibri", Font.PLAIN, 14);
 	
-	//TODO popraviti. Ovo izgleda odvratno
+	//TODO popraviti
 	public EditContentPane(ElementPainter c) throws HeadlessException {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();

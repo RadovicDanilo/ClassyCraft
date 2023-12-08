@@ -2,8 +2,6 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inte
 
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
-import java.util.ArrayList;
-
 public class Method extends ClassContent {
 	private final String returnValue;
 	

@@ -1,15 +1,12 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
-import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +19,6 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 	}
 	
 	public void addChild(ClassyNode c) {
-		
 		if(this.children == null) {
 			this.children = new ArrayList<>();
 		}
@@ -33,16 +29,6 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		
 		this.children.add(c);
 		
-		if(c instanceof Project) {
-			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getRoot(), c);
-		}else if(c instanceof DiagramElement) {
-			ClassyTreeItem parent = MainFrame.getInstance().getClassyTree().getRoot().getNode(this);
-			MainFrame.getInstance().getClassyTree().addChild(parent, c);
-			
-		}else {
-			MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getSelectedNode(), c);
-		}
-		
 		if(c instanceof Diagram) {
 			((Package) this).notifySubscribers(PackageViewEvent.ADD_DIAGRAM);
 		}
@@ -50,7 +36,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 			((Diagram) c.getParent()).notifySubscribers("");
 		}
 	}
-
+	
 	
 	public void removeChild(ClassyNode c) {
 		this.children.remove(c);
@@ -67,7 +53,6 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 		if(c instanceof Project) {
 			deleteNodeUpdate((ArrayList<ClassyNode>) ((Project) c).getChildren());
 		}
-		MainFrame.getInstance().getClassyTree().removeNode(MainFrame.getInstance().getClassyTree().getNode(c));
 	}
 	
 	public void deleteNodeUpdate(ArrayList<ClassyNode> children) {

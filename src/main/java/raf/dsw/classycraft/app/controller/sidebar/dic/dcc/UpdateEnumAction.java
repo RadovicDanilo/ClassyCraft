@@ -12,14 +12,14 @@ import java.util.Set;
 public class UpdateEnumAction extends AbstractClassyAction {
 	public UpdateEnumAction(Enum e, JTextField name, ArrayList<JTextField> tfEnums) {
 		e.setName(name.getText());
-		ArrayList<String> content  = new ArrayList<>();
-		for(JTextField tf: tfEnums){
+		ArrayList<String> content = new ArrayList<>();
+		for(JTextField tf : tfEnums) {
 			content.add(tf.getText());
 		}
 		Set<String> set = new HashSet<>(content);//proverava da li ima duplikata
-		if(set.size() == content.size()){
+		if(set.size() == content.size()) {
 			e.setContents(content);
-		}else{
+		}else {
 			//TODO SYSTEM EVENT
 		}
 	}

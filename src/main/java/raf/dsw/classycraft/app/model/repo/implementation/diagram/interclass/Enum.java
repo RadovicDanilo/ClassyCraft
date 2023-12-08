@@ -10,15 +10,15 @@ import java.util.ArrayList;
 public class Enum extends InterClass {
 	ArrayList<String> contents;
 	
-	public Enum(ClassyNodeComposite parent, String name, Visibility visibility) {
-		super(parent, name, visibility);
+	public Enum(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
+		super(parent, name, visibility, x, y);
 		contents = new ArrayList<>();
 		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Enum){
+		if(obj instanceof Enum) {
 			return ((Enum) obj).getName().equals(this.getName());
 		}
 		return false;
@@ -28,6 +28,12 @@ public class Enum extends InterClass {
 		return contents;
 	}
 	
+	public void setContents(ArrayList<String> contents) {
+		this.contents = contents;
+		((Diagram) getParent()).notifySubscribers("");
+		
+	}
+	
 	public void addEnum(String e) {
 		if(e == null)
 			return;
@@ -35,12 +41,6 @@ public class Enum extends InterClass {
 			contents.add(e);
 			((Diagram) getParent()).notifySubscribers("");
 		}
-		
-	}
-	
-	public void setContents(ArrayList<String> contents) {
-		this.contents = contents;
-		((Diagram) getParent()).notifySubscribers("");
 		
 	}
 }

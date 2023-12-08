@@ -14,7 +14,7 @@ public class DrawGeneralisationAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().getStateManager().setDrawGeneralisationState();
+		MainFrame.getInstance().getPackageView().startDrawGeneralisationState();
 		
 	}
 }

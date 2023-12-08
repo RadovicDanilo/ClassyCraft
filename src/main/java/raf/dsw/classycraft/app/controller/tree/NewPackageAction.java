@@ -1,15 +1,15 @@
 package main.java.raf.dsw.classycraft.app.controller.tree;
 
-import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.PackageFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.awt.event.ActionEvent;
 
@@ -28,9 +28,8 @@ public class NewPackageAction extends AbstractClassyAction {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM);
 			return;
 		}
-		ClassyNode classyNode;
 		PackageFactory packageFactory = new PackageFactory();
-		classyNode = packageFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
-		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+		ClassyNode classyNode = packageFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
+		MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
 	}
 }

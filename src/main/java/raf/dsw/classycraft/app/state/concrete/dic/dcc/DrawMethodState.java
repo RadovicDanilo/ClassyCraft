@@ -1,8 +1,8 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.ClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterfacePainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
@@ -19,21 +19,29 @@ public class DrawMethodState extends DrawClassContentState {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+			if(!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
+				continue;
+			}
 			if(elementPainter instanceof ClassPainter) {
-				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
-					String name = JOptionPane.showInputDialog("Method name:");
-					String returnValue = JOptionPane.showInputDialog("return value:");
-					Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visbili", "v", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
+				String name = JOptionPane.showInputDialog("Method name:");
+				String returnValue = JOptionPane.showInputDialog("return value:");
+				Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visbili", "v", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
+				if(name != null && returnValue != null && name.matches("[a-zA-Z]+") && returnValue.matches("[a-zA-Z]+")) {
 					((Klasa) elementPainter.getDiagramElement()).addMethod(new Method(name, visibility, returnValue));
+				}else {
+					//TODO SYSTEM EVENT
 				}
 			}
 			if(elementPainter instanceof InterfacePainter) {
-				if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
-					String name = JOptionPane.showInputDialog("Method name:");
-					String returnValue = JOptionPane.showInputDialog("return value:");
-					Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visbili", "v", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
+				String name = JOptionPane.showInputDialog("Method name:");
+				String returnValue = JOptionPane.showInputDialog("return value:");
+				Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visbili", "v", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
+				if(name != null && returnValue != null && name.matches("[a-zA-Z]+") && returnValue.matches("[a-zA-Z]+")) {
 					((Interface) elementPainter.getDiagramElement()).addMethod(new Method(name, visibility, returnValue));
+				}else {
+					//TODO SYSTEM EVENT
 				}
+				
 			}
 		}
 	}

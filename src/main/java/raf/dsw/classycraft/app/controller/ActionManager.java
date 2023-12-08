@@ -1,9 +1,8 @@
 package main.java.raf.dsw.classycraft.app.controller;
 
-import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.*;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.RemoveAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.SelectAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.ZoomToFitAction;
+import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.AboutUsAction;
+import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.ExitAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.*;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawAggregationAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawCompositionAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawDependencyAction;
@@ -39,6 +38,8 @@ public class ActionManager {
 	private DrawFieldAction drawFieldAction;
 	private DrawMethodAction drawMethodAction;
 	private EditContentAction editContentAction;
+	private MultiSelectStateAction multiSelectStateAction;
+	private DuplicateAction duplicateAction;
 	
 	
 	public ActionManager() {
@@ -53,9 +54,10 @@ public class ActionManager {
 		newPackageAction = new NewPackageAction();
 		newDiagramAction = new NewDiagramAction();
 		changeAuthorShowViewAction = new ChangeAuthorAction();
-		
+		multiSelectStateAction = new MultiSelectStateAction();
 		selectAction = new SelectAction();
 		removeAction = new RemoveAction();
+		duplicateAction = new DuplicateAction();
 		
 		drawClassAction = new DrawClassAction();
 		drawEnumAction = new DrawEnumAction();
@@ -71,6 +73,10 @@ public class ActionManager {
 		drawDependencyAction = new DrawDependencyAction();
 		
 		zoomToFitAction = new ZoomToFitAction();
+	}
+	
+	public MultiSelectStateAction getMultiSelectStateAction() {
+		return multiSelectStateAction;
 	}
 	
 	public Action getExitAction() {
@@ -152,6 +158,10 @@ public class ActionManager {
 	
 	public EditContentAction getEditContentAction() {
 		return editContentAction;
+	}
+	
+	public Action getDuplicateAction() {
+		return duplicateAction;
 	}
 }
 

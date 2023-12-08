@@ -4,6 +4,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 public class MyMouseAdapter extends MouseAdapter {
 	private DiagramView diagramView;
@@ -20,6 +21,12 @@ public class MyMouseAdapter extends MouseAdapter {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		MainFrame.getInstance().getPackageView().mouseRelease(e, diagramView);
+	}
+	
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		super.mouseWheelMoved(e);
+		
 	}
 	
 	@Override

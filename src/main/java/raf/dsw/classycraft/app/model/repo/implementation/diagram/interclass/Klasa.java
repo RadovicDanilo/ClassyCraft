@@ -14,19 +14,27 @@ import java.util.Comparator;
 public class Klasa extends InterClass {
 	private ArrayList<ClassContent> contents;
 	
-	public Klasa(ClassyNodeComposite parent, String name, Visibility visibility) {
-		super(parent, name, visibility);
+	public Klasa(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
+		super(parent, name, visibility, x, y);
 		contents = new ArrayList<>();
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Klasa){
+		if(obj instanceof Klasa) {
 			return ((Klasa) obj).getName().equals(this.getName());
 		}
 		return false;
 	}
+	
 	public ArrayList<ClassContent> getContents() {
 		return contents;
+	}
+	
+	public void setContents(ArrayList<ClassContent> contents) {
+		this.contents = contents;
+		((Diagram) getParent()).notifySubscribers("");
+		
 	}
 	
 	public void addMethod(Method m) {
@@ -44,7 +52,6 @@ public class Klasa extends InterClass {
 		contents.sort(comparator);
 		
 		((Diagram) getParent()).notifySubscribers("");
-		
 		
 	}
 	
@@ -66,11 +73,5 @@ public class Klasa extends InterClass {
 		contents.sort(comparator);
 		
 		((Diagram) getParent()).notifySubscribers("");
-	}
-	
-	public void setContents(ArrayList<ClassContent> contents) {
-		this.contents = contents;
-		((Diagram) getParent()).notifySubscribers("");
-		
 	}
 }

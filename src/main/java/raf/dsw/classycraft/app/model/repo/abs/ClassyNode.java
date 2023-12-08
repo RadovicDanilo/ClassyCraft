@@ -1,12 +1,12 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
-import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 
@@ -34,6 +34,9 @@ public abstract class ClassyNode {
 	
 	public void setName(String name) {
 		for(ClassyNode c : this.parent.getChildren()) {
+			if(this.name.equals(name)) {
+				break;
+			}
 			if(c.getName().equals(name)) {
 				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NODE_CANNOT_BE_DUPLICATE);
 				return;

@@ -1,21 +1,19 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
+import com.sun.jdi.ArrayReference;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
-import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.observer.IPublisher;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.util.ArrayList;
 
-public class DiagramView extends JPanel implements ISubscriber {
+public class DiagramView extends JPanel implements ISubscriber, IPublisher, AdjustmentListener {
 	public final BasicStroke strokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[] {10.0f}, 0.0f);
 	private Diagram diagram;
 	private ArrayList<ElementPainter> elementPainters;
@@ -26,41 +24,57 @@ public class DiagramView extends JPanel implements ISubscriber {
 	private ArrayList<ElementPainter> selected;
 	
 	public DiagramView(Diagram diagram) {
+		MyMouseAdapter myMouseAdapter = new MyMouseAdapter(this);
+		this.addMouseListener(myMouseAdapter);
+		this.addMouseMotionListener(myMouseAdapter);
+		this.addMouseWheelListener(myMouseAdapter);
 		this.diagram = diagram;
-		diagram.addSubscriber(this);//TODO PITANJE
+		diagram.addSubscriber(this);
+		
+		super.setPreferredSize(new Dimension(10, 10));
+		
 		elementPainters = new ArrayList<>();
-		this.addMouseListener(new MyMouseAdapter(this));
-		this.addMouseMotionListener(new MyMouseAdapter(this));
+		
 		connectionFrom = null;
 		connectionTo = null;
+		
 		selectFrom = null;
 		selectTo = null;
+		
 		selected = new ArrayList<>();
+		
+		
 	}
 	
-	public Point getSelectFrom() {
-		return selectFrom;
-	}
 	
-	public Point getSelectTo() {
-		return selectTo;
-	}
-	
-	public ArrayList<ElementPainter> getSelected() {
-		return selected;
-	}
-	
-	public void setSelected(ArrayList<ElementPainter> selected) {
-		this.selected = selected;
-		repaint();
+	public Rectangle getSelectionRectangle() {
+		Rectangle r = new Rectangle();
+		
+		if(selectFrom != null && selectTo != null) {
+			if(selectFrom.x < selectTo.x && selectFrom.y < selectTo.y) {
+				r.setLocation(selectFrom.x, selectFrom.y);
+				r.setSize(selectTo.x - selectFrom.x, selectTo.y - selectFrom.y);
+				
+			}else if(selectFrom.x > selectTo.x && selectFrom.y > selectTo.y) {
+				r.setLocation(selectTo.x, selectTo.y);
+				r.setSize(selectFrom.x - selectTo.x, selectFrom.y - selectTo.y);
+				
+			}else if(selectFrom.x > selectTo.x && selectFrom.y < selectTo.y) {
+				r.setLocation(selectTo.x, selectFrom.y);
+				r.setSize(selectFrom.x - selectTo.x, selectTo.y - selectFrom.y);
+				
+			}else {
+				r.setLocation(selectFrom.x, selectTo.y);
+				r.setSize(-selectFrom.x + selectTo.x, -selectTo.y + selectFrom.y);
+			}
+		}
+		return r;
 	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for(ElementPainter elementPainter : elementPainters) {
-			elementPainter.draw((Graphics2D) g);
-		}
+		
 		Graphics2D g2d = (Graphics2D) g;
 		if(connectionFrom != null && connectionTo != null) {
 			g2d.setStroke(strokeDashed);
@@ -70,36 +84,29 @@ public class DiagramView extends JPanel implements ISubscriber {
 		
 		if(selectFrom != null && selectTo != null) {
 			g2d.setStroke(strokeDashed);
-			g2d.drawRect(selectFrom.x, selectFrom.y, selectTo.x, selectTo.y);
+			g2d.setColor(Color.RED);
+			if(selectFrom.x < selectTo.x && selectFrom.y < selectTo.y) {
+				g.drawRect(selectFrom.x, selectFrom.y, selectTo.x - selectFrom.x, selectTo.y - selectFrom.y);
+			}else if(selectFrom.x > selectTo.x && selectFrom.y > selectTo.y) {
+				g.drawRect(selectTo.x, selectTo.y, selectFrom.x - selectTo.x, selectFrom.y - selectTo.y);
+			}else if(selectFrom.x > selectTo.x && selectFrom.y < selectTo.y) {
+				g.drawRect(selectTo.x, selectFrom.y, selectFrom.x - selectTo.x, selectTo.y - selectFrom.y);
+			}else {
+				g.drawRect(selectFrom.x, selectTo.y, -selectFrom.x + selectTo.x, -selectTo.y + selectFrom.y);
+			}
 		}
-		
-		
+		for(ElementPainter elementPainter : elementPainters) {
+			elementPainter.draw((Graphics2D) g);
+		}
 	}
 	
 	@Override
 	public void update(Object notification) {
-		if(notification instanceof Connection) {
-			for(ElementPainter e : elementPainters) {
-				if(e.getDiagramElement() == notification) {
-					elementPainters.remove(e);
+		if(notification instanceof DiagramElement) {
+			for(ElementPainter elementPainter : elementPainters) {
+				if(elementPainter.getDiagramElement() == notification) {
+					elementPainters.remove(elementPainter);
 					break;
-				}
-			}
-		}
-		if(notification instanceof InterClass) {
-			for(ElementPainter e : elementPainters) {
-				if(e.getDiagramElement() == notification) {
-					elementPainters.remove(e);
-					break;
-				}
-			}
-			for(int i = 0; i < elementPainters.size(); i++) {
-				if(elementPainters.get(i) instanceof ConnectionPainter) {
-					if(((ConnectionPainter) elementPainters.get(i)).getFrom().getDiagramElement() == notification || ((ConnectionPainter) elementPainters.get(i)).getTo().getDiagramElement() == notification) {
-						MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainters.get(i).getDiagramElement()));
-						elementPainters.remove(elementPainters.get(i));
-						i--;
-					}
 				}
 			}
 		}
@@ -112,43 +119,6 @@ public class DiagramView extends JPanel implements ISubscriber {
 			return this.diagram.equals(((DiagramView) obj).getDiagram());
 		}
 		return false;
-	}
-	
-	public ArrayList<ElementPainter> getElementPainters() {
-		return elementPainters;
-	}
-	
-	public void setElementPainters(ArrayList<ElementPainter> elementPainters) {
-		this.elementPainters = elementPainters;
-	}
-	
-	public Point getConnectionFrom() {
-		return connectionFrom;
-		
-	}
-	
-	public Point getConnectionTo() {
-		return connectionTo;
-	}
-	
-	public void setConnectionFrom(Point connectionFrom) {
-		repaint();
-		this.connectionFrom = connectionFrom;
-	}
-	
-	public void setConnectionTo(Point connectionTo) {
-		repaint();
-		this.connectionTo = connectionTo;
-	}
-	
-	public void setSelectFrom(Point selectFrom) {
-		repaint();
-		this.selectFrom = selectFrom;
-	}
-	
-	public void setSelectTo(Point selectTo) {
-		repaint();
-		this.selectTo = selectTo;
 	}
 	
 	public Diagram getDiagram() {
@@ -166,39 +136,63 @@ public class DiagramView extends JPanel implements ISubscriber {
 		repaint();
 	}
 	
-	public void moveSelectedBy(Point point) {
-		for(ElementPainter e : selected) {
-			if(e instanceof InterClassPainter) {
-				((InterClassPainter) e).setX(((InterClassPainter) e).getX() + point.x);
-				((InterClassPainter) e).setY(((InterClassPainter) e).getY() + point.y);
-			}
-		}
+	public ArrayList<ElementPainter> getSelected() {
+		return selected;
+	}
+	
+	public void setSelected(ArrayList<ElementPainter> selected) {
+		this.selected = selected;
 		repaint();
 	}
-	public void removeSelected(){
-		for(int i = 0; i < elementPainters.size(); i++) {
-			if(selected.contains(elementPainters.get(i)) ) {
-				MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainters.get(i).getDiagramElement()));
-				update(elementPainters.get(i).getDiagramElement());
-				i--;
-			}
-		}
-		repaint();
+	
+	public ArrayList<ElementPainter> getElementPainters() {
+		return elementPainters;
 	}
-	public void removePainter(ElementPainter elementPainter) {
-		this.diagram.removeChild(elementPainter.getDiagramElement());
-		MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
-		elementPainters.remove(elementPainter);
-		
-		for(int i = 0; i < elementPainters.size(); i++) {
-			if(elementPainters.get(i) instanceof ConnectionPainter) {
-				if(((ConnectionPainter) elementPainters.get(i)).getFrom() == elementPainter || ((ConnectionPainter) elementPainters.get(i)).getTo() == elementPainter) {
-					MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainters.get(i).getDiagramElement()));
-					elementPainters.remove(elementPainters.get(i));
-					i--;
-				}
-			}
-		}
+	
+	
+	public void setSelectFrom(Point selectFrom) {
 		repaint();
+		this.selectFrom = selectFrom;
+	}
+	
+	
+	public void setSelectTo(Point selectTo) {
+		repaint();
+		this.selectTo = selectTo;
+	}
+	
+	
+	public void setConnectionFrom(Point connectionFrom) {
+		repaint();
+		this.connectionFrom = connectionFrom;
+	}
+	
+	
+	public void setConnectionTo(Point connectionTo) {
+		repaint();
+		this.connectionTo = connectionTo;
+	}
+	
+	@Override
+	public void adjustmentValueChanged(AdjustmentEvent e) {
+	
+	}
+	
+	ArrayList<ISubscriber> subscribers = new ArrayList<>();
+	@Override
+	public void addSubscriber(ISubscriber sub) {
+		if(!subscribers.contains(sub))
+			subscribers.add(sub);
+	}
+	
+	@Override
+	public void removeSubscriber(ISubscriber sub) {
+		subscribers.remove(sub);
+	}
+	
+	@Override
+	public void notifySubscribers(Object notification) {
+		for(ISubscriber sub: subscribers)
+			sub.update("");
 	}
 }

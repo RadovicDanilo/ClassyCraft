@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state.concrete;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
 
@@ -16,8 +17,10 @@ public class SelectState implements State {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(elementPainter.contains(e.getPoint())) {
 				last = e.getPoint();
-				diagramView.setSelected(new ArrayList<>());
-				diagramView.addSelectedElement(elementPainter);
+				if(!diagramView.getSelected().contains(elementPainter)) {
+					diagramView.setSelected(new ArrayList<>());
+					diagramView.addSelectedElement(elementPainter);
+				}
 				return;
 			}
 		}
@@ -26,12 +29,17 @@ public class SelectState implements State {
 	
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		if(last != null){
-			diagramView.moveSelectedBy(new Point(e.getX() - last.x, e.getY() - last.y));
+		if(last != null) {
+			for(ElementPainter elementPainter : diagramView.getSelected()) {
+				if(elementPainter instanceof InterClassPainter) {
+					((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + e.getX() - last.x);
+					((InterClassPainter) elementPainter).getDiagramElement().setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + e.getY() - last.y);
+				}
+			}
 			last = e.getPoint();
 		}
-		
 	}
+	
 	
 	@Override
 	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
