@@ -8,12 +8,26 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Conne
 
 import java.awt.*;
 import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public abstract class ConnectionPainter extends ElementPainter {
 	private InterClassPainter from;
 	private InterClassPainter to;
+	
+	public ConnectionPainter(Connection diagramElement) {
+		super(diagramElement);
+		for(ElementPainter ed : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+			if(ed instanceof InterClassPainter) {
+				if(ed.getDiagramElement().equals(diagramElement.getFrom())) {
+					from = (InterClassPainter) ed;
+				}
+				if(ed.getDiagramElement().equals(diagramElement.getTo())) {
+					to = (InterClassPainter) ed;
+				}
+			}
+		}
+		
+	}
 	
 	@Override
 	public boolean contains(Point p) {
@@ -31,25 +45,11 @@ public abstract class ConnectionPainter extends ElementPainter {
 		return distance < 2;
 	}
 	
-	public ConnectionPainter(Connection diagramElement) {
-		super(diagramElement);
-		for(ElementPainter ed : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
-			if(ed instanceof InterClassPainter) {
-				if(ed.getDiagramElement().equals(diagramElement.getFrom())) {
-					from = (InterClassPainter) ed;
-				}
-				if(ed.getDiagramElement().equals(diagramElement.getTo())) {
-					to = (InterClassPainter) ed;
-				}
-			}
-		}
-		
-	}
 	public boolean intersects(Rectangle r) {
 		Point a = new Point(from.getDiagramElement().getX(), from.getDiagramElement().getY());
 		Point b = new Point(to.getDiagramElement().getX(), to.getDiagramElement().getY());
 		ArrayList<Point> points = new ArrayList<>();
-
+		
 		return false;
 	}
 	

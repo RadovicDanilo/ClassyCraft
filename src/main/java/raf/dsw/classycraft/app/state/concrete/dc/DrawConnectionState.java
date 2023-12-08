@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 public abstract class DrawConnectionState implements State {
 	private InterClassPainter from;
+	
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter ep : diagramView.getElementPainters()) {

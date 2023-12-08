@@ -17,7 +17,7 @@ public class SelectState implements State {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(elementPainter.contains(e.getPoint())) {
 				last = e.getPoint();
-				if(!diagramView.getSelected().contains(elementPainter)){
+				if(!diagramView.getSelected().contains(elementPainter)) {
 					diagramView.setSelected(new ArrayList<>());
 					diagramView.addSelectedElement(elementPainter);
 				}
@@ -40,7 +40,7 @@ public class SelectState implements State {
 		}
 	}
 	
-
+	
 	@Override
 	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
 		last = null;

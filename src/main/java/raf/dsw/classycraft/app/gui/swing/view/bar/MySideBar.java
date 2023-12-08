@@ -29,8 +29,6 @@ public class MySideBar extends JToolBar {
 		add(MainFrame.getInstance().getActionManager().getDrawMethodAction());
 		add(MainFrame.getInstance().getActionManager().getEditContentAction());
 		
-
-	
 		
 	}
 }

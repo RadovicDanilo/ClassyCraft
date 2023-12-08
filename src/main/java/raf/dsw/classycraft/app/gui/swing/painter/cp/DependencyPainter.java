@@ -12,6 +12,7 @@ public class DependencyPainter extends ConnectionPainter {
 	public DependencyPainter(Connection diagramElement) {
 		super(diagramElement);
 	}
+	
 	@Override
 	public void addElement(DiagramElement element) {
 		super.addElement(element);
@@ -21,10 +22,10 @@ public class DependencyPainter extends ConnectionPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)) {
 			g.setColor(Color.RED);
 			g.setStroke(strokeDashed);
-		}else{
+		}else {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}

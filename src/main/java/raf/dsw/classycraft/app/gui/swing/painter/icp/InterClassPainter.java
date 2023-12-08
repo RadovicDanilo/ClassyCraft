@@ -5,7 +5,6 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Diagr
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public abstract class InterClassPainter extends ElementPainter {
 	
@@ -34,11 +33,6 @@ public abstract class InterClassPainter extends ElementPainter {
 		r.setLocation(getDiagramElement().getX(), getDiagramElement().getY());
 		return r;
 	}
-	
-	
-	
-	
-
 	
 	
 }

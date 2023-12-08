@@ -4,7 +4,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.AggregationPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.ConnectionType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
@@ -15,12 +14,12 @@ import java.awt.event.MouseEvent;
 public class DrawAggregationState extends DrawConnectionState {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		super.mousePressed(e,diagramView);
+		super.mousePressed(e, diagramView);
 	}
 	
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		super.mouseDragged(e,diagramView);
+		super.mouseDragged(e, diagramView);
 		
 	}
 	

@@ -1,15 +1,12 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImplementation;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
-import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +36,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 			((Diagram) c.getParent()).notifySubscribers("");
 		}
 	}
-
+	
 	
 	public void removeChild(ClassyNode c) {
 		this.children.remove(c);

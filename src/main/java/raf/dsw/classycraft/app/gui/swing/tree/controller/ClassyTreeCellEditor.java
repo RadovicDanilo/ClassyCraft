@@ -2,8 +2,8 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;

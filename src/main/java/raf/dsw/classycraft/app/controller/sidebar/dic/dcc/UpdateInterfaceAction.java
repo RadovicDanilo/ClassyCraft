@@ -12,15 +12,15 @@ import java.util.Set;
 public class UpdateInterfaceAction {
 	public UpdateInterfaceAction(Interface i, JTextField tfName, ArrayList<JComboBox<Visibility>> cbMethodVisibility, ArrayList<JTextField> tfMethodValues, ArrayList<JTextField> tfMethodNames) {
 		i.setName(tfName.getText());
-		ArrayList<Method> methods  = new ArrayList<>();
+		ArrayList<Method> methods = new ArrayList<>();
 		for(int j = 0; j < tfMethodNames.size(); j++) {
-			methods.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(),tfMethodValues.get(j).getText()));
+			methods.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(), tfMethodValues.get(j).getText()));
 		}
 		
 		Set<Method> set = new HashSet<>(methods);//proverava da li ima duplikata
-		if(set.size() == methods.size()){
+		if(set.size() == methods.size()) {
 			i.setMethods(methods);
-		}else{
+		}else {
 			//TODO SYSTEM EVENT
 		}
 	}

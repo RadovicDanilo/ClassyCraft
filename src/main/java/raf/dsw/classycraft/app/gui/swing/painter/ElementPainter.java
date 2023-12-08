@@ -4,14 +4,12 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 public abstract class ElementPainter {
 	public final BasicStroke strokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[] {10.0f}, 0.0f);
 	public final BasicStroke normalStroke = new BasicStroke(1.0f);
 	private final DiagramElement diagramElement;
-
+	
 	public ElementPainter(DiagramElement diagramElement) {
 		this.diagramElement = diagramElement;
 	}

@@ -20,12 +20,14 @@ public class DiagramView extends JPanel implements ISubscriber {
 	private ArrayList<ElementPainter> selected;
 	
 	public DiagramView(Diagram diagram) {
-		
-		this.addMouseListener(new MyMouseAdapter(this));
-		this.addMouseMotionListener(new MyMouseAdapter(this));
-		
+		MyMouseAdapter myMouseAdapter = new MyMouseAdapter(this);
+		this.addMouseListener(myMouseAdapter);
+		this.addMouseMotionListener(myMouseAdapter);
+		this.addMouseWheelListener(myMouseAdapter);
 		this.diagram = diagram;
 		diagram.addSubscriber(this);
+		
+		super.setPreferredSize(new Dimension(10, 10));
 		
 		elementPainters = new ArrayList<>();
 		
@@ -36,6 +38,8 @@ public class DiagramView extends JPanel implements ISubscriber {
 		selectTo = null;
 		
 		selected = new ArrayList<>();
+		
+		
 	}
 	
 	
@@ -141,41 +145,24 @@ public class DiagramView extends JPanel implements ISubscriber {
 		return elementPainters;
 	}
 	
-	public void setElementPainters(ArrayList<ElementPainter> elementPainters) {
-		this.elementPainters = elementPainters;
-	}
-	
-	public Point getSelectFrom() {
-		return selectFrom;
-	}
 	
 	public void setSelectFrom(Point selectFrom) {
 		repaint();
 		this.selectFrom = selectFrom;
 	}
 	
-	public Point getSelectTo() {
-		return selectTo;
-	}
 	
 	public void setSelectTo(Point selectTo) {
 		repaint();
 		this.selectTo = selectTo;
 	}
 	
-	public Point getConnectionFrom() {
-		return connectionFrom;
-		
-	}
 	
 	public void setConnectionFrom(Point connectionFrom) {
 		repaint();
 		this.connectionFrom = connectionFrom;
 	}
 	
-	public Point getConnectionTo() {
-		return connectionTo;
-	}
 	
 	public void setConnectionTo(Point connectionTo) {
 		repaint();

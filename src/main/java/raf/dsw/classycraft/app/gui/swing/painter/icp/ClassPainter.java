@@ -3,12 +3,10 @@ package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 public class ClassPainter extends InterClassPainter {
 	
@@ -19,10 +17,10 @@ public class ClassPainter extends InterClassPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		if(((DiagramView)MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)) {
 			g.setColor(Color.RED);
 			g.setStroke(strokeDashed);
-		}else{
+		}else {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}
@@ -56,7 +54,7 @@ public class ClassPainter extends InterClassPainter {
 			}
 		}while(flag);
 		
-		g.drawRect( getDiagramElement().getX(), getDiagramElement().getY(), width, height);
+		g.drawRect(getDiagramElement().getX(), getDiagramElement().getY(), width, height);
 		
 		int yOffset = g.getFontMetrics().getHeight() + 2;
 		int xOffset;

@@ -92,3 +92,4 @@
 [ERROR][07-12-2023 19:11:08] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][07-12-2023 21:39:17] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][07-12-2023 22:00:49] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][08-12-2023 00:16:31] Diagram se mogu praviti samo u projektima ili paketima

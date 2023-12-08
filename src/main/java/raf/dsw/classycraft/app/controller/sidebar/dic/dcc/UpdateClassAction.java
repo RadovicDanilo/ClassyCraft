@@ -14,17 +14,17 @@ import java.util.Set;
 public class UpdateClassAction {
 	public UpdateClassAction(Klasa k, JTextField tfName, ArrayList<JComboBox<Visibility>> cbFieldVisibility, ArrayList<JTextField> tfFieldValues, ArrayList<JTextField> tfFieldNames, ArrayList<JComboBox<Visibility>> cbMethodVisibility, ArrayList<JTextField> tfMethodValues, ArrayList<JTextField> tfMethodNames) {
 		k.setName(tfName.getText());
-		ArrayList<ClassContent> contents  = new ArrayList<>();
+		ArrayList<ClassContent> contents = new ArrayList<>();
 		for(int j = 0; j < tfFieldNames.size(); j++) {
-			contents.add(new Field(tfFieldNames.get(j).getText(), (Visibility) cbFieldVisibility.get(j).getSelectedItem(),tfFieldValues.get(j).getText()));
+			contents.add(new Field(tfFieldNames.get(j).getText(), (Visibility) cbFieldVisibility.get(j).getSelectedItem(), tfFieldValues.get(j).getText()));
 		}
 		for(int j = 0; j < tfMethodNames.size(); j++) {
-			contents.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(),tfMethodValues.get(j).getText()));
+			contents.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(), tfMethodValues.get(j).getText()));
 		}
 		Set<ClassContent> set = new HashSet<>(contents);//proverava da li ima duplikata
-		if(set.size() == contents.size()){
+		if(set.size() == contents.size()) {
 			k.setContents(contents);
-		}else{
+		}else {
 			//TODO SYSTEM EVENT
 		}
 	}

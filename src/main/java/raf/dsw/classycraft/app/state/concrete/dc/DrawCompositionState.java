@@ -1,14 +1,12 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.AggregationPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.CompositionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.ConnectionType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
 
 import java.awt.event.MouseEvent;
@@ -16,12 +14,12 @@ import java.awt.event.MouseEvent;
 public class DrawCompositionState extends DrawConnectionState {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		super.mousePressed(e,diagramView);
+		super.mousePressed(e, diagramView);
 	}
 	
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		super.mouseDragged(e,diagramView);
+		super.mouseDragged(e, diagramView);
 		
 	}
 	

@@ -1,9 +1,9 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
-import main.java.raf.dsw.classycraft.app.observer.IPublisher;
-import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.observer.IPublisher;
+import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,8 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 		ClassyNode node = (ClassyNode) obj;
 		return super.getParent() == node.getParent() && super.getName().equals(node.getName());
 	}
-//	@Override
+	
+	//	@Override
 //	public void removeChild(ClassyNode c){
 //		this.getChildren().remove(c);
 //

@@ -1,7 +1,6 @@
 package main.java.raf.dsw.classycraft.app.state.concrete;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
 
@@ -25,8 +24,8 @@ public class MultiSelectState implements State {
 		
 		diagramView.setSelected(new ArrayList<>());
 		
-		for(ElementPainter elementPainter: diagramView.getElementPainters()){
-			if(elementPainter.intersects(r)){
+		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
+			if(elementPainter.intersects(r)) {
 				diagramView.addSelectedElement(elementPainter);
 			}
 		}

@@ -13,19 +13,27 @@ public class Interface extends InterClass {
 	
 	public Interface(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
 		super(parent, name, visibility, x, y);
-		this.methods =  new ArrayList<>();
+		this.methods = new ArrayList<>();
 	}
 	
 	public ArrayList<Method> getMethods() {
 		return methods;
 	}
+	
+	public void setMethods(ArrayList<Method> methods) {
+		this.methods = methods;
+		((Diagram) getParent()).notifySubscribers("");
+		
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Interface){
+		if(obj instanceof Interface) {
 			return ((Interface) obj).getName().equals(this.getName());
 		}
 		return false;
 	}
+	
 	public void addMethod(Method m) {
 		if(m == null)
 			return;
@@ -33,11 +41,5 @@ public class Interface extends InterClass {
 			methods.add(m);
 		}
 		((Diagram) getParent()).notifySubscribers("");
-	}
-	
-	public void setMethods(ArrayList<Method> methods) {
-		this.methods = methods;
-		((Diagram) getParent()).notifySubscribers("");
-		
 	}
 }

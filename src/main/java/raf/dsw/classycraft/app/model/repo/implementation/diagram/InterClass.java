@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram;
 
-import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 
@@ -32,7 +31,7 @@ public abstract class InterClass extends DiagramElement {
 	public void setX(int x) {
 		this.x = x;
 		generatePoints();
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	public int getY() {
@@ -42,7 +41,7 @@ public abstract class InterClass extends DiagramElement {
 	public void setY(int y) {
 		this.y = y;
 		generatePoints();
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	public int getCurrentWidth() {
@@ -52,7 +51,7 @@ public abstract class InterClass extends DiagramElement {
 	public void setCurrentWidth(int currentWidth) {
 		this.currentWidth = currentWidth;
 		generatePoints();
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 		
 	}
 	
@@ -63,7 +62,7 @@ public abstract class InterClass extends DiagramElement {
 	public void setCurrentHeight(int currentHeight) {
 		this.currentHeight = currentHeight;
 		generatePoints();
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	public ArrayList<Point> getConnectionPoints() {
@@ -76,7 +75,7 @@ public abstract class InterClass extends DiagramElement {
 	
 	public void setVisibility(Visibility visibility) {
 		this.visibility = visibility;
-		((Diagram)getParent()).notifySubscribers("");
+		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	public void generatePoints() {

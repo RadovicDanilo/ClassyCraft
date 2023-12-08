@@ -1,14 +1,11 @@
 package main.java.raf.dsw.classycraft.app.controller.tree;
 
-import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
-import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.awt.event.ActionEvent;
 

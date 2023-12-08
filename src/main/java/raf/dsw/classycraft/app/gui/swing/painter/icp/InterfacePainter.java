@@ -19,10 +19,10 @@ public class InterfacePainter extends InterClassPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		if(((DiagramView)MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)) {
 			g.setColor(Color.RED);
 			g.setStroke(strokeDashed);
-		}else{
+		}else {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}
@@ -47,8 +47,8 @@ public class InterfacePainter extends InterClassPainter {
 			flag = true;
 			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
-					((InterClassPainter) dp).getDiagramElement().setX(getDiagramElement().getX() + width );
-					((InterClassPainter) dp).getDiagramElement().setY(getDiagramElement().getY() + height );
+					((InterClassPainter) dp).getDiagramElement().setX(getDiagramElement().getX() + width);
+					((InterClassPainter) dp).getDiagramElement().setY(getDiagramElement().getY() + height);
 					flag = false;
 					break;
 				}

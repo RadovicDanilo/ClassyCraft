@@ -1,16 +1,11 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.cp;
 
-import main.java.raf.dsw.classycraft.app.Main;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.awt.*;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Line2D;
-import java.awt.geom.Path2D;
-import java.rmi.MarshalException;
 
 public class AggregationPainter extends ConnectionPainter {
 	
@@ -26,10 +21,10 @@ public class AggregationPainter extends ConnectionPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)){
+		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)) {
 			g.setColor(Color.RED);
 			g.setStroke(strokeDashed);
-		}else{
+		}else {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}

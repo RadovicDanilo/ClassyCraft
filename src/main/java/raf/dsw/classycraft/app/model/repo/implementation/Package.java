@@ -1,8 +1,8 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 
 import java.util.ArrayList;
 import java.util.List;
