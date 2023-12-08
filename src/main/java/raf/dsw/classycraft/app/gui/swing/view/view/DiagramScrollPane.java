@@ -8,27 +8,31 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
-public class MyScrollPane extends JPanel implements ISubscriber, ComponentListener {
+public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentListener {
 	private DiagramView diagramView;
 	private JScrollBar horizontalScrollBar;
 	private JScrollBar verticalScrollBar;
 	private ComponentEvent e;
 	
-	public MyScrollPane(DiagramView diagramView) {
-		super();
+	public DiagramScrollPane(DiagramView diagramView) {
+		
 		BorderLayout borderLayout = new BorderLayout();
 		this.setLayout(borderLayout);
-		this.add(diagramView, BorderLayout.CENTER);
+		
 		this.diagramView = diagramView;
-		horizontalScrollBar = new JScrollBar(0);
-		verticalScrollBar = new JScrollBar(1);
-		horizontalScrollBar.addAdjustmentListener((AdjustmentListener) diagramView);
-		verticalScrollBar.addAdjustmentListener((AdjustmentListener) diagramView);
-		this.add(verticalScrollBar, BorderLayout.EAST);
-		this.add(horizontalScrollBar, BorderLayout.SOUTH);
+		this.add(diagramView, BorderLayout.CENTER);
+		
+		horizontalScrollBar = new JScrollBar(Adjustable.HORIZONTAL);
+		verticalScrollBar = new JScrollBar(Adjustable.VERTICAL);
+		horizontalScrollBar.addAdjustmentListener(diagramView);
+		verticalScrollBar.addAdjustmentListener(diagramView);
 		horizontalScrollBar.setVisible(true);
 		verticalScrollBar.setVisible(true);
-		//diagramView.addSubscriber(this);
+		
+		this.add(verticalScrollBar, BorderLayout.EAST);
+		this.add(horizontalScrollBar, BorderLayout.SOUTH);
+
+		diagramView.addSubscriber(this);
 		
 	}
 	

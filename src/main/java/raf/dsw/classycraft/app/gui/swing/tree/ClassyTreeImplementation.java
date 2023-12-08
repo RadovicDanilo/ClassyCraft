@@ -64,7 +64,7 @@ public class ClassyTreeImplementation implements ClassyTree {
 	}
 	
 	public ClassyTreeItem getNode(ClassyNode c) {
-		//BFS
+		
 		ArrayList<ClassyTreeItem> a = new ArrayList<>();
 		a.add(root);
 		while(a.size() != 0) {

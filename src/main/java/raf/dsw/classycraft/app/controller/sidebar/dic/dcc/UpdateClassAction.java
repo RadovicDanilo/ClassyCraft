@@ -21,7 +21,7 @@ public class UpdateClassAction {
 		for(int j = 0; j < tfMethodNames.size(); j++) {
 			contents.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(), tfMethodValues.get(j).getText()));
 		}
-		Set<ClassContent> set = new HashSet<>(contents);//proverava da li ima duplikata
+		Set<ClassContent> set = new HashSet<>(contents);
 		if(set.size() == contents.size()) {
 			k.setContents(contents);
 		}else {

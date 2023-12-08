@@ -1,15 +1,19 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
+import com.sun.jdi.ArrayReference;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.util.ArrayList;
 
-public class DiagramView extends JPanel implements ISubscriber {
+public class DiagramView extends JPanel implements ISubscriber, IPublisher, AdjustmentListener {
 	public final BasicStroke strokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[] {10.0f}, 0.0f);
 	private Diagram diagram;
 	private ArrayList<ElementPainter> elementPainters;
@@ -169,4 +173,26 @@ public class DiagramView extends JPanel implements ISubscriber {
 		this.connectionTo = connectionTo;
 	}
 	
+	@Override
+	public void adjustmentValueChanged(AdjustmentEvent e) {
+	
+	}
+	
+	ArrayList<ISubscriber> subscribers = new ArrayList<>();
+	@Override
+	public void addSubscriber(ISubscriber sub) {
+		if(!subscribers.contains(sub))
+			subscribers.add(sub);
+	}
+	
+	@Override
+	public void removeSubscriber(ISubscriber sub) {
+		subscribers.remove(sub);
+	}
+	
+	@Override
+	public void notifySubscribers(Object notification) {
+		for(ISubscriber sub: subscribers)
+			sub.update("");
+	}
 }
