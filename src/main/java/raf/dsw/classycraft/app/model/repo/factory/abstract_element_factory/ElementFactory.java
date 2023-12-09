@@ -28,13 +28,13 @@ public class ElementFactory extends AbstractElementFactory {
 		switch(interClassType) {
 			case CLASS:
 				c++;
-				return new Klasa(parent, "klasa " + c, visibility, x, y);
+				return new Klasa(parent, "Class" + c, visibility, x, y);
 			case INTERFACE:
 				i++;
-				return new Interface(parent, "interfejs " + i, visibility, x, y);
+				return new Interface(parent, "Interface" + i, visibility, x, y);
 			case ENUM:
 				e++;
-				return new Enum(parent, "enum " + e, Visibility.PUBLIC, x, y);
+				return new Enum(parent, "Enum" + e, Visibility.PUBLIC, x, y);
 			default:
 				return null;
 		}
@@ -43,7 +43,6 @@ public class ElementFactory extends AbstractElementFactory {
 	@Override
 	public Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to) {
 		String x =  " from " + from.getName() + " To " + to.getName();
-		x = "";
 		switch(connectionType) {
 			case AGGREGATION:
 				a++;

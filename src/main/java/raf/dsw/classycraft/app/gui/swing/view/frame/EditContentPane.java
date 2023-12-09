@@ -21,136 +21,161 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class EditContentPane extends JFrame {
-	
 	private final Font myFont = new Font("Calibri", Font.PLAIN, 14);
+	private final Dimension defaultDimension = new Dimension(100, 40);
 	
-	//TODO popraviti
 	public EditContentPane(ElementPainter c) throws HeadlessException {
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = kit.getScreenSize();
-		int screenHeight = screenSize.height;
-		int screenWidth = screenSize.width;
-		this.setSize(screenWidth * 4 / 10, screenHeight * 6 / 10);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Edit content");
 		
-		
 		if(c instanceof EnumPainter) {
+			
 			Enum e = (Enum) c.getDiagramElement();
 			
-			setLayout(new GridLayout(2, 1, 10, 10));
-			JPanel top = new JPanel();
-			BoxLayout boxLayout = new BoxLayout(top, BoxLayout.Y_AXIS);
-			top.setLayout(boxLayout);
+			this.setSize(defaultDimension.width * 2 + 100, defaultDimension.height * (e.getContents().size() + 3) + 100);
+			setLayout(new CardLayout(5, 5));
 			
-			top.add(new JLabel("Name"));
+			JPanel mainGrid = new JPanel();
+			GridLayout gridLayout = new GridLayout(e.getContents().size() + 3, 2, 5, 5);
+			mainGrid.setLayout(gridLayout);
+			
+			JLabel lbName = new JLabel("Name: ");
+			mainGrid.add(lbName);
 			
 			JTextField tfName = new JTextField(e.getName());
-			top.add(tfName);
+			mainGrid.add(tfName);
 			
 			ArrayList<JTextField> tfEnums = new ArrayList<>();
 			for(String s : e.getContents()) {
 				tfEnums.add(new JTextField(s));
 			}
 			
-			top.add(new JLabel("Enums"));
-			for(JTextField tf : tfEnums) {
-				top.add(tf);
+			ArrayList<JCheckBox> checkBox = new ArrayList<>();
+			for(String ignored : e.getContents()) {
+				checkBox.add(new JCheckBox());
 			}
 			
-			JPanel bot = new JPanel();
-			FlowLayout flowLayout = new FlowLayout();
-			bot.setLayout(flowLayout);
+			JLabel lbEnums = new JLabel("Enums: ");
+			mainGrid.add(lbEnums);
+			
+			JLabel lbRemove = new JLabel("Remove ?");
+			mainGrid.add(lbRemove);
+			
+			for(int i = 0; i < tfEnums.size(); i++) {
+				mainGrid.add(tfEnums.get(i));
+				mainGrid.add(checkBox.get(i));
+			}
 			
 			JButton btnCancel = new JButton("CANCEL");
 			btnCancel.addActionListener(e1->{
 				this.dispose();
 			});
+			mainGrid.add(btnCancel);
 			
 			JButton btOK = new JButton("OK");
 			btOK.addActionListener(e2->{
-				new UpdateEnumAction(e, tfName, tfEnums);
+				new UpdateEnumAction(e, tfName, tfEnums, checkBox);
 				this.dispose();
 			});
-			bot.add(btOK);
-			bot.add(btnCancel);
-			add(top, 0);
-			add(bot, 1);
+			mainGrid.add(btOK);
+			
+			add(mainGrid);
+			
+			for(Component component : this.getComponents()) {
+				component.setPreferredSize(defaultDimension);
+			}
 			
 		}
 		if(c instanceof InterfacePainter) {
 			Interface i = (Interface) c.getDiagramElement();
 			
+			this.setSize(defaultDimension.width * 4 + 100, defaultDimension.height * (i.getMethods().size() + 3) + 100);
+			
 			setLayout(new GridLayout(3, 1, 10, 10));
 			
 			JPanel top = new JPanel();
+			top.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+			
+			top.add(new JLabel("Name: "));
+			
 			JTextField tfName = new JTextField(i.getName());
-			top.add(tfName, BOTTOM_ALIGNMENT);
+			top.add(tfName);
 			
 			JPanel mid = new JPanel();
-			GridLayout gridLayout = new GridLayout(i.getMethods().size() + 1, 3, 10, 10);
-			mid.setLayout(gridLayout);
+			mid.setLayout(new GridLayout(i.getMethods().size() + 1, 4, 10, 10));
 			
-			mid.add(new JLabel("VISIBILITY"));
-			mid.add(new JLabel("RETURN VAL"));
-			mid.add(new JLabel("NAME"));
-			
+			mid.add(new JLabel("Visibility"));
+			mid.add(new JLabel("Return value"));
+			mid.add(new JLabel("Name"));
+			mid.add(new JLabel("Remove ?"));
 			
 			ArrayList<JTextField> tfMethodNames = new ArrayList<>();
 			ArrayList<JTextField> tfMethodValues = new ArrayList<>();
 			ArrayList<JComboBox<Visibility>> cbMethodVisibility = new ArrayList<>();
+			ArrayList<JCheckBox> checkBoxesMethods = new ArrayList<>();
 			for(Method m : i.getMethods()) {
 				tfMethodNames.add(new JTextField(m.getName()));
 				tfMethodValues.add((new JTextField(m.getReturnValue())));
 				JComboBox<Visibility> comboBox = new JComboBox<>(Visibility.values());
 				comboBox.setSelectedItem(m.getVisibility());
 				cbMethodVisibility.add(comboBox);
+				checkBoxesMethods.add(new JCheckBox());
 			}
 			
 			for(int j = 0; j < cbMethodVisibility.size(); j++) {
-				
-				mid.add(cbMethodVisibility.get(j), gridLayout);
-				mid.add(tfMethodValues.get(j), gridLayout);
-				mid.add(tfMethodNames.get(j), gridLayout);
+				mid.add(cbMethodVisibility.get(j));
+				mid.add(tfMethodValues.get(j));
+				mid.add(tfMethodNames.get(j));
+				mid.add(checkBoxesMethods.get(j));
 			}
 			
 			JPanel bot = new JPanel();
-			FlowLayout flowLayout = new FlowLayout();
-			bot.setLayout(flowLayout);
+			bot.setLayout(new FlowLayout(FlowLayout.LEFT));
 			
 			JButton btnCancel = new JButton("CANCEL");
 			btnCancel.addActionListener(e1->{
 				this.dispose();
 			});
+			bot.add(btnCancel);
 			
 			JButton btOK = new JButton("OK");
 			btOK.addActionListener(e2->{
-				new UpdateInterfaceAction(i, tfName, cbMethodVisibility, tfMethodValues, tfMethodNames);
+				new UpdateInterfaceAction(i, tfName, cbMethodVisibility, tfMethodValues, tfMethodNames, checkBoxesMethods);
 				this.dispose();
 			});
 			bot.add(btOK);
-			bot.add(btnCancel);
+			
 			add(top, 0);
 			add(mid, 1);
 			add(bot, 2);
+			
+			for(Component component : this.getComponents()) {
+				component.setPreferredSize(defaultDimension);
+			}
 		}
 		if(c instanceof ClassPainter) {
 			Klasa k = (Klasa) c.getDiagramElement();
 			
-			setLayout(new GridLayout(4, 1, 10, 10));
+			this.setSize(defaultDimension.width * 4 + 100, defaultDimension.height * (k.getContents().size() + 4) + 100);
+			
+			setLayout(new GridLayout(4, 1, 5, 5));
 			
 			JPanel top = new JPanel();
+			top.setLayout(new FlowLayout(FlowLayout.LEFT));
+			top.add(new JLabel("Name: "));
 			JTextField tfName = new JTextField(k.getName());
 			top.add(tfName);
 			
 			ArrayList<JTextField> tfFieldNames = new ArrayList<>();
 			ArrayList<JTextField> tfFieldType = new ArrayList<>();
 			ArrayList<JComboBox<Visibility>> cbFieldVisibility = new ArrayList<>();
+			ArrayList<JCheckBox> checkBoxesF = new ArrayList<>();
 			
 			ArrayList<JTextField> tfMethodNames = new ArrayList<>();
 			ArrayList<JTextField> tfMethodValues = new ArrayList<>();
 			ArrayList<JComboBox<Visibility>> cbMethodVisibility = new ArrayList<>();
+			ArrayList<JCheckBox> checkBoxesM = new ArrayList<>();
 			
 			for(ClassContent content : k.getContents()) {
 				if(content instanceof Field) {
@@ -159,62 +184,74 @@ public class EditContentPane extends JFrame {
 					JComboBox<Visibility> comboBox = new JComboBox<>(Visibility.values());
 					comboBox.setSelectedItem(k.getVisibility());
 					cbFieldVisibility.add(comboBox);
+					checkBoxesF.add(new JCheckBox());
 				}else {
 					tfMethodNames.add(new JTextField(content.getName()));
 					tfMethodValues.add(new JTextField(((Method) content).getReturnValue()));
 					JComboBox<Visibility> comboBox = new JComboBox<>(Visibility.values());
 					comboBox.setSelectedItem(k.getVisibility());
 					cbMethodVisibility.add(comboBox);
+					checkBoxesM.add(new JCheckBox());
+					
 				}
 			}
 			
 			JPanel midF = new JPanel();
 			JPanel midM = new JPanel();
 			
-			GridLayout gridLayoutF = new GridLayout(tfFieldNames.size() + 1, 3, 10, 10);
-			GridLayout gridLayoutM = new GridLayout(tfMethodNames.size() + 1, 3, 10, 10);
+			midF.setLayout( new GridLayout(tfFieldNames.size() + 1, 3, 10, 10));
+			midM.setLayout(new GridLayout(tfMethodNames.size() + 1, 3, 10, 10));
 			
-			midF.setLayout(gridLayoutF);
-			midM.setLayout(gridLayoutM);
-			
-			midF.add(new JLabel("VISIBILITY"));
-			midF.add(new JLabel("TYPE"));
-			midF.add(new JLabel("NAME"));
-			
-			midM.add(new JLabel("VISIBILITY"));
-			midM.add(new JLabel("RETURN VAL"));
-			midM.add(new JLabel("NAME"));
+			midF.add(new JLabel("Visibility"));
+			midF.add(new JLabel("Type"));
+			midF.add(new JLabel("Name"));
+			midF.add(new JLabel("Remove ?"));
 			
 			for(int i = 0; i < tfFieldNames.size(); i++) {
 				midF.add(cbFieldVisibility.get(i));
 				midF.add(tfFieldType.get(i));
 				midF.add(tfFieldNames.get(i));
+				midF.add(checkBoxesF.get(i));
 			}
+			
+			midM.add(new JLabel("Visibility"));
+			midM.add(new JLabel("Return value"));
+			midM.add(new JLabel("Name"));
+			midM.add(new JLabel("Remove ?"));
+			
 			for(int i = 0; i < tfMethodNames.size(); i++) {
 				midM.add(cbMethodVisibility.get(i));
 				midM.add(tfMethodValues.get(i));
 				midM.add(tfMethodNames.get(i));
+				midM.add(checkBoxesM.get(i));
 			}
+			
 			JPanel bot = new JPanel();
-			FlowLayout flowLayout = new FlowLayout();
-			bot.setLayout(flowLayout);
+			bot.setLayout(new FlowLayout());
 			
 			JButton btnCancel = new JButton("CANCEL");
 			btnCancel.addActionListener(e1->{
 				this.dispose();
 			});
+			bot.add(btnCancel);
 			
 			JButton btOK = new JButton("OK");
 			btOK.addActionListener(e2->{
-				new UpdateClassAction(k, tfName, cbFieldVisibility, tfFieldType, tfFieldNames, cbMethodVisibility, tfMethodValues, tfMethodNames);
+				new UpdateClassAction(k, tfName,
+					cbFieldVisibility, tfFieldType, tfFieldNames, checkBoxesF,
+					cbMethodVisibility, tfMethodValues, tfMethodNames, checkBoxesM);
 				this.dispose();
 			});
 			bot.add(btOK);
-			bot.add(btnCancel);
+			
 			add(top, 0);
 			add(midF, 1);
 			add(midM, 2);
 			add(bot, 3);
+			
+			for(Component component : this.getComponents()) {
+				component.setPreferredSize(defaultDimension);
+			}
 		}
 	}
 }
