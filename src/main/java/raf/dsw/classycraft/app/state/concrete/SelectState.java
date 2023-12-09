@@ -15,8 +15,8 @@ public class SelectState implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter.contains(e.getPoint())) {
-				last = e.getPoint();
+			if(elementPainter.contains(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))) {
+				last = new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
 				if(!diagramView.getSelected().contains(elementPainter)) {
 					diagramView.setSelected(new ArrayList<>());
 					diagramView.addSelectedElement(elementPainter);
@@ -32,11 +32,11 @@ public class SelectState implements State {
 		if(last != null) {
 			for(ElementPainter elementPainter : diagramView.getSelected()) {
 				if(elementPainter instanceof InterClassPainter) {
-					((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + e.getX() - last.x);
-					((InterClassPainter) elementPainter).getDiagramElement().setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + e.getY() - last.y);
+					((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + diagramView.correctMouseX(e.getX()) - last.x);
+					((InterClassPainter) elementPainter).getDiagramElement().setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + diagramView.correctMouseY(e.getY()) - last.y);
 				}
 			}
-			last = e.getPoint();
+			last = new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
 		}
 	}
 	

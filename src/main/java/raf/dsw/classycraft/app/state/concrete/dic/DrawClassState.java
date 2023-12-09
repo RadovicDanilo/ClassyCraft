@@ -4,6 +4,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.ClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.InterClassType;
@@ -21,14 +22,14 @@ public class DrawClassState extends DrawInterClassState {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		
 		ElementFactory elementFactory = new ElementFactory();
-		Klasa klasa = (Klasa) elementFactory.createInterClass(InterClassType.CLASS, diagramView.getDiagram(), Visibility.PUBLIC, e.getX(), e.getY());
+		Klasa klasa = (Klasa) elementFactory.createInterClass(InterClassType.CLASS, diagramView.getDiagram(), Visibility.PUBLIC, diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
 		
 		ClassPainter classPainter = new ClassPainter(klasa);
-		for(ElementPainter ep : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+		for(ElementPainter ep : diagramView.getElementPainters()) {
 			if(ep instanceof InterClassPainter) {
 				Rectangle r = new Rectangle();
 				r.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-				r.setLocation(e.getX(), e.getY());
+				r.setLocation(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
 				if(ep.intersects(r)) {
 					return;
 				}

@@ -23,6 +23,11 @@ public abstract class InterClassPainter extends ElementPainter {
 	}
 	
 	@Override
+	public boolean contains(int x, int y) {
+		return contains(new Point(x, y));
+	}
+	
+	@Override
 	public InterClass getDiagramElement() {
 		return (InterClass) super.getDiagramElement();
 	}

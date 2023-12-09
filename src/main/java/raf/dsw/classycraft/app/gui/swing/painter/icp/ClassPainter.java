@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
@@ -17,7 +18,7 @@ public class ClassPainter extends InterClassPainter {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		if(((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getSelected().contains(this)) {
+		if(((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getSelected().contains(this)) {
 			g.setColor(Color.RED);
 			g.setStroke(strokeDashed);
 		}else {
@@ -44,7 +45,7 @@ public class ClassPainter extends InterClassPainter {
 		
 		do {
 			flag = false;
-			for(ElementPainter dp : ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getElementPainters()) {
+			for(ElementPainter dp : ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getElementPainters()) {
 				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
 					((InterClassPainter) dp).getDiagramElement().setX(((InterClassPainter) dp).getDiagramElement().getX() + width + 1);
 					((InterClassPainter) dp).getDiagramElement().setY(((InterClassPainter) dp).getDiagramElement().getY() + height + 1);

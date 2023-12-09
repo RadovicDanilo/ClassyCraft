@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.DependencyPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
@@ -9,6 +10,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class DrawDependencyState extends DrawConnectionState {
@@ -28,10 +30,19 @@ public class DrawDependencyState extends DrawConnectionState {
 		diagramView.setConnectionTo(null);
 		diagramView.setConnectionFrom(null);
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
 				ElementFactory elementFactory = new ElementFactory();
 				Dependency composition = (Dependency) elementFactory.createConnection(ConnectionType.DEPENDENCY, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				DependencyPainter ap = new DependencyPainter(composition);
+				
+				for(ElementPainter elementPainter: diagramView.getElementPainters()){
+					if(ap.equals(elementPainter)){
+						//TODO SYSTEM EVENT
+						break;
+					}
+					
+				}
+				
 				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
 				

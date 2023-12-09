@@ -5,6 +5,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public abstract class DrawConnectionState implements State {
@@ -13,10 +14,10 @@ public abstract class DrawConnectionState implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
 				from = (InterClassPainter) ep;
 				diagramView.setConnectionFrom(((InterClassPainter) ep).getDiagramElement().getConnectionPoints().get(0));
-				diagramView.setConnectionTo(e.getPoint());
+				diagramView.setConnectionTo(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())));
 				break;
 			}
 		}
@@ -24,9 +25,10 @@ public abstract class DrawConnectionState implements State {
 	
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		
-		diagramView.setConnectionFrom(from.getDiagramElement().closestConnectionPoint(e.getPoint()));
-		diagramView.setConnectionTo(e.getPoint());
+		if(diagramView.getConnectionFrom() == null)
+			return;
+		diagramView.setConnectionFrom(from.getDiagramElement().closestConnectionPoint(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))));
+		diagramView.setConnectionTo(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())));
 	}
 	
 	public InterClassPainter getFrom() {

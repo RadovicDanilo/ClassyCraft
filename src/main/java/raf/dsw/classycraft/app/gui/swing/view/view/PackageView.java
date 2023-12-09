@@ -32,7 +32,7 @@ public class PackageView extends JPanel implements ISubscriber {
 	
 	public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
 		for(Component dv : tabbedPane.getComponents()) {
-			MainFrame.getInstance().addDiagramView((DiagramView) dv);
+			MainFrame.getInstance().addDiagramView(((DiagramScrollPane) dv).getDiagramView());
 		}
 		this.tabbedPane.removeAll();
 		if(selectedPackage != null) {
@@ -51,16 +51,18 @@ public class PackageView extends JPanel implements ISubscriber {
 		
 		lbProjectName.setText("<html>" + project.getName() + "<br>Autor: " + ((Project) project).getAuthor() + "<html>");
 		lbProjectName.setFont(new Font("Calibri", Font.BOLD, 14));
-		DiagramView dv;
+		
 		for(Diagram diagram : diagrams) {
-			dv = new DiagramView(diagram);
+			DiagramView dv = new DiagramView(diagram);
+			DiagramScrollPane diagramScrollPane = null;
 			for(int i = 0; i < MainFrame.getInstance().getDiagramViews().size(); i++) {
 				if(dv.equals(MainFrame.getInstance().getDiagramViews().get(i))) {
 					dv = MainFrame.getInstance().getDiagramViews().get(i);
 					break;
 				}
 			}
-			this.tabbedPane.addTab(diagram.getName(), dv);
+			diagramScrollPane = new DiagramScrollPane(dv);
+			this.tabbedPane.addTab(diagram.getName(), diagramScrollPane);
 		}
 	}
 	

@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.GeneralisationPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
@@ -9,6 +10,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Generalisation;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class DrawGeneralisationState extends DrawConnectionState {
@@ -28,15 +30,23 @@ public class DrawGeneralisationState extends DrawConnectionState {
 		diagramView.setConnectionTo(null);
 		diagramView.setConnectionFrom(null);
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
 				ElementFactory elementFactory = new ElementFactory();
-				Generalisation composition = (Generalisation) elementFactory.createConnection(ConnectionType.GENERALISATION, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				Generalisation composition = (Generalisation) elementFactory.createConnection(ConnectionType.GENERALISATION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				GeneralisationPainter ap = new GeneralisationPainter(composition);
+				for(ElementPainter elementPainter: diagramView.getElementPainters()){
+					if(ap.equals(elementPainter)){
+						//TODO SYSTEM EVENT
+						break;
+					}
+					
+				}
 				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
 				
 				break;
 			}
 		}
+		
 	}
 }

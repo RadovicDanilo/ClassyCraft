@@ -42,19 +42,21 @@ public class ElementFactory extends AbstractElementFactory {
 	
 	@Override
 	public Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to) {
+		String x =  " from " + from.getName() + " To " + to.getName();
+		x = "";
 		switch(connectionType) {
 			case AGGREGATION:
 				a++;
-				return new Aggregation(parent, "agr " + a, from, to);
+				return new Aggregation(parent, "aggregation " + a + x, from, to);
 			case DEPENDENCY:
 				d++;
-				return new Dependency(parent, "dep " + d, from, to);
+				return new Dependency(parent, "dependency " + d + x, from, to);
 			case COMPOSITION:
 				co++;
-				return new Composition(parent, "comp " + co, from, to);
+				return new Composition(parent, "composition " + co + x, from, to);
 			case GENERALISATION:
 				g++;
-				return new Generalisation(parent, "gener " + g, from, to);
+				return new Generalisation(parent, "generalisation " + g + x, from, to);
 			default:
 				return null;
 		}

@@ -14,6 +14,6 @@ public class DrawAggregationAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainFrame.getInstance().getPackageView().startDrawCompositionState();
+		MainFrame.getInstance().getPackageView().startDrawAggregationState();
 	}
 }

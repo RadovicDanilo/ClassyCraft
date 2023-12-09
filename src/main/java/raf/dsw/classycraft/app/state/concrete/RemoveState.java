@@ -16,7 +16,7 @@ public class RemoveState implements State {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementPainter removedElement = null;
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter.contains(e.getPoint())) {
+			if(elementPainter.contains(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))) {
 				diagramView.getElementPainters().remove(elementPainter);
 				MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
 				removedElement = elementPainter;
@@ -26,7 +26,7 @@ public class RemoveState implements State {
 		if(removedElement instanceof InterClassPainter) {
 			for(int i = 0; i < diagramView.getElementPainters().size(); i++) {
 				ElementPainter elementPainter = diagramView.getElementPainters().get(i);
-				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getFrom() == removedElement || ((ConnectionPainter) elementPainter).getTo() == removedElement)) {
+				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getDiagramElement().getFrom() == removedElement.getDiagramElement() || ((ConnectionPainter) elementPainter).getDiagramElement().getTo() == removedElement.getDiagramElement())) {
 					MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
 					diagramView.getElementPainters().remove(elementPainter);
 					i--;

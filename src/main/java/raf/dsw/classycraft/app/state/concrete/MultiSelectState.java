@@ -12,13 +12,13 @@ public class MultiSelectState implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		diagramView.setSelected(new ArrayList<>());
-		diagramView.setSelectFrom(e.getPoint());
-		diagramView.setSelectTo(e.getPoint());
+		diagramView.setSelectFrom(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())));
+		diagramView.setSelectTo(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())));
 	}
 	
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		diagramView.setSelectTo(e.getPoint());
+		diagramView.setSelectTo(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())));
 		
 		Rectangle r = diagramView.getSelectionRectangle();
 		

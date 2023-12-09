@@ -24,7 +24,7 @@ public class DuplicateState implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter instanceof InterClassPainter && elementPainter.contains(e.getPoint())) {
+			if(elementPainter instanceof InterClassPainter && elementPainter.contains(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))) {
 				duplicate(elementPainter, diagramView);
 				break;
 			}

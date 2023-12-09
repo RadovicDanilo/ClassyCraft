@@ -6,6 +6,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.EditContentPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class EditContentState implements State {
@@ -14,7 +15,7 @@ public class EditContentState implements State {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(!(elementPainter instanceof InterClassPainter))
 				continue;
-			if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
+			if(((InterClassPainter) elementPainter).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
 				EditContentPane editContentPane = new EditContentPane(elementPainter);
 				editContentPane.setVisible(true);
 			}

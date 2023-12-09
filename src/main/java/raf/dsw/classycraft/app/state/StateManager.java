@@ -5,6 +5,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.concrete.*;
 import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawAggregationState;
@@ -77,11 +78,11 @@ public class StateManager {
 		System.out.println("CURRENT STATE: REMOVE");
 		currentState = removeState;
 		
-		if(MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane() == null || ((DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()) == null) {
+		if(MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
 			return;
 		}
 		ArrayList<InterClassPainter> removedElements = new ArrayList<>();
-		DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
+		DiagramView dv = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
 		for(int i = 0; i < dv.getElementPainters().size(); i++) {
 			ElementPainter elementPainter = dv.getElementPainters().get(i);
 			if(dv.getSelected().contains(elementPainter)) {
@@ -95,7 +96,7 @@ public class StateManager {
 		for(ElementPainter removedElement : removedElements) {
 			for(int i = 0; i < dv.getElementPainters().size(); i++) {
 				ElementPainter elementPainter = dv.getElementPainters().get(i);
-				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getFrom() == removedElement || ((ConnectionPainter) elementPainter).getTo() == removedElement)) {
+				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getDiagramElement().getFrom() == removedElement.getDiagramElement() || ((ConnectionPainter) elementPainter).getDiagramElement().getTo() == removedElement.getDiagramElement())) {
 					MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
 					dv.getElementPainters().remove(elementPainter);
 					i--;
@@ -167,7 +168,10 @@ public class StateManager {
 	
 	public void setDuplicateState() {
 		System.out.println("CURRENT STATE: DUPLICATE");
-		DiagramView dv = (DiagramView) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
+		if(MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
+			return;
+		}
+		DiagramView dv = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
 		if(dv.getSelected().size() == 1) {
 			duplicateState.duplicate(dv.getElementPainters().get(0), dv);
 			
