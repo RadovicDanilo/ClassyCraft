@@ -10,6 +10,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.InterClassType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
+import main.java.raf.dsw.classycraft.app.state.StateImplement;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

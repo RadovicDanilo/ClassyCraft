@@ -32,7 +32,6 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 		this.add(verticalScrollBar, BorderLayout.EAST);
 		this.add(horizontalScrollBar, BorderLayout.SOUTH);
 
-		diagramView.addSubscriber(this);
 		
 	}
 	

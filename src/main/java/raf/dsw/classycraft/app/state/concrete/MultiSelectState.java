@@ -3,12 +3,13 @@ package main.java.raf.dsw.classycraft.app.state.concrete;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
+import main.java.raf.dsw.classycraft.app.state.StateImplement;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class MultiSelectState implements State {
+public class MultiSelectState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		diagramView.setSelected(new ArrayList<>());

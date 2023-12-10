@@ -12,6 +12,7 @@ import main.java.raf.dsw.classycraft.app.state.StateManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -166,6 +167,10 @@ public class PackageView extends JPanel implements ISubscriber {
 		this.stateManager.getCurrentState().mouseDragged(e, diagramView);
 	}
 	
+	public void mouseWheelMoved(MouseWheelEvent e, DiagramView diagramView) {
+		this.stateManager.getCurrentState().mouseWheelMoved(e, diagramView);
+	}
+	
 	
 	public void startSelectState() {
 		stateManager.setSelectState();
@@ -241,4 +246,6 @@ public class PackageView extends JPanel implements ISubscriber {
 	public void startDuplicateAction() {
 		stateManager.setDuplicateState();
 	}
+	
+	
 }

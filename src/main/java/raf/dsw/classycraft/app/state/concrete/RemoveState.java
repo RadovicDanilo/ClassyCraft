@@ -7,11 +7,12 @@ import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
+import main.java.raf.dsw.classycraft.app.state.StateImplement;
 
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class RemoveState implements State {
+public class RemoveState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementPainter removedElement = null;

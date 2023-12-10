@@ -173,7 +173,7 @@ public class StateManager {
 		}
 		DiagramView dv = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
 		if(dv.getSelected().size() == 1) {
-			duplicateState.duplicate(dv.getElementPainters().get(0), dv);
+			duplicateState.duplicate(dv.getSelected().get(0), dv);
 			
 		}
 		currentState = duplicateState;

@@ -1,24 +1,12 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.cp;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
-import java.util.ArrayList;
 
 public abstract class ConnectionPainter extends ElementPainter {
-
-
-//	kompozicija ima pun romb na njenom početku a
-//	agregacija prazan romb
-//	(ne važi više ono za boje što sam rekao na času da ćemo možda dozvoliti...)
-//	Takođe, kada se nacrta veza asocijacije, ne treba da se prikaže novonastalo polje u jednom od entiteta
-//	(ljudi koji čitaju dijagram znaju šta veze znače i da to tako treba da se protumači).
 	
 	public ConnectionPainter(Connection diagramElement) {
 		super(diagramElement);
@@ -40,19 +28,36 @@ public abstract class ConnectionPainter extends ElementPainter {
 		double distance = Line2D.ptSegDistSq(a.x, a.y, b.x, b.y, p.x, p.y);
 		return distance < 2;
 	}
+	
 	@Override
-	public Connection getDiagramElement(){
-		return (Connection)super.getDiagramElement();
+	public Connection getDiagramElement() {
+		return (Connection) super.getDiagramElement();
 	}
+	
 	@Override
 	public boolean contains(int x, int y) {
 		return contains(new Point(x, y));
 	}
+	
 	public boolean intersects(Rectangle r) {
-		Point a = new Point(getDiagramElement().getFrom().getX(), getDiagramElement().getFrom().getY());
-		Point b = new Point(getDiagramElement().getTo().getX(), getDiagramElement().getTo().getY());
-		ArrayList<Point> points = new ArrayList<>();
 		
+		Point a = getDiagramElement().getFrom().getConnectionPoints().get(0);
+		Point b = getDiagramElement().getTo().getConnectionPoints().get(0);
+		for(Point p1 : getDiagramElement().getFrom().getConnectionPoints()) {
+			for(Point p2 : getDiagramElement().getTo().getConnectionPoints()) {
+				if(p1.distance(p2) < a.distance(b)) {
+					a = p1;
+					b = p2;
+				}
+			}
+		}
+		Point unitVectorBToA = new Point(a.x - b.x, a.y - b.y);
+		double intensityOfUnitVector = Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+		unitVectorBToA.setLocation((double) unitVectorBToA.x / intensityOfUnitVector, (double) unitVectorBToA.y / intensityOfUnitVector);
+		for(int i = 0; i < (int) intensityOfUnitVector; i++) {
+			if(r.contains(new Point(b.x + i * unitVectorBToA.x, b.y + i * unitVectorBToA.y)))
+				return true;
+		}
 		return false;
 	}
 	
