@@ -37,6 +37,18 @@ public class ClassyTreeImplementation implements ClassyTree {
 		SwingUtilities.updateComponentTreeUI(treeView);
 	}
 	
+	public ClassyTreeView getTreeView() {
+		return treeView;
+	}
+	
+	public void setTreeView(ClassyTreeView treeView) {
+		this.treeView = treeView;
+	}
+	
+	public void setRoot(ClassyTreeItem root) {
+		this.root = root;
+	}
+	
 	public void removeNode(ClassyTreeItem classyTreeItem) {
 		if(classyTreeItem == null)
 			return;

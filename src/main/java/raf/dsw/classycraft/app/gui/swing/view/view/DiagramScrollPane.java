@@ -32,7 +32,6 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 		this.add(verticalScrollBar, BorderLayout.EAST);
 		this.add(horizontalScrollBar, BorderLayout.SOUTH);
 
-		diagramView.addSubscriber(this);
 		
 	}
 	
@@ -41,6 +40,37 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 	
 	}
 	
+	public DiagramView getDiagramView() {
+		return diagramView;
+	}
+	
+	public void setDiagramView(DiagramView diagramView) {
+		this.diagramView = diagramView;
+	}
+	
+	public JScrollBar getHorizontalScrollBar() {
+		return horizontalScrollBar;
+	}
+	
+	public void setHorizontalScrollBar(JScrollBar horizontalScrollBar) {
+		this.horizontalScrollBar = horizontalScrollBar;
+	}
+	
+	public JScrollBar getVerticalScrollBar() {
+		return verticalScrollBar;
+	}
+	
+	public void setVerticalScrollBar(JScrollBar verticalScrollBar) {
+		this.verticalScrollBar = verticalScrollBar;
+	}
+	
+	public ComponentEvent getE() {
+		return e;
+	}
+	
+	public void setE(ComponentEvent e) {
+		this.e = e;
+	}
 	
 	@Override
 	public void componentResized(ComponentEvent e) {

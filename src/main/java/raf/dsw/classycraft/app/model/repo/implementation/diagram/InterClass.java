@@ -29,6 +29,8 @@ public abstract class InterClass extends DiagramElement {
 	}
 	
 	public void setX(int x) {
+		if(x < 0)
+			return;
 		this.x = x;
 		generatePoints();
 		((Diagram) getParent()).notifySubscribers("");
@@ -39,6 +41,8 @@ public abstract class InterClass extends DiagramElement {
 	}
 	
 	public void setY(int y) {
+		if(y < 0)
+			return;
 		this.y = y;
 		generatePoints();
 		((Diagram) getParent()).notifySubscribers("");

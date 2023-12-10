@@ -28,15 +28,23 @@ public class DrawGeneralisationState extends DrawConnectionState {
 		diagramView.setConnectionTo(null);
 		diagramView.setConnectionFrom(null);
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				ElementFactory elementFactory = new ElementFactory();
-				Generalisation composition = (Generalisation) elementFactory.createConnection(ConnectionType.GENERALISATION, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				Generalisation composition = (Generalisation) elementFactory.createConnection(ConnectionType.GENERALISATION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				GeneralisationPainter ap = new GeneralisationPainter(composition);
+				for(ElementPainter elementPainter: diagramView.getElementPainters()){
+					if(ap.equals(elementPainter)){
+						//TODO SYSTEM EVENT
+						break;
+					}
+					
+				}
 				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
 				
 				break;
 			}
 		}
+		
 	}
 }

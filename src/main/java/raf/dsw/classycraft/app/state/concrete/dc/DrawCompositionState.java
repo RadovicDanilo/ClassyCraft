@@ -28,10 +28,16 @@ public class DrawCompositionState extends DrawConnectionState {
 		diagramView.setConnectionTo(null);
 		diagramView.setConnectionFrom(null);
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				ElementFactory elementFactory = new ElementFactory();
-				Composition composition = (Composition) elementFactory.createConnection(ConnectionType.COMPOSITION, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				Composition composition = (Composition) elementFactory.createConnection(ConnectionType.COMPOSITION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				CompositionPainter ap = new CompositionPainter(composition);
+				
+				if(diagramView.getElementPainters().contains(ap)){
+					//TODO SYSTEM EVENT
+					break;
+				}
+				
 				ap.addElement(composition);
 				diagramView.getElementPainters().add(ap);
 				break;

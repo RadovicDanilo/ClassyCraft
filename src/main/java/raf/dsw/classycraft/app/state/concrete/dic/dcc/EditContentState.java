@@ -5,16 +5,17 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.EditContentPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
+import main.java.raf.dsw.classycraft.app.state.StateImplement;
 
 import java.awt.event.MouseEvent;
 
-public class EditContentState implements State {
+public class EditContentState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(!(elementPainter instanceof InterClassPainter))
 				continue;
-			if(((InterClassPainter) elementPainter).getRectangle().contains(e.getPoint())) {
+			if(((InterClassPainter) elementPainter).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				EditContentPane editContentPane = new EditContentPane(elementPainter);
 				editContentPane.setVisible(true);
 			}

@@ -16,15 +16,16 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
 import main.java.raf.dsw.classycraft.app.state.State;
+import main.java.raf.dsw.classycraft.app.state.StateImplement;
 
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class DuplicateState implements State {
+public class DuplicateState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter instanceof InterClassPainter && elementPainter.contains(e.getPoint())) {
+			if(elementPainter instanceof InterClassPainter && elementPainter.contains(diagramView.adjustPoint(e.getPoint()))) {
 				duplicate(elementPainter, diagramView);
 				break;
 			}

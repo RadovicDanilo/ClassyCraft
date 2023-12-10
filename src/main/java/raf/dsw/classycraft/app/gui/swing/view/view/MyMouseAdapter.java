@@ -24,13 +24,14 @@ public class MyMouseAdapter extends MouseAdapter {
 	}
 	
 	@Override
-	public void mouseWheelMoved(MouseWheelEvent e) {
-		super.mouseWheelMoved(e);
-		
-	}
-	
-	@Override
 	public void mouseDragged(MouseEvent e) {
 		MainFrame.getInstance().getPackageView().mouseDragged(e, diagramView);
 	}
+	
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		MainFrame.getInstance().getPackageView().mouseWheelMoved(e, diagramView);
+		
+	}
 }
+

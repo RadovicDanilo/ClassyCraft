@@ -28,11 +28,19 @@ public class DrawAggregationState extends DrawConnectionState {
 		diagramView.setConnectionTo(null);
 		diagramView.setConnectionFrom(null);
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(e.getPoint())) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				
 				ElementFactory elementFactory = new ElementFactory();
-				Aggregation agr = (Aggregation) elementFactory.createConnection(ConnectionType.AGGREGATION, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				Aggregation agr = (Aggregation) elementFactory.createConnection(ConnectionType.AGGREGATION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				AggregationPainter ap = new AggregationPainter(agr);
+				
+				for(ElementPainter elementPainter: diagramView.getElementPainters()){
+					if(ap.equals(elementPainter)){
+						//TODO SYSTEM EVENT
+						break;
+					}
+					
+				}
 				
 				ap.addElement(agr);
 				diagramView.getElementPainters().add(ap);
