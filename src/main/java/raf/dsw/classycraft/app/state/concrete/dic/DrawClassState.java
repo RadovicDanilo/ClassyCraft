@@ -22,14 +22,14 @@ public class DrawClassState extends DrawInterClassState {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		
 		ElementFactory elementFactory = new ElementFactory();
-		Klasa klasa = (Klasa) elementFactory.createInterClass(InterClassType.CLASS, diagramView.getDiagram(), Visibility.PUBLIC, diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
+		Klasa klasa = (Klasa) elementFactory.createInterClass(InterClassType.CLASS, diagramView.getDiagram(), Visibility.PUBLIC, diagramView.correctMouse(e.getPoint()).x, diagramView.correctMouse(e.getPoint()).y);
 		
 		ClassPainter classPainter = new ClassPainter(klasa);
 		for(ElementPainter ep : diagramView.getElementPainters()) {
 			if(ep instanceof InterClassPainter) {
 				Rectangle r = new Rectangle();
 				r.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-				r.setLocation(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
+				r.setLocation(diagramView.correctMouse(e.getPoint()));
 				if(ep.intersects(r)) {
 					return;
 				}

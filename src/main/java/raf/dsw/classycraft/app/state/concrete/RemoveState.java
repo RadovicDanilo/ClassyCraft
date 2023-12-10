@@ -17,7 +17,7 @@ public class RemoveState extends StateImplement implements State {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementPainter removedElement = null;
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter.contains(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))) {
+			if(elementPainter.contains(diagramView.correctMouse(e.getPoint()).x, diagramView.correctMouse(e.getPoint()).y)) {
 				diagramView.getElementPainters().remove(elementPainter);
 				MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
 				removedElement = elementPainter;

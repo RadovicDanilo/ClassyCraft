@@ -16,7 +16,7 @@ public class EditContentState extends StateImplement implements State {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(!(elementPainter instanceof InterClassPainter))
 				continue;
-			if(((InterClassPainter) elementPainter).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
+			if(((InterClassPainter) elementPainter).getRectangle().contains(diagramView.correctMouse(e.getPoint()))) {
 				EditContentPane editContentPane = new EditContentPane(elementPainter);
 				editContentPane.setVisible(true);
 			}

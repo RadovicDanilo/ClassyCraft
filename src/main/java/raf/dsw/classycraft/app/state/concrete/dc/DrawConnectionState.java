@@ -15,10 +15,10 @@ public abstract class DrawConnectionState extends StateImplement implements Stat
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
+			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.correctMouse(e.getPoint()))) {
 				from = (InterClassPainter) ep;
 				diagramView.setConnectionFrom(((InterClassPainter) ep).getDiagramElement().getConnectionPoints().get(0));
-				diagramView.setConnectionTo(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())));
+				diagramView.setConnectionTo(diagramView.correctMouse(e.getPoint()));
 				break;
 			}
 		}

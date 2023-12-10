@@ -14,6 +14,8 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.NoninvertibleTransformException;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class DiagramView extends JPanel implements ISubscriber, AdjustmentListener {
@@ -97,18 +99,26 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		
 		if(zoomer) {
 			at = g2d.getTransform();
-			at.translate(zoomPoint.x, zoomPoint.y);
-			at.scale(zoomFactor, zoomFactor);
-			at.translate(-zoomPoint.x, -zoomPoint.y);
+			at.translate(getWidth() / 2, getHeight() / 2);
+			at.setToScale(zoomFactor, zoomFactor);
+			at.translate(-getWidth() / 2, -getHeight() / 2);
+			
 			zoomer = false;
 		}
 		g2d.setTransform(at);
 		
 		
 		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getHorizontalScrollBar().setMaximum((int) (Math.max(128, getLowerRightPoint().x) * zoomFactor / 2));
+			getHorizontalScrollBar().setMaximum((int) (Math.max(128, getLowerRightPoint().x) / 2));
+		
 		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getVerticalScrollBar().setMaximum((int) (Math.max(128, getLowerRightPoint().y) * zoomFactor / 2));
+			getHorizontalScrollBar().setVisibleAmount(64);
+		
+		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
+			getVerticalScrollBar().setMaximum((int) (Math.max(128, getLowerRightPoint().y) / 2));
+		
+		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
+			getVerticalScrollBar().setVisibleAmount(64);
 		
 		
 		if(connectionFrom != null && connectionTo != null) {
@@ -152,17 +162,22 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			this.at.setTransform(at);
 			zoomer = true;
 		}
-		
 		repaint();
 	}
 	
 	
 	public Point correctMouse(Point point) {
-		return new Point(correctMouseX(point.x), correctMouseY(point.y));
+		//return new Point(correctMouseX(point.x), correctMouseY(point.y));
+		try {
+			Point2D p = at.inverseTransform(point, null);
+			return new Point((int) (p.getX() + (zoomFactor - 1) / 100 * getWidth()), (int) (p.getY() + (zoomFactor - 1) / 100 * getHeight()));
+		}catch(NoninvertibleTransformException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public int correctMouseX(int x) {
-		x = (int) (x - at.getTranslateX());
+		//x = (int) (x - at.getTranslateX());
 		return x;
 	}
 	

@@ -23,7 +23,8 @@ public class DrawInterfaceState extends DrawInterClassState {
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		ElementFactory elementFactory = new ElementFactory();
 		
-		Interface anInterface = (Interface) elementFactory.createInterClass(InterClassType.INTERFACE, diagramView.getDiagram(), Visibility.PUBLIC, diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
+		Interface anInterface = (Interface) elementFactory.createInterClass(InterClassType.INTERFACE, diagramView.getDiagram(), Visibility.PUBLIC,
+			diagramView.correctMouse(e.getPoint()).x, diagramView.correctMouse(e.getPoint()).y);
 		
 		InterfacePainter interfacePainter = new InterfacePainter(anInterface);
 		
@@ -31,7 +32,7 @@ public class DrawInterfaceState extends DrawInterClassState {
 			if(ep instanceof InterClassPainter) {
 				Rectangle r = new Rectangle();
 				r.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-				r.setLocation(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
+				r.setLocation(diagramView.correctMouse(e.getPoint()));
 				if(ep.intersects(r)) {
 					return;
 				}

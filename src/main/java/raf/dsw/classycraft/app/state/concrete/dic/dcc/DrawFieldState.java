@@ -17,7 +17,7 @@ public class DrawFieldState extends DrawClassContentState {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))) {
+			if(!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(diagramView.correctMouse(e.getPoint()))) {
 				continue;
 			}
 			if(elementPainter instanceof ClassPainter) {

@@ -21,7 +21,7 @@ public class DrawMethodState extends DrawClassContentState {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getElementPainters()) {
-			if(!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY())))) {
+			if(!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(diagramView.correctMouse(e.getPoint()))) {
 				continue;
 			}
 			if(elementPainter instanceof ClassPainter) {

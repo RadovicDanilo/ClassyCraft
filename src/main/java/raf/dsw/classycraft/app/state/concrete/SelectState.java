@@ -16,8 +16,8 @@ public class SelectState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter.contains(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()))) {
-				last = new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
+			if(elementPainter.contains(diagramView.correctMouse(e.getPoint()))) {
+				last = diagramView.correctMouse(e.getPoint());
 				if(!diagramView.getSelected().contains(elementPainter)) {
 					diagramView.setSelected(new ArrayList<>());
 					diagramView.addSelectedElement(elementPainter);
@@ -33,11 +33,13 @@ public class SelectState extends StateImplement implements State {
 		if(last != null) {
 			for(ElementPainter elementPainter : diagramView.getSelected()) {
 				if(elementPainter instanceof InterClassPainter) {
-					((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + diagramView.correctMouseX(e.getX()) - last.x);
-					((InterClassPainter) elementPainter).getDiagramElement().setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + diagramView.correctMouseY(e.getY()) - last.y);
+					((InterClassPainter) elementPainter).getDiagramElement()
+						.setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + diagramView.correctMouse(e.getPoint()).x - last.x);
+					((InterClassPainter) elementPainter).getDiagramElement()
+						.setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + diagramView.correctMouse(e.getPoint()).y - last.y);
 				}
 			}
-			last = new Point(diagramView.correctMouseX(e.getX()), diagramView.correctMouseY(e.getY()));
+			last =diagramView.correctMouse(e.getPoint());
 		}
 	}
 	
