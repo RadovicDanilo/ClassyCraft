@@ -30,16 +30,8 @@ public class GeneralisationPainter extends ConnectionPainter {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}
-		Point a = getDiagramElement().getFrom().getConnectionPoints().get(0);
-		Point b = getDiagramElement().getTo().getConnectionPoints().get(0);
-		for(Point p1 : getDiagramElement().getFrom().getConnectionPoints()) {
-			for(Point p2 : getDiagramElement().getTo().getConnectionPoints()) {
-				if(p1.distance(p2) < a.distance(b)) {
-					a = p1;
-					b = p2;
-				}
-			}
-		}
+		Point a = getTwoClosestConnectionsPoints().getKey();
+		Point b = getTwoClosestConnectionsPoints().getValue();
 		g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(), (int) b.getY());
 		
 		Point c = new Point(0, 0);
