@@ -102,23 +102,19 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			at.translate(getWidth() / 2, getHeight() / 2);
 			at.setToScale(zoomFactor, zoomFactor);
 			at.translate(-getWidth() / 2, -getHeight() / 2);
-			
 			zoomer = false;
 		}
 		g2d.setTransform(at);
 		
 		
 		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getHorizontalScrollBar().setMaximum((int) (Math.max(128, getLowerRightPoint().x) / 2));
+			getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x) ) * zoomFactor));
+		
 		
 		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getHorizontalScrollBar().setVisibleAmount(64);
+			getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y) ) * zoomFactor));
 		
-		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getVerticalScrollBar().setMaximum((int) (Math.max(128, getLowerRightPoint().y) / 2));
-		
-		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getVerticalScrollBar().setVisibleAmount(64);
+	
 		
 		
 		if(connectionFrom != null && connectionTo != null) {
@@ -166,26 +162,21 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 	}
 	
 	
-	public Point correctMouse(Point point) {
-		//return new Point(correctMouseX(point.x), correctMouseY(point.y));
+	public Point adjustPoint(Point point) {
+		System.out.println(point.x);
+		System.out.println(point.y);
 		try {
 			Point2D p = at.inverseTransform(point, null);
-			return new Point((int) (p.getX() + (zoomFactor - 1) / 100 * getWidth()), (int) (p.getY() + (zoomFactor - 1) / 100 * getHeight()));
+			System.out.println(p.getX());
+			System.out.println(p.getY());
+			System.out.println();
+			return new Point((int) (p.getX() + (zoomFactor - 1) / 500 * getWidth()), (int) (p.getY() + (zoomFactor - 1) / 500 * getHeight()));
 		}catch(NoninvertibleTransformException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-	public int correctMouseX(int x) {
-		//x = (int) (x - at.getTranslateX());
-		return x;
-	}
-	
-	public int correctMouseY(int y) {
-		y = (int) (y - at.getTranslateY());
-		return y;
-	}
-	
+
 	
 	public Point getLowerRightPoint() {
 		Point point = new Point(0, 0);

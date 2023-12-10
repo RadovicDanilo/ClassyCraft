@@ -10,7 +10,6 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.InterClassType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
-import main.java.raf.dsw.classycraft.app.state.StateImplement;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -24,7 +23,7 @@ public class DrawInterfaceState extends DrawInterClassState {
 		ElementFactory elementFactory = new ElementFactory();
 		
 		Interface anInterface = (Interface) elementFactory.createInterClass(InterClassType.INTERFACE, diagramView.getDiagram(), Visibility.PUBLIC,
-			diagramView.correctMouse(e.getPoint()).x, diagramView.correctMouse(e.getPoint()).y);
+			diagramView.adjustPoint(e.getPoint()).x, diagramView.adjustPoint(e.getPoint()).y);
 		
 		InterfacePainter interfacePainter = new InterfacePainter(anInterface);
 		
@@ -32,7 +31,7 @@ public class DrawInterfaceState extends DrawInterClassState {
 			if(ep instanceof InterClassPainter) {
 				Rectangle r = new Rectangle();
 				r.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-				r.setLocation(diagramView.correctMouse(e.getPoint()));
+				r.setLocation(diagramView.adjustPoint(e.getPoint()));
 				if(ep.intersects(r)) {
 					return;
 				}
