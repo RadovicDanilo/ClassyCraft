@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PackageView extends JPanel implements ISubscriber {
 	private Package selectedPackage;
-	private StateManager stateManager;
+	private final StateManager stateManager;
 	private JLabel lbProjectName;
 	private JTabbedPane tabbedPane;
 	
@@ -55,7 +55,7 @@ public class PackageView extends JPanel implements ISubscriber {
 		
 		for(Diagram diagram : diagrams) {
 			DiagramView dv = new DiagramView(diagram);
-			DiagramScrollPane diagramScrollPane = null;
+			DiagramScrollPane diagramScrollPane;
 			for(int i = 0; i < MainFrame.getInstance().getDiagramViews().size(); i++) {
 				if(dv.equals(MainFrame.getInstance().getDiagramViews().get(i))) {
 					dv = MainFrame.getInstance().getDiagramViews().get(i);
@@ -74,20 +74,14 @@ public class PackageView extends JPanel implements ISubscriber {
 		}
 		switch((PackageViewEvent) notification) {
 			case ADD_DIAGRAM:
+			case REMOVE_DIAGRAM:
+			case RENAME_DIAGRAM:
 				reloadPackage();
 				break;
 			case REMOVE_ALL:
 				removePackageOrProject();
 				break;
-			case REMOVE_DIAGRAM:
-				reloadPackage();
-				break;
 			case RENAME_PROJECT:
-				updateProject();
-				break;
-			case RENAME_DIAGRAM:
-				reloadPackage();
-				break;
 			case CHANGE_AUTHOR:
 				updateProject();
 				break;
@@ -125,34 +119,17 @@ public class PackageView extends JPanel implements ISubscriber {
 	}
 	
 	
-	public JLabel getLbProjectName() {
-		return lbProjectName;
-	}
 	
 	
 	public JTabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
 	
-	public void setTabbedPane(JTabbedPane tabbedPane) {
-		this.tabbedPane = tabbedPane;
-	}
-	
-	public StateManager getStateManager() {
-		return stateManager;
-	}
-	
-	public void setStateManager(StateManager stateManager) {
-		this.stateManager = stateManager;
-	}
 	
 	public Package getSelectedPackage() {
 		return selectedPackage;
 	}
 	
-	public void setSelectedPackage(Package selectedPackage) {
-		this.selectedPackage = selectedPackage;
-	}
 	
 	
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
@@ -247,5 +224,7 @@ public class PackageView extends JPanel implements ISubscriber {
 		stateManager.setDuplicateState();
 	}
 	
-	
+	public StateManager getStateManager() {
+		return stateManager;
+	}
 }

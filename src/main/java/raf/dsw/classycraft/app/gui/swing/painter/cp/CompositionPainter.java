@@ -38,7 +38,7 @@ public class CompositionPainter extends ConnectionPainter {
 		
 		Point unitVectorBToA = new Point(a.x - b.x, a.y - b.y);
 		double intensityOfUnitVector = Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
-		unitVectorBToA.setLocation((double) 10 * (double) unitVectorBToA.x / (double) intensityOfUnitVector, (double) 10 * (double) unitVectorBToA.y / (double) intensityOfUnitVector);
+		unitVectorBToA.setLocation((double) 10 * (double) unitVectorBToA.x / intensityOfUnitVector, (double) 10 * (double) unitVectorBToA.y / intensityOfUnitVector);
 		
 		Point normalUnitVectorBToA = new Point(0, 0);
 		if(unitVectorBToA.x == 0) {
@@ -48,7 +48,7 @@ public class CompositionPainter extends ConnectionPainter {
 		}else {
 			normalUnitVectorBToA.setLocation(1, -(double) unitVectorBToA.x / (double) unitVectorBToA.y);
 			double intensityOfNormalUnitVector = Math.sqrt(1 + Math.pow((double) unitVectorBToA.x / (double) unitVectorBToA.y, 2));
-			normalUnitVectorBToA.setLocation(5 / (double) intensityOfNormalUnitVector, 5 * (double) normalUnitVectorBToA.y / (double) intensityOfNormalUnitVector);
+			normalUnitVectorBToA.setLocation(5 / intensityOfNormalUnitVector, 5 * (double) normalUnitVectorBToA.y / intensityOfNormalUnitVector);
 		}
 		
 		c.setLocation(b.x + unitVectorBToA.x + normalUnitVectorBToA.x, b.y + unitVectorBToA.y + normalUnitVectorBToA.y);

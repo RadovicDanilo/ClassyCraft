@@ -15,8 +15,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class DrawInterfaceState extends DrawInterClassState {
-	private final int DEFAULT_HEIGHT = 40;
-	private final int DEFAULT_WIDTH = 110;
 	
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
@@ -30,6 +28,8 @@ public class DrawInterfaceState extends DrawInterClassState {
 		for(ElementPainter ep : ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getElementPainters()) {
 			if(ep instanceof InterClassPainter) {
 				Rectangle r = new Rectangle();
+				int DEFAULT_HEIGHT = 40;
+				int DEFAULT_WIDTH = 110;
 				r.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 				r.setLocation(diagramView.adjustPoint(e.getPoint()));
 				if(ep.intersects(r)) {

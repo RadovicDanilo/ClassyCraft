@@ -21,14 +21,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class EditContentPane extends JFrame {
-	private final Font myFont = new Font("Calibri", Font.PLAIN, 14);
-	private final Dimension defaultDimension = new Dimension(100, 40);
 	
 	public EditContentPane(ElementPainter c) throws HeadlessException {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Edit content");
 		
+		Dimension defaultDimension = new Dimension(100, 40);
 		if(c instanceof EnumPainter) {
 			
 			Enum e = (Enum) c.getDiagramElement();
@@ -68,9 +67,7 @@ public class EditContentPane extends JFrame {
 			}
 			
 			JButton btnCancel = new JButton("CANCEL");
-			btnCancel.addActionListener(e1->{
-				this.dispose();
-			});
+			btnCancel.addActionListener(e1->this.dispose());
 			mainGrid.add(btnCancel);
 			
 			JButton btOK = new JButton("OK");
@@ -134,9 +131,7 @@ public class EditContentPane extends JFrame {
 			bot.setLayout(new FlowLayout(FlowLayout.LEFT));
 			
 			JButton btnCancel = new JButton("CANCEL");
-			btnCancel.addActionListener(e1->{
-				this.dispose();
-			});
+			btnCancel.addActionListener(e1->this.dispose());
 			bot.add(btnCancel);
 			
 			JButton btOK = new JButton("OK");
@@ -230,9 +225,7 @@ public class EditContentPane extends JFrame {
 			bot.setLayout(new FlowLayout());
 			
 			JButton btnCancel = new JButton("CANCEL");
-			btnCancel.addActionListener(e1->{
-				this.dispose();
-			});
+			btnCancel.addActionListener(e1->this.dispose());
 			bot.add(btnCancel);
 			
 			JButton btOK = new JButton("OK");

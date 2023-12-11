@@ -3,7 +3,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 
@@ -45,13 +44,13 @@ public class EnumPainter extends InterClassPainter {
 		getDiagramElement().setCurrentHeight(height);
 		getDiagramElement().setCurrentWidth(width);
 		
-		boolean flag = true;
+		boolean flag;
 		Rectangle r = this.getRectangle();
 		
 		do {
 			flag = true;
 			for(ElementPainter dp : ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getElementPainters()) {
-				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
+				if(dp instanceof InterClassPainter && !dp.equals(this) && dp.intersects(r)) {
 					((InterClassPainter) dp).getDiagramElement().setX(getDiagramElement().getX() + width + 1);
 					((InterClassPainter) dp).getDiagramElement().setY(getDiagramElement().getY() + height + 1);
 					flag = false;
@@ -74,7 +73,6 @@ public class EnumPainter extends InterClassPainter {
 		
 		for(String e : ((Enum) getDiagramElement()).getContents()) {
 			i++;
-			xOffset = (width - g.getFontMetrics().stringWidth(e)) / 2;
 			g.drawString(e, getDiagramElement().getX() + 2, getDiagramElement().getY() + yOffset * i);
 		}
 		

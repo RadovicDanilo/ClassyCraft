@@ -7,6 +7,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
+import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,26 +22,15 @@ import java.util.ArrayList;
 public class DiagramView extends JPanel implements ISubscriber, AdjustmentListener {
 	public final BasicStroke strokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[] {10.0f}, 0.0f);
 	private final ArrayList<ElementPainter> elementPainters;
-	
-	private Diagram diagram;
+	private final Diagram diagram;
 	private Point connectionFrom;
 	private Point connectionTo;
 	private Point selectFrom;
 	private Point selectTo;
 	private ArrayList<ElementPainter> selected;
-	
-	
 	private AffineTransform at;
-	
-	private double oldZoomFactor;
 	private boolean zoomer;
-	
-	
-	private Point zoomPoint;
-	private Point oldZoomPoint;
 	private double zoomFactor;
-	
-	
 	private int prevVerticalScrollVal;
 	private int prevHorizontalScrollVal;
 	
@@ -67,29 +57,10 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		prevHorizontalScrollVal = 0;
 		
 		zoomFactor = 1;
-		zoomPoint = new Point();
 		
-		
-		oldZoomFactor = 1;
-		zoomer = true;
-		
-		
-	}
-	
-	public void zoom(MouseWheelEvent e) {
-		zoomPoint = e.getPoint();
-		if(e.getWheelRotation() > 0) {
-			zoomFactor -= 0.05;
-		}else {
-			zoomFactor += 0.05;
-		}
-		if(zoomFactor > 2)
-			zoomFactor = 2;
-		if(zoomFactor < 0.5)
-			zoomFactor = 0.5;
-		System.out.println("ZOOM FACTOR: " + zoomFactor);
 		zoomer = true;
 		repaint();
+		
 	}
 	
 	@Override
@@ -97,25 +68,37 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
+		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
+		float hPercent = 0;
+		float vPercent = 0;
+		try {
+			hPercent = (float) dsp.getHorizontalScrollBar().getValue() / (float) dsp.getHorizontalScrollBar().getMaximum();
+			vPercent = (float) dsp.getVerticalScrollBar().getValue() / (float) dsp.getVerticalScrollBar().getMaximum();
+		}catch(NullPointerException ignored) {
+		
+		}
+		
 		if(zoomer) {
 			at = g2d.getTransform();
-			at.translate(getWidth() / 2, getHeight() / 2);
+			at.translate((float) getWidth() / 2, (float) getHeight() / 2);
 			at.setToScale(zoomFactor, zoomFactor);
-			at.translate(-getWidth() / 2, -getHeight() / 2);
+			at.translate(-(float) getWidth() / 2, -(float) getHeight() / 2);
 			zoomer = false;
 		}
 		g2d.setTransform(at);
+		if(!(MainFrame.getInstance().getPackageView().getStateManager().getCurrentState() instanceof SelectState)) {
+			dsp.getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x)) * zoomFactor));
+			dsp.getHorizontalScrollBar().setValue((int) (dsp.getHorizontalScrollBar().getMaximum() * hPercent));
+			
+			dsp.getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y)) * zoomFactor));
+			dsp.getVerticalScrollBar().setValue((int) (dsp.getVerticalScrollBar().getMaximum() * vPercent));
+		}
 		
-		
-		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x) ) * zoomFactor));
-		
-		
-		((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).
-			getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y) ) * zoomFactor));
-		
-	
-		
+		BasicStroke Border = new BasicStroke(5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+		((Graphics2D) g).setStroke(Border);
+		g.setColor(Color.RED);
+		g.drawLine(0, 0, 0, 10000);
+		g.drawLine(0, 0, 10000, 0);
 		
 		if(connectionFrom != null && connectionTo != null) {
 			g2d.setStroke(strokeDashed);
@@ -139,11 +122,14 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		for(ElementPainter elementPainter : elementPainters) {
 			elementPainter.draw((Graphics2D) g);
 		}
+		
 	}
 	
 	
 	@Override
 	public void adjustmentValueChanged(AdjustmentEvent e) {
+		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
+		
 		if(((JScrollBar) e.getSource()).getOrientation() == Adjustable.HORIZONTAL) {
 			at.translate(prevHorizontalScrollVal - e.getValue(), 0);
 			prevHorizontalScrollVal = e.getValue();
@@ -151,8 +137,7 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			at.translate(0, prevVerticalScrollVal - e.getValue());
 			prevVerticalScrollVal = e.getValue();
 		}
-		DiagramScrollPane diagramScrollPane = (DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
-		if(diagramScrollPane.getVerticalScrollBar().getValue() == 0 && diagramScrollPane.getHorizontalScrollBar().getValue() == 0) {
+		if(dsp.getVerticalScrollBar().getValue() == 0 && dsp.getHorizontalScrollBar().getValue() == 0) {
 			AffineTransform at = new AffineTransform();
 			at.scale(this.at.getScaleX(), this.at.getScaleY());
 			this.at.setTransform(at);
@@ -161,28 +146,34 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		repaint();
 	}
 	
+	public void zoom(MouseWheelEvent e) {
+		if(e.getWheelRotation() > 0) {
+			zoomFactor -= 0.05;
+		}else {
+			zoomFactor += 0.05;
+		}
+		if(zoomFactor > 2) zoomFactor = 2;
+		if(zoomFactor < 0.5) zoomFactor = 0.5;
+		System.out.println("ZOOM FACTOR: " + zoomFactor);
+		zoomer = true;
+		repaint();
+	}
+	
 	
 	public Point adjustPoint(Point point) {
-		System.out.println(point.x);
-		System.out.println(point.y);
 		try {
 			Point2D p = at.inverseTransform(point, null);
-			System.out.println(p.getX());
-			System.out.println(p.getY());
-			System.out.println();
 			return new Point((int) (p.getX() + (zoomFactor - 1) / 500 * getWidth()), (int) (p.getY() + (zoomFactor - 1) / 500 * getHeight()));
 		}catch(NoninvertibleTransformException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-
 	
 	public Point getLowerRightPoint() {
 		Point point = new Point(0, 0);
 		for(ElementPainter elementPainter : elementPainters) {
-			if(!(elementPainter instanceof InterClassPainter))
-				continue;
+			if(!(elementPainter instanceof InterClassPainter)) continue;
 			InterClass interClass = ((InterClassPainter) elementPainter).getDiagramElement();
 			if(interClass.getX() + interClass.getCurrentWidth() > point.x)
 				point.x = interClass.getX() + interClass.getCurrentWidth();
@@ -241,10 +232,6 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		return diagram;
 	}
 	
-	public void setDiagram(Diagram diagram) {
-		this.diagram = diagram;
-	}
-	
 	public void addSelectedElement(ElementPainter elementPainter) {
 		if(!selected.contains(elementPainter)) {
 			selected.add(elementPainter);
@@ -265,10 +252,6 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		return elementPainters;
 	}
 	
-	public BasicStroke getStrokeDashed() {
-		return strokeDashed;
-	}
-	
 	
 	public Point getConnectionFrom() {
 		return connectionFrom;
@@ -279,17 +262,9 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		this.connectionFrom = connectionFrom;
 	}
 	
-	public Point getConnectionTo() {
-		return connectionTo;
-	}
-	
 	public void setConnectionTo(Point connectionTo) {
 		repaint();
 		this.connectionTo = connectionTo;
-	}
-	
-	public Point getSelectFrom() {
-		return selectFrom;
 	}
 	
 	public void setSelectFrom(Point selectFrom) {
@@ -297,63 +272,9 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		this.selectFrom = selectFrom;
 	}
 	
-	public Point getSelectTo() {
-		return selectTo;
-	}
-	
 	public void setSelectTo(Point selectTo) {
 		repaint();
 		this.selectTo = selectTo;
-	}
-	
-	public AffineTransform getAt() {
-		return at;
-	}
-	
-	public void setAt(AffineTransform at) {
-		this.at = at;
-	}
-	
-	
-	public int getPrevVerticalScrollVal() {
-		return prevVerticalScrollVal;
-	}
-	
-	public void setPrevVerticalScrollVal(int prevVerticalScrollVal) {
-		this.prevVerticalScrollVal = prevVerticalScrollVal;
-	}
-	
-	public int getPrevHorizontalScrollVal() {
-		return prevHorizontalScrollVal;
-	}
-	
-	public void setPrevHorizontalScrollVal(int prevHorizontalScrollVal) {
-		this.prevHorizontalScrollVal = prevHorizontalScrollVal;
-	}
-	
-	
-	public double getOldZoomFactor() {
-		return oldZoomFactor;
-	}
-	
-	public void setOldZoomFactor(double oldZoomFactor) {
-		this.oldZoomFactor = oldZoomFactor;
-	}
-	
-	public boolean isZoomer() {
-		return zoomer;
-	}
-	
-	public void setZoomer(boolean zoomer) {
-		this.zoomer = zoomer;
-	}
-	
-	public double getZoomFactor() {
-		return zoomFactor;
-	}
-	
-	public void setZoomFactor(double zoomFactor) {
-		this.zoomFactor = zoomFactor;
 	}
 	
 	

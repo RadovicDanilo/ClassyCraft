@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
 public class MyMouseAdapter extends MouseAdapter {
-	private DiagramView diagramView;
+	private final DiagramView diagramView;
 	
 	public MyMouseAdapter(DiagramView diagramView) {
 		this.diagramView = diagramView;

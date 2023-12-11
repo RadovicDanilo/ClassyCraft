@@ -8,8 +8,6 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 
-import javax.swing.*;
-import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 
 public class Main {

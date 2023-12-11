@@ -8,7 +8,6 @@ public class Method extends ClassContent {
 	public Method(String name, Visibility visibility, String returnValue) {
 		super(name, visibility);
 		this.returnValue = returnValue;
-		
 	}
 	
 	@Override
