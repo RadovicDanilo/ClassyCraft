@@ -133,16 +133,8 @@ public class MainFrame extends JFrame implements ISubscriber {
 		return classyTree;
 	}
 	
-	public void setClassyTree(ClassyTreeImplementation classyTree) {
-		this.classyTree = classyTree;
-	}
-	
 	public PackageView getPackageView() {
 		return packageView;
-	}
-	
-	public void setPackageView(PackageView packageView) {
-		this.packageView = packageView;
 	}
 	
 	public ArrayList<DiagramView> getDiagramViews() {

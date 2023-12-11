@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 
 public class NewProjectAction extends AbstractClassyAction {
 	public NewProjectAction() {
-		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
 		putValue(SMALL_ICON, loadIcon("/images/icons/add_project.png"));
 		putValue(NAME, "New project");
 		putValue(SHORT_DESCRIPTION, "New project");

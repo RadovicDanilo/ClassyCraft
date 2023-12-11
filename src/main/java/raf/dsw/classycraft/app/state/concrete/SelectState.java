@@ -15,9 +15,11 @@ public class SelectState extends StateImplement implements State {
 	
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
+		
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
 			if(elementPainter.contains(diagramView.adjustPoint(e.getPoint()))) {
 				last = diagramView.adjustPoint(e.getPoint());
+				
 				if(!diagramView.getSelected().contains(elementPainter)) {
 					diagramView.setSelected(new ArrayList<>());
 					diagramView.addSelectedElement(elementPainter);

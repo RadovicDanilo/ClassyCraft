@@ -30,7 +30,7 @@ public class DrawDependencyState extends DrawConnectionState {
 		for(ElementPainter ep : diagramView.getElementPainters()) {
 			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				ElementFactory elementFactory = new ElementFactory();
-				Dependency composition = (Dependency) elementFactory.createConnection(ConnectionType.DEPENDENCY, diagramView.getDiagram(), (InterClass) getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				Dependency composition = (Dependency) elementFactory.createConnection(ConnectionType.DEPENDENCY, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
 				DependencyPainter ap = new DependencyPainter(composition);
 				
 				for(ElementPainter elementPainter: diagramView.getElementPainters()){

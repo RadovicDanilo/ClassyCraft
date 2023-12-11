@@ -4,14 +4,13 @@ import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.AdjustmentListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentListener {
 	private DiagramView diagramView;
-	private JScrollBar horizontalScrollBar;
-	private JScrollBar verticalScrollBar;
+	private final JScrollBar horizontalScrollBar;
+	private final JScrollBar verticalScrollBar;
 	private ComponentEvent e;
 	
 	public DiagramScrollPane(DiagramView diagramView) {
@@ -52,16 +51,8 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 		return horizontalScrollBar;
 	}
 	
-	public void setHorizontalScrollBar(JScrollBar horizontalScrollBar) {
-		this.horizontalScrollBar = horizontalScrollBar;
-	}
-	
 	public JScrollBar getVerticalScrollBar() {
 		return verticalScrollBar;
-	}
-	
-	public void setVerticalScrollBar(JScrollBar verticalScrollBar) {
-		this.verticalScrollBar = verticalScrollBar;
 	}
 	
 	public ComponentEvent getE() {

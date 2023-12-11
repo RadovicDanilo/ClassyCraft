@@ -21,7 +21,7 @@ public class UpdateEnumAction extends AbstractClassyAction {
 			}
 			content.add(tf.getText());
 		}
-		Set<String> set = new HashSet<>(content);//proverava da li ima duplikata
+		Set<String> set = new HashSet<>(content);
 		if(set.size() == content.size()) {
 			e.setContents(content);
 		}else {

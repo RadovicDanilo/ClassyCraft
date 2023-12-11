@@ -3,7 +3,6 @@ package main.java.raf.dsw.classycraft.app.gui.swing.painter.icp;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
-import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
@@ -47,9 +46,9 @@ public class InterfacePainter extends InterClassPainter {
 		do {
 			flag = true;
 			for(ElementPainter dp : ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getElementPainters()) {
-				if(dp instanceof InterClassPainter && !dp.equals(this) && ((InterClassPainter) dp).intersects(r)) {
-					((InterClassPainter) dp).getDiagramElement().setX(getDiagramElement().getX() + width);
-					((InterClassPainter) dp).getDiagramElement().setY(getDiagramElement().getY() + height);
+				if(dp instanceof InterClassPainter && !dp.equals(this) && dp.intersects(r)) {
+					((InterClassPainter) dp).getDiagramElement().setX(getDiagramElement().getX() + width + 1);
+					((InterClassPainter) dp).getDiagramElement().setY(getDiagramElement().getY() + height + 1);
 					flag = false;
 					break;
 				}
@@ -70,7 +69,6 @@ public class InterfacePainter extends InterClassPainter {
 		
 		for(ClassContent c : ((Interface) getDiagramElement()).getMethods()) {
 			i++;
-			xOffset = (width - g.getFontMetrics().stringWidth(c.toString())) / 2;
 			g.drawString(c.toString(), getDiagramElement().getX() + 2, getDiagramElement().getY() + yOffset * i);
 		}
 	}
