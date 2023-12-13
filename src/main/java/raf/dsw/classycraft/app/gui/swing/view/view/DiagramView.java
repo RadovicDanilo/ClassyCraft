@@ -69,11 +69,12 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		Graphics2D g2d = (Graphics2D) g;
 		
 		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
+		
 		float hPercent = 0;
 		float vPercent = 0;
 		try {
-			hPercent = (float) dsp.getHorizontalScrollBar().getValue() / (float) dsp.getHorizontalScrollBar().getMaximum();
-			vPercent = (float) dsp.getVerticalScrollBar().getValue() / (float) dsp.getVerticalScrollBar().getMaximum();
+			hPercent = (float) dsp.getHorizontalScrollBar().getValue() / (float) (dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent());
+			vPercent = (float) dsp.getVerticalScrollBar().getValue() / (float) (dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent());
 		}catch(NullPointerException ignored) {
 		
 		}
@@ -84,15 +85,22 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			at.setToScale(zoomFactor, zoomFactor);
 			at.translate(-(float) getWidth() / 2, -(float) getHeight() / 2);
 			zoomer = false;
+			if(!(MainFrame.getInstance().getPackageView().getStateManager().getCurrentState() instanceof SelectState)) {
+				dsp.getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x)) * zoomFactor));
+				dsp.getHorizontalScrollBar().setValue((int) (dsp.getHorizontalScrollBar().getMaximum() * hPercent));
+				prevHorizontalScrollVal = (int) ((dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent()) * hPercent);
+				
+				dsp.getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y)) * zoomFactor));
+				dsp.getVerticalScrollBar().setValue((int) (dsp.getVerticalScrollBar().getMaximum() * vPercent));
+				prevVerticalScrollVal = (int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent);
+			}
 		}
+
+
+//		System.out.println("VERTICAL: " + vPercent);
+//		System.out.println("HORIZONTAL: " + hPercent);
 		g2d.setTransform(at);
-		if(!(MainFrame.getInstance().getPackageView().getStateManager().getCurrentState() instanceof SelectState)) {
-			dsp.getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x)) * zoomFactor));
-			dsp.getHorizontalScrollBar().setValue((int) (dsp.getHorizontalScrollBar().getMaximum() * hPercent));
-			
-			dsp.getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y)) * zoomFactor));
-			dsp.getVerticalScrollBar().setValue((int) (dsp.getVerticalScrollBar().getMaximum() * vPercent));
-		}
+		
 		
 		BasicStroke Border = new BasicStroke(5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
 		((Graphics2D) g).setStroke(Border);
@@ -128,21 +136,15 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 	
 	@Override
 	public void adjustmentValueChanged(AdjustmentEvent e) {
-		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
-		
 		if(((JScrollBar) e.getSource()).getOrientation() == Adjustable.HORIZONTAL) {
-			at.translate(prevHorizontalScrollVal - e.getValue(), 0);
 			prevHorizontalScrollVal = e.getValue();
 		}else {
-			at.translate(0, prevVerticalScrollVal - e.getValue());
 			prevVerticalScrollVal = e.getValue();
 		}
-		if(dsp.getVerticalScrollBar().getValue() == 0 && dsp.getHorizontalScrollBar().getValue() == 0) {
-			AffineTransform at = new AffineTransform();
-			at.scale(this.at.getScaleX(), this.at.getScaleY());
-			this.at.setTransform(at);
-			zoomer = true;
-		}
+		AffineTransform at = new AffineTransform();
+		at.scale(zoomFactor, zoomFactor);
+		at.translate(-prevHorizontalScrollVal, -prevVerticalScrollVal);
+		this.at.setTransform(at);
 		repaint();
 	}
 	
