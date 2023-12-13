@@ -169,9 +169,6 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		repaint();
 	}
 	
-	//	at.translate((float) getWidth() / 2, (float) getHeight() / 2);
-//	at.setToScale(zoomFactor, zoomFactor);
-//	at.translate(-(float) getWidth() / 2, -(float) getHeight() / 2);
 	public void zoomToFit() {
 		at = new AffineTransform();
 		zoomFactor = 1;
@@ -181,18 +178,14 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		Point b = getLowerRightPoint();
 		Point c = new Point(b.x - a.x, b.y - a.y);
 		Point d = new Point(getWidth(), getHeight());
-		System.out.println(a);
-		System.out.println(b);
-		System.out.println(c);
-		System.out.println(d);
 		if(d.x > c.x || d.y > c.y) {
-			while((adjustPoint(d).x > c.x && adjustPoint(d).y > c.y) && zoomFactor < 5) {
-				zoomFactor = zoomFactor + 0.1;
+			while((adjustPoint(d).x > c.x && adjustPoint(d).y > c.y) && zoomFactor < 2) {
+				zoomFactor = zoomFactor + 0.05;
 				at.setToScale(zoomFactor,zoomFactor);
 			}
 		}else {
-			while((adjustPoint(d).x < c.x && adjustPoint(d).y < c.y) && zoomFactor > 0.1) {
-				zoomFactor = zoomFactor - 0.1;
+			while((adjustPoint(d).x < c.x && adjustPoint(d).y < c.y) && zoomFactor > 0.5) {
+				zoomFactor = zoomFactor - 0.05;
 				at.setToScale(zoomFactor,zoomFactor);
 				
 			}
@@ -200,12 +193,11 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		AffineTransform temp = new AffineTransform();
 		temp.scale(zoomFactor, zoomFactor);
 		temp.translate(-a.x, -a.y);
+		int x = Math.abs(adjustPoint(d).x - c.x) / 2;
+		int y = Math.abs(adjustPoint(d).y - c.y) / 2;
+		temp.translate(x, y);
+		temp.translate(0, 5);
 		at.setTransform(temp);
-		System.out.println();
-		System.out.println(zoomFactor);
-		System.out.println(c);
-		System.out.println(adjustPoint(d));
-		System.out.println();
 		repaint();
 		
 	}

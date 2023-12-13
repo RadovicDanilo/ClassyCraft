@@ -163,6 +163,11 @@ public class StateManager {
 	//=================================================================
 	public void setZoomToFitState() {
 		System.out.println("CURRENT STATE: ZOOM TO FIT");
+		if(MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
+			return;
+		}
+		DiagramView dv = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
+		dv.zoomToFit();
 		currentState = zoomToFitState;
 	}
 	
