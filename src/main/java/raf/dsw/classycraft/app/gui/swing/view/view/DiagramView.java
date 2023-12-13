@@ -17,6 +17,8 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class DiagramView extends JPanel implements ISubscriber, AdjustmentListener {
@@ -63,17 +65,23 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		
 	}
 	
+	public static double round(double d, int decimalPlace) {
+		BigDecimal bd = new BigDecimal(Double.toString(d));
+		bd = bd.setScale(decimalPlace, RoundingMode.HALF_UP);
+		return bd.doubleValue();
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		
 		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
+		
 		float hPercent = 0;
 		float vPercent = 0;
 		try {
-			hPercent = (float) dsp.getHorizontalScrollBar().getValue() / (float) dsp.getHorizontalScrollBar().getMaximum();
-			vPercent = (float) dsp.getVerticalScrollBar().getValue() / (float) dsp.getVerticalScrollBar().getMaximum();
+			hPercent = (float) dsp.getHorizontalScrollBar().getValue() / (float) (dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent());
+			vPercent = (float) dsp.getVerticalScrollBar().getValue() / (float) (dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent());
 		}catch(NullPointerException ignored) {
 		
 		}
@@ -84,17 +92,19 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			at.setToScale(zoomFactor, zoomFactor);
 			at.translate(-(float) getWidth() / 2, -(float) getHeight() / 2);
 			zoomer = false;
+			if(!(MainFrame.getInstance().getPackageView().getStateManager().getCurrentState() instanceof SelectState)) {
+				dsp.getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x)) * zoomFactor));
+				dsp.getHorizontalScrollBar().setValue((int) ((dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent()) * hPercent));
+				prevHorizontalScrollVal = (int) ((dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent()) * hPercent);
+				
+				dsp.getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y)) * zoomFactor));
+				dsp.getVerticalScrollBar().setValue((int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent));
+				prevVerticalScrollVal = (int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent);
+			}
 		}
 		g2d.setTransform(at);
-		if(!(MainFrame.getInstance().getPackageView().getStateManager().getCurrentState() instanceof SelectState)) {
-			dsp.getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x)) * zoomFactor));
-			dsp.getHorizontalScrollBar().setValue((int) (dsp.getHorizontalScrollBar().getMaximum() * hPercent));
-			
-			dsp.getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y)) * zoomFactor));
-			dsp.getVerticalScrollBar().setValue((int) (dsp.getVerticalScrollBar().getMaximum() * vPercent));
-		}
 		
-		BasicStroke Border = new BasicStroke(5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+		BasicStroke Border = new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
 		((Graphics2D) g).setStroke(Border);
 		g.setColor(Color.RED);
 		g.drawLine(0, 0, 0, 10000);
@@ -125,24 +135,17 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		
 	}
 	
-	
 	@Override
 	public void adjustmentValueChanged(AdjustmentEvent e) {
-		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
-		
 		if(((JScrollBar) e.getSource()).getOrientation() == Adjustable.HORIZONTAL) {
-			at.translate(prevHorizontalScrollVal - e.getValue(), 0);
 			prevHorizontalScrollVal = e.getValue();
 		}else {
-			at.translate(0, prevVerticalScrollVal - e.getValue());
 			prevVerticalScrollVal = e.getValue();
 		}
-		if(dsp.getVerticalScrollBar().getValue() == 0 && dsp.getHorizontalScrollBar().getValue() == 0) {
-			AffineTransform at = new AffineTransform();
-			at.scale(this.at.getScaleX(), this.at.getScaleY());
-			this.at.setTransform(at);
-			zoomer = true;
-		}
+		AffineTransform temp = new AffineTransform();
+		temp.scale(zoomFactor, zoomFactor);
+		temp.translate(-prevHorizontalScrollVal, -prevVerticalScrollVal);
+		at.setTransform(temp);
 		repaint();
 	}
 	
@@ -152,13 +155,52 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		}else {
 			zoomFactor += 0.05;
 		}
-		if(zoomFactor > 2) zoomFactor = 2;
-		if(zoomFactor < 0.5) zoomFactor = 0.5;
-		System.out.println("ZOOM FACTOR: " + zoomFactor);
 		zoomer = true;
+		if(zoomFactor > 2) {
+			zoomFactor = 2;
+			zoomer = false;
+		}
+		if(zoomFactor < 0.8) {
+			zoomFactor = 0.8;
+			zoomer = false;
+		}
+		zoomFactor = round(zoomFactor, 2);
+		System.out.println(zoomFactor);
 		repaint();
 	}
 	
+	public void zoomToFit() {
+		at = new AffineTransform();
+		zoomFactor = 1;
+		at.setToScale(1,1);
+		at.setToTranslation(0,0);
+		Point a = getUpperLeftPoint();
+		Point b = getLowerRightPoint();
+		Point c = new Point(b.x - a.x, b.y - a.y);
+		Point d = new Point(getWidth(), getHeight());
+		if(d.x > c.x || d.y > c.y) {
+			while((adjustPoint(d).x > c.x && adjustPoint(d).y > c.y) && zoomFactor < 2) {
+				zoomFactor = zoomFactor + 0.05;
+				at.setToScale(zoomFactor,zoomFactor);
+			}
+		}else {
+			while((adjustPoint(d).x < c.x && adjustPoint(d).y < c.y) && zoomFactor > 0.5) {
+				zoomFactor = zoomFactor - 0.05;
+				at.setToScale(zoomFactor,zoomFactor);
+				
+			}
+		}
+		AffineTransform temp = new AffineTransform();
+		temp.scale(zoomFactor, zoomFactor);
+		temp.translate(-a.x, -a.y);
+		int x = Math.abs(adjustPoint(d).x - c.x) / 2;
+		int y = Math.abs(adjustPoint(d).y - c.y) / 2;
+		temp.translate(x, y);
+		temp.translate(0, 5);
+		at.setTransform(temp);
+		repaint();
+		
+	}
 	
 	public Point adjustPoint(Point point) {
 		try {
@@ -169,6 +211,23 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		}
 	}
 	
+	public Point getUpperLeftPoint() {
+		
+		if(elementPainters.size() == 0)
+			return new Point(0, 0);
+		
+		Point point = new Point(Integer.MAX_VALUE, Integer.MAX_VALUE);
+		for(ElementPainter elementPainter : elementPainters) {
+			if(!(elementPainter instanceof InterClassPainter))
+				continue;
+			InterClass interClass = ((InterClassPainter) elementPainter).getDiagramElement();
+			if(interClass.getX() < point.x)
+				point.x = interClass.getX();
+			if(interClass.getY() < point.y)
+				point.y = interClass.getY();
+		}
+		return point;
+	}
 	
 	public Point getLowerRightPoint() {
 		Point point = new Point(0, 0);

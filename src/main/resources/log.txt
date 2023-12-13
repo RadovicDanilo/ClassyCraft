@@ -103,3 +103,4 @@
 [ERROR][09-12-2023 12:30:57] Vec postoji cvor sa datim imenom
 [ERROR][09-12-2023 17:30:51] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][09-12-2023 20:54:34] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][13-12-2023 23:57:41] Vec postoji cvor sa datim imenom
