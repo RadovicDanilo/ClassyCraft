@@ -35,6 +35,15 @@ public abstract class Connection extends DiagramElement {
 		return a + b;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Connection)) {
+			return false;
+		}
+		return ((Connection)obj).from.equals(this.from) && ((Connection)obj).to.equals(this.to);
+		
+	}
+	
 	public InterClass getFrom() {
 		return from;
 	}

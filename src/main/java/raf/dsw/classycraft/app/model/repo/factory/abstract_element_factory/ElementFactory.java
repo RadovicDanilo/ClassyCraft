@@ -5,7 +5,6 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.InterClassType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
@@ -24,17 +23,17 @@ public class ElementFactory extends AbstractElementFactory {
 	private static int g = 0;
 	
 	@Override
-	public InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, Visibility visibility, int x, int y) {
+	public InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, int x, int y) {
 		switch(interClassType) {
 			case CLASS:
 				c++;
-				return new Klasa(parent, "Class" + c, visibility, x, y);
+				return new Klasa(parent, "Class" + c, x, y);
 			case INTERFACE:
 				i++;
-				return new Interface(parent, "Interface" + i, visibility, x, y);
+				return new Interface(parent, "Interface" + i, x, y);
 			case ENUM:
 				e++;
-				return new Enum(parent, "Enum" + e, Visibility.PUBLIC, x, y);
+				return new Enum(parent, "Enum" + e, x, y);
 			default:
 				return null;
 		}
@@ -42,7 +41,7 @@ public class ElementFactory extends AbstractElementFactory {
 	
 	@Override
 	public Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to) {
-		String x =  " from " + from.getName() + " To " + to.getName();
+		String x = " from " + from.getName() + " To " + to.getName();
 		switch(connectionType) {
 			case AGGREGATION:
 				a++;

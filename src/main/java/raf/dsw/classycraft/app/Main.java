@@ -14,12 +14,12 @@ public class Main {
 	public static void main(String[] args) {
 		ApplicationFramework main = ApplicationFramework.getInstance();
 		main.initialize();
-		//TODO UKLONI OVO
+		
 		ClassyTreeItem root = MainFrame.getInstance().getClassyTree().getRoot();
 		ClassyTreeView view = MainFrame.getInstance().getClassyTree().getTreeView();
-		Project a = new Project("AAAAAAAAAAAAA");
-		Package b = new Package(a, "AAAAAAAAAAA");
-		Diagram c = new Diagram(b, "AAAAAAA");
+		Project a = new Project("PROJEKAT");
+		Package b = new Package(a, "PAKET");
+		Diagram c = new Diagram(b, "DIAGRAM");
 		MainFrame.getInstance().getClassyTree().addChild(root, a);
 		MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getNode(a), b);
 		MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getNode(b), c);

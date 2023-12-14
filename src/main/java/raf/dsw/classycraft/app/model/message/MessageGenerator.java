@@ -34,6 +34,15 @@ public class MessageGenerator implements IPublisher {
 			case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:
 				message = new Message(systemEvent, MessageType.ERROR, "Mora te selektovati projekat da bi ste mogli da promentie autora");
 				break;
+			case CONNECTION_ALREADY_EXISTS:
+				message = new Message(systemEvent, MessageType.ERROR, "veza vec postoji");
+				break;
+			case CANNOT_RENAME_ROOT:
+				message = new Message(systemEvent, MessageType.ERROR, "project manage (root) se ne moze preimenovati");
+				break;
+			case NO_SELECTED_NODE:
+				message = new Message(systemEvent, MessageType.ERROR, "Nije izabran cvor");
+				break;
 			default:
 				return;
 		}

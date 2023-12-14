@@ -177,14 +177,14 @@ public class EditContentPane extends JFrame {
 					tfFieldNames.add(new JTextField(content.getName()));
 					tfFieldType.add(new JTextField(((Field) content).getType()));
 					JComboBox<Visibility> comboBox = new JComboBox<>(Visibility.values());
-					comboBox.setSelectedItem(k.getVisibility());
+					comboBox.setSelectedItem(content.getVisibility());
 					cbFieldVisibility.add(comboBox);
 					checkBoxesF.add(new JCheckBox());
 				}else {
 					tfMethodNames.add(new JTextField(content.getName()));
 					tfMethodValues.add(new JTextField(((Method) content).getReturnValue()));
 					JComboBox<Visibility> comboBox = new JComboBox<>(Visibility.values());
-					comboBox.setSelectedItem(k.getVisibility());
+					comboBox.setSelectedItem(content.getVisibility());
 					cbMethodVisibility.add(comboBox);
 					checkBoxesM.add(new JCheckBox());
 					

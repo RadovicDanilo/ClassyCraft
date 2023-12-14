@@ -38,7 +38,7 @@ public class DuplicateState extends StateImplement implements State {
 		DiagramElement diagramElement = elementPainter.getDiagramElement();
 		ElementFactory ef = new ElementFactory();
 		if(diagramElement instanceof Klasa) {
-			Klasa c = (Klasa) ef.createInterClass(InterClassType.CLASS, (ClassyNodeComposite) diagramElement.getParent(), ((Klasa) diagramElement).getVisibility(), ((Klasa) diagramElement).getX() + 15, ((Klasa) diagramElement).getY() + 15);
+			Klasa c = (Klasa) ef.createInterClass(InterClassType.CLASS, (ClassyNodeComposite) diagramElement.getParent(), ((Klasa) diagramElement).getX() + 15, ((Klasa) diagramElement).getY() + 15);
 			
 			c.setContents((ArrayList<ClassContent>) ((Klasa) diagramElement).getContents().clone());
 			
@@ -50,7 +50,7 @@ public class DuplicateState extends StateImplement implements State {
 			
 			diagramView.getElementPainters().add(painter);
 		}else if(diagramElement instanceof Interface) {
-			Interface i = (Interface) ef.createInterClass(InterClassType.INTERFACE, (ClassyNodeComposite) diagramElement.getParent(), ((Interface) diagramElement).getVisibility(), ((Interface) diagramElement).getX() + 15, ((Interface) diagramElement).getY() + 15);
+			Interface i = (Interface) ef.createInterClass(InterClassType.INTERFACE, (ClassyNodeComposite) diagramElement.getParent(), ((Interface) diagramElement).getX() + 15, ((Interface) diagramElement).getY() + 15);
 			
 			i.setMethods((ArrayList<Method>) ((Interface) diagramElement).getMethods().clone());
 			
@@ -62,7 +62,7 @@ public class DuplicateState extends StateImplement implements State {
 			
 			diagramView.getElementPainters().add(painter);
 		}else {
-			Enum anEnum = (Enum) ef.createInterClass(InterClassType.ENUM, (ClassyNodeComposite) diagramElement.getParent(), ((Enum) diagramElement).getVisibility(), ((Enum) diagramElement).getX() + 15, ((Enum) diagramElement).getY() + 15);
+			Enum anEnum = (Enum) ef.createInterClass(InterClassType.ENUM, (ClassyNodeComposite) diagramElement.getParent(), ((Enum) diagramElement).getX() + 15, ((Enum) diagramElement).getY() + 15);
 			
 			anEnum.setContents((ArrayList<String>) ((Enum) diagramElement).getContents().clone());
 			

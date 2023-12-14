@@ -104,3 +104,19 @@
 [ERROR][09-12-2023 17:30:51] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][09-12-2023 20:54:34] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][13-12-2023 23:57:41] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:34:29] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:34:40] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:36:50] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:43:45] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:45:24] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:45:45] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:55:56] project manage (root) se ne moze preimenovati
+[ERROR][14-12-2023 23:56:05] veza vec postoji
+[ERROR][14-12-2023 23:56:10] veza vec postoji
+[ERROR][14-12-2023 23:56:52] Project Explorer ne moze da se ukloni
+[ERROR][14-12-2023 23:57:49] Nije izabran cvor
+[ERROR][14-12-2023 23:58:07] Nije izabran cvor
+[ERROR][14-12-2023 23:59:32] Nije izabran cvor
+[ERROR][14-12-2023 23:59:34] Nije izabran cvor
+[ERROR][14-12-2023 23:59:35] Nije izabran cvor
+[ERROR][14-12-2023 23:59:36] Nije izabran cvor
