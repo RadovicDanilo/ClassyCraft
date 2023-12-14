@@ -15,6 +15,8 @@ public class Main {
 		ApplicationFramework main = ApplicationFramework.getInstance();
 		main.initialize();
 		
+		
+		
 		ClassyTreeItem root = MainFrame.getInstance().getClassyTree().getRoot();
 		ClassyTreeView view = MainFrame.getInstance().getClassyTree().getTreeView();
 		Project a = new Project("PROJEKAT");
