@@ -276,7 +276,6 @@ public class EditContentPane extends JFrame {
 			
 			JButton btOK = new JButton("OK");
 			btOK.addActionListener(e2->{
-				//TODO za name ide ista ona prover kao i za interclass
 				new UpdateAggregationAction(k, tfName, cbVisibility, cbCardinality);
 				this.dispose();
 			});

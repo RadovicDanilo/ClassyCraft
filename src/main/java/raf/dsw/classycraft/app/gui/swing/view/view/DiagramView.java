@@ -202,16 +202,18 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			while((adjustPoint(d).x < c.x && adjustPoint(d).y < c.y) && zoomFactor > 0.5) {
 				zoomFactor = zoomFactor - 0.05;
 				at.setToScale(zoomFactor, zoomFactor);
-				
 			}
 		}
 		AffineTransform temp = new AffineTransform();
 		temp.scale(zoomFactor, zoomFactor);
 		temp.translate(-a.x, -a.y);
+		//centriranje
 		int x = Math.abs(adjustPoint(d).x - c.x) / 2;
 		int y = Math.abs(adjustPoint(d).y - c.y) / 2;
 		temp.translate(x, y);
-		temp.translate(0, 5);
+		//ova korekcija je neophodna. Uzrok je najverovatnije horizontalni skrolbar.
+		temp.translate(0, -5);
+		
 		at.setTransform(temp);
 		zoomedToFit = true;
 		repaint();

@@ -11,10 +11,11 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import java.util.ArrayList;
 
 public class Main {
-	private static final boolean IS_TEST_MODE = true;
+	private static final boolean IS_TEST_MODE = false;
 	public static void main(String[] args) {
 		ApplicationFramework main = ApplicationFramework.getInstance();
 		main.initialize();
+		//NE DIRATI OVO. KORISTI SE ZA LAKSE TESTIRANJE PROGRAMA
 		if(IS_TEST_MODE) {
 			ClassyTreeItem root = MainFrame.getInstance().getClassyTree().getRoot();
 			ClassyTreeView view = MainFrame.getInstance().getClassyTree().getTreeView();

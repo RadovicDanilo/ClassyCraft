@@ -11,7 +11,6 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 	private final JScrollBar horizontalScrollBar;
 	private final JScrollBar verticalScrollBar;
 	private DiagramView diagramView;
-	private ComponentEvent e;
 	
 	public DiagramScrollPane(DiagramView diagramView) {
 		
@@ -38,7 +37,6 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 	public void update(Object notification) {
 	
 	}
-	
 	public DiagramView getDiagramView() {
 		return diagramView;
 	}
@@ -53,14 +51,6 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 	
 	public JScrollBar getVerticalScrollBar() {
 		return verticalScrollBar;
-	}
-	
-	public ComponentEvent getE() {
-		return e;
-	}
-	
-	public void setE(ComponentEvent e) {
-		this.e = e;
 	}
 	
 	@Override
