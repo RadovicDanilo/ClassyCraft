@@ -233,3 +233,4 @@ Promene koje ste npravili nad njima nece biti primenjene
 [ERROR][15-12-2023 23:38:12] Ime metode nije dobro uneto
  Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
  ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 23:48:23] veza vec postoji

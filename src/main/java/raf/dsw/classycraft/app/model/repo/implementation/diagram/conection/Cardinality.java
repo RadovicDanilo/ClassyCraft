@@ -2,6 +2,7 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.cone
 
 public enum Cardinality {
     ONE, MANY;
+
     @Override
     public String toString() {
         if (this == ONE)

@@ -10,40 +10,40 @@ import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementati
 
 
 public class ApplicationFramework {
-	private static ApplicationFramework instance;
-	public final String PROJECTS_PATH = "/projects";
-	public final String LOG_PATH = "src/main/resources/log.txt";
-	private MessageGenerator messageGenerator;
-	private ClassyRepositoryImplementation classyRepository;
-	
-	private ApplicationFramework() {
-	
-	}
-	
-	public static ApplicationFramework getInstance() {
-		if(instance == null) {
-			instance = new ApplicationFramework();
-			instance.messageGenerator = new MessageGenerator();
-			instance.classyRepository = new ClassyRepositoryImplementation();
-			instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
-			LoggerFactory loggerFactory = new LoggerFactory();
-			instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.CONSOLE_LOGGER));
-			instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.FILE_LOGGER));
-		}
-		return instance;
-	}
-	
-	public void initialize() {
-		MainFrame.getInstance().setVisible(true);
-	}
-	
-	public MessageGenerator getMessageGenerator() {
-		return messageGenerator;
-	}
-	
-	public ClassyRepository getClassyRepository() {
-		return classyRepository;
-	}
-	
-	
+    private static ApplicationFramework instance;
+    public final String PROJECTS_PATH = "/projects";
+    public final String LOG_PATH = "src/main/resources/log.txt";
+    private MessageGenerator messageGenerator;
+    private ClassyRepositoryImplementation classyRepository;
+
+    private ApplicationFramework() {
+
+    }
+
+    public static ApplicationFramework getInstance() {
+        if (instance == null) {
+            instance = new ApplicationFramework();
+            instance.messageGenerator = new MessageGenerator();
+            instance.classyRepository = new ClassyRepositoryImplementation();
+            instance.getMessageGenerator().addSubscriber(MainFrame.getInstance());
+            LoggerFactory loggerFactory = new LoggerFactory();
+            instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.CONSOLE_LOGGER));
+            instance.getMessageGenerator().addSubscriber(loggerFactory.createLogger(LoggerType.FILE_LOGGER));
+        }
+        return instance;
+    }
+
+    public void initialize() {
+        MainFrame.getInstance().setVisible(true);
+    }
+
+    public MessageGenerator getMessageGenerator() {
+        return messageGenerator;
+    }
+
+    public ClassyRepository getClassyRepository() {
+        return classyRepository;
+    }
+
+
 }

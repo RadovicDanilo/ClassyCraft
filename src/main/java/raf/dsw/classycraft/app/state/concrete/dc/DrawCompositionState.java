@@ -14,35 +14,35 @@ import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import java.awt.event.MouseEvent;
 
 public class DrawCompositionState extends DrawConnectionState {
-	@Override
-	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		super.mousePressed(e, diagramView);
-	}
-	
-	@Override
-	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		super.mouseDragged(e, diagramView);
-		
-	}
-	
-	@Override
-	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-		diagramView.setConnectionTo(null);
-		diagramView.setConnectionFrom(null);
-		for(ElementPainter ep : diagramView.getElementPainters()) {
-			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
-				ElementFactory elementFactory = new ElementFactory();
-				Composition connection = (Composition) elementFactory.createConnection(ConnectionType.COMPOSITION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
-				CompositionPainter painter = new CompositionPainter(connection);
-				
-				if(!diagramView.getElementPainters().contains(painter)) {
-					painter.addElement(connection);
-					diagramView.getElementPainters().add(painter);
-				}else {
-					ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CONNECTION_ALREADY_EXISTS);
-				}
-				break;
-			}
-		}
-	}
+    @Override
+    public void mousePressed(MouseEvent e, DiagramView diagramView) {
+        super.mousePressed(e, diagramView);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+        super.mouseDragged(e, diagramView);
+
+    }
+
+    @Override
+    public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+        diagramView.setConnectionTo(null);
+        diagramView.setConnectionFrom(null);
+        for (ElementPainter ep : diagramView.getElementPainters()) {
+            if (ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
+                ElementFactory elementFactory = new ElementFactory();
+                Composition connection = (Composition) elementFactory.createConnection(ConnectionType.COMPOSITION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+                CompositionPainter painter = new CompositionPainter(connection);
+
+                if (!diagramView.getElementPainters().contains(painter)) {
+                    painter.addElement(connection);
+                    diagramView.getElementPainters().add(painter);
+                } else {
+                    ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CONNECTION_ALREADY_EXISTS);
+                }
+                break;
+            }
+        }
+    }
 }

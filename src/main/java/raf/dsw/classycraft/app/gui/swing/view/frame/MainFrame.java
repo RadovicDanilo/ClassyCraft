@@ -17,108 +17,108 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ISubscriber {
-	private static MainFrame instance;
-	private ActionManager actionManager;
-	private PackageView packageView;
-	private ArrayList<DiagramView> diagramViews;
-	private ClassyTreeImplementation classyTree;
-	
-	private MainFrame() {
-	
-	}
-	
-	public static MainFrame getInstance() {
-		if(instance == null) {
-			instance = new MainFrame();
-			instance.diagramViews = new ArrayList<>();
-			instance.classyTree = new ClassyTreeImplementation();
-			instance.initialize();
-		}
-		return instance;
-	}
-	
-	private void initialize() {
-		
-		actionManager = new ActionManager();
-		
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = kit.getScreenSize();
-		int screenHeight = screenSize.height;
-		int screenWidth = screenSize.width;
-		setSize(screenWidth * 100 / 100, screenHeight * 100 / 100);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("ClassyCrafT");
-		
-		MyMenuBar menu = new MyMenuBar();
-		MyToolBar toolBar = new MyToolBar();
-		MySideBar sideBar = new MySideBar();
-		
-		setJMenuBar(menu);
-		add(toolBar, BorderLayout.NORTH);
-		add(sideBar, BorderLayout.EAST);
-		JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
-		JScrollPane scroll = new JScrollPane(projectExplorer);
-		scroll.setMinimumSize(new Dimension(200, 150));
-		
-		this.packageView = new PackageView();
-		JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, packageView);
-		getContentPane().add(split, BorderLayout.CENTER);
-		split.setDividerLocation(250);
-		split.setOneTouchExpandable(true);
-	}
-	
-	public ActionManager getActionManager() {
-		return actionManager;
-	}
-	
-	@Override
-	public void update(Object notification) {
-		if(notification instanceof Message) {
-			displayMessage((Message) notification);
-		}
-	}
-	
-	public void displayMessage(Message message) {
-		JOptionPane messageOptionPane = new JOptionPane();
-		messageOptionPane.setMessage(message.getText());
-		switch(message.getMessageType()) {
-			case INFO:
-				messageOptionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-				break;
-			case WARNING:
-				messageOptionPane.setMessageType(JOptionPane.WARNING_MESSAGE);
-				break;
-			case ERROR:
-				messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-				break;
-		}
-		JDialog messageDialog;
-		messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-		messageDialog = messageOptionPane.createDialog(String.valueOf(message.getSystemEvent()));
-		messageDialog.setVisible(true);
-	}
-	
-	public ClassyTreeImplementation getClassyTree() {
-		return classyTree;
-	}
-	
-	public PackageView getPackageView() {
-		return packageView;
-	}
-	
-	public ArrayList<DiagramView> getDiagramViews() {
-		return diagramViews;
-	}
-	
-	public void addDiagramView(DiagramView d) {
-		if(d == null) {
-			return;
-		}
-		if(diagramViews.contains(d)) {
-			return;
-		}
-		diagramViews.add(d);
-	}
-	
+    private static MainFrame instance;
+    private ActionManager actionManager;
+    private PackageView packageView;
+    private ArrayList<DiagramView> diagramViews;
+    private ClassyTreeImplementation classyTree;
+
+    private MainFrame() {
+
+    }
+
+    public static MainFrame getInstance() {
+        if (instance == null) {
+            instance = new MainFrame();
+            instance.diagramViews = new ArrayList<>();
+            instance.classyTree = new ClassyTreeImplementation();
+            instance.initialize();
+        }
+        return instance;
+    }
+
+    private void initialize() {
+
+        actionManager = new ActionManager();
+
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        setSize(screenWidth * 100 / 100, screenHeight * 100 / 100);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("ClassyCrafT");
+
+        MyMenuBar menu = new MyMenuBar();
+        MyToolBar toolBar = new MyToolBar();
+        MySideBar sideBar = new MySideBar();
+
+        setJMenuBar(menu);
+        add(toolBar, BorderLayout.NORTH);
+        add(sideBar, BorderLayout.EAST);
+        JTree projectExplorer = classyTree.generateTree((ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot());
+        JScrollPane scroll = new JScrollPane(projectExplorer);
+        scroll.setMinimumSize(new Dimension(200, 150));
+
+        this.packageView = new PackageView();
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, packageView);
+        getContentPane().add(split, BorderLayout.CENTER);
+        split.setDividerLocation(250);
+        split.setOneTouchExpandable(true);
+    }
+
+    public ActionManager getActionManager() {
+        return actionManager;
+    }
+
+    @Override
+    public void update(Object notification) {
+        if (notification instanceof Message) {
+            displayMessage((Message) notification);
+        }
+    }
+
+    public void displayMessage(Message message) {
+        JOptionPane messageOptionPane = new JOptionPane();
+        messageOptionPane.setMessage(message.getText());
+        switch (message.getMessageType()) {
+            case INFO:
+                messageOptionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case WARNING:
+                messageOptionPane.setMessageType(JOptionPane.WARNING_MESSAGE);
+                break;
+            case ERROR:
+                messageOptionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+        JDialog messageDialog;
+        messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+        messageDialog = messageOptionPane.createDialog(String.valueOf(message.getSystemEvent()));
+        messageDialog.setVisible(true);
+    }
+
+    public ClassyTreeImplementation getClassyTree() {
+        return classyTree;
+    }
+
+    public PackageView getPackageView() {
+        return packageView;
+    }
+
+    public ArrayList<DiagramView> getDiagramViews() {
+        return diagramViews;
+    }
+
+    public void addDiagramView(DiagramView d) {
+        if (d == null) {
+            return;
+        }
+        if (diagramViews.contains(d)) {
+            return;
+        }
+        diagramViews.add(d);
+    }
+
 }

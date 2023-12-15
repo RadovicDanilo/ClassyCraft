@@ -18,81 +18,81 @@ import javax.swing.tree.DefaultTreeModel;
 import java.util.ArrayList;
 
 public class ClassyTreeImplementation implements ClassyTree {
-	private ClassyTreeView treeView;
-	private ClassyTreeItem root;
-	
-	@Override
-	public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
-		root = new ClassyTreeItem(projectExplorer);
-		DefaultTreeModel treeModel = new DefaultTreeModel(root);
-		treeView = new ClassyTreeView(treeModel);
-		return treeView;
-	}
-	
-	@Override
-	public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
-		parent.add(new ClassyTreeItem(classyNode));
-		ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
-		treeView.expandPath(treeView.getSelectionPath());
-		SwingUtilities.updateComponentTreeUI(treeView);
-	}
-	
-	public ClassyTreeView getTreeView() {
-		return treeView;
-	}
-	
-	public void removeNode(ClassyTreeItem classyTreeItem) {
-		if(classyTreeItem == null)
-			return;
-		classyTreeItem = getNode(classyTreeItem.getClassyNode());
-		if(classyTreeItem == null)
-			return;
-		
-		if(classyTreeItem.getClassyNode() instanceof Diagram) {
-			DiagramView dv = new DiagramView((Diagram) classyTreeItem.getClassyNode());
-			MainFrame.getInstance().getDiagramViews().remove(dv);
-		}
-		if(classyTreeItem.getClassyNode() instanceof DiagramElement) {
-			for(int i = 0; i < classyTreeItem.getParent().getChildCount(); i++) {
-				ClassyTreeItem item = ((ClassyTreeItem) classyTreeItem.getParent().getChildAt(i));
-				if(item.getClassyNode() instanceof Connection && (((Connection) item.getClassyNode()).getFrom().equals(classyTreeItem.getClassyNode()) || ((Connection) item.getClassyNode()).getTo().equals(classyTreeItem.getClassyNode()))) {
-					removeNode(item);
-					i--;
-				}
-			}
-		}
-		classyTreeItem.removeFromParent();
-		ApplicationFramework.getInstance().getClassyRepository().removeChild(classyTreeItem.getClassyNode());
-		treeView.expandPath(treeView.getSelectionPath());
-		SwingUtilities.updateComponentTreeUI(treeView);
-	}
-	
-	public ClassyTreeItem getNode(ClassyNode c) {
-		
-		ArrayList<ClassyTreeItem> a = new ArrayList<>();
-		a.add(root);
-		while(a.size() != 0) {
-			ArrayList<ClassyTreeItem> b = new ArrayList<>();
-			for(ClassyTreeItem classyTreeItem : a) {
-				if(classyTreeItem.getClassyNode() == c) {
-					return classyTreeItem;
-				}
-				for(int i = 0; i < classyTreeItem.getChildCount(); i++) {
-					b.add((ClassyTreeItem) classyTreeItem.getChildAt(i));
-				}
-			}
-			a = b;
-		}
-		return null;
-	}
-	
-	@Override
-	public ClassyTreeItem getSelectedNode() {
-		return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
-	}
-	
-	public ClassyTreeItem getRoot() {
-		return root;
-	}
-	
+    private ClassyTreeView treeView;
+    private ClassyTreeItem root;
+
+    @Override
+    public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
+        root = new ClassyTreeItem(projectExplorer);
+        DefaultTreeModel treeModel = new DefaultTreeModel(root);
+        treeView = new ClassyTreeView(treeModel);
+        return treeView;
+    }
+
+    @Override
+    public void addChild(ClassyTreeItem parent, ClassyNode classyNode) {
+        parent.add(new ClassyTreeItem(classyNode));
+        ApplicationFramework.getInstance().getClassyRepository().addChild(classyNode);
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    public ClassyTreeView getTreeView() {
+        return treeView;
+    }
+
+    public void removeNode(ClassyTreeItem classyTreeItem) {
+        if (classyTreeItem == null)
+            return;
+        classyTreeItem = getNode(classyTreeItem.getClassyNode());
+        if (classyTreeItem == null)
+            return;
+
+        if (classyTreeItem.getClassyNode() instanceof Diagram) {
+            DiagramView dv = new DiagramView((Diagram) classyTreeItem.getClassyNode());
+            MainFrame.getInstance().getDiagramViews().remove(dv);
+        }
+        if (classyTreeItem.getClassyNode() instanceof DiagramElement) {
+            for (int i = 0; i < classyTreeItem.getParent().getChildCount(); i++) {
+                ClassyTreeItem item = ((ClassyTreeItem) classyTreeItem.getParent().getChildAt(i));
+                if (item.getClassyNode() instanceof Connection && (((Connection) item.getClassyNode()).getFrom().equals(classyTreeItem.getClassyNode()) || ((Connection) item.getClassyNode()).getTo().equals(classyTreeItem.getClassyNode()))) {
+                    removeNode(item);
+                    i--;
+                }
+            }
+        }
+        classyTreeItem.removeFromParent();
+        ApplicationFramework.getInstance().getClassyRepository().removeChild(classyTreeItem.getClassyNode());
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    public ClassyTreeItem getNode(ClassyNode c) {
+
+        ArrayList<ClassyTreeItem> a = new ArrayList<>();
+        a.add(root);
+        while (a.size() != 0) {
+            ArrayList<ClassyTreeItem> b = new ArrayList<>();
+            for (ClassyTreeItem classyTreeItem : a) {
+                if (classyTreeItem.getClassyNode() == c) {
+                    return classyTreeItem;
+                }
+                for (int i = 0; i < classyTreeItem.getChildCount(); i++) {
+                    b.add((ClassyTreeItem) classyTreeItem.getChildAt(i));
+                }
+            }
+            a = b;
+        }
+        return null;
+    }
+
+    @Override
+    public ClassyTreeItem getSelectedNode() {
+        return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    public ClassyTreeItem getRoot() {
+        return root;
+    }
+
 }

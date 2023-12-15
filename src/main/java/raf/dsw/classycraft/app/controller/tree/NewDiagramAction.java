@@ -13,26 +13,26 @@ import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import java.awt.event.ActionEvent;
 
 public class NewDiagramAction extends AbstractClassyAction {
-	public NewDiagramAction() {
-		putValue(SMALL_ICON, loadIcon("/images/icons/add_diagram.png"));
-		putValue(NAME, "New diagram");
-		putValue(SHORT_DESCRIPTION, "New diagram");
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		if(MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
-			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
-			return;
-		}
-		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-		if(!(selectedNode.getClassyNode() instanceof Package)) {
-			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE);
-			return;
-		}
-		DiagramFactory diagramFactory = new DiagramFactory();
-		ClassyNode classyNode = diagramFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
-		MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
-	}
+    public NewDiagramAction() {
+        putValue(SMALL_ICON, loadIcon("/images/icons/add_diagram.png"));
+        putValue(NAME, "New diagram");
+        putValue(SHORT_DESCRIPTION, "New diagram");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
+            return;
+        }
+        ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
+        if (!(selectedNode.getClassyNode() instanceof Package)) {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE);
+            return;
+        }
+        DiagramFactory diagramFactory = new DiagramFactory();
+        ClassyNode classyNode = diagramFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
+        MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
+    }
 }
