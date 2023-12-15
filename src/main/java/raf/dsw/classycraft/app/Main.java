@@ -11,7 +11,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import java.util.ArrayList;
 
 public class Main {
-	private static final boolean IS_TEST_MODE = false;
+	private static final boolean IS_TEST_MODE = true;
 	public static void main(String[] args) {
 		ApplicationFramework main = ApplicationFramework.getInstance();
 		main.initialize();

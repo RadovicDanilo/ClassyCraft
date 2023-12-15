@@ -96,19 +96,20 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			at.translate(-(float) getWidth() / 2, -(float) getHeight() / 2);
 			zoomer = false;
 			if(!(MainFrame.getInstance().getPackageView().getStateManager().getCurrentState() instanceof SelectState)) {
+				prevHorizontalScrollVal = (int) ((dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent()) * hPercent);
 				dsp.getHorizontalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().x)) * zoomFactor));
 				dsp.getHorizontalScrollBar().setValue((int) ((dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent()) * hPercent));
-				prevHorizontalScrollVal = (int) ((dsp.getHorizontalScrollBar().getMaximum() - dsp.getHorizontalScrollBar().getModel().getExtent()) * hPercent);
 				
+				prevVerticalScrollVal = (int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent);
 				dsp.getVerticalScrollBar().setMaximum((int) ((Math.max(128, getLowerRightPoint().y)) * zoomFactor));
 				dsp.getVerticalScrollBar().setValue((int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent));
-				prevVerticalScrollVal = (int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent);
 			}
 		}
 		g2d.transform(at);
+
 		
-		BasicStroke Border = new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
-		((Graphics2D) g).setStroke(Border);
+		BasicStroke border = new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+		((Graphics2D) g).setStroke(border);
 		g.setColor(Color.RED);
 		g.drawLine(0, 0, 0, 10000);
 		g.drawLine(0, 0, 10000, 0);
