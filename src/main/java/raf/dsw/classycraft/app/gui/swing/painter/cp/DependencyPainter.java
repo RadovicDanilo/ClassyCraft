@@ -29,8 +29,8 @@ public class DependencyPainter extends ConnectionPainter {
 			g.setColor(Color.BLACK);
 			g.setStroke(strokeDashed);
 		}
-		Point a = getTwoClosestConnectionsPoints().getKey();
-		Point b = getTwoClosestConnectionsPoints().getValue();
+		Point a = getTwoClosestConnectionsPoints().getA();
+		Point b = getTwoClosestConnectionsPoints().getB();
 		g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(), (int) b.getY());
 		
 		
