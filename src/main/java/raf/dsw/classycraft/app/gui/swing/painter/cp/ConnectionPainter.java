@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.cp;
 
-import javafx.util.Pair;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
 
@@ -16,8 +15,8 @@ public abstract class ConnectionPainter extends ElementPainter {
 	
 	@Override
 	public boolean contains(Point p) {
-		Point a = getTwoClosestConnectionsPoints().getKey();
-		Point b = getTwoClosestConnectionsPoints().getValue();
+		Point a = getTwoClosestConnectionsPoints().getA();
+		Point b = getTwoClosestConnectionsPoints().getB();
 		double distance = Line2D.ptSegDistSq(a.x, a.y, b.x, b.y, p.x, p.y);
 		return distance < 2;
 	}
@@ -32,7 +31,7 @@ public abstract class ConnectionPainter extends ElementPainter {
 		return contains(new Point(x, y));
 	}
 	
-	public Pair<Point, Point> getTwoClosestConnectionsPoints() {
+	public PointPair getTwoClosestConnectionsPoints() {
 		Point a = getDiagramElement().getFrom().getConnectionPoints().get(0);
 		Point b = getDiagramElement().getTo().getConnectionPoints().get(0);
 		for(Point p1 : getDiagramElement().getFrom().getConnectionPoints()) {
@@ -43,12 +42,12 @@ public abstract class ConnectionPainter extends ElementPainter {
 				}
 			}
 		}
-		return new Pair<>(a, b);
+		return new PointPair(a, b);
 	}
 	
 	public boolean intersects(Rectangle r) {
-		Point a = getTwoClosestConnectionsPoints().getKey();
-		Point b = getTwoClosestConnectionsPoints().getValue();
+		Point a = getTwoClosestConnectionsPoints().getA();
+		Point b = getTwoClosestConnectionsPoints().getB();
 		Line2D ln = new Line2D.Double(a, b);
 		return ln.intersects(r);
 	}
