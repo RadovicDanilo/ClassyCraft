@@ -10,26 +10,26 @@ import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import java.awt.event.ActionEvent;
 
 public class DeleteNodeAction extends AbstractClassyAction {
-	public DeleteNodeAction() {
-		putValue(SMALL_ICON, loadIcon("/images/icons/remove_project.png"));
-		putValue(NAME, "Delete node");
-		putValue(SHORT_DESCRIPTION, "Delete node");
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
-			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
-			return;
-		}
-		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-		if(selectedNode.getClassyNode() instanceof ProjectExplorer) {
-			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
-			return;
-		}
-		MainFrame.getInstance().getClassyTree().removeNode(selectedNode);
-		
-	}
-	
-	
+    public DeleteNodeAction() {
+        putValue(SMALL_ICON, loadIcon("/images/icons/remove_project.png"));
+        putValue(NAME, "Delete node");
+        putValue(SHORT_DESCRIPTION, "Delete node");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
+            return;
+        }
+        ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
+        if (selectedNode.getClassyNode() instanceof ProjectExplorer) {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
+            return;
+        }
+        MainFrame.getInstance().getClassyTree().removeNode(selectedNode);
+
+    }
+
+
 }

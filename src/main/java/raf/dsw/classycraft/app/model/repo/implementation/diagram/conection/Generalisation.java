@@ -5,7 +5,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Conne
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 
 public class Generalisation extends Connection {
-	public Generalisation(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
-		super(parent, name, from, to);
-	}
+    public Generalisation(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
+        super(parent, name, from, to);
+    }
 }

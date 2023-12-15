@@ -13,37 +13,37 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class RemoveState extends StateImplement implements State {
-	@Override
-	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		ElementPainter removedElement = null;
-		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter.contains(diagramView.adjustPoint(e.getPoint()).x, diagramView.adjustPoint(e.getPoint()).y)) {
-				diagramView.getElementPainters().remove(elementPainter);
-				MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
-				removedElement = elementPainter;
-				break;
-			}
-		}
-		if(removedElement instanceof InterClassPainter) {
-			for(int i = 0; i < diagramView.getElementPainters().size(); i++) {
-				ElementPainter elementPainter = diagramView.getElementPainters().get(i);
-				if(elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getDiagramElement().getFrom() == removedElement.getDiagramElement() || ((ConnectionPainter) elementPainter).getDiagramElement().getTo() == removedElement.getDiagramElement())) {
-					MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
-					diagramView.getElementPainters().remove(elementPainter);
-					i--;
-				}
-			}
-		}
-		diagramView.setSelected(new ArrayList<>());
-	}
-	
-	@Override
-	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-	
-	}
-	
-	@Override
-	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-	
-	}
+    @Override
+    public void mousePressed(MouseEvent e, DiagramView diagramView) {
+        ElementPainter removedElement = null;
+        for (ElementPainter elementPainter : diagramView.getElementPainters()) {
+            if (elementPainter.contains(diagramView.adjustPoint(e.getPoint()).x, diagramView.adjustPoint(e.getPoint()).y)) {
+                diagramView.getElementPainters().remove(elementPainter);
+                MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
+                removedElement = elementPainter;
+                break;
+            }
+        }
+        if (removedElement instanceof InterClassPainter) {
+            for (int i = 0; i < diagramView.getElementPainters().size(); i++) {
+                ElementPainter elementPainter = diagramView.getElementPainters().get(i);
+                if (elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getDiagramElement().getFrom() == removedElement.getDiagramElement() || ((ConnectionPainter) elementPainter).getDiagramElement().getTo() == removedElement.getDiagramElement())) {
+                    MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
+                    diagramView.getElementPainters().remove(elementPainter);
+                    i--;
+                }
+            }
+        }
+        diagramView.setSelected(new ArrayList<>());
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+
+    }
+
+    @Override
+    public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+
+    }
 }

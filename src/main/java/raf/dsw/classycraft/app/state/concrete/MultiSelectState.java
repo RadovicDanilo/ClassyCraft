@@ -10,35 +10,35 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class MultiSelectState extends StateImplement implements State {
-	@Override
-	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		diagramView.setSelected(new ArrayList<>());
-		
-		diagramView.setSelectFrom(diagramView.adjustPoint(e.getPoint()));
-		diagramView.setSelectTo(diagramView.adjustPoint(e.getPoint()));
-	}
-	
-	@Override
-	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-		diagramView.setSelectTo(diagramView.adjustPoint(e.getPoint()));
-		
-		Rectangle r = diagramView.getSelectionRectangle();
-		
-		diagramView.setSelected(new ArrayList<>());
-		
-		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(elementPainter.intersects(r)) {
-				diagramView.addSelectedElement(elementPainter);
-			}
-		}
-		
-		
-	}
-	
-	
-	@Override
-	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-		diagramView.setSelectFrom(null);
-		diagramView.setSelectFrom(null);
-	}
+    @Override
+    public void mousePressed(MouseEvent e, DiagramView diagramView) {
+        diagramView.setSelected(new ArrayList<>());
+
+        diagramView.setSelectFrom(diagramView.adjustPoint(e.getPoint()));
+        diagramView.setSelectTo(diagramView.adjustPoint(e.getPoint()));
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+        diagramView.setSelectTo(diagramView.adjustPoint(e.getPoint()));
+
+        Rectangle r = diagramView.getSelectionRectangle();
+
+        diagramView.setSelected(new ArrayList<>());
+
+        for (ElementPainter elementPainter : diagramView.getElementPainters()) {
+            if (elementPainter.intersects(r)) {
+                diagramView.addSelectedElement(elementPainter);
+            }
+        }
+
+
+    }
+
+
+    @Override
+    public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+        diagramView.setSelectFrom(null);
+        diagramView.setSelectFrom(null);
+    }
 }

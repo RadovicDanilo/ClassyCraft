@@ -7,7 +7,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Conne
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 
 public abstract class AbstractElementFactory {
-	public abstract InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, int x, int y);
-	
-	public abstract Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to);
+    public abstract InterClass createInterClass(InterClassType interClassType, ClassyNodeComposite parent, int x, int y);
+
+    public abstract Connection createConnection(ConnectionType connectionType, ClassyNodeComposite parent, InterClass from, InterClass to);
 }

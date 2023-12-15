@@ -16,45 +16,45 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 
 public class DrawFieldState extends DrawClassContentState {
-	@Override
-	public void mousePressed(MouseEvent e, DiagramView diagramView) {
-		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
-				continue;
-			}
-			if(elementPainter instanceof ClassPainter) {
-				String name = JOptionPane.showInputDialog("Field name:");
-				String type = JOptionPane.showInputDialog("Field type:");
-				Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visibility", "Visibility", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
-				
-				if(name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$")) {
-					ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.FIELD_NAME_NOT_VALID);
-					return;
-				}
-				if(type == null || type.length() == 0 || !type.substring(0, 1).matches("[a-zA-Z]+") || !type.matches("^([\\w+\\-/])+$")) {
-					ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.FIELD_VALUE_NOT_VALID);
-					return;
-				}
-				((Klasa) elementPainter.getDiagramElement()).addField(new Field(name, visibility, type));
-			}
-			if(elementPainter instanceof EnumPainter) {
-				String name = JOptionPane.showInputDialog("Enum name:");
-				if(name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$")) {
-					ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.ENUM_NOT_VALID);
-					return;
-				}
-				((Enum) elementPainter.getDiagramElement()).addEnum(name);
-			}
-		}
-	}
-	
-	@Override
-	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
-	
-	}
-	
-	@Override
-	public void mouseRelease(MouseEvent e, DiagramView diagramView) {
-	
-	}
+    @Override
+    public void mousePressed(MouseEvent e, DiagramView diagramView) {
+        for (ElementPainter elementPainter : diagramView.getElementPainters()) {
+            if (!(elementPainter instanceof InterClassPainter) || !((InterClassPainter) elementPainter).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
+                continue;
+            }
+            if (elementPainter instanceof ClassPainter) {
+                String name = JOptionPane.showInputDialog("Field name:");
+                String type = JOptionPane.showInputDialog("Field type:");
+                Visibility visibility = (Visibility) JOptionPane.showInputDialog(null, "Visibility", "Visibility", JOptionPane.QUESTION_MESSAGE, null, Visibility.values(), Visibility.PUBLIC);
+
+                if (name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$")) {
+                    ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.FIELD_NAME_NOT_VALID);
+                    return;
+                }
+                if (type == null || type.length() == 0 || !type.substring(0, 1).matches("[a-zA-Z]+") || !type.matches("^([\\w+\\-/])+$")) {
+                    ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.FIELD_VALUE_NOT_VALID);
+                    return;
+                }
+                ((Klasa) elementPainter.getDiagramElement()).addField(new Field(name, visibility, type));
+            }
+            if (elementPainter instanceof EnumPainter) {
+                String name = JOptionPane.showInputDialog("Enum name:");
+                if (name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$")) {
+                    ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.ENUM_NOT_VALID);
+                    return;
+                }
+                ((Enum) elementPainter.getDiagramElement()).addEnum(name);
+            }
+        }
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e, DiagramView diagramView) {
+
+    }
+
+    @Override
+    public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+
+    }
 }
