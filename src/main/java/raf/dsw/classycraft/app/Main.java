@@ -16,7 +16,6 @@ public class Main {
 		main.initialize();
 		
 		
-		
 		ClassyTreeItem root = MainFrame.getInstance().getClassyTree().getRoot();
 		ClassyTreeView view = MainFrame.getInstance().getClassyTree().getTreeView();
 		Project a = new Project("PROJEKAT");
@@ -27,8 +26,8 @@ public class Main {
 		MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getNode(b), c);
 		ArrayList<Diagram> x = new ArrayList<>();
 		x.add(c);
-		MainFrame.getInstance().getPackageView().openTabs(x,b);
-		for (int i = 0; i < view.getRowCount(); i++) {
+		MainFrame.getInstance().getPackageView().openTabs(x, b);
+		for(int i = 0; i < view.getRowCount(); i++) {
 			view.expandRow(i);
 		}
 		MainFrame.getInstance().getPackageView().startDrawClassState();

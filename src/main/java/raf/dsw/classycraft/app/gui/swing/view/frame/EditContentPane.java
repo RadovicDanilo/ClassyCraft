@@ -194,7 +194,7 @@ public class EditContentPane extends JFrame {
 			JPanel midF = new JPanel();
 			JPanel midM = new JPanel();
 			
-			midF.setLayout( new GridLayout(tfFieldNames.size() + 1, 3, 10, 10));
+			midF.setLayout(new GridLayout(tfFieldNames.size() + 1, 3, 10, 10));
 			midM.setLayout(new GridLayout(tfMethodNames.size() + 1, 3, 10, 10));
 			
 			midF.add(new JLabel("Visibility"));

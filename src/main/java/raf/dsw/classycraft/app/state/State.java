@@ -11,5 +11,6 @@ public interface State {
 	void mouseDragged(MouseEvent e, DiagramView diagramView);
 	
 	void mouseRelease(MouseEvent e, DiagramView diagramView);
+	
 	void mouseWheelMoved(MouseWheelEvent e, DiagramView diagramView);
 }

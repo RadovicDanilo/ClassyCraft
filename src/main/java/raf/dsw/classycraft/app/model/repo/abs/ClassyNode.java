@@ -34,7 +34,7 @@ public abstract class ClassyNode {
 	}
 	
 	public void setName(String name) {
-		if(this instanceof InterClass && (name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$"))){
+		if(this instanceof InterClass && (name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$"))) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.INTERCLASS_NAME_NOT_VALID);
 			return;
 		}

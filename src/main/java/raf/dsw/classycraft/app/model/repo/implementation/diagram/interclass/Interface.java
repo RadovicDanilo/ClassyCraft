@@ -3,7 +3,6 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inte
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
 
 import java.util.ArrayList;

@@ -58,6 +58,7 @@ public class DrawMethodState extends DrawClassContentState {
 			}
 		}
 	}
+	
 	@Override
 	public void mouseDragged(MouseEvent e, DiagramView diagramView) {
 	
