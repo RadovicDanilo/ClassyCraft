@@ -25,6 +25,7 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 	public final BasicStroke strokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[] {10.0f}, 0.0f);
 	private final ArrayList<ElementPainter> elementPainters;
 	private final Diagram diagram;
+	private boolean zoomedToFit;
 	private Point connectionFrom;
 	private Point connectionTo;
 	private Point selectFrom;
@@ -59,7 +60,7 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		prevHorizontalScrollVal = 0;
 		
 		zoomFactor = 1;
-		
+		zoomedToFit = false;
 		zoomer = true;
 		repaint();
 		
@@ -150,6 +151,14 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 	}
 	
 	public void zoom(MouseWheelEvent e) {
+		if(zoomedToFit) {
+			zoomer = true;
+			zoomedToFit = false;
+			zoomFactor = 1;
+			at.setToTranslation(0,0);
+			repaint();
+			return;
+		}
 		if(e.getWheelRotation() > 0) {
 			zoomFactor -= 0.05;
 		}else {
@@ -171,8 +180,8 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 	public void zoomToFit() {
 		at = new AffineTransform();
 		zoomFactor = 1;
-		at.setToScale(1,1);
-		at.setToTranslation(0,0);
+		at.setToScale(1, 1);
+		at.setToTranslation(0, 0);
 		Point a = getUpperLeftPoint();
 		Point b = getLowerRightPoint();
 		Point c = new Point(b.x - a.x, b.y - a.y);
@@ -180,12 +189,12 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		if(d.x > c.x || d.y > c.y) {
 			while((adjustPoint(d).x > c.x && adjustPoint(d).y > c.y) && zoomFactor < 2) {
 				zoomFactor = zoomFactor + 0.05;
-				at.setToScale(zoomFactor,zoomFactor);
+				at.setToScale(zoomFactor, zoomFactor);
 			}
 		}else {
 			while((adjustPoint(d).x < c.x && adjustPoint(d).y < c.y) && zoomFactor > 0.5) {
 				zoomFactor = zoomFactor - 0.05;
-				at.setToScale(zoomFactor,zoomFactor);
+				at.setToScale(zoomFactor, zoomFactor);
 				
 			}
 		}
@@ -197,6 +206,7 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		temp.translate(x, y);
 		temp.translate(0, 5);
 		at.setTransform(temp);
+		zoomedToFit = true;
 		repaint();
 		
 	}

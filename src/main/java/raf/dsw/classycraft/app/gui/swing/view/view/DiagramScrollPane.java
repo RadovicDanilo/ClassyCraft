@@ -8,9 +8,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentListener {
-	private DiagramView diagramView;
 	private final JScrollBar horizontalScrollBar;
 	private final JScrollBar verticalScrollBar;
+	private DiagramView diagramView;
 	private ComponentEvent e;
 	
 	public DiagramScrollPane(DiagramView diagramView) {
@@ -30,7 +30,7 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 		
 		this.add(verticalScrollBar, BorderLayout.EAST);
 		this.add(horizontalScrollBar, BorderLayout.SOUTH);
-
+		
 		
 	}
 	

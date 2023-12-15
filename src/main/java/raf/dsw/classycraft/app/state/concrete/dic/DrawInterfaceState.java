@@ -8,7 +8,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.InterClassType;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 
 import java.awt.*;

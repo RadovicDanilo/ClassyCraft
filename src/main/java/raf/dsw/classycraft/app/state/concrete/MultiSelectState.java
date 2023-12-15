@@ -13,7 +13,7 @@ public class MultiSelectState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		diagramView.setSelected(new ArrayList<>());
-
+		
 		diagramView.setSelectFrom(diagramView.adjustPoint(e.getPoint()));
 		diagramView.setSelectTo(diagramView.adjustPoint(e.getPoint()));
 	}
