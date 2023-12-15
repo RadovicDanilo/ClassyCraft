@@ -24,9 +24,6 @@ public class UpdateInterfaceAction {
 		}
 		
 		Set<Method> set = new HashSet<>(methods);
-		System.out.println(set.size());
-		System.out.println(methods.size());
-		System.out.println(methods.get(0).equals(methods.get(1)));
 		
 		if(set.size() == methods.size()) {
 			i.setMethods(methods);

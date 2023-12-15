@@ -5,6 +5,8 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Conne
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
+import static main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality.ONE;
+
 public class Aggregation extends Connection {
 	private String fieldName;
 	private Visibility visibility;
@@ -12,6 +14,9 @@ public class Aggregation extends Connection {
 
 	public Aggregation(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
 		super(parent, name, from, to);
+		fieldName = "name";
+		visibility = Visibility.PUBLIC;
+		cardinality = ONE;
 	}
 
 

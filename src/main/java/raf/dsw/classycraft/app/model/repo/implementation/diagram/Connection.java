@@ -34,10 +34,6 @@ public abstract class Connection extends DiagramElement {
 		}
 		return a + b;
 	}
-	//TODO edit veze
-	//A vidljivost kardinalnost naziv atributa
-	//G ne moze
-	//
 	@Override
 	public boolean equals(Object obj) {
 		if(!(obj instanceof Connection)) {

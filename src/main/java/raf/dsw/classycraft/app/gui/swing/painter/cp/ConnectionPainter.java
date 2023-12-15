@@ -18,7 +18,7 @@ public abstract class ConnectionPainter extends ElementPainter {
 		Point a = getTwoClosestConnectionsPoints().getA();
 		Point b = getTwoClosestConnectionsPoints().getB();
 		double distance = Line2D.ptSegDistSq(a.x, a.y, b.x, b.y, p.x, p.y);
-		return distance < 2;
+		return distance < 3;
 	}
 	
 	@Override
@@ -51,7 +51,6 @@ public abstract class ConnectionPainter extends ElementPainter {
 		Line2D ln = new Line2D.Double(a, b);
 		return ln.intersects(r);
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		return obj instanceof ConnectionPainter && this.getDiagramElement().equals(((ConnectionPainter) obj).getDiagramElement());
