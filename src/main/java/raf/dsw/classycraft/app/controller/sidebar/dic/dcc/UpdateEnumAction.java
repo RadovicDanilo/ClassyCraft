@@ -15,13 +15,19 @@ import java.util.Set;
 public class UpdateEnumAction extends AbstractClassyAction {
 	public UpdateEnumAction(Enum e, JTextField name, ArrayList<JTextField> tfEnums, ArrayList<JCheckBox> checkBoxes) {
 		e.setName(name.getText());
+
 		ArrayList<String> content = new ArrayList<>();
 		for(int i = 0; i < tfEnums.size(); i++) {
 			JTextField tf = tfEnums.get(i);
 			if(checkBoxes.get(i).isSelected()) {
 				continue;
 			}
+			if(tf.getText() == null || tf.getText().length() == 0 || !tf.getText().substring(0, 1).matches("[a-zA-Z]+") || !tf.getText().matches("^([\\w+\\-/])+$")) {
+				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.ENUM_NOT_VALID);
+				return;
+			}
 			content.add(tf.getText());
+
 		}
 		Set<String> set = new HashSet<>(content);
 		if(set.size() == content.size()) {

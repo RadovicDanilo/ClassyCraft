@@ -202,3 +202,24 @@ Promene koje ste npravili nad njima nece biti primenjene
 [ERROR][15-12-2023 11:53:17] Jedno ili vise polja/metoda su iste.
 Promene koje ste npravili nad njima nece biti primenjene
 [ERROR][15-12-2023 16:06:17] veza vec postoji
+[ERROR][15-12-2023 17:24:27] Enum nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 17:24:29] Enum nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 17:24:32] Enum nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 17:32:10] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 17:32:15] Tip polja nije dobar
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 17:32:20] Naziv interclass element (klasa, enum ili interfejs) nije validan
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 17:32:58] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere

@@ -24,11 +24,31 @@ public class UpdateClassAction {
 			if(checkBoxesFields.get(j).isSelected()) {
 				continue;
 			}
+			if(tfFieldNames.get(j).getText() == null || tfFieldNames.get(j).getText().length() == 0 ||
+					!tfFieldNames.get(j).getText().substring(0, 1).matches("[a-zA-Z]+") || !tfFieldNames.get(j).getText().matches("^([\\w+\\-/])+$")) {
+				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.FIELD_NAME_NOT_VALID);
+				return;
+			}
+			if(tfFieldValues.get(j).getText() == null || tfFieldValues.get(j).getText().length() == 0 ||
+					!tfFieldValues.get(j).getText().substring(0, 1).matches("[a-zA-Z]+") || !tfFieldValues.get(j).getText().matches("^([\\w+\\-/])+$")) {
+				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.FIELD_VALUE_NOT_VALID);
+				return;
+			}
 			contents.add(new Field(tfFieldNames.get(j).getText(), (Visibility) cbFieldVisibility.get(j).getSelectedItem(), tfFieldValues.get(j).getText()));
 		}
 		for(int j = 0; j < tfMethodNames.size(); j++) {
 			if(checkBoxesMethods.get(j).isSelected()) {
 				continue;
+			}
+			if(tfMethodNames.get(j).getText() == null || tfMethodNames.get(j).getText().length() == 0 ||
+					!tfMethodNames.get(j).getText().substring(0, 1).matches("[a-zA-Z]+") || !tfMethodNames.get(j).getText().matches("^([\\w+\\-/])+$")) {
+				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.METHOD_NAME_NOT_VALID);
+				return;
+			}
+			if(tfMethodValues.get(j).getText() == null || tfMethodValues.get(j).getText().length() == 0 ||
+					!tfMethodValues.get(j).getText().substring(0, 1).matches("[a-zA-Z]+") || !tfMethodValues.get(j).getText().matches("^([\\w+\\-/])+$")) {
+				ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.METHOD_RETURN_VALUE_NOT_VALID);
+				return;
 			}
 			contents.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(), tfMethodValues.get(j).getText()));
 		}

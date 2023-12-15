@@ -286,6 +286,9 @@ public class EditContentPane extends JFrame {
         }
         if (c instanceof CompositionPainter) {
 
+
+
+
         }
     }
 }
