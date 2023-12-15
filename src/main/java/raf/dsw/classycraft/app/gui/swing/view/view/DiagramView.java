@@ -78,6 +78,8 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 		Graphics2D g2d = (Graphics2D) g;
 		DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
 		
+
+		
 		float hPercent = 0;
 		float vPercent = 0;
 		try {
@@ -155,6 +157,11 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			zoomer = true;
 			zoomedToFit = false;
 			zoomFactor = 1;
+			prevVerticalScrollVal = 0;
+			prevHorizontalScrollVal = 0;
+			DiagramScrollPane diagramScrollPane = (DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent();
+			diagramScrollPane.getHorizontalScrollBar().setValue(0);
+			diagramScrollPane.getVerticalScrollBar().setValue(0);
 			at.setToTranslation(0,0);
 			repaint();
 			return;
