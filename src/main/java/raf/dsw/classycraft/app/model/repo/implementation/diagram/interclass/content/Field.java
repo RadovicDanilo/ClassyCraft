@@ -16,6 +16,12 @@ public class Field extends ClassContent {
 	}
 	
 	@Override
+	public int hashCode() {
+		String buffer = this.getType() + this.getName();
+		return buffer.hashCode();
+	}
+	
+	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Field) {
 			return ((Field) obj).type.equals(this.type) && ((Field) obj).getName().equals(this.getName());

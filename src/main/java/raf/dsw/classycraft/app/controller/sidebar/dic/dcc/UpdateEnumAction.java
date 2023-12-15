@@ -1,8 +1,10 @@
 package main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc;
 
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +27,7 @@ public class UpdateEnumAction extends AbstractClassyAction {
 		if(set.size() == content.size()) {
 			e.setContents(content);
 		}else {
-			//TODO SYSTEM EVENT
+			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DUPLICATE_FIELDS_OR_METHODS);
 		}
 		SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
 		

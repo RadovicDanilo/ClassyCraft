@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class MessageGenerator implements IPublisher {
 	
+	private final String TIP1 = "\n Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) " +
+		"\n ostatak naziv sme samo da sadrzi alfanumericke karktere";
 	private ArrayList<ISubscriber> subscribers;
 	
 	public void GenerateMessage(SystemEvent systemEvent) {
@@ -40,8 +42,29 @@ public class MessageGenerator implements IPublisher {
 			case CANNOT_RENAME_ROOT:
 				message = new Message(systemEvent, MessageType.ERROR, "project manage (root) se ne moze preimenovati");
 				break;
+			case ENUM_NOT_VALID:
+				message = new Message(systemEvent, MessageType.ERROR, "Enum nije dobro unet" + TIP1);
+				break;
+			case FIELD_NAME_NOT_VALID:
+				message = new Message(systemEvent, MessageType.ERROR, "Naziv polja nije dobro unet" + TIP1);
+				break;
+			case FIELD_VALUE_NOT_VALID:
+				message = new Message(systemEvent, MessageType.ERROR, "Tip polja nije dobar" + TIP1);
+				break;
+			case METHOD_NAME_NOT_VALID:
+				message = new Message(systemEvent, MessageType.ERROR, "Ime metode nije dobro uneto" + TIP1);
+				break;
+			case METHOD_RETURN_VALUE_NOT_VALID:
+				message = new Message(systemEvent, MessageType.ERROR, "Povratna vrednost nije dobro uneta" + TIP1);
+				break;
 			case NO_SELECTED_NODE:
 				message = new Message(systemEvent, MessageType.ERROR, "Nije izabran cvor");
+				break;
+			case INTERCLASS_NAME_NOT_VALID:
+				message = new Message(systemEvent, MessageType.ERROR, "Naziv interclass element (klasa, enum ili interfejs) nije validan" + TIP1);
+				break;
+			case DUPLICATE_FIELDS_OR_METHODS:
+				message = new Message(systemEvent, MessageType.ERROR, "Jedno ili vise polja/metoda su iste.\nPromene koje ste npravili nad njima nece biti primenjene");
 				break;
 			default:
 				return;

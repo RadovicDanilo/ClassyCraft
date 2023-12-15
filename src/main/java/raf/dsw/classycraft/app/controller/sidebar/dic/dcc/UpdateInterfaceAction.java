@@ -1,9 +1,11 @@
 package main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,17 +17,21 @@ public class UpdateInterfaceAction {
 		i.setName(tfName.getText());
 		ArrayList<Method> methods = new ArrayList<>();
 		for(int j = 0; j < tfMethodNames.size(); j++) {
-			if(checkBoxes.get(j).isSelected()){
+			if(checkBoxes.get(j).isSelected()) {
 				continue;
 			}
 			methods.add(new Method(tfMethodNames.get(j).getText(), (Visibility) cbMethodVisibility.get(j).getSelectedItem(), tfMethodValues.get(j).getText()));
 		}
 		
 		Set<Method> set = new HashSet<>(methods);
+		System.out.println(set.size());
+		System.out.println(methods.size());
+		System.out.println(methods.get(0).equals(methods.get(1)));
+		
 		if(set.size() == methods.size()) {
 			i.setMethods(methods);
 		}else {
-			//TODO SYSTEM EVENT
+			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DUPLICATE_FIELDS_OR_METHODS);
 		}
 		SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
 		

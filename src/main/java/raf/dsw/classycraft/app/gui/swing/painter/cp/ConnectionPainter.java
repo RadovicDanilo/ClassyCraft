@@ -55,7 +55,6 @@ public abstract class ConnectionPainter extends ElementPainter {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof ConnectionPainter && ((ConnectionPainter) obj).getDiagramElement().getFrom().equals(this.getDiagramElement().getFrom())
-			&& ((ConnectionPainter) obj).getDiagramElement().getTo().equals(this.getDiagramElement().getTo());
+		return obj instanceof ConnectionPainter &&   this.getDiagramElement().equals(((ConnectionPainter) obj).getDiagramElement());
 	}
 }
