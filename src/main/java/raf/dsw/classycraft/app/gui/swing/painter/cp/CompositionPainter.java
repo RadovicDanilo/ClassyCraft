@@ -28,8 +28,8 @@ public class CompositionPainter extends ConnectionPainter {
 			g.setColor(Color.BLACK);
 			g.setStroke(normalStroke);
 		}
-		Point a = getTwoClosestConnectionsPoints().getA();
-		Point b = getTwoClosestConnectionsPoints().getB();
+		Point b = getTwoClosestConnectionsPoints().getA();
+		Point a = getTwoClosestConnectionsPoints().getB();
 		g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(), (int) b.getY());
 		
 		Point c = new Point(0, 0);
