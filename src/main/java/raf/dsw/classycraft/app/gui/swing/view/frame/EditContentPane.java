@@ -5,10 +5,15 @@ import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateClassA
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateEnumAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.UpdateInterfaceAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.AggregationPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.CompositionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.ClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.EnumPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterfacePainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
@@ -187,7 +192,6 @@ public class EditContentPane extends JFrame {
 					comboBox.setSelectedItem(content.getVisibility());
 					cbMethodVisibility.add(comboBox);
 					checkBoxesM.add(new JCheckBox());
-					
 				}
 			}
 			
@@ -245,6 +249,35 @@ public class EditContentPane extends JFrame {
 			for(Component component : this.getComponents()) {
 				component.setPreferredSize(defaultDimension);
 			}
+		}
+		if(c instanceof AggregationPainter){
+			//TODO ZAVRSITI
+			Aggregation k = (Aggregation) c.getDiagramElement();
+			this.setSize(defaultDimension.width + 100, defaultDimension.height * 4 + 100);
+			GridLayout gridLayout = new GridLayout(4, 1, 5, 5);
+			setLayout(gridLayout);
+
+			add(new JLabel(k.getName()),gridLayout);
+
+			JTextField tfName = new JTextField(k.getFieldName());
+
+			JComboBox<Visibility> cbVisibility = new JComboBox<>(Visibility.values());
+			cbVisibility.setSelectedItem(k.getVisibility());
+
+			JComboBox<Cardinality> cbCardinality = new JComboBox<>(Cardinality.values());
+			cbCardinality.setSelectedItem(k.getCardinality());
+
+			add(tfName,gridLayout);
+			add(cbVisibility,gridLayout);
+			add(cbCardinality,gridLayout);
+
+			JButton btnCancel = new JButton("CANCEL");
+			btnCancel.addActionListener(e1->this.dispose());
+
+
+		}
+		if(c instanceof CompositionPainter){
+
 		}
 	}
 }

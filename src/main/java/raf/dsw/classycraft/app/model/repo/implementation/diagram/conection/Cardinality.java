@@ -4,7 +4,6 @@ public enum Cardinality {
     ONE, MANY;
     @Override
     public String toString() {
-
         if (this == ONE)
             return "..1";
         return "..*";

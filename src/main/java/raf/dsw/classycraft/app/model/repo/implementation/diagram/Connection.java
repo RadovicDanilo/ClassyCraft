@@ -19,7 +19,7 @@ public abstract class Connection extends DiagramElement {
 	@Override
 	public String getName() {
 		String a = "";
-		String b = " from " + from.getName() + " To " + to.getName();
+		String b = " from " + from.getName() + " to " + to.getName();
 		if(this instanceof Aggregation) {
 			a = "Aggregation";
 		}

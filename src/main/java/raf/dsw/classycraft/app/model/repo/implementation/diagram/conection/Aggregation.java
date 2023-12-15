@@ -6,7 +6,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
 public class Aggregation extends Connection {
-	private String name;
+	private String fieldName;
 	private Visibility visibility;
 	private Cardinality cardinality;
 
@@ -14,14 +14,13 @@ public class Aggregation extends Connection {
 		super(parent, name, from, to);
 	}
 
-	@Override
-	public String getName() {
-		return name;
+
+	public String getFieldName() {
+		return fieldName;
 	}
 
-	@Override
-	public void setName(String name) {
-		this.name = name;
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 
 	public Visibility getVisibility() {

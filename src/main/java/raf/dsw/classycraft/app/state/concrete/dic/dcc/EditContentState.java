@@ -13,9 +13,7 @@ public class EditContentState extends StateImplement implements State {
 	@Override
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
 		for(ElementPainter elementPainter : diagramView.getElementPainters()) {
-			if(!(elementPainter instanceof InterClassPainter))
-				continue;
-			if(((InterClassPainter) elementPainter).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
+			if((elementPainter).contains(diagramView.adjustPoint(e.getPoint()))) {
 				EditContentPane editContentPane = new EditContentPane(elementPainter);
 				editContentPane.setVisible(true);
 			}
