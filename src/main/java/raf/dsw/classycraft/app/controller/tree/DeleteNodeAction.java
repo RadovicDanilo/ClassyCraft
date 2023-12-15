@@ -18,11 +18,11 @@ public class DeleteNodeAction extends AbstractClassyAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-		if(selectedNode.getClassyNode() == null) {
+		if(MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
 			return;
 		}
+		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
 		if(selectedNode.getClassyNode() instanceof ProjectExplorer) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_REMOVE_ROOT);
 			return;

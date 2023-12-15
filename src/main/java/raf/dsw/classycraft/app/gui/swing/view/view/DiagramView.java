@@ -165,7 +165,6 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 			zoomer = false;
 		}
 		zoomFactor = round(zoomFactor, 2);
-		System.out.println(zoomFactor);
 		repaint();
 	}
 	

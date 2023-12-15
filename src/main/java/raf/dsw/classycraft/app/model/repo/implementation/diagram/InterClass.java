@@ -7,7 +7,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class InterClass extends DiagramElement {
-	private Visibility visibility;
 	private int x;
 	private int y;
 	private int currentWidth;
@@ -15,9 +14,8 @@ public abstract class InterClass extends DiagramElement {
 	private ArrayList<Point> connectionPoints;
 	
 	
-	public InterClass(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
+	public InterClass(ClassyNodeComposite parent, String name, int x, int y) {
 		super(parent, name);
-		this.visibility = visibility;
 		this.x = x;
 		this.y = y;
 		generatePoints();
@@ -71,15 +69,6 @@ public abstract class InterClass extends DiagramElement {
 	
 	public ArrayList<Point> getConnectionPoints() {
 		return connectionPoints;
-	}
-	
-	public Visibility getVisibility() {
-		return visibility;
-	}
-	
-	public void setVisibility(Visibility visibility) {
-		this.visibility = visibility;
-		((Diagram) getParent()).notifySubscribers("");
 	}
 	
 	public void generatePoints() {
@@ -137,6 +126,13 @@ public abstract class InterClass extends DiagramElement {
 			}
 		}
 		return min;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof InterClass))
+			return false;
+		return this.getName().equals(((InterClass) obj).getName());
 	}
 	
 	public Point midPoint(Point a, Point b) {

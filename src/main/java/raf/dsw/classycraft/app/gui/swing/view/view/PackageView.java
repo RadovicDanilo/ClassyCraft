@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackageView extends JPanel implements ISubscriber {
-	private Package selectedPackage;
 	private final StateManager stateManager;
+	private Package selectedPackage;
 	private JLabel lbProjectName;
 	private JTabbedPane tabbedPane;
 	
@@ -119,8 +119,6 @@ public class PackageView extends JPanel implements ISubscriber {
 	}
 	
 	
-	
-	
 	public JTabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
@@ -129,7 +127,6 @@ public class PackageView extends JPanel implements ISubscriber {
 	public Package getSelectedPackage() {
 		return selectedPackage;
 	}
-	
 	
 	
 	public void mousePressed(MouseEvent e, DiagramView diagramView) {
@@ -176,7 +173,6 @@ public class PackageView extends JPanel implements ISubscriber {
 		
 	}
 	
-	//=================================================================
 	public void startDrawFieldState() {
 		stateManager.setDrawFieldState();
 		
@@ -192,7 +188,6 @@ public class PackageView extends JPanel implements ISubscriber {
 		
 	}
 	
-	//=================================================================
 	public void startDrawAggregationState() {
 		stateManager.setDrawAggregationState();
 		
@@ -213,7 +208,6 @@ public class PackageView extends JPanel implements ISubscriber {
 		
 	}
 	
-	//=================================================================
 	public void startZoomToFitState() {
 		stateManager.setZoomToFitState();
 		

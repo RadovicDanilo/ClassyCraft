@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.DependencyPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
@@ -8,6 +9,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.ConnectionType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.awt.event.MouseEvent;
 
@@ -30,20 +32,15 @@ public class DrawDependencyState extends DrawConnectionState {
 		for(ElementPainter ep : diagramView.getElementPainters()) {
 			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				ElementFactory elementFactory = new ElementFactory();
-				Dependency composition = (Dependency) elementFactory.createConnection(ConnectionType.DEPENDENCY, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
-				DependencyPainter ap = new DependencyPainter(composition);
+				Dependency connection = (Dependency) elementFactory.createConnection(ConnectionType.DEPENDENCY, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				DependencyPainter painter = new DependencyPainter(connection);
 				
-				for(ElementPainter elementPainter: diagramView.getElementPainters()){
-					if(ap.equals(elementPainter)){
-						//TODO SYSTEM EVENT
-						break;
-					}
-					
+				if(!diagramView.getElementPainters().contains(painter)) {
+					painter.addElement(connection);
+					diagramView.getElementPainters().add(painter);
+				}else {
+					ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CONNECTION_ALREADY_EXISTS);
 				}
-				
-				ap.addElement(composition);
-				diagramView.getElementPainters().add(ap);
-				
 				break;
 			}
 		}

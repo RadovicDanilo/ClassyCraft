@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.dc;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.AggregationPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
@@ -8,6 +9,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fac
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.ConnectionType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.awt.event.MouseEvent;
 
@@ -31,19 +33,15 @@ public class DrawAggregationState extends DrawConnectionState {
 			if(ep instanceof InterClassPainter && ((InterClassPainter) ep).getRectangle().contains(diagramView.adjustPoint(e.getPoint()))) {
 				
 				ElementFactory elementFactory = new ElementFactory();
-				Aggregation agr = (Aggregation) elementFactory.createConnection(ConnectionType.AGGREGATION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
-				AggregationPainter ap = new AggregationPainter(agr);
+				Aggregation connection = (Aggregation) elementFactory.createConnection(ConnectionType.AGGREGATION, diagramView.getDiagram(), getFrom().getDiagramElement(), (InterClass) ep.getDiagramElement());
+				AggregationPainter painter = new AggregationPainter(connection);
 				
-				for(ElementPainter elementPainter: diagramView.getElementPainters()){
-					if(ap.equals(elementPainter)){
-						//TODO SYSTEM EVENT
-						break;
-					}
-					
+				if(!diagramView.getElementPainters().contains(painter)) {
+					painter.addElement(connection);
+					diagramView.getElementPainters().add(painter);
+				}else {
+					ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CONNECTION_ALREADY_EXISTS);
 				}
-				
-				ap.addElement(agr);
-				diagramView.getElementPainters().add(ap);
 				break;
 			}
 		}

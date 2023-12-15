@@ -45,7 +45,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
-		setSize(screenWidth * 55 / 100, screenHeight * 55 / 100);
+		setSize(screenWidth * 100 / 100, screenHeight * 100 / 100);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("ClassyCrafT");
@@ -94,38 +94,8 @@ public class MainFrame extends JFrame implements ISubscriber {
 				break;
 		}
 		JDialog messageDialog;
-		switch(message.getSystemEvent()) {
-			case NAME_CANNOT_BE_EMPTY:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Naziv nesme biti prazan");
-				break;
-			case NODE_CANNOT_BE_DELETED:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Cvor ne moze biti obrisan");
-				break;
-			case CANNOT_REMOVE_ROOT:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Project explore ne moze da se ukloni");
-				break;
-			case DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Diagram ne moze da se kreira");
-				break;
-			case CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Paket ne moze da se kreira");
-				break;
-			case CHANGE_AUTHOR_CAN_ONLY_BE_PREFORMED_ON_PROJECTS:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Promena autora");
-				break;
-			case NODE_CANNOT_BE_DUPLICATE:
-				messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-				messageDialog = messageOptionPane.createDialog("Cvor sa ovim imenom vec postoji");
-				break;
-			default:
-				return;
-		}
+		messageOptionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+		messageDialog = messageOptionPane.createDialog(String.valueOf(message.getSystemEvent()));
 		messageDialog.setVisible(true);
 	}
 	

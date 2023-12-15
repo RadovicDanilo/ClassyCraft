@@ -104,3 +104,100 @@
 [ERROR][09-12-2023 17:30:51] Paketi se mogu praviti samo u projektima ili drugim paketima
 [ERROR][09-12-2023 20:54:34] Diagram se mogu praviti samo u projektima ili paketima
 [ERROR][13-12-2023 23:57:41] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:34:29] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:34:40] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:36:50] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:43:45] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:45:24] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:45:45] Vec postoji cvor sa datim imenom
+[ERROR][14-12-2023 23:55:56] project manage (root) se ne moze preimenovati
+[ERROR][14-12-2023 23:56:05] veza vec postoji
+[ERROR][14-12-2023 23:56:10] veza vec postoji
+[ERROR][14-12-2023 23:56:52] Project Explorer ne moze da se ukloni
+[ERROR][14-12-2023 23:57:49] Nije izabran cvor
+[ERROR][14-12-2023 23:58:07] Nije izabran cvor
+[ERROR][14-12-2023 23:59:32] Nije izabran cvor
+[ERROR][14-12-2023 23:59:34] Nije izabran cvor
+[ERROR][14-12-2023 23:59:35] Nije izabran cvor
+[ERROR][14-12-2023 23:59:36] Nije izabran cvor
+[ERROR][15-12-2023 10:46:17] Vec postoji cvor sa datim imenom
+[ERROR][15-12-2023 10:49:29] veza vec postoji
+[ERROR][15-12-2023 11:17:09] Naziv polja nije dobro unet<html> <br>Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) a ostatak naziv sme samo da sadrzi alfanumericke karktere i crte<html>
+[ERROR][15-12-2023 11:18:05] Ime metode nije dobro uneto\n Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) a ostatak naziv sme samo da sadrzi alfanumericke karktere i crte<html>
+[ERROR][15-12-2023 11:18:56] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) a ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:21] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:28] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:34] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:40] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:49] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:53] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:19:58] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:21:19] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:21:22] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:21:29] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:21:35] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere i crte
+[ERROR][15-12-2023 11:22:12] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:22:24] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:22:35] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:22:41] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:22:45] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:23:17] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:23:36] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:23:46] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:27:59] Ime metode nije dobro uneto
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:35:50] Naziv interclass element (klasa, enum ili interfejs) nije validan
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:36:03] Naziv interclass element (klasa, enum ili interfejs) nije validan
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:36:06] Naziv interclass element (klasa, enum ili interfejs) nije validan
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:43:08] Jedno ili vise polja/metoda su iste. 
+Promene koje ste npravili nad njima nece biti primenjene
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][15-12-2023 11:53:17] Jedno ili vise polja/metoda su iste.
+Promene koje ste npravili nad njima nece biti primenjene

@@ -1,11 +1,13 @@
 package main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc;
 
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.ClassContent;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Field;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class UpdateClassAction {
 		if(set.size() == contents.size()) {
 			k.setContents(contents);
 		}else {
-			//TODO SYSTEM EVENT
+			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DUPLICATE_FIELDS_OR_METHODS);
 		}
 		SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
 		

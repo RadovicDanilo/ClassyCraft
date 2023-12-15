@@ -14,8 +14,8 @@ import java.util.Comparator;
 public class Klasa extends InterClass {
 	private ArrayList<ClassContent> contents;
 	
-	public Klasa(ClassyNodeComposite parent, String name, Visibility visibility, int x, int y) {
-		super(parent, name, visibility, x, y);
+	public Klasa(ClassyNodeComposite parent, String name, int x, int y) {
+		super(parent, name, x, y);
 		contents = new ArrayList<>();
 	}
 	

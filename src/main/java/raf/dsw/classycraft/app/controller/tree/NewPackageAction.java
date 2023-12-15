@@ -23,6 +23,10 @@ public class NewPackageAction extends AbstractClassyAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
+			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_SELECTED_NODE);
+			return;
+		}
 		ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
 		if(!(selectedNode.getClassyNode() instanceof Project || selectedNode.getClassyNode() instanceof Package)) {
 			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_ADD_PACKAGE_TO_ROOT_OR_DIAGRAM);

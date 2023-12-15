@@ -5,6 +5,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
 import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
@@ -33,6 +34,10 @@ public abstract class ClassyNode {
 	}
 	
 	public void setName(String name) {
+		if(this instanceof InterClass && (name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$"))){
+			ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.INTERCLASS_NAME_NOT_VALID);
+			return;
+		}
 		for(ClassyNode c : this.parent.getChildren()) {
 			if(this.name.equals(name)) {
 				break;
