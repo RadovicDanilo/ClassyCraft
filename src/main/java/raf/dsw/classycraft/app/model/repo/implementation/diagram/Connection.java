@@ -40,8 +40,13 @@ public abstract class Connection extends DiagramElement {
 		if(!(obj instanceof Connection)) {
 			return false;
 		}
-		return (((Connection) obj).from.equals(this.from) && ((Connection) obj).to.equals(this.to))
-			|| (((Connection) obj).from.equals(this.to) && ((Connection) obj).to.equals(this.from));
+		return (((Connection) obj).from.equals(this.from) && ((Connection) obj).to.equals(this.to)) || (((Connection) obj).from.equals(this.to) && ((Connection) obj).to.equals(this.from));
+
+//		if((this instanceof Aggregation && obj instanceof Aggregation) || (this instanceof Composition && obj instanceof Composition) || (this instanceof Dependency && obj instanceof Dependency) || (this instanceof Generalisation && obj instanceof Generalisation)) {
+//
+//		}else {
+//			return false;
+//		}
 		
 	}
 	

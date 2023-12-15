@@ -201,3 +201,4 @@ Promene koje ste npravili nad njima nece biti primenjene
  ostatak naziv sme samo da sadrzi alfanumericke karktere
 [ERROR][15-12-2023 11:53:17] Jedno ili vise polja/metoda su iste.
 Promene koje ste npravili nad njima nece biti primenjene
+[ERROR][15-12-2023 16:06:17] veza vec postoji
