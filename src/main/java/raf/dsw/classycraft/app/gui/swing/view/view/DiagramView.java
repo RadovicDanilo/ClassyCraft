@@ -103,7 +103,7 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 				prevVerticalScrollVal = (int) ((dsp.getVerticalScrollBar().getMaximum() - dsp.getVerticalScrollBar().getModel().getExtent()) * vPercent);
 			}
 		}
-		g2d.setTransform(at);
+		g2d.transform(at);
 		
 		BasicStroke Border = new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
 		((Graphics2D) g).setStroke(Border);
