@@ -15,12 +15,14 @@ public class MyMenuBar extends JMenuBar {
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewPackageAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewDiagramAction());
-        fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteNodeAction());
-        fileMenu.add(MainFrame.getInstance().getActionManager().getChangeAuthorShowViewAction());
 
         JMenu editMenu = new JMenu("Edit");
         editMenu.setMnemonic(KeyEvent.VK_E);
+        editMenu.add(MainFrame.getInstance().getActionManager().getUndoAction());
+        editMenu.add(MainFrame.getInstance().getActionManager().getRedoAction());
         editMenu.add(MainFrame.getInstance().getActionManager().getAboutUsAction());
+        editMenu.add(MainFrame.getInstance().getActionManager().getDeleteNodeAction());
+        editMenu.add(MainFrame.getInstance().getActionManager().getChangeAuthorShowViewAction());
 
         this.add(fileMenu);
         this.add(editMenu);

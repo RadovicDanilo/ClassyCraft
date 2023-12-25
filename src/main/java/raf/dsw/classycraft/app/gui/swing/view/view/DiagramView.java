@@ -1,7 +1,9 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
+import javafx.scene.web.HTMLEditorSkin;
+import main.java.raf.dsw.classycraft.app.command.CommandManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
@@ -25,6 +27,7 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
     public final BasicStroke strokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{10.0f}, 0.0f);
     private final ArrayList<ElementPainter> elementPainters;
     private final Diagram diagram;
+    private final CommandManager commandManager = new CommandManager();
     private boolean zoomedToFit;
     private Point connectionFrom;
     private Point connectionTo;
@@ -355,5 +358,8 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
     }
 
 
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
 }
 

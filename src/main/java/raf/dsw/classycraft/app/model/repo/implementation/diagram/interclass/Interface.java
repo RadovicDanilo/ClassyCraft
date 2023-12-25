@@ -41,4 +41,10 @@ public class Interface extends InterClass {
         }
         ((Diagram) getParent()).notifySubscribers("");
     }
+
+    public void removeMethod(Method method) {
+        methods.remove(method);
+        ((Diagram) getParent()).notifySubscribers("");
+
+    }
 }

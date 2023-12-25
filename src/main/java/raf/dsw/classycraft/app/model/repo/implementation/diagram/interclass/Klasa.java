@@ -73,4 +73,13 @@ public class Klasa extends InterClass {
 
         ((Diagram) getParent()).notifySubscribers("");
     }
+
+    public void removeField(Field field) {
+        contents.remove(field);
+        ((Diagram) getParent()).notifySubscribers("");
+    }
+    public void removeMethod(Method method) {
+        contents.remove(method);
+        ((Diagram) getParent()).notifySubscribers("");
+    }
 }

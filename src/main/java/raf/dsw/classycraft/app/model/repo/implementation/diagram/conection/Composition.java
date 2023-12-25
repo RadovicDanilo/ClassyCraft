@@ -21,12 +21,6 @@ public class Composition extends Connection {
         cardinality = ONE;
     }
 
-
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
     public Visibility getVisibility() {
         return visibility;
     }
@@ -35,7 +29,17 @@ public class Composition extends Connection {
         this.visibility = visibility;
     }
 
+    public String getFieldName() {
+        return fieldName;
+    }
 
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public Cardinality getCardinality() {
+        return cardinality;
+    }
 
     public void setCardinality(Cardinality cardinality) {
         this.cardinality = cardinality;

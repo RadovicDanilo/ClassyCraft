@@ -1,23 +1,22 @@
 package main.java.raf.dsw.classycraft.app.state;
 
+import main.java.raf.dsw.classycraft.app.command.implementation.DeleteElementCommand;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.cp.ConnectionPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.connection_painter.ConnectionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.concrete.*;
-import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawAggregationState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawCompositionState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawDependencyState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dc.DrawGeneralisationState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawClassState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawEnumState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.DrawInterfaceState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawFieldState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.DrawMethodState;
-import main.java.raf.dsw.classycraft.app.state.concrete.dic.dcc.EditContentState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_class.DrawAggregationState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_class.DrawCompositionState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_class.DrawDependencyState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_class.DrawGeneralisationState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.DrawClassState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.DrawEnumState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.DrawInterfaceState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.dcc.DrawFieldState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.dcc.DrawMethodState;
+import main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.dcc.EditContentState;
 
 import java.util.ArrayList;
 
@@ -77,32 +76,23 @@ public class StateManager {
     public void setRemoveState() {
         System.out.println("CURRENT STATE: REMOVE");
         currentState = removeState;
-
         if (MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
             return;
         }
-        ArrayList<InterClassPainter> removedElements = new ArrayList<>();
         DiagramView dv = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
-        for (int i = 0; i < dv.getElementPainters().size(); i++) {
-            ElementPainter elementPainter = dv.getElementPainters().get(i);
-            if (dv.getSelected().contains(elementPainter)) {
-                if (elementPainter instanceof InterClassPainter)
-                    removedElements.add((InterClassPainter) elementPainter);
-                MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
-                dv.getElementPainters().remove(elementPainter);
-                i--;
-            }
-        }
+        ArrayList<ElementPainter> removedElements = dv.getSelected();
+        if (removedElements.size() == 0)
+            return;
         for (ElementPainter removedElement : removedElements) {
             for (int i = 0; i < dv.getElementPainters().size(); i++) {
                 ElementPainter elementPainter = dv.getElementPainters().get(i);
                 if (elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getDiagramElement().getFrom() == removedElement.getDiagramElement() || ((ConnectionPainter) elementPainter).getDiagramElement().getTo() == removedElement.getDiagramElement())) {
-                    MainFrame.getInstance().getClassyTree().removeNode(new ClassyTreeItem(elementPainter.getDiagramElement()));
-                    dv.getElementPainters().remove(elementPainter);
-                    i--;
+                    removedElements.add(elementPainter);
                 }
             }
         }
+        dv.setSelected(new ArrayList<>());
+        dv.getCommandManager().addCommand(new DeleteElementCommand(removedElements));
     }
     //=================================================================
 

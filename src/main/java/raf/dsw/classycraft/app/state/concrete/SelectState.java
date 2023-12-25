@@ -1,7 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state.concrete;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
 import main.java.raf.dsw.classycraft.app.state.StateImplement;

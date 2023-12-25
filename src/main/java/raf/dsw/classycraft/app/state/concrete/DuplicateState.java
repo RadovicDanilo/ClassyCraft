@@ -1,14 +1,14 @@
 package main.java.raf.dsw.classycraft.app.state.concrete;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.ClassPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.EnumPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterfacePainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.ClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.EnumPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterfacePainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
-import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.enumeration.InterClassType;
+import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.element_type.InterClassType;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
@@ -46,7 +46,7 @@ public class DuplicateState extends StateImplement implements State {
             c.setCurrentWidth(((Klasa) diagramElement).getCurrentWidth());
 
             ClassPainter painter = new ClassPainter(c);
-            painter.addElement(c);
+            painter.addElement();
 
             diagramView.getElementPainters().add(painter);
         } else if (diagramElement instanceof Interface) {
@@ -58,7 +58,7 @@ public class DuplicateState extends StateImplement implements State {
             i.setCurrentWidth(((Interface) diagramElement).getCurrentWidth());
 
             InterfacePainter painter = new InterfacePainter(i);
-            painter.addElement(i);
+            painter.addElement();
 
             diagramView.getElementPainters().add(painter);
         } else {
@@ -70,7 +70,7 @@ public class DuplicateState extends StateImplement implements State {
             anEnum.setCurrentWidth(((Enum) diagramElement).getCurrentWidth());
 
             EnumPainter painter = new EnumPainter(anEnum);
-            painter.addElement(anEnum);
+            painter.addElement();
 
             diagramView.getElementPainters().add(painter);
         }

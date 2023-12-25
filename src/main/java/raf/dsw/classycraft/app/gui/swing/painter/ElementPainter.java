@@ -16,8 +16,8 @@ public abstract class ElementPainter {
 
     public abstract boolean contains(Point p);
 
-    public void addElement(DiagramElement element) {
-        MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getNode(element.getParent()), element);
+    public void addElement() {
+        MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getNode(diagramElement.getParent()), diagramElement);
     }
 
     public void draw(Graphics2D g) {
