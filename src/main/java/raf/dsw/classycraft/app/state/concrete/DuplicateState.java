@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.state.concrete;
 
+import main.java.raf.dsw.classycraft.app.command.implementation.DrawElementCommand;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.ClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.EnumPainter;
@@ -29,7 +30,6 @@ public class DuplicateState extends StateImplement implements State {
                 duplicate(elementPainter, diagramView);
                 break;
             }
-
         }
     }
 
@@ -38,41 +38,36 @@ public class DuplicateState extends StateImplement implements State {
         DiagramElement diagramElement = elementPainter.getDiagramElement();
         ElementFactory ef = new ElementFactory();
         if (diagramElement instanceof Klasa) {
-            Klasa c = (Klasa) ef.createInterClass(InterClassType.CLASS, (ClassyNodeComposite) diagramElement.getParent(), ((Klasa) diagramElement).getX() + 15, ((Klasa) diagramElement).getY() + 15);
-
+            Klasa c = (Klasa) ef.createInterClass(InterClassType.CLASS,
+                    (ClassyNodeComposite) diagramElement.getParent(),
+                    ((Klasa) diagramElement).getX() + 15,
+                    ((Klasa) diagramElement).getY() + 15);
             c.setContents((ArrayList<ClassContent>) ((Klasa) diagramElement).getContents().clone());
-
             c.setCurrentHeight(((Klasa) diagramElement).getCurrentHeight());
             c.setCurrentWidth(((Klasa) diagramElement).getCurrentWidth());
-
             ClassPainter painter = new ClassPainter(c);
-            painter.addElement();
-
-            diagramView.getElementPainters().add(painter);
+            diagramView.getCommandManager().addCommand(new DrawElementCommand(painter));
         } else if (diagramElement instanceof Interface) {
-            Interface i = (Interface) ef.createInterClass(InterClassType.INTERFACE, (ClassyNodeComposite) diagramElement.getParent(), ((Interface) diagramElement).getX() + 15, ((Interface) diagramElement).getY() + 15);
-
+            Interface i = (Interface) ef.createInterClass(InterClassType.INTERFACE,
+                    (ClassyNodeComposite) diagramElement.getParent(),
+                    ((Interface) diagramElement).getX() + 15,
+                    ((Interface) diagramElement).getY() + 15);
             i.setMethods((ArrayList<Method>) ((Interface) diagramElement).getMethods().clone());
-
             i.setCurrentHeight(((Interface) diagramElement).getCurrentHeight());
             i.setCurrentWidth(((Interface) diagramElement).getCurrentWidth());
-
             InterfacePainter painter = new InterfacePainter(i);
-            painter.addElement();
-
-            diagramView.getElementPainters().add(painter);
+            diagramView.getCommandManager().addCommand(new DrawElementCommand(painter));
         } else {
-            Enum anEnum = (Enum) ef.createInterClass(InterClassType.ENUM, (ClassyNodeComposite) diagramElement.getParent(), ((Enum) diagramElement).getX() + 15, ((Enum) diagramElement).getY() + 15);
-
+            Enum anEnum = (Enum) ef.createInterClass(InterClassType.ENUM,
+                    (ClassyNodeComposite) diagramElement.getParent(),
+                    ((Enum) diagramElement).getX() + 15,
+                    ((Enum) diagramElement).getY() + 15);
             anEnum.setContents((ArrayList<String>) ((Enum) diagramElement).getContents().clone());
-
             anEnum.setCurrentHeight(((Enum) diagramElement).getCurrentHeight());
             anEnum.setCurrentWidth(((Enum) diagramElement).getCurrentWidth());
-
             EnumPainter painter = new EnumPainter(anEnum);
-            painter.addElement();
+            diagramView.getCommandManager().addCommand(new DrawElementCommand(painter));
 
-            diagramView.getElementPainters().add(painter);
         }
     }
 
