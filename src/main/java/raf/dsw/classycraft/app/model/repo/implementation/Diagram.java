@@ -1,10 +1,12 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
