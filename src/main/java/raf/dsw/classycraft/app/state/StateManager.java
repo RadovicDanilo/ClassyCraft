@@ -163,14 +163,13 @@ public class StateManager {
 
     public void setDuplicateState() {
         System.out.println("CURRENT STATE: DUPLICATE");
+        currentState = duplicateState;
         if (MainFrame.getInstance().getPackageView() == null || MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
             return;
         }
         DiagramView dv = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
         if (dv.getSelected().size() == 1) {
             duplicateState.duplicate(dv.getSelected().get(0), dv);
-
         }
-        currentState = duplicateState;
     }
 }
