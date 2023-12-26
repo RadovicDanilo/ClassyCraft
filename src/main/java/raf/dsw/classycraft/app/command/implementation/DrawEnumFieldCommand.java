@@ -15,7 +15,7 @@ public class DrawEnumFieldCommand extends AbstractCommand {
 
     @Override
     public void doCommand() {
-        e.getContents().add(name);
+        e.addEnum(name);
     }
 
     @Override

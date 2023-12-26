@@ -35,13 +35,17 @@ public class Klasa extends InterClass {
     }
 
     @Override
-    public void exportAsCode(String path) {
+    public void exportAsCode(String path, String packPath) {
         String fileName = getName() + ".txt";
         File dir = new File(path);
         File actualFile = new File(dir, fileName);
         PrintWriter pw;
         try {
             pw = new PrintWriter(new FileWriter(actualFile, true));
+            packPath = packPath.replace("/", ".") + "." + getName();
+            packPath = packPath.substring(1);
+            pw.println(packPath);
+            pw.println();
             Klasa superCLass = null;
             ArrayList<Interface> interfaces = new ArrayList<>();
             for (ClassyNode classyNode : ((ClassyNodeComposite) this.getParent()).getChildren()) {
@@ -63,40 +67,54 @@ public class Klasa extends InterClass {
                 top += " implements ";
             }
             for (Interface i : interfaces) {
-                top += i.getName() + ",";
+                top += i.getName() + ", ";
             }
-            top = top.substring(0, top.length() - 1) + "{";
+            if (interfaces.size() != 0)
+                top = top.substring(0, top.length() - 2);
+            top += "{";
             pw.println(top);
-
+            pw.println();
+            //polja iz klase
             for (ClassContent content : contents) {
                 if (content instanceof Method) {
                     break;
                 }
                 pw.println(content.toCode());
-            }
+                pw.println();
 
+            }
+            //polja iz veza
             for (ClassyNode classyNode : ((ClassyNodeComposite) this.getParent()).getChildren()) {
                 if ((classyNode instanceof ConnectionWithField) && ((Connection) classyNode).getFrom() == this) {
                     pw.println(((ConnectionWithField) classyNode).toCode());
+                    pw.println();
+
                 }
             }
-
+            //metode iz nadklase
             if (superCLass != null) {
                 for (ClassContent c : superCLass.getContents()) {
-                    pw.println(c.toCode());
+                    if (c instanceof Method)
+                        pw.println(c.toCode());
+                    pw.println();
+
                 }
             }
-
+            //metode iz klase
             for (ClassContent content : contents) {
                 if (content instanceof Field) {
                     continue;
                 }
                 pw.println(content.toCode());
-            }
+                pw.println();
 
+            }
+            //meto iz interfejsa
             for (Interface i : interfaces) {
                 for (Method m : i.getMethods()) {
                     pw.println(m.toCode());
+                    pw.println();
+
                 }
             }
             pw.println("}");

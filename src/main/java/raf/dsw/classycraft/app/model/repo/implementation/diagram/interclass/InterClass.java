@@ -139,7 +139,7 @@ public abstract class InterClass extends DiagramElement {
         return this.getName().equals(((InterClass) obj).getName());
     }
 
-    public abstract void exportAsCode(String path);
+    public abstract void exportAsCode(String path, String packPath);
 
     public Point midPoint(Point a, Point b) {
         return new Point((a.x + b.x) / 2, (a.y + b.y) / 2);

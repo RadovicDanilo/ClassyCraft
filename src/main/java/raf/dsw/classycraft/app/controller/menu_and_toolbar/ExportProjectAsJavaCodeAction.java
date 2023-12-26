@@ -30,11 +30,19 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
             //TODO SYSTEM EVENT
             return;
         }
-        Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         String path = "";
+        int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            path = chooser.getSelectedFile().getPath();
+            System.out.println(path);
+        }
+        Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
+        initialPath = path;
         export(project, path);
     }
-
+    String initialPath = "";
     public void export(ClassyNode classyNode, String path) {
         if (classyNode instanceof ClassyNodeComposite) {
             path += "/" + classyNode.getName();
@@ -56,7 +64,8 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
         }
         if(classyNode instanceof Connection)
             return;
-        ((InterClass)classyNode).exportAsCode(path);
+        String packPath = path.replace(initialPath,"");
+        ((InterClass)classyNode).exportAsCode(path, packPath);
 
     }
 
