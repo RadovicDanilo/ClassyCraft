@@ -5,15 +5,16 @@ import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Connection;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.ConnectionWithField;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
 
 public class UpdateConnectionAction {
-    public UpdateConnectionAction(Connection k,
+    public UpdateConnectionAction(ConnectionWithField k,
                                   JTextField tfName,
                                   JComboBox<Visibility> cbVisibility,
                                   JComboBox<Cardinality> cbCardinality) {

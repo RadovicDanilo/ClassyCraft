@@ -1,12 +1,11 @@
-package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram;
+package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection;
 
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Generalisation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 
 public abstract class Connection extends DiagramElement {
+    private static int field = 0;
     private final InterClass from;
     private final InterClass to;
 
@@ -49,5 +48,13 @@ public abstract class Connection extends DiagramElement {
 
     public InterClass getTo() {
         return to;
+    }
+
+    public static int getField() {
+        return field;
+    }
+
+    public static void setField(int field) {
+        Connection.field = field;
     }
 }

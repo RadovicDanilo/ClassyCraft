@@ -15,11 +15,6 @@ public class ClassyRepositoryImplementation implements ClassyRepository {
     }
 
     @Override
-    public ClassyNode getRoot() {
-        return root;
-    }
-
-    @Override
     public void addChild(ClassyNode child) {
         if (!(child.getParent() instanceof ClassyNodeComposite))
             return;
@@ -29,6 +24,11 @@ public class ClassyRepositoryImplementation implements ClassyRepository {
     @Override
     public void removeChild(ClassyNode child) {
         ((ClassyNodeComposite) child.getParent()).removeChild(child);
+    }
+
+    @Override
+    public ClassyNode getRoot() {
+        return root;
     }
 
 }

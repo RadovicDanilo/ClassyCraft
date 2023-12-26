@@ -10,7 +10,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Connection;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import javax.swing.*;

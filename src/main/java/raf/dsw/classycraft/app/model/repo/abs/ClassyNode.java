@@ -5,7 +5,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
@@ -65,4 +65,7 @@ public abstract class ClassyNode {
             }
         }
     }
+
+
+
 }

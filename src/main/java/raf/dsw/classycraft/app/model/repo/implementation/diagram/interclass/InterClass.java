@@ -1,7 +1,9 @@
-package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram;
+package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass;
 
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,12 +14,14 @@ public abstract class InterClass extends DiagramElement {
     private int currentWidth;
     private int currentHeight;
     private ArrayList<Point> connectionPoints;
+    private Visibility visibility;
 
 
-    public InterClass(ClassyNodeComposite parent, String name, int x, int y) {
+    public InterClass(ClassyNodeComposite parent, String name, int x, int y, Visibility visibility) {
         super(parent, name);
         this.x = x;
         this.y = y;
+        this.visibility = visibility;
         generatePoints();
 
     }
@@ -135,7 +139,17 @@ public abstract class InterClass extends DiagramElement {
         return this.getName().equals(((InterClass) obj).getName());
     }
 
+    public abstract void exportAsCode(String path);
+
     public Point midPoint(Point a, Point b) {
         return new Point((a.x + b.x) / 2, (a.y + b.y) / 2);
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
     }
 }

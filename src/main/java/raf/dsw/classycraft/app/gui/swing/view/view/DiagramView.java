@@ -1,13 +1,12 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
 
-import javafx.scene.web.HTMLEditorSkin;
 import main.java.raf.dsw.classycraft.app.command.CommandManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.state.concrete.SelectState;
 

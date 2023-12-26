@@ -10,7 +10,7 @@ public abstract class ClassContent {
         this.name = name;
         this.visibility = visibility;
     }
-
+    public abstract String toCode();
     public String getName() {
         return name;
     }

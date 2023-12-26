@@ -2,7 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 
 import java.awt.*;
 

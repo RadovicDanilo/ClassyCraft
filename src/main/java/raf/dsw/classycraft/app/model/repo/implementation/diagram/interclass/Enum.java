@@ -2,15 +2,19 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inte
 
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Enum extends InterClass {
     ArrayList<String> contents;
 
-    public Enum(ClassyNodeComposite parent, String name, int x, int y) {
-        super(parent, name, x, y);
+    public Enum(ClassyNodeComposite parent, String name, int x, int y, Visibility visibility) {
+        super(parent, name, x, y, visibility);
         contents = new ArrayList<>();
         ((Diagram) getParent()).notifySubscribers("");
     }
@@ -21,6 +25,25 @@ public class Enum extends InterClass {
             return ((Enum) obj).getName().equals(this.getName());
         }
         return false;
+    }
+
+    @Override
+    public void exportAsCode(String path) {
+        String fileName = getName() + ".txt";
+        File dir = new File(path);
+        File actualFile = new File(dir, fileName);
+        PrintWriter pw;
+        try {
+            pw = new PrintWriter(new FileWriter(actualFile, true));
+            pw.println(getVisibility().toCode() + " enum " + getName() + "{");
+            for (String e : contents) {
+                pw.println("\t" + e + ",");
+            }
+            pw.print("}");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        pw.close();
     }
 
     public ArrayList<String> getContents() {

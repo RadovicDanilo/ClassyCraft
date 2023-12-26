@@ -40,6 +40,7 @@ public class ActionManager {
     private DuplicateAction duplicateAction;
     private UndoAction undoAction;
     private RedoAction redoAction;
+    private ExportProjectAsJavaCodeAction exportProjectAsJavaCodeAction;
 
 
     public ActionManager() {
@@ -76,10 +77,16 @@ public class ActionManager {
 
         redoAction = new RedoAction();
         undoAction = new UndoAction();
+
+        exportProjectAsJavaCodeAction = new ExportProjectAsJavaCodeAction();
     }
 
     public MultiSelectStateAction getMultiSelectStateAction() {
         return multiSelectStateAction;
+    }
+
+    public ExportProjectAsJavaCodeAction getExportProjectAsJavaCodeAction() {
+        return exportProjectAsJavaCodeAction;
     }
 
     public Action getExitAction() {

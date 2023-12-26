@@ -1,7 +1,7 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter.connection_painter;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Connection;
 
 import java.awt.*;
 import java.awt.geom.Line2D;

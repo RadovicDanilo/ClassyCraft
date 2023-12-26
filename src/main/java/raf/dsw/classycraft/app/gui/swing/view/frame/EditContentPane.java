@@ -1,8 +1,8 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.frame;
 
 
-import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.UpdateConnectionAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.UpdateClassAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.UpdateConnectionAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.UpdateEnumAction;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.UpdateInterfaceAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
@@ -12,9 +12,8 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.Cl
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.EnumPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterfacePainter;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.ConnectionWithField;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
@@ -251,8 +250,8 @@ public class EditContentPane extends JFrame {
                 component.setPreferredSize(defaultDimension);
             }
         }
-        if (c instanceof AggregationPainter) {
-            Aggregation k = (Aggregation) c.getDiagramElement();
+        if (c instanceof AggregationPainter || c instanceof CompositionPainter) {
+            ConnectionWithField k = (ConnectionWithField) c.getDiagramElement();
 
             this.setSize(defaultDimension.width * 2 + 100, defaultDimension.height * 5 + 100);
             GridLayout gridLayout = new GridLayout(5, 2, 5, 5);
@@ -288,43 +287,6 @@ public class EditContentPane extends JFrame {
             add(btnCancel, gridLayout);
         }
 
-        if (c instanceof CompositionPainter) {
-
-            Composition k = (Composition) c.getDiagramElement();
-
-            this.setSize(defaultDimension.width * 2 + 100, defaultDimension.height * 5 + 100);
-            GridLayout gridLayout = new GridLayout(5, 2, 5, 5);
-            setLayout(gridLayout);
-            add(new JLabel("Connection: "), gridLayout);
-            add(new JLabel(k.getName()), gridLayout);
-
-            add(new JLabel("Name: "), gridLayout);
-            JTextField tfName = new JTextField(k.getFieldName());
-            add(tfName, gridLayout);
-
-            add(new JLabel("Visibility: "), gridLayout);
-            JComboBox<Visibility> cbVisibility = new JComboBox<>(Visibility.values());
-            cbVisibility.setSelectedItem(k.getVisibility());
-            cbVisibility.setSelectedItem(k.getVisibility());
-            add(cbVisibility, gridLayout);
-
-            add(new JLabel("Cardinality: "), gridLayout);
-            JComboBox<Cardinality> cbCardinality = new JComboBox<>(Cardinality.values());
-            cbCardinality.setSelectedItem(k.getCardinality());
-            cbCardinality.setSelectedItem(k.getCardinality());
-            add(cbCardinality, gridLayout);
-
-            JButton btOK = new JButton("OK");
-            btOK.addActionListener(e2 -> {
-                new UpdateConnectionAction(k, tfName, cbVisibility, cbCardinality);
-                this.dispose();
-            });
-            add(btOK, gridLayout);
-
-            JButton btnCancel = new JButton("CANCEL");
-            btnCancel.addActionListener(e1 -> this.dispose());
-            add(btnCancel, gridLayout);
-        }
 
     }
 }

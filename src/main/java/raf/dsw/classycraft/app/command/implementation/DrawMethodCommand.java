@@ -1,10 +1,9 @@
 package main.java.raf.dsw.classycraft.app.command.implementation;
 
 import main.java.raf.dsw.classycraft.app.command.AbstractCommand;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Field;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
 
 public class DrawMethodCommand extends AbstractCommand {

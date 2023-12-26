@@ -237,3 +237,14 @@ Promene koje ste npravili nad njima nece biti primenjene
 [ERROR][25-12-2023 17:06:40] Tip polja nije dobar
  Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
  ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][26-12-2023 20:31:23] project manage (root) se ne moze preimenovati
+[ERROR][26-12-2023 20:31:47] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][26-12-2023 20:31:57] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][26-12-2023 20:32:14] Povratna vrednost nije dobro uneta
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][26-12-2023 20:33:20] veza vec postoji

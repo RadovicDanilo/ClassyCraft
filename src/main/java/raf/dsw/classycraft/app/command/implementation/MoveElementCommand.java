@@ -2,7 +2,7 @@ package main.java.raf.dsw.classycraft.app.command.implementation;
 
 import main.java.raf.dsw.classycraft.app.command.AbstractCommand;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 
 import java.awt.*;
 import java.util.ArrayList;

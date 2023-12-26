@@ -2,8 +2,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.painter.connection_painter;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Connection;
 
 import java.awt.*;
 

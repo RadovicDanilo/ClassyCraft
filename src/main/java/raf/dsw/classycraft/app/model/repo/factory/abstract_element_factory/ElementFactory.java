@@ -3,13 +3,10 @@ package main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_fa
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.element_type.ConnectionType;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.element_type.InterClassType;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Connection;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Generalisation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.*;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 
@@ -27,13 +24,13 @@ public class ElementFactory extends AbstractElementFactory {
         switch (interClassType) {
             case CLASS:
                 c++;
-                return new Klasa(parent, "Class" + c, x, y);
+                return new Klasa(parent, "Class" + c, x, y, Visibility.PUBLIC);
             case INTERFACE:
                 i++;
-                return new Interface(parent, "Interface" + i, x, y);
+                return new Interface(parent, "Interface" + i, x, y, Visibility.PUBLIC);
             case ENUM:
                 e++;
-                return new Enum(parent, "Enum" + e, x, y);
+                return new Enum(parent, "Enum" + e, x, y, Visibility.PUBLIC);
             default:
                 return null;
         }

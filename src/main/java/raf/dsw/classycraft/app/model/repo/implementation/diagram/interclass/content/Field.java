@@ -29,6 +29,10 @@ public class Field extends ClassContent {
         return false;
     }
 
+    public String toCode() {
+        return "\t" +getVisibility().toCode() + " " + getType() + " " + getName() + ";";
+    }
+
     public String getType() {
         return type;
     }

@@ -8,7 +8,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.In
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.ElementFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.factory.abstract_element_factory.element_type.ConnectionType;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 

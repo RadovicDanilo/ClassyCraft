@@ -29,6 +29,10 @@ public class Method extends ClassContent {
         return false;
     }
 
+    public String toCode() {
+        return "\t" + getVisibility().toCode() + " " + getReturnValue() + " " + getName() + "() {\n\t\t\n\t}";
+    }
+
     public String getReturnValue() {
         return returnValue;
     }
