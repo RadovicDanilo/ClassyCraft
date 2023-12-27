@@ -182,4 +182,5 @@ public class Klasa extends InterClass {
         contents.remove(method);
         ((Diagram) getParent()).notifySubscribers("");
     }
+
 }

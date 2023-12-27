@@ -43,4 +43,7 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
             sub.update(notification);
     }
 
+    public List<ISubscriber> getSubscribers() {
+        return subscribers;
+    }
 }

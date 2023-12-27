@@ -36,4 +36,5 @@ public class Field extends ClassContent {
     public String getType() {
         return type;
     }
+
 }

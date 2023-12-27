@@ -103,4 +103,5 @@ public class Interface extends InterClass {
         ((Diagram) getParent()).notifySubscribers("");
 
     }
+
 }

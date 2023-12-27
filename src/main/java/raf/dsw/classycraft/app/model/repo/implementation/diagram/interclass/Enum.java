@@ -71,4 +71,5 @@ public class Enum extends InterClass {
         }
 
     }
+
 }

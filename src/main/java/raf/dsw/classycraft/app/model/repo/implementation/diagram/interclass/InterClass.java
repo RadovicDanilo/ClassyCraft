@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
@@ -13,8 +14,11 @@ public abstract class InterClass extends DiagramElement {
     private int y;
     private int currentWidth;
     private int currentHeight;
-    private ArrayList<Point> connectionPoints;
     private Visibility visibility;
+
+    @JsonIgnore
+
+    private ArrayList<Point> connectionPoints;
 
 
     public InterClass(ClassyNodeComposite parent, String name, int x, int y, Visibility visibility) {
@@ -151,5 +155,9 @@ public abstract class InterClass extends DiagramElement {
 
     public void setVisibility(Visibility visibility) {
         this.visibility = visibility;
+    }
+
+    public void setConnectionPoints(ArrayList<Point> connectionPoints) {
+        this.connectionPoints = connectionPoints;
     }
 }

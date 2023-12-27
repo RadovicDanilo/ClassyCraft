@@ -7,19 +7,31 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 
 public abstract class Connection extends DiagramElement {
     private static int field = 0;
-    @JsonIgnore
-    private final InterClass from;
+    private final String toName;
     private final String fromName;
     @JsonIgnore
+    private final InterClass from;
+    @JsonIgnore
+
     private final InterClass to;
-    private final String toName;
+
 
     public Connection(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
         super(parent, name);
         this.from = from;
         this.to = to;
-        fromName = from.getName();;
-        toName = to.getName();;
+        fromName = from.getName();
+        ;
+        toName = to.getName();
+        ;
+    }
+
+    public static int getField() {
+        return field;
+    }
+
+    public static void setField(int field) {
+        Connection.field = field;
     }
 
     @Override
@@ -57,11 +69,11 @@ public abstract class Connection extends DiagramElement {
         return to;
     }
 
-    public static int getField() {
-        return field;
+    public String getToName() {
+        return toName;
     }
 
-    public static void setField(int field) {
-        Connection.field = field;
+    public String getFromName() {
+        return fromName;
     }
 }

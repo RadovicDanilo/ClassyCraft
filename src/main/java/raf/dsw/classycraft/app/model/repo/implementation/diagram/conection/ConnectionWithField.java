@@ -64,4 +64,6 @@ public class ConnectionWithField extends Connection{
     public void setCardinality(Cardinality cardinality) {
         this.cardinality = cardinality;
     }
+
+
 }

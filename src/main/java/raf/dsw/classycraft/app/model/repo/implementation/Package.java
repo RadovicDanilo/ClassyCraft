@@ -43,5 +43,11 @@ public class Package extends ClassyNodeComposite implements IPublisher {
         subscribers = new ArrayList<>();
     }
 
+    public List<ISubscriber> getSubscribers() {
+        return subscribers;
+    }
 
+    public void setSubscribers(List<ISubscriber> subscribers) {
+        this.subscribers = subscribers;
+    }
 }
