@@ -4,5 +4,5 @@ public abstract class ClassyNodeLeaf extends ClassyNode {
     public ClassyNodeLeaf(ClassyNodeComposite parent, String name) {
         super(parent, name);
     }
-    
+
 }

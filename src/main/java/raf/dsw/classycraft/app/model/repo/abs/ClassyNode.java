@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public abstract class ClassyNode {
     @JsonIgnore
-    private final ClassyNodeComposite parent;
+    private ClassyNodeComposite parent;
     private String name;
 
     public ClassyNode(ClassyNodeComposite parent, String name) {
@@ -68,6 +68,7 @@ public abstract class ClassyNode {
         }
     }
 
-
-
+    public void setParent(ClassyNodeComposite parent) {
+        this.parent = parent;
+    }
 }
