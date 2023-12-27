@@ -42,6 +42,10 @@ public class ActionManager {
     private RedoAction redoAction;
     private ExportProjectAsJavaCodeAction exportProjectAsJavaCodeAction;
 
+    private SaveAsAction saveAsAction;
+    private SaveAction saveAction;
+    private OpenAction openAction;
+
 
     public ActionManager() {
         initialiseActions();
@@ -79,6 +83,10 @@ public class ActionManager {
         undoAction = new UndoAction();
 
         exportProjectAsJavaCodeAction = new ExportProjectAsJavaCodeAction();
+
+        saveAsAction = new SaveAsAction();
+        saveAction = new SaveAction();
+        openAction = new OpenAction();
     }
 
     public MultiSelectStateAction getMultiSelectStateAction() {
@@ -180,6 +188,18 @@ public class ActionManager {
 
     public RedoAction getRedoAction() {
         return redoAction;
+    }
+
+    public SaveAsAction getSaveAsAction() {
+        return saveAsAction;
+    }
+
+    public SaveAction getSaveAction() {
+        return saveAction;
+    }
+
+    public OpenAction getOpenAction() {
+        return openAction;
     }
 }
 

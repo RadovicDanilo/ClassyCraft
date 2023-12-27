@@ -55,8 +55,7 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
                 i++;
                 path = path + "(" + i + ")";
             }
-            System.out.println(path);
-            new File(path).mkdirs();//TODO projekti se pravi na disku C napraviti da se pravi u dokumentima i staviti napomenu za to u read me.
+            new File(path).mkdirs();
             for (ClassyNode child : ((ClassyNodeComposite) classyNode).getChildren()) {
                 export(child, path);
             }
@@ -66,7 +65,6 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
             return;
         String packPath = path.replace(initialPath,"");
         ((InterClass)classyNode).exportAsCode(path, packPath);
-
     }
 
 }

@@ -1,18 +1,25 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 
 public abstract class Connection extends DiagramElement {
     private static int field = 0;
+    @JsonIgnore
     private final InterClass from;
+    private final String fromName;
+    @JsonIgnore
     private final InterClass to;
+    private final String toName;
 
     public Connection(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
         super(parent, name);
         this.from = from;
         this.to = to;
+        fromName = from.getName();;
+        toName = to.getName();;
     }
 
     @Override

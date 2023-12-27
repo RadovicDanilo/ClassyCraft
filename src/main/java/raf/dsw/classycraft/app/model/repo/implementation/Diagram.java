@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Diagram extends ClassyNodeComposite implements IPublisher {
+    @JsonIgnore
     private final List<ISubscriber> subscribers = new ArrayList<>();
 
     public Diagram(ClassyNodeComposite parent, String name) {

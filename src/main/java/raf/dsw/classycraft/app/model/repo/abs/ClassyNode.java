@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
@@ -12,6 +13,7 @@ import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import java.util.ArrayList;
 
 public abstract class ClassyNode {
+    @JsonIgnore
     private final ClassyNodeComposite parent;
     private String name;
 
