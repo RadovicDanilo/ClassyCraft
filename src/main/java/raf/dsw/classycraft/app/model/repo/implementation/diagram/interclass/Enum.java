@@ -58,7 +58,8 @@ public class Enum extends InterClass {
 
     public void setContents(ArrayList<String> contents) {
         this.contents = contents;
-        ((Diagram) getParent()).notifySubscribers("");
+        if (getParent() != null)
+            ((Diagram) getParent()).notifySubscribers("");
 
     }
 

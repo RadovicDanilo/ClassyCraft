@@ -83,7 +83,8 @@ public class StateManager {
         ArrayList<ElementPainter> removedElements = dv.getSelected();
         if (removedElements.size() == 0)
             return;
-        for (ElementPainter removedElement : removedElements) {
+        for (int j = 0; j < removedElements.size(); j++) {
+            ElementPainter removedElement = removedElements.get(j);
             for (int i = 0; i < dv.getElementPainters().size(); i++) {
                 ElementPainter elementPainter = dv.getElementPainters().get(i);
                 if (elementPainter instanceof ConnectionPainter && (((ConnectionPainter) elementPainter).getDiagramElement().getFrom() == removedElement.getDiagramElement() || ((ConnectionPainter) elementPainter).getDiagramElement().getTo() == removedElement.getDiagramElement())) {

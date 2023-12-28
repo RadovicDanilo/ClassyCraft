@@ -29,9 +29,7 @@ public abstract class Connection extends DiagramElement {
         this.from = from;
         this.to = to;
         fromName = from.getName();
-        ;
         toName = to.getName();
-        ;
     }
 
     public Connection() {
@@ -48,7 +46,6 @@ public abstract class Connection extends DiagramElement {
     @Override
     public String getName() {
         String a = "";
-        String b = " from " + from.getName() + " to " + to.getName();
         if (this instanceof Aggregation) {
             a = "Aggregation";
         }
@@ -61,7 +58,7 @@ public abstract class Connection extends DiagramElement {
         if (this instanceof Generalisation) {
             a = "Generalisation";
         }
-        return a + b;
+        return a;
     }
 
     @Override
@@ -69,7 +66,11 @@ public abstract class Connection extends DiagramElement {
         if (!(obj instanceof Connection)) {
             return false;
         }
-        return (((Connection) obj).from.equals(this.from) && ((Connection) obj).to.equals(this.to)) || (((Connection) obj).from.equals(this.to) && ((Connection) obj).to.equals(this.from));
+        if(((Connection) obj).getFrom() == null || ((Connection) obj).getTo() == null || this.getFrom() == null || this.getTo() == null){
+            return false;
+        }
+        return (((Connection) obj).from.equals(this.from) && ((Connection) obj).to.equals(this.to))
+                || (((Connection) obj).from.equals(this.to) && ((Connection) obj).to.equals(this.from));
     }
 
     public InterClass getFrom() {
@@ -81,10 +82,16 @@ public abstract class Connection extends DiagramElement {
     }
 
     public String getToName() {
+        if(to!=null){
+            toName = to.getName();
+        }
         return toName;
     }
 
     public String getFromName() {
+        if(from!=null){
+            fromName = from.getName();
+        }
         return fromName;
     }
 

@@ -2,7 +2,6 @@ package main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar;
 
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.connection_painter.AggregationPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.connection_painter.CompositionPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.connection_painter.DependencyPainter;
@@ -27,9 +26,8 @@ import main.java.raf.dsw.classycraft.app.serializer.JacksonSerializer;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.tree.MutableTreeNode;
-import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class OpenAction extends AbstractClassyAction {
     public OpenAction() {
@@ -62,67 +60,73 @@ public class OpenAction extends AbstractClassyAction {
                 return;
             }
         }
-        fix(treeRoot,root, project);
-
-        //add commands in tree view to fix renaming issues
+        fix(treeRoot, root, project);
     }
 
     public void fix(ClassyTreeItem treeRoot, ClassyNodeComposite parent, ClassyNode child) {
-
         child.setParent(parent);
-
-        ClassyTreeItem treeChild = new ClassyTreeItem(child);
-        treeRoot.add(treeChild);
+        System.out.println();
+        System.out.println(parent.getName());
+        System.out.println(child.getName());
+        MainFrame.getInstance().getClassyTree().addChild(treeRoot, child);
 
         if (child instanceof ClassyNodeComposite) {
-            if(child instanceof Diagram){
+            if (child instanceof Diagram) {
                 MainFrame.getInstance().getDiagramViews().add(new DiagramView((Diagram) child));
             }
-            for (ClassyNode c : ((ClassyNodeComposite) child).getChildren()) {
-                fix(treeChild, (ClassyNodeComposite) child, c);
+            List<ClassyNode> children = ((ClassyNodeComposite) child).getChildren();
+            for (int i = 0; i < children.size(); i++) {
+                ClassyNode c = children.get(i);
+                fix(MainFrame.getInstance().getClassyTree().getNode(child), (ClassyNodeComposite) child, c);
             }
             return;
         }
+
         if (child instanceof InterClass) {
             ((InterClass) child).generatePoints();
         }
+
         if (child instanceof Connection) {
             for (ClassyNode c : parent.getChildren()) {
                 if (c instanceof Connection)
                     continue;
                 if (c.getName().equals(((Connection) child).getFromName())) {
+                    System.out.println("FROM");
                     ((Connection) child).setFrom((InterClass) c);
                 }
                 if (c.getName().equals(((Connection) child).getToName())) {
+                    System.out.println("TO");
                     ((Connection) child).setTo((InterClass) c);
                 }
             }
         }
-        for(DiagramView diagramView: MainFrame.getInstance().getDiagramViews()){
-            if(!diagramView.getDiagram().equals(parent)){
+
+        for (DiagramView diagramView : MainFrame.getInstance().getDiagramViews()) {
+            if (!diagramView.getDiagram().equals(parent)) {
                 continue;
             }
-            if(child instanceof Klasa){
+            if (child instanceof Klasa) {
                 diagramView.getElementPainters().add(new ClassPainter((Klasa) child));
             }
-            if(child instanceof Enum){
+            if (child instanceof Enum) {
                 diagramView.getElementPainters().add(new EnumPainter((Enum) child));
             }
-            if(child instanceof Interface){
+            if (child instanceof Interface) {
                 diagramView.getElementPainters().add(new InterfacePainter((Interface) child));
             }
-            if(child instanceof Aggregation){
+            if (child instanceof Aggregation) {
                 diagramView.getElementPainters().add(new AggregationPainter((Connection) child));
             }
-            if(child instanceof Composition){
+            if (child instanceof Composition) {
                 diagramView.getElementPainters().add(new CompositionPainter((Connection) child));
             }
-            if(child instanceof Generalisation){
+            if (child instanceof Generalisation) {
                 diagramView.getElementPainters().add(new GeneralisationPainter((Generalisation) child));
             }
-            if(child instanceof Dependency){
+            if (child instanceof Dependency) {
                 diagramView.getElementPainters().add(new DependencyPainter((Dependency) child));
             }
+            break;
         }
     }
 }

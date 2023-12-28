@@ -23,13 +23,13 @@ public class EditInterfaceCommand extends AbstractCommand {
 
     @Override
     public void doCommand() {
-        interfejs.setName(name);
+        interfejs.setNodeName(name);
         interfejs.setMethods(methods);
     }
 
     @Override
     public void undoCommand() {
-        interfejs.setName(oldName);
+        interfejs.setNodeName(oldName);
         interfejs.setMethods(oldMethods);
     }
 }

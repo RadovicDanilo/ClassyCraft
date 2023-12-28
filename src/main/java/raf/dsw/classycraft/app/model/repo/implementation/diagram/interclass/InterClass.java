@@ -42,8 +42,10 @@ public abstract class InterClass extends DiagramElement {
         if (x < 0)
             return;
         this.x = x;
-        generatePoints();
-        ((Diagram) getParent()).notifySubscribers("");
+        if (this.getParent() != null) {
+            generatePoints();
+            ((Diagram) getParent()).notifySubscribers("");
+        }
     }
 
     public int getY() {
@@ -54,8 +56,10 @@ public abstract class InterClass extends DiagramElement {
         if (y < 0)
             return;
         this.y = y;
-        generatePoints();
-        ((Diagram) getParent()).notifySubscribers("");
+        if (this.getParent() != null) {
+            generatePoints();
+            ((Diagram) getParent()).notifySubscribers("");
+        }
     }
 
     public int getCurrentWidth() {
@@ -64,8 +68,10 @@ public abstract class InterClass extends DiagramElement {
 
     public void setCurrentWidth(int currentWidth) {
         this.currentWidth = currentWidth;
-        generatePoints();
-        ((Diagram) getParent()).notifySubscribers("");
+        if (this.getParent() != null) {
+            generatePoints();
+            ((Diagram) getParent()).notifySubscribers("");
+        }
 
     }
 
@@ -75,12 +81,18 @@ public abstract class InterClass extends DiagramElement {
 
     public void setCurrentHeight(int currentHeight) {
         this.currentHeight = currentHeight;
-        generatePoints();
-        ((Diagram) getParent()).notifySubscribers("");
+        if (this.getParent() != null) {
+            generatePoints();
+            ((Diagram) getParent()).notifySubscribers("");
+        }
     }
 
     public ArrayList<Point> getConnectionPoints() {
         return connectionPoints;
+    }
+
+    public void setConnectionPoints(ArrayList<Point> connectionPoints) {
+        this.connectionPoints = connectionPoints;
     }
 
     public void generatePoints() {
@@ -159,9 +171,5 @@ public abstract class InterClass extends DiagramElement {
 
     public void setVisibility(Visibility visibility) {
         this.visibility = visibility;
-    }
-
-    public void setConnectionPoints(ArrayList<Point> connectionPoints) {
-        this.connectionPoints = connectionPoints;
     }
 }

@@ -24,12 +24,12 @@ public class EditClassCommand extends AbstractCommand {
     @Override
     public void doCommand() {
         klasa.setContents(contents);
-        klasa.setName(name);
+        klasa.setNodeName(name);
     }
 
     @Override
     public void undoCommand() {
         klasa.setContents(oldContents);
-        klasa.setName(oldName);
+        klasa.setNodeName(oldName);
     }
 }

@@ -23,13 +23,13 @@ public class EditEnumCommand extends AbstractCommand {
     @Override
     public void doCommand() {
         e.setContents(content);
-        e.setName(name);
+        e.setNodeName(name);
     }
 
     @Override
     public void undoCommand() {
         e.setContents(oldContent);
-        e.setName(oldName);
+        e.setNodeName(oldName);
 
     }
 }

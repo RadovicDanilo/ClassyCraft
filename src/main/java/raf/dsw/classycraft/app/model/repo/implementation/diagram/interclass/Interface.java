@@ -21,13 +21,18 @@ public class Interface extends InterClass {
         this.methods = new ArrayList<>();
     }
 
+    public Interface() {
+        super();
+    }
+
     public ArrayList<Method> getMethods() {
         return methods;
     }
 
     public void setMethods(ArrayList<Method> methods) {
         this.methods = methods;
-        ((Diagram) getParent()).notifySubscribers("");
+        if (getParent() != null)
+            ((Diagram) getParent()).notifySubscribers("");
 
     }
 
@@ -102,9 +107,5 @@ public class Interface extends InterClass {
         methods.remove(method);
         ((Diagram) getParent()).notifySubscribers("");
 
-    }
-
-    public Interface() {
-        super();
     }
 }

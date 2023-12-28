@@ -1,0 +1,17 @@
+[ERROR][28-12-2023 17:56:21] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:56:23] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:56:25] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:56:25] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:59:23] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:59:25] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:59:25] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 17:59:26] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:01:47] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:01:49] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:01:49] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:01:50] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:03:17] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:03:18] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:03:19] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:03:19] Vec postoji cvor sa datim imenom
+[ERROR][28-12-2023 18:07:04] veza vec postoji

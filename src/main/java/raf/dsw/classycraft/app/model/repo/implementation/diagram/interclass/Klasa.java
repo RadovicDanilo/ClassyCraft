@@ -131,7 +131,8 @@ public class Klasa extends InterClass {
 
     public void setContents(ArrayList<ClassContent> contents) {
         this.contents = contents;
-        ((Diagram) getParent()).notifySubscribers("");
+        if (this.getParent() != null)
+            ((Diagram) getParent()).notifySubscribers("");
 
     }
 
