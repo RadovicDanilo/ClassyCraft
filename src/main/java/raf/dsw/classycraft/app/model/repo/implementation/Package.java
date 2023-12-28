@@ -16,6 +16,10 @@ public class Package extends ClassyNodeComposite implements IPublisher {
         super(parent, name);
     }
 
+    public Package() {
+        super();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Package))

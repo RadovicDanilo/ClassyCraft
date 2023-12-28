@@ -1,21 +1,41 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Generalisation;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "node_type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Project.class, name = "project"),
+        @JsonSubTypes.Type(value = Package.class, name = "package"),
+        @JsonSubTypes.Type(value = Diagram.class, name = "diagram"),
+})
 public abstract class ClassyNodeComposite extends ClassyNode {
     private List<ClassyNode> children = new ArrayList<>();
 
     public ClassyNodeComposite(ClassyNodeComposite parent, String name) {
         super(parent, name);
+    }
+
+    public ClassyNodeComposite() {
+        super();
     }
 
     public void addChild(ClassyNode c) {

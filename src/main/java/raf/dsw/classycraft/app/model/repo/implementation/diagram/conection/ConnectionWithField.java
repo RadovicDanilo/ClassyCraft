@@ -11,6 +11,11 @@ public class ConnectionWithField extends Connection{
     private String fieldName;
     private Visibility visibility;
     private Cardinality cardinality;
+
+    public ConnectionWithField() {
+        super();
+    }
+
     public String toCode() {
         String value = getTo().getName();
         if (cardinality == MANY) {

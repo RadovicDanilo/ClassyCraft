@@ -3,11 +3,18 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inte
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
 public class Field extends ClassContent {
-    private final String type;
+    private String type;
 
     public Field(String name, Visibility visibility, String type) {
         super(name, visibility);
         this.type = type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Field() {
     }
 
     @Override
@@ -30,7 +37,7 @@ public class Field extends ClassContent {
     }
 
     public String toCode() {
-        return "\t" +getVisibility().toCode() + " " + getType() + " " + getName() + ";";
+        return "\t" + getVisibility().toCode() + " " + getType() + " " + getName() + ";";
     }
 
     public String getType() {

@@ -11,6 +11,10 @@ public class Project extends ClassyNodeComposite {
     private String author;
     private String resourcePath;
 
+    public Project(ClassyNodeComposite parent, String name) {
+        super();
+    }
+
     public Project(String name) {
         super((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot(), name);
         this.author = "Nepoznat";

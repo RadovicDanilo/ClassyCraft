@@ -72,4 +72,7 @@ public class Enum extends InterClass {
 
     }
 
+    public Enum() {
+        super();
+    }
 }

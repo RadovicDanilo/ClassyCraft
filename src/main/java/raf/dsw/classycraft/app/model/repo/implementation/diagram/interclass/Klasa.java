@@ -178,6 +178,10 @@ public class Klasa extends InterClass {
         ((Diagram) getParent()).notifySubscribers("");
     }
 
+    public Klasa() {
+        super();
+    }
+
     public void removeMethod(Method method) {
         contents.remove(method);
         ((Diagram) getParent()).notifySubscribers("");

@@ -30,6 +30,10 @@ public abstract class InterClass extends DiagramElement {
 
     }
 
+    public InterClass() {
+        super();
+    }
+
     public int getX() {
         return x;
     }

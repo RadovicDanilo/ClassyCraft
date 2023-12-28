@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app.serializer;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
@@ -21,7 +20,7 @@ public class JacksonSerializer {
         String path = "";
         int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            path = chooser.getSelectedFile().getPath() + "\\\\" + project.getName() + ".json";
+            path = chooser.getSelectedFile().getPath() + "\\" + project.getName() + ".json";
         }
         if(path.equals(""))
             return;
@@ -46,9 +45,10 @@ public class JacksonSerializer {
     }
 
     public Project load(String path) {
+        System.out.println(path);
         try {
-            return objectMapper.readValue(path, Project.class);
-        } catch (JsonProcessingException e) {
+            return objectMapper.readValue(new File(path), Project.class);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

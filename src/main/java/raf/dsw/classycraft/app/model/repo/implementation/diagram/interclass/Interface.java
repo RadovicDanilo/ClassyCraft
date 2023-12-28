@@ -104,4 +104,7 @@ public class Interface extends InterClass {
 
     }
 
+    public Interface() {
+        super();
+    }
 }

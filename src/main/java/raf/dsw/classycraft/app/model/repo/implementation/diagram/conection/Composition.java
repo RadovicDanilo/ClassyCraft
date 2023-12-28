@@ -8,7 +8,9 @@ import static main.java.raf.dsw.classycraft.app.model.repo.implementation.diagra
 import static main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality.ONE;
 
 public class Composition extends ConnectionWithField {
-
+    public Composition() {
+        super();
+    }
     public Composition(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
         super(parent, name, from, to);
 

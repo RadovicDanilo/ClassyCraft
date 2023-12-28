@@ -1,9 +1,17 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 
 public abstract class Connection extends DiagramElement {
     private static int field = 0;
@@ -24,6 +32,9 @@ public abstract class Connection extends DiagramElement {
         ;
         toName = to.getName();
         ;
+    }
+
+    public Connection() {
     }
 
     public static int getField() {
@@ -92,4 +103,5 @@ public abstract class Connection extends DiagramElement {
     public void setTo(InterClass to) {
         this.to = to;
     }
+
 }
