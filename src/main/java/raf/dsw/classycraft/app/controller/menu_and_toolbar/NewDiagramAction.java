@@ -10,6 +10,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.factory.DiagramFactory;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class NewDiagramAction extends AbstractClassyAction {
@@ -31,8 +32,23 @@ public class NewDiagramAction extends AbstractClassyAction {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.DIAGRAM_CAN_ONLY_BE_ADDED_TO_PACKAGE);
             return;
         }
+
+        Object[] options = new Object[]{"Import from library", "Create new"};
+        String result = (String)JOptionPane.showInputDialog(
+                MainFrame.getInstance(),
+                "Do you want to create a new diagram or import one form the library?",
+                "New diagram",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                options,
+                "Create new");
+        if(result.equals("Import from library")){
+            //TODO implement
+            return;
+        }
         DiagramFactory diagramFactory = new DiagramFactory();
         ClassyNode classyNode = diagramFactory.classyNode((ClassyNodeComposite) selectedNode.getClassyNode());
         MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
+
     }
 }

@@ -18,6 +18,8 @@ public class MyMenuBar extends JMenuBar {
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewPackageAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewDiagramAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveDiagramAsTemplateAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveDiagramAsScreenshotAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getExportProjectAsJavaCodeAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());
 

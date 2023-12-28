@@ -46,6 +46,9 @@ public class ActionManager {
     private SaveAction saveAction;
     private OpenAction openAction;
 
+    private SaveDiagramAsTemplateAction saveDiagramAsTemplateAction;
+    private SaveDiagramAsScreenshotAction saveDiagramAsScreenshotAction;
+
 
     public ActionManager() {
         initialiseActions();
@@ -87,6 +90,9 @@ public class ActionManager {
         saveAsAction = new SaveAsAction();
         saveAction = new SaveAction();
         openAction = new OpenAction();
+
+        saveDiagramAsTemplateAction = new SaveDiagramAsTemplateAction();
+        saveDiagramAsScreenshotAction = new SaveDiagramAsScreenshotAction();
     }
 
     public MultiSelectStateAction getMultiSelectStateAction() {
@@ -200,6 +206,14 @@ public class ActionManager {
 
     public OpenAction getOpenAction() {
         return openAction;
+    }
+
+    public SaveDiagramAsTemplateAction getSaveDiagramAsTemplateAction() {
+        return saveDiagramAsTemplateAction;
+    }
+
+    public SaveDiagramAsScreenshotAction getSaveDiagramAsScreenshotAction() {
+        return saveDiagramAsScreenshotAction;
     }
 }
 
