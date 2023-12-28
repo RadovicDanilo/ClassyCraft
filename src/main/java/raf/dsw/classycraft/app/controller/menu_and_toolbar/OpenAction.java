@@ -76,6 +76,7 @@ public class OpenAction extends AbstractClassyAction {
             }
             List<ClassyNode> children = ((ClassyNodeComposite) child).getChildren();
             for (int i = 0; i < children.size(); i++) {
+                System.out.println(children.size());
                 ClassyNode c = children.get(i);
                 fix(MainFrame.getInstance().getClassyTree().getNode(child), (ClassyNodeComposite) child, c);
             }

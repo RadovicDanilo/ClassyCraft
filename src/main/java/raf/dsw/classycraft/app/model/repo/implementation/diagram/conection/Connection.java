@@ -1,17 +1,9 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 
 public abstract class Connection extends DiagramElement {
     private static int field = 0;
@@ -66,49 +58,47 @@ public abstract class Connection extends DiagramElement {
         if (!(obj instanceof Connection)) {
             return false;
         }
-        if(((Connection) obj).getFrom() == null || ((Connection) obj).getTo() == null || this.getFrom() == null || this.getTo() == null){
-            return false;
-        }
-        return (((Connection) obj).from.equals(this.from) && ((Connection) obj).to.equals(this.to))
-                || (((Connection) obj).from.equals(this.to) && ((Connection) obj).to.equals(this.from));
+
+        return (((Connection) obj).getFromName().equals(this.getFromName()) && ((Connection) obj).getToName().equals(this.getToName())) ||
+                (((Connection) obj).getFromName().equals(this.getToName()) && ((Connection) obj).getToName().equals(this.getFromName()));
     }
 
     public InterClass getFrom() {
         return from;
     }
 
+    public void setFrom(InterClass from) {
+        this.from = from;
+    }
+
     public InterClass getTo() {
         return to;
     }
 
+    public void setTo(InterClass to) {
+        this.to = to;
+    }
+
     public String getToName() {
-        if(to!=null){
+        if (to != null) {
             toName = to.getName();
         }
         return toName;
-    }
-
-    public String getFromName() {
-        if(from!=null){
-            fromName = from.getName();
-        }
-        return fromName;
     }
 
     public void setToName(String toName) {
         this.toName = toName;
     }
 
+    public String getFromName() {
+        if (from != null) {
+            fromName = from.getName();
+        }
+        return fromName;
+    }
+
     public void setFromName(String fromName) {
         this.fromName = fromName;
-    }
-
-    public void setFrom(InterClass from) {
-        this.from = from;
-    }
-
-    public void setTo(InterClass to) {
-        this.to = to;
     }
 
 }
