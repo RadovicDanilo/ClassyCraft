@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.command;
 
+import main.java.raf.dsw.classycraft.app.controller.ActionManager;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 
 import javax.swing.*;
@@ -22,21 +23,21 @@ public class CommandManager {
         if(currentCommand < commands.size()){
             commands.get(currentCommand++).doCommand();
             SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
-            //ApplicationFramework.getInstance().getGui().enableUndoAction();
+            MainFrame.getInstance().getActionManager().getUndoAction().enable();
         }
         if(currentCommand==commands.size()){
-            //ApplicationFramework.getInstance().getGui().disableRedoAction();
+            MainFrame.getInstance().getActionManager().getRedoAction().disable();
         }
     }
 
     public void undoCommand(){
         if(currentCommand > 0){
-            //ApplicationFramework.getInstance().getGui().enableRedoAction();
+            MainFrame.getInstance().getActionManager().getRedoAction().enable();
             commands.get(--currentCommand).undoCommand();
             SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
         }
         if(currentCommand==0){
-            //ApplicationFramework.getInstance().getGui().disableUndoAction();
+            MainFrame.getInstance().getActionManager().getUndoAction().disable();
         }
     }
 
