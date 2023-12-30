@@ -51,7 +51,7 @@ public class OpenAction extends AbstractClassyAction {
             return;
 
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
-        Project project = jacksonSerializer.load(path);
+        Project project = jacksonSerializer.openProject(path);
         ProjectExplorer root = (ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot();
         ClassyTreeItem treeRoot = MainFrame.getInstance().getClassyTree().getRoot();
         for (ClassyNode c : root.getChildren()) {
