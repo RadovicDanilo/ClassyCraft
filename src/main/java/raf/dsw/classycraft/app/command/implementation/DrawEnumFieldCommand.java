@@ -1,7 +1,6 @@
 package main.java.raf.dsw.classycraft.app.command.implementation;
 
 import main.java.raf.dsw.classycraft.app.command.AbstractCommand;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 
 public class DrawEnumFieldCommand extends AbstractCommand {

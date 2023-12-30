@@ -26,6 +26,10 @@ public class Klasa extends InterClass {
         contents = new ArrayList<>();
     }
 
+    public Klasa() {
+        super();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Klasa) {
@@ -177,10 +181,6 @@ public class Klasa extends InterClass {
     public void removeField(Field field) {
         contents.remove(field);
         ((Diagram) getParent()).notifySubscribers("");
-    }
-
-    public Klasa() {
-        super();
     }
 
     public void removeMethod(Method method) {

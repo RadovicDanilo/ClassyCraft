@@ -6,15 +6,15 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class UndoAction extends AbstractClassyAction {
     public UndoAction() {
-        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon)loadIcon("/images/icons/undo.png")).getImage())));
+        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/undo.png")).getImage())));
         putValue(NAME, "Undo");
         putValue(SHORT_DESCRIPTION, "Undo");
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         DiagramView diagramView = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
@@ -26,6 +26,6 @@ public class UndoAction extends AbstractClassyAction {
     }
 
     public void disable() {
-        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon)loadIcon("/images/icons/undo.png")).getImage())));
+        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/undo.png")).getImage())));
     }
 }

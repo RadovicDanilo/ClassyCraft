@@ -53,22 +53,22 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_RENAME_ROOT);
             return;
         }
-        if(clicked.getClassyNode() instanceof Connection){
+        if (clicked.getClassyNode() instanceof Connection) {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_RENAME_CONNECTION);
             return;
         }
         CommandManager cm = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getCommandManager();
-        if(clicked.getClassyNode() instanceof Klasa) {
+        if (clicked.getClassyNode() instanceof Klasa) {
             Klasa k = (Klasa) clicked.getClassyNode();
             cm.addCommand(new EditClassCommand(k, e.getActionCommand(), k.getContents()));
             return;
         }
-        if(clicked.getClassyNode() instanceof Interface) {
+        if (clicked.getClassyNode() instanceof Interface) {
             Interface k = (Interface) clicked.getClassyNode();
             cm.addCommand(new EditInterfaceCommand(k, e.getActionCommand(), k.getMethods()));
             return;
         }
-        if(clicked.getClassyNode() instanceof Enum) {
+        if (clicked.getClassyNode() instanceof Enum) {
             Enum k = (Enum) clicked.getClassyNode();
             cm.addCommand(new EditEnumCommand(k, e.getActionCommand(), k.getContents()));
             return;

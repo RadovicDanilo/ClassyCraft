@@ -7,7 +7,7 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import static main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality.MANY;
 import static main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Cardinality.ONE;
 
-public class ConnectionWithField extends Connection{
+public class ConnectionWithField extends Connection {
     private String fieldName;
     private Visibility visibility;
     private Cardinality cardinality;
@@ -16,10 +16,18 @@ public class ConnectionWithField extends Connection{
         super();
     }
 
+    public ConnectionWithField(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
+        super(parent, name, from, to);
+        fieldName = "name" + getField();
+        setField(getField() + 1);
+        visibility = Visibility.PRIVATE;
+        cardinality = ONE;
+    }
+
     public String toCode() {
         String value = getTo().getName();
         if (cardinality == MANY) {
-            switch (value){
+            switch (value) {
                 case "int":
                     value = "Integer";
                     break;
@@ -37,13 +45,6 @@ public class ConnectionWithField extends Connection{
             value = "List<" + value + ">";
         }
         return "\t" + visibility.toCode() + " " + value + " " + fieldName + ";";
-    }
-    public ConnectionWithField(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
-        super(parent, name, from, to);
-        fieldName = "name" + getField();
-        setField(getField() + 1);
-        visibility = Visibility.PRIVATE;
-        cardinality = ONE;
     }
 
     public String getFieldName() {

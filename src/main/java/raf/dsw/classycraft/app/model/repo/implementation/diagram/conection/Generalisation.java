@@ -7,6 +7,7 @@ public class Generalisation extends Connection {
     public Generalisation() {
         super();
     }
+
     public Generalisation(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
         super(parent, name, from, to);
     }

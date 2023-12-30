@@ -19,6 +19,10 @@ public class Enum extends InterClass {
         ((Diagram) getParent()).notifySubscribers("");
     }
 
+    public Enum() {
+        super();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Enum) {
@@ -71,9 +75,5 @@ public class Enum extends InterClass {
             ((Diagram) getParent()).notifySubscribers("");
         }
 
-    }
-
-    public Enum() {
-        super();
     }
 }

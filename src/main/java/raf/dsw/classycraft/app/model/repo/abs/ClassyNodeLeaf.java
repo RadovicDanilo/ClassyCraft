@@ -2,9 +2,6 @@ package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Aggregation;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Composition;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Dependency;
@@ -30,6 +27,7 @@ public abstract class ClassyNodeLeaf extends ClassyNode {
     public ClassyNodeLeaf(ClassyNodeComposite parent, String name) {
         super(parent, name);
     }
+
     public ClassyNodeLeaf() {
 
     }

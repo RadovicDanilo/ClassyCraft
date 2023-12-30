@@ -13,7 +13,6 @@ public class GeneralisationPainter extends ConnectionPainter {
     }
 
 
-
     @Override
     public void draw(Graphics2D g) {
         super.draw(g);

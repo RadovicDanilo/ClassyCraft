@@ -67,7 +67,7 @@ public class UpdateClassAction {
             return;
         }
         DiagramView diagramView = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
-        diagramView.getCommandManager().addCommand(new EditClassCommand(k,tfName.getText(),contents));
+        diagramView.getCommandManager().addCommand(new EditClassCommand(k, tfName.getText(), contents));
 
     }
 }

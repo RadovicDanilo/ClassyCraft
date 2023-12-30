@@ -38,6 +38,10 @@ public class MainFrame extends JFrame implements ISubscriber {
         return instance;
     }
 
+    public static void setInstance(MainFrame instance) {
+        MainFrame.instance = instance;
+    }
+
     private void initialize() {
 
         actionManager = new ActionManager();
@@ -73,6 +77,10 @@ public class MainFrame extends JFrame implements ISubscriber {
         return actionManager;
     }
 
+    public void setActionManager(ActionManager actionManager) {
+        this.actionManager = actionManager;
+    }
+
     @Override
     public void update(Object notification) {
         if (notification instanceof Message) {
@@ -104,22 +112,6 @@ public class MainFrame extends JFrame implements ISubscriber {
         return classyTree;
     }
 
-    public static void setInstance(MainFrame instance) {
-        MainFrame.instance = instance;
-    }
-
-    public void setActionManager(ActionManager actionManager) {
-        this.actionManager = actionManager;
-    }
-
-    public void setPackageView(PackageView packageView) {
-        this.packageView = packageView;
-    }
-
-    public void setDiagramViews(ArrayList<DiagramView> diagramViews) {
-        this.diagramViews = diagramViews;
-    }
-
     public void setClassyTree(ClassyTreeImplementation classyTree) {
         this.classyTree = classyTree;
     }
@@ -136,8 +128,16 @@ public class MainFrame extends JFrame implements ISubscriber {
         return packageView;
     }
 
+    public void setPackageView(PackageView packageView) {
+        this.packageView = packageView;
+    }
+
     public ArrayList<DiagramView> getDiagramViews() {
         return diagramViews;
+    }
+
+    public void setDiagramViews(ArrayList<DiagramView> diagramViews) {
+        this.diagramViews = diagramViews;
     }
 
     public void addDiagramView(DiagramView d) {

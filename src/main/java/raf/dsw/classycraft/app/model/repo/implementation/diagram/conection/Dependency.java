@@ -7,6 +7,7 @@ public class Dependency extends Connection {
     public Dependency() {
         super();
     }
+
     public Dependency(ClassyNodeComposite parent, String name, InterClass from, InterClass to) {
         super(parent, name, from, to);
     }

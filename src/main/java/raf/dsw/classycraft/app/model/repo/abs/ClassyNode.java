@@ -1,7 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.repo.abs;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
@@ -62,12 +61,18 @@ public abstract class ClassyNode {
         return parent;
     }
 
+    public void setParent(ClassyNodeComposite parent) {
+        this.parent = parent;
+    }
+
     public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
+
     public void setNodeName(String name) {
         if (this instanceof InterClass && (name == null || name.length() == 0 || !name.substring(0, 1).matches("[a-zA-Z]+") || !name.matches("^([\\w+\\-/])+$"))) {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.INTERCLASS_NAME_NOT_VALID);
@@ -99,9 +104,5 @@ public abstract class ClassyNode {
                 changeProjectNameUpdate((ArrayList<ClassyNode>) ((Package) classyNode).getChildren());
             }
         }
-    }
-
-    public void setParent(ClassyNodeComposite parent) {
-        this.parent = parent;
     }
 }
