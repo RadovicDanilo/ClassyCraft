@@ -52,7 +52,10 @@ public class ConnectionWithField extends Connection {
     }
 
     public void setFieldName(String fieldName) {
-        getParent().changed();
+        if (getParent() != null) {
+            getParent().changed();
+        }
+
         this.fieldName = fieldName;
     }
 
@@ -61,7 +64,9 @@ public class ConnectionWithField extends Connection {
     }
 
     public void setVisibility(Visibility visibility) {
-        getParent().changed();
+        if (getParent() != null) {
+            getParent().changed();
+        }
         this.visibility = visibility;
     }
 
@@ -70,7 +75,9 @@ public class ConnectionWithField extends Connection {
     }
 
     public void setCardinality(Cardinality cardinality) {
-        getParent().changed();
+        if (getParent() != null) {
+            getParent().changed();
+        }
         this.cardinality = cardinality;
     }
 

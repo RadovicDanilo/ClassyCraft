@@ -127,6 +127,7 @@ public class OpenAction extends AbstractClassyAction {
             if (child instanceof Dependency) {
                 diagramView.getElementPainters().add(new DependencyPainter((Dependency) child));
             }
+            diagramView.zoomToFit();
             break;
         }
     }

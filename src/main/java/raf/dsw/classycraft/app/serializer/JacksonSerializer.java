@@ -37,9 +37,8 @@ public class JacksonSerializer {
     }
 
     public void save(Project project) {
-        ClassyNode classyNode = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(project.getResourcePath()), classyNode);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(project.getResourcePath()), project);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
