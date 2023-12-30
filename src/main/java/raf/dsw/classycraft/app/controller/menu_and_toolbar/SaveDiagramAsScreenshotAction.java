@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar;
 
-import jdk.jshell.Diag;
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
@@ -17,7 +16,7 @@ public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
+        if (MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
             //TODO SYSTEM EVENT
             return;
         }

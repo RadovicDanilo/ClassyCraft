@@ -17,20 +17,20 @@ public class DrawMethodCommand extends AbstractCommand {
 
     @Override
     public void doCommand() {
-        if(interClass instanceof Klasa){
+        if (interClass instanceof Klasa) {
             ((Klasa) interClass).addMethod(method);
         }
-        if(interClass instanceof Interface){
+        if (interClass instanceof Interface) {
             ((Interface) interClass).addMethod(method);
         }
     }
 
     @Override
     public void undoCommand() {
-        if(interClass instanceof Klasa){
+        if (interClass instanceof Klasa) {
             ((Klasa) interClass).removeMethod(method);
         }
-        if(interClass instanceof Interface){
+        if (interClass instanceof Interface) {
             ((Interface) interClass).removeMethod(method);
 
         }

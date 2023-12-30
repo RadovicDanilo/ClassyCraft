@@ -19,6 +19,10 @@ public class Enum extends InterClass {
         ((Diagram) getParent()).notifySubscribers("");
     }
 
+    public Enum() {
+        super();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Enum) {
@@ -58,8 +62,10 @@ public class Enum extends InterClass {
 
     public void setContents(ArrayList<String> contents) {
         this.contents = contents;
-        if (getParent() != null)
+        if (getParent() != null) {
+            getParent().changed();
             ((Diagram) getParent()).notifySubscribers("");
+        }
 
     }
 
@@ -70,10 +76,8 @@ public class Enum extends InterClass {
             contents.add(e);
             ((Diagram) getParent()).notifySubscribers("");
         }
-
-    }
-
-    public Enum() {
-        super();
+        if (getParent() != null) {
+            getParent().changed();
+        }
     }
 }

@@ -23,7 +23,7 @@ public class JacksonSerializer {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath() + "\\" + project.getName() + ".json";
         }
-        if(path.equals(""))
+        if (path.equals(""))
             return;
         int i = 1;
         if (Files.exists(Paths.get(path))) {
@@ -37,9 +37,8 @@ public class JacksonSerializer {
     }
 
     public void save(Project project) {
-        ClassyNode classyNode = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(project.getResourcePath()), classyNode);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(project.getResourcePath()), project);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -52,6 +51,7 @@ public class JacksonSerializer {
             throw new RuntimeException(e);
         }
     }
+
     public Diagram openDiagram(String path) {
         try {
             return objectMapper.readValue(new File(path), Diagram.class);
@@ -68,7 +68,7 @@ public class JacksonSerializer {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath() + "\\" + diagram.getName() + ".json";
         }
-        if(path.equals(""))
+        if (path.equals(""))
             return;
         int i = 1;
         if (Files.exists(Paths.get(path))) {

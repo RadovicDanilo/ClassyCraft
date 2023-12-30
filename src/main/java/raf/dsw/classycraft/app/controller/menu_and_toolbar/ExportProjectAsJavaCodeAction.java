@@ -17,6 +17,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
+    String initialPath = "";
+
     public ExportProjectAsJavaCodeAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
         putValue(SMALL_ICON, loadIcon("/images/icons/export_code.png"));
@@ -34,7 +36,7 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         String path = "";
         int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath();
             System.out.println(path);
         }
@@ -42,7 +44,7 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
         initialPath = path;
         export(project, path);
     }
-    String initialPath = "";
+
     public void export(ClassyNode classyNode, String path) {
         if (classyNode instanceof ClassyNodeComposite) {
             path += "/" + classyNode.getName();
@@ -51,7 +53,7 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
                 path = path + " (" + i + ")";
             }
             while (Files.exists(Paths.get(path))) {
-                path = path.replace("(" + i + ")","");
+                path = path.replace("(" + i + ")", "");
                 i++;
                 path = path + "(" + i + ")";
             }
@@ -61,10 +63,10 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
             }
             return;
         }
-        if(classyNode instanceof Connection)
+        if (classyNode instanceof Connection)
             return;
-        String packPath = path.replace(initialPath,"");
-        ((InterClass)classyNode).exportAsCode(path, packPath);
+        String packPath = path.replace(initialPath, "");
+        ((InterClass) classyNode).exportAsCode(path, packPath);
     }
 
 }

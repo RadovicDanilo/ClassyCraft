@@ -11,32 +11,32 @@ public class CommandManager {
     private List<AbstractCommand> commands = new ArrayList<>();
     private int currentCommand = 0;
 
-    public void addCommand(AbstractCommand command){
-        while(currentCommand < commands.size())
+    public void addCommand(AbstractCommand command) {
+        while (currentCommand < commands.size())
             commands.remove(currentCommand);
         commands.add(command);
         doCommand();
     }
 
-    public void doCommand(){
-        if(currentCommand < commands.size()){
+    public void doCommand() {
+        if (currentCommand < commands.size()) {
             commands.get(currentCommand++).doCommand();
             SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
-            //ApplicationFramework.getInstance().getGui().enableUndoAction();
+            MainFrame.getInstance().getActionManager().getUndoAction().enable();
         }
-        if(currentCommand==commands.size()){
-            //ApplicationFramework.getInstance().getGui().disableRedoAction();
+        if (currentCommand == commands.size()) {
+            MainFrame.getInstance().getActionManager().getRedoAction().disable();
         }
     }
 
-    public void undoCommand(){
-        if(currentCommand > 0){
-            //ApplicationFramework.getInstance().getGui().enableRedoAction();
+    public void undoCommand() {
+        if (currentCommand > 0) {
+            MainFrame.getInstance().getActionManager().getRedoAction().enable();
             commands.get(--currentCommand).undoCommand();
             SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getClassyTree().getTreeView());
         }
-        if(currentCommand==0){
-            //ApplicationFramework.getInstance().getGui().disableUndoAction();
+        if (currentCommand == 0) {
+            MainFrame.getInstance().getActionManager().getUndoAction().disable();
         }
     }
 

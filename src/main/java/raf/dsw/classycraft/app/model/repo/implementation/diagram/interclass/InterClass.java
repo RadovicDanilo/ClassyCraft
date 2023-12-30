@@ -43,6 +43,7 @@ public abstract class InterClass extends DiagramElement {
             return;
         this.x = x;
         if (this.getParent() != null) {
+            getParent().changed();
             generatePoints();
             ((Diagram) getParent()).notifySubscribers("");
         }
@@ -57,6 +58,7 @@ public abstract class InterClass extends DiagramElement {
             return;
         this.y = y;
         if (this.getParent() != null) {
+            getParent().changed();
             generatePoints();
             ((Diagram) getParent()).notifySubscribers("");
         }
@@ -170,6 +172,11 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setVisibility(Visibility visibility) {
+        if(getParent() != null){
+            getParent().changed();
+        }
+
         this.visibility = visibility;
     }
+
 }

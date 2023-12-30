@@ -15,3 +15,4 @@
 [ERROR][28-12-2023 18:03:19] Vec postoji cvor sa datim imenom
 [ERROR][28-12-2023 18:03:19] Vec postoji cvor sa datim imenom
 [ERROR][28-12-2023 18:07:04] veza vec postoji
+[ERROR][30-12-2023 14:08:10] Diagram se mogu praviti samo u projektima ili paketima

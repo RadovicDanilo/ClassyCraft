@@ -10,10 +10,6 @@ public class Field extends ClassContent {
         this.type = type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Field() {
     }
 
@@ -42,6 +38,10 @@ public class Field extends ClassContent {
 
     public String getType() {
         return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

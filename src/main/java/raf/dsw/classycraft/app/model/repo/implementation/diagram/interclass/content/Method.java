@@ -10,6 +10,10 @@ public class Method extends ClassContent {
         this.returnValue = returnValue;
     }
 
+    public Method() {
+        super();
+    }
+
     @Override
     public String toString() {
         return getVisibility().toString() + " " + getName() + "()" + ": " + returnValue;
@@ -32,9 +36,7 @@ public class Method extends ClassContent {
     public String toCode() {
         return "\t" + getVisibility().toCode() + " " + getReturnValue() + " " + getName() + "() {\n\t\t\n\t}";
     }
-    public Method(){
-        super();
-    }
+
     public String getReturnValue() {
         return returnValue;
     }

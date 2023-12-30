@@ -1,6 +1,8 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent;
@@ -8,6 +10,8 @@ import main.java.raf.dsw.classycraft.app.observer.notifications.PackageViewEvent
 import java.util.ArrayList;
 
 public class Project extends ClassyNodeComposite {
+    @JsonIgnore
+    private boolean changed = false;
     private String author;
     private String resourcePath;
 
@@ -48,6 +52,7 @@ public class Project extends ClassyNodeComposite {
 
     public void setAuthor(String author) {
         this.author = author;
+        changed();
         changeAuthorUpdate((ArrayList<ClassyNode>) this.getChildren());
     }
 
@@ -69,4 +74,13 @@ public class Project extends ClassyNodeComposite {
     }
 
 
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        if(changed)
+            MainFrame.getInstance().getActionManager().getSaveAction().enable();
+        this.changed = changed;
+    }
 }
