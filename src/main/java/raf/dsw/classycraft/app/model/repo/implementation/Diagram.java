@@ -48,4 +48,6 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
     public List<ISubscriber> getSubscribers() {
         return subscribers;
     }
+
+
 }

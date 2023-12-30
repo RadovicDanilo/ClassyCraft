@@ -39,6 +39,7 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setX(int x) {
+        getParent().changed();
         if (x < 0)
             return;
         this.x = x;
@@ -53,6 +54,7 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setY(int y) {
+        getParent().changed();
         if (y < 0)
             return;
         this.y = y;
@@ -67,6 +69,7 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setCurrentWidth(int currentWidth) {
+        getParent().changed();
         this.currentWidth = currentWidth;
         if (this.getParent() != null) {
             generatePoints();
@@ -80,6 +83,7 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setCurrentHeight(int currentHeight) {
+        getParent().changed();
         this.currentHeight = currentHeight;
         if (this.getParent() != null) {
             generatePoints();
@@ -170,6 +174,7 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setVisibility(Visibility visibility) {
+        getParent().changed();
         this.visibility = visibility;
     }
 }

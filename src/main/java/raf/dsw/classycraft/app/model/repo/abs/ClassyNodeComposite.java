@@ -33,6 +33,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
     }
 
     public void addChild(ClassyNode c) {
+        getParent().changed();
         if (this.children == null) {
             this.children = new ArrayList<>();
         }
@@ -53,6 +54,7 @@ public abstract class ClassyNodeComposite extends ClassyNode {
 
 
     public void removeChild(ClassyNode c) {
+        getParent().changed();
         this.children.remove(c);
         if (c instanceof DiagramElement) {
             ((Diagram) this).notifySubscribers(c);

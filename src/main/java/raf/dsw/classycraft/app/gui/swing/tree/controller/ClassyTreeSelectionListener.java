@@ -18,27 +18,28 @@ public class ClassyTreeSelectionListener implements TreeSelectionListener {
     public void valueChanged(TreeSelectionEvent e) {
         TreePath path = e.getPath();
         ClassyTreeItem treeItemSelected = (ClassyTreeItem) path.getLastPathComponent();
+
         System.out.println("Selektovan cvor:" + treeItemSelected.getClassyNode().getName());
         System.out.println("getPath: " + e.getPath());
-        if(treeItemSelected.getClassyNode() instanceof ProjectExplorer){
+
+        if (treeItemSelected.getClassyNode() instanceof ProjectExplorer) {
             MainFrame.getInstance().getActionManager().getSaveAction().disable();
             MainFrame.getInstance().getActionManager().getSaveAsAction().disable();
             return;
         }
+
         MainFrame.getInstance().getActionManager().getSaveAsAction().enable();
+
         ClassyNode project = treeItemSelected.getClassyNode();
-        while(!(project instanceof Project)){
+        while (!(project instanceof Project)) {
             project = project.getParent();
         }
-        if(((Project) project).isChanged()){
+
+        if (((Project) project).getResourcePath() == null || ((Project) project).isChanged()) {
             MainFrame.getInstance().getActionManager().getSaveAction().enable();
-        }else{
+        } else {
             MainFrame.getInstance().getActionManager().getSaveAction().disable();
         }
-        if(((Project) project).getResourcePath() == null){
-            MainFrame.getInstance().getActionManager().getSaveAction().enable();
-        }
-
     }
 }
 

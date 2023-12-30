@@ -31,6 +31,7 @@ public class Interface extends InterClass {
 
     public void setMethods(ArrayList<Method> methods) {
         this.methods = methods;
+        getParent().changed();
         if (getParent() != null)
             ((Diagram) getParent()).notifySubscribers("");
 
@@ -95,16 +96,19 @@ public class Interface extends InterClass {
     }
 
     public void addMethod(Method m) {
+
         if (m == null)
             return;
         if (!methods.contains(m)) {
             methods.add(m);
         }
+        getParent().changed();
         ((Diagram) getParent()).notifySubscribers("");
     }
 
     public void removeMethod(Method method) {
         methods.remove(method);
+        getParent().changed();
         ((Diagram) getParent()).notifySubscribers("");
 
     }

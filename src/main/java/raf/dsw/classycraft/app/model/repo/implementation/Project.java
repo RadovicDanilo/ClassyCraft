@@ -52,7 +52,7 @@ public class Project extends ClassyNodeComposite {
 
     public void setAuthor(String author) {
         this.author = author;
-        setChanged(true);
+        changed();
         changeAuthorUpdate((ArrayList<ClassyNode>) this.getChildren());
     }
 
