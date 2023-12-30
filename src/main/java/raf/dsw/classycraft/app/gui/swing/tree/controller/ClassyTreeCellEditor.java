@@ -1,8 +1,18 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 
+import main.java.raf.dsw.classycraft.app.command.CommandManager;
+import main.java.raf.dsw.classycraft.app.command.implementation.EditClassCommand;
+import main.java.raf.dsw.classycraft.app.command.implementation.EditEnumCommand;
+import main.java.raf.dsw.classycraft.app.command.implementation.EditInterfaceCommand;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.ProjectExplorer;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Connection;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
@@ -38,11 +48,31 @@ public class ClassyTreeCellEditor extends DefaultTreeCellEditor implements Actio
     public void actionPerformed(ActionEvent e) {
         if (!(clickedOn instanceof ClassyTreeItem))
             return;
-        if (((ClassyTreeItem) clickedOn).getClassyNode() instanceof ProjectExplorer) {
+        ClassyTreeItem clicked = (ClassyTreeItem) clickedOn;
+        if (clicked.getClassyNode() instanceof ProjectExplorer) {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_RENAME_ROOT);
             return;
         }
-        ClassyTreeItem clicked = (ClassyTreeItem) clickedOn;
+        if(clicked.getClassyNode() instanceof Connection){
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.CANNOT_RENAME_CONNECTION);
+            return;
+        }
+        CommandManager cm = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getCommandManager();
+        if(clicked.getClassyNode() instanceof Klasa) {
+            Klasa k = (Klasa) clicked.getClassyNode();
+            cm.addCommand(new EditClassCommand(k, e.getActionCommand(), k.getContents()));
+            return;
+        }
+        if(clicked.getClassyNode() instanceof Interface) {
+            Interface k = (Interface) clicked.getClassyNode();
+            cm.addCommand(new EditInterfaceCommand(k, e.getActionCommand(), k.getMethods()));
+            return;
+        }
+        if(clicked.getClassyNode() instanceof Enum) {
+            Enum k = (Enum) clicked.getClassyNode();
+            cm.addCommand(new EditEnumCommand(k, e.getActionCommand(), k.getContents()));
+            return;
+        }
         clicked.setName(e.getActionCommand());
     }
 

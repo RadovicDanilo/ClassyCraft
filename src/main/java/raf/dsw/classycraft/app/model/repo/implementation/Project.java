@@ -11,10 +11,27 @@ public class Project extends ClassyNodeComposite {
     private String author;
     private String resourcePath;
 
+    public Project(ClassyNodeComposite parent, String name) {
+        super();
+    }
+
+    public Project() {
+
+    }
+
+    public Project(String name, ArrayList<ClassyNode> children, String author, String resourcePath) {
+        super(null, name);
+        this.setChildren(children);
+        this.resourcePath = resourcePath;
+        this.author = author;
+
+
+    }
+
     public Project(String name) {
         super((ClassyNodeComposite) ApplicationFramework.getInstance().getClassyRepository().getRoot(), name);
         this.author = "Nepoznat";
-        this.resourcePath = ApplicationFramework.getInstance().PROJECTS_PATH + name;
+        this.resourcePath = null;
     }
 
     @Override
@@ -50,5 +67,6 @@ public class Project extends ClassyNodeComposite {
     public void setResourcePath(String resourcePath) {
         this.resourcePath = resourcePath;
     }
+
 
 }

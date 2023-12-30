@@ -1,7 +1,8 @@
 package main.java.raf.dsw.classycraft.app.state.concrete;
 
+import main.java.raf.dsw.classycraft.app.command.implementation.MoveElementCommand;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
-import main.java.raf.dsw.classycraft.app.gui.swing.painter.icp.InterClassPainter;
+import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.InterClassPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.state.State;
 import main.java.raf.dsw.classycraft.app.state.StateImplement;
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 
 public class SelectState extends StateImplement implements State {
     private Point last = null;
+    private Point start = null;
 
     @Override
     public void mousePressed(MouseEvent e, DiagramView diagramView) {
-
         for (ElementPainter elementPainter : diagramView.getElementPainters()) {
             if (elementPainter.contains(diagramView.adjustPoint(e.getPoint()))) {
                 last = diagramView.adjustPoint(e.getPoint());
-
+                start = last;
                 if (!diagramView.getSelected().contains(elementPainter)) {
                     diagramView.setSelected(new ArrayList<>());
                     diagramView.addSelectedElement(elementPainter);
@@ -34,17 +35,17 @@ public class SelectState extends StateImplement implements State {
     public void mouseDragged(MouseEvent e, DiagramView diagramView) {
         for (ElementPainter elementPainter : diagramView.getSelected()) {
             if (elementPainter instanceof InterClassPainter) {
-                ((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() + diagramView.adjustPoint(e.getPoint()).x - last.x);
+                ((InterClassPainter) elementPainter).getDiagramElement().setX(((InterClassPainter) elementPainter).getDiagramElement().getX() +
+                        diagramView.adjustPoint(e.getPoint()).x - last.x);
                 ((InterClassPainter) elementPainter).getDiagramElement().setY(((InterClassPainter) elementPainter).getDiagramElement().getY() + diagramView.adjustPoint(e.getPoint()).y - last.y);
             }
         }
         last = diagramView.adjustPoint(e.getPoint());
-
     }
-
 
     @Override
     public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+        diagramView.getCommandManager().addCommand(new MoveElementCommand(diagramView.getSelected(), start, last));
         last = null;
     }
 }

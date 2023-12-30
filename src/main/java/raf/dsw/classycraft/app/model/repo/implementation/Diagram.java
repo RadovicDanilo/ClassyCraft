@@ -1,5 +1,6 @@
 package main.java.raf.dsw.classycraft.app.model.repo.implementation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.observer.IPublisher;
@@ -9,10 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Diagram extends ClassyNodeComposite implements IPublisher {
+    @JsonIgnore
     private final List<ISubscriber> subscribers = new ArrayList<>();
 
     public Diagram(ClassyNodeComposite parent, String name) {
         super(parent, name);
+    }
+
+    public Diagram() {
+        super();
     }
 
     @Override
@@ -39,4 +45,7 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
             sub.update(notification);
     }
 
+    public List<ISubscriber> getSubscribers() {
+        return subscribers;
+    }
 }

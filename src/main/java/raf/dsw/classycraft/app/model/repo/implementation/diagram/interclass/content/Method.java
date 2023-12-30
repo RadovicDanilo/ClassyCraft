@@ -3,7 +3,7 @@ package main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inte
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
 
 public class Method extends ClassContent {
-    private final String returnValue;
+    private String returnValue;
 
     public Method(String name, Visibility visibility, String returnValue) {
         super(name, visibility);
@@ -29,8 +29,17 @@ public class Method extends ClassContent {
         return false;
     }
 
+    public String toCode() {
+        return "\t" + getVisibility().toCode() + " " + getReturnValue() + " " + getName() + "() {\n\t\t\n\t}";
+    }
+    public Method(){
+        super();
+    }
     public String getReturnValue() {
         return returnValue;
     }
 
+    public void setReturnValue(String returnValue) {
+        this.returnValue = returnValue;
+    }
 }

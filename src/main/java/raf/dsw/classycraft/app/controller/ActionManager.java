@@ -1,19 +1,17 @@
 package main.java.raf.dsw.classycraft.app.controller;
 
-import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.AboutUsAction;
-import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.ExitAction;
+import main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar.*;
 import main.java.raf.dsw.classycraft.app.controller.sidebar.*;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawAggregationAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawCompositionAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawDependencyAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dc.DrawGeneralisationAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.DrawClassAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.DrawEnumAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.DrawInterfaceAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.DrawFieldAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.DrawMethodAction;
-import main.java.raf.dsw.classycraft.app.controller.sidebar.dic.dcc.EditContentAction;
-import main.java.raf.dsw.classycraft.app.controller.tree.*;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_connection.DrawAggregationAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_connection.DrawCompositionAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_connection.DrawDependencyAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_connection.DrawGeneralisationAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.DrawClassAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.DrawEnumAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.DrawInterfaceAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.DrawFieldAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.DrawMethodAction;
+import main.java.raf.dsw.classycraft.app.controller.sidebar.draw_interclass.draw_class_content.EditContentAction;
 
 import javax.swing.*;
 
@@ -40,6 +38,16 @@ public class ActionManager {
     private EditContentAction editContentAction;
     private MultiSelectStateAction multiSelectStateAction;
     private DuplicateAction duplicateAction;
+    private UndoAction undoAction;
+    private RedoAction redoAction;
+    private ExportProjectAsJavaCodeAction exportProjectAsJavaCodeAction;
+
+    private SaveAsAction saveAsAction;
+    private SaveAction saveAction;
+    private OpenAction openAction;
+
+    private SaveDiagramAsTemplateAction saveDiagramAsTemplateAction;
+    private SaveDiagramAsScreenshotAction saveDiagramAsScreenshotAction;
 
 
     public ActionManager() {
@@ -73,10 +81,26 @@ public class ActionManager {
         drawDependencyAction = new DrawDependencyAction();
 
         zoomToFitAction = new ZoomToFitAction();
+
+        redoAction = new RedoAction();
+        undoAction = new UndoAction();
+
+        exportProjectAsJavaCodeAction = new ExportProjectAsJavaCodeAction();
+
+        saveAsAction = new SaveAsAction();
+        saveAction = new SaveAction();
+        openAction = new OpenAction();
+
+        saveDiagramAsTemplateAction = new SaveDiagramAsTemplateAction();
+        saveDiagramAsScreenshotAction = new SaveDiagramAsScreenshotAction();
     }
 
     public MultiSelectStateAction getMultiSelectStateAction() {
         return multiSelectStateAction;
+    }
+
+    public ExportProjectAsJavaCodeAction getExportProjectAsJavaCodeAction() {
+        return exportProjectAsJavaCodeAction;
     }
 
     public Action getExitAction() {
@@ -162,6 +186,34 @@ public class ActionManager {
 
     public Action getDuplicateAction() {
         return duplicateAction;
+    }
+
+    public UndoAction getUndoAction() {
+        return undoAction;
+    }
+
+    public RedoAction getRedoAction() {
+        return redoAction;
+    }
+
+    public SaveAsAction getSaveAsAction() {
+        return saveAsAction;
+    }
+
+    public SaveAction getSaveAction() {
+        return saveAction;
+    }
+
+    public OpenAction getOpenAction() {
+        return openAction;
+    }
+
+    public SaveDiagramAsTemplateAction getSaveDiagramAsTemplateAction() {
+        return saveDiagramAsTemplateAction;
+    }
+
+    public SaveDiagramAsScreenshotAction getSaveDiagramAsScreenshotAction() {
+        return saveDiagramAsScreenshotAction;
     }
 }
 

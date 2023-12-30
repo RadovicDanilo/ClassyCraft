@@ -8,4 +8,8 @@ public abstract class DiagramElement extends ClassyNodeLeaf {
     public DiagramElement(ClassyNodeComposite parent, String name) {
         super(parent, name);
     }
+
+    public DiagramElement() {
+        super();
+    }
 }

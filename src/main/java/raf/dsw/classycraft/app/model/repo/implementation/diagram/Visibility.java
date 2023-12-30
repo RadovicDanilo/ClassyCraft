@@ -17,4 +17,19 @@ public enum Visibility {
         }
         return super.toString();
     }
+
+    public String toCode() {
+        switch (this) {
+            case PRIVATE:
+                return "private";
+            case PUBLIC:
+                return "public";
+            case DEFAULT:
+                return "default";
+            case PROTECTED:
+                return "protected";
+        }
+        return super.toString();
+
+    }
 }
