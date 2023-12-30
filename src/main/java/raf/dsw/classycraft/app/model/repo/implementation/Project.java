@@ -79,12 +79,8 @@ public class Project extends ClassyNodeComposite {
     }
 
     public void setChanged(boolean changed) {
-        if(changed){
+        if(changed)
             MainFrame.getInstance().getActionManager().getSaveAction().enable();
-        }else {
-            MainFrame.getInstance().getActionManager().getSaveAction().disable();
-
-        }
         this.changed = changed;
     }
 }

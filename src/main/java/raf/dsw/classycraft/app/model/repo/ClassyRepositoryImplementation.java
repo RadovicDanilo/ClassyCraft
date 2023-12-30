@@ -20,15 +20,7 @@ public class ClassyRepositoryImplementation implements ClassyRepository {
         if (child.getParent() == null) {
             return;
         }
-        if (((ClassyNodeComposite) child.getParent()).getChildren().contains(child)) {
-            return;
-        }
         ((ClassyNodeComposite) child.getParent()).addChild(child);
-        ClassyNode project = child;
-        while (!(project instanceof Project)) {
-            project = project.getParent();
-        }
-        ((Project) project).setChanged(true);
     }
 
     @Override

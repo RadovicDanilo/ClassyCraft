@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class SaveAsAction extends AbstractClassyAction {
+    private boolean enabled = false;
 
     public SaveAsAction() {
         putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/save.png")).getImage())));
@@ -20,30 +21,28 @@ public class SaveAsAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null) {
-            //TODO SYSTEM EVENT
+        if(!enabled)
             return;
-        }
         ClassyNode project = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
-        if(project instanceof ProjectExplorer) {
-            //TODO SYSTEM EVENT
-            return;
-        }
+
         while(!(project instanceof Project)){
             project = project.getParent();
         }
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
         jacksonSerializer.setProjectPath((Project) project);
         jacksonSerializer.save((Project) project);
+
         ((Project) project).setChanged(false);
         MainFrame.getInstance().getActionManager().getSaveAction().disable();
     }
 
     public void enable() {
         putValue(SMALL_ICON, loadIcon("/images/icons/save.png"));
+        enabled = true;
     }
 
     public void disable() {
         putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/save.png")).getImage())));
+        enabled = false;
     }
 }
