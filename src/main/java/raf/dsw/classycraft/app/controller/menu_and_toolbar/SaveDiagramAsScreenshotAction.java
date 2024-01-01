@@ -16,11 +16,14 @@ public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //TODO na kraju dodati u readme da se cuva otvoren diagram a ne onaj koji je selektovan u stablu
         if (MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
             //TODO SYSTEM EVENT
+            //OVO CU JA NA KRAJU, NE MORAS DA DIRAS NISTA VAN OVE KLASE
             return;
         }
         Diagram diagram = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getDiagram();
+
 
     }
 }
