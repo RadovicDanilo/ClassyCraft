@@ -28,6 +28,7 @@ import main.java.raf.dsw.classycraft.app.serializer.JacksonSerializer;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 public class NewDiagramAction extends AbstractClassyAction {
     public NewDiagramAction() {
@@ -64,7 +65,9 @@ public class NewDiagramAction extends AbstractClassyAction {
             MainFrame.getInstance().getClassyTree().addChild(selectedNode, classyNode);
             return;
         }
+
         JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\Documents\\Diagram templates\\"));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON FILES", "json");
         chooser.setFileFilter(filter);
         String path = "";
@@ -73,10 +76,14 @@ public class NewDiagramAction extends AbstractClassyAction {
             path = chooser.getSelectedFile().getPath();
         } else {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
+            return;
         }
 
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
         Diagram fromTemplate = jacksonSerializer.openDiagram(path);
+
+        DiagramFactory diagramFactory = new DiagramFactory();
+        fromTemplate.setName(diagramFactory.classyNode((ClassyNodeComposite) fromTemplate.getParent()).getName());
 
         fromTemplate.setParent((ClassyNodeComposite) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode());
         MainFrame.getInstance().getClassyTree().addChild(MainFrame.getInstance().getClassyTree().getSelectedNode(), fromTemplate);

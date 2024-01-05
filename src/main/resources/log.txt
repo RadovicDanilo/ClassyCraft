@@ -20,3 +20,13 @@
  Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
  ostatak naziv sme samo da sadrzi alfanumericke karktere
 [ERROR][05-01-2024 22:19:42] Putanja nije ispravna
+[ERROR][05-01-2024 22:46:18] Putanja nije ispravna
+[ERROR][05-01-2024 22:46:25] Putanja nije ispravna
+[ERROR][05-01-2024 22:47:09] Putanja nije ispravna
+[ERROR][05-01-2024 22:49:06] Putanja nije ispravna
+[ERROR][05-01-2024 22:52:02] Putanja nije ispravna
+[ERROR][05-01-2024 22:52:45] Putanja nije ispravna
+[ERROR][05-01-2024 22:54:10] Putanja nije ispravna
+[ERROR][05-01-2024 22:55:29] Ne postoji izabran diagram
+[ERROR][05-01-2024 22:55:32] Ne postoji otvoren diagram
+[ERROR][05-01-2024 22:55:34] Ne postoji izabran diagram

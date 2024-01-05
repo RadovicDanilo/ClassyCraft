@@ -20,6 +20,7 @@ public class SaveDiagramAsTemplateAction extends AbstractClassyAction {
     public void actionPerformed(ActionEvent e) {
         if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null || !(MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode() instanceof Diagram)) {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_DIAGRAM_SELECTED);
+            return;
         }
         Diagram diagram = (Diagram) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
