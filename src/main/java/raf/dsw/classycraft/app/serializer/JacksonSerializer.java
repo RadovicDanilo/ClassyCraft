@@ -69,15 +69,8 @@ public class JacksonSerializer {
     }
 
     public void saveDiagramTemplate(Diagram diagram) {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        String path = "";
-        int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            path = chooser.getSelectedFile().getPath() + "\\" + diagram.getName() + ".json";
-        } else {
-            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
-        }
+        //new File(System.getProperty("user.home") + "\\Documents\\Diagram templates\\").mkdirs();
+        String path = System.getProperty("user.home") + "\\Documents\\Diagram templates\\" + diagram.getName() + ".json";
         int i = 1;
         if (Files.exists(Paths.get(path))) {
             path = path.substring(0, path.length() - 5) + " (" + i + ").json";
