@@ -1,5 +1,7 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.dcc;
 
+import main.java.raf.dsw.classycraft.app.command.implementation.DrawEnumFieldCommand;
+import main.java.raf.dsw.classycraft.app.command.implementation.DrawMethodCommand;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.interclass_painter.ClassPainter;
@@ -9,6 +11,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
+import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
@@ -37,7 +40,7 @@ public class DrawMethodState extends DrawClassContentState {
                     ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.METHOD_RETURN_VALUE_NOT_VALID);
                     return;
                 }
-                ((Klasa) elementPainter.getDiagramElement()).addMethod(new Method(name, visibility, returnValue));
+                diagramView.getCommandManager().addCommand(new DrawMethodCommand((Klasa) elementPainter.getDiagramElement(), new Method(name, visibility, returnValue)));
 
             }
             if (elementPainter instanceof InterfacePainter) {
@@ -52,8 +55,7 @@ public class DrawMethodState extends DrawClassContentState {
                     ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.METHOD_RETURN_VALUE_NOT_VALID);
                     return;
                 }
-                ((Interface) elementPainter.getDiagramElement()).addMethod(new Method(name, visibility, returnValue));
-
+                diagramView.getCommandManager().addCommand(new DrawMethodCommand((Interface) elementPainter.getDiagramElement(), new Method(name, visibility, returnValue)));
 
             }
         }

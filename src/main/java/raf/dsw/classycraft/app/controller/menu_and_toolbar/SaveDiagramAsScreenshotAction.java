@@ -18,7 +18,6 @@ public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
     public void actionPerformed(ActionEvent e) {
         if (MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null || ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
             //TODO SYSTEM EVENT
-            //OVO CU JA NA KRAJU, NE MORAS DA DIRAS NISTA VAN OVE KLASE
             return;
         }
         Diagram diagram = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getDiagram();

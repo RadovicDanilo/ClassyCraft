@@ -10,9 +10,10 @@ import java.awt.event.ActionEvent;
 
 public class UndoAction extends AbstractClassyAction {
     public UndoAction() {
-        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/undo.png")).getImage())));
+        putValue(SMALL_ICON, loadIcon("/images/icons/undo.png"));
         putValue(NAME, "Undo");
         putValue(SHORT_DESCRIPTION, "Undo");
+        disable();
     }
 
     @Override
@@ -22,10 +23,10 @@ public class UndoAction extends AbstractClassyAction {
     }
 
     public void enable() {
-        putValue(SMALL_ICON, loadIcon("/images/icons/undo.png"));
+        super.setEnabled(true);
     }
 
     public void disable() {
-        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/undo.png")).getImage())));
+        super.setEnabled(false);
     }
 }

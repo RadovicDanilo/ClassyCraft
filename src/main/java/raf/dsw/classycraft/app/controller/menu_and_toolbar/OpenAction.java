@@ -38,20 +38,12 @@ public class OpenAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON FILES", "json");
-        chooser.setFileFilter(filter);
-        String path = "";
-        int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            path = chooser.getSelectedFile().getPath();
-        }
-        if (path.equals(""))
-            return;
-
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
-        Project project = jacksonSerializer.openProject(path);
+        Project project = jacksonSerializer.openProject();
+        if(project == null) {
+            //TODO SYS EVENT
+            return;
+        }
         ProjectExplorer root = (ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot();
         ClassyTreeItem treeRoot = MainFrame.getInstance().getClassyTree().getRoot();
         for (ClassyNode c : root.getChildren()) {
@@ -65,9 +57,6 @@ public class OpenAction extends AbstractClassyAction {
 
     public void fix(ClassyTreeItem treeRoot, ClassyNodeComposite parent, ClassyNode child) {
         child.setParent(parent);
-        System.out.println();
-        System.out.println(parent.getName());
-        System.out.println(child.getName());
         MainFrame.getInstance().getClassyTree().addChild(treeRoot, child);
 
         if (child instanceof ClassyNodeComposite) {
