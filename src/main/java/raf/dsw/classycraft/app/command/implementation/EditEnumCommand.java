@@ -6,11 +6,11 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.util.ArrayList;
 
 public class EditEnumCommand extends AbstractCommand {
-    private Enum e;
-    private String name;
-    private ArrayList<String> content;
-    private String oldName;
-    private ArrayList<String> oldContent;
+    private final Enum e;
+    private final String name;
+    private final ArrayList<String> content;
+    private final String oldName;
+    private final ArrayList<String> oldContent;
 
     public EditEnumCommand(Enum e, String name, ArrayList<String> content) {
         this.e = e;

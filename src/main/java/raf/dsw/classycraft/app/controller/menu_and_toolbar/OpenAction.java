@@ -22,10 +22,9 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 import main.java.raf.dsw.classycraft.app.serializer.JacksonSerializer;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.util.List;
 
@@ -38,25 +37,17 @@ public class OpenAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON FILES", "json");
-        chooser.setFileFilter(filter);
-        String path = "";
-        int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            path = chooser.getSelectedFile().getPath();
-        }
-        if (path.equals(""))
-            return;
-
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
-        Project project = jacksonSerializer.openProject(path);
+        Project project = jacksonSerializer.openProject();
+        if (project == null) {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
+            return;
+        }
         ProjectExplorer root = (ProjectExplorer) ApplicationFramework.getInstance().getClassyRepository().getRoot();
         ClassyTreeItem treeRoot = MainFrame.getInstance().getClassyTree().getRoot();
         for (ClassyNode c : root.getChildren()) {
             if (c.equals(project)) {
-                //TODO SYS EVENT
+                ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.PROJECT_ALREADY_OPENED);
                 return;
             }
         }
@@ -65,9 +56,6 @@ public class OpenAction extends AbstractClassyAction {
 
     public void fix(ClassyTreeItem treeRoot, ClassyNodeComposite parent, ClassyNode child) {
         child.setParent(parent);
-        System.out.println();
-        System.out.println(parent.getName());
-        System.out.println(child.getName());
         MainFrame.getInstance().getClassyTree().addChild(treeRoot, child);
 
         if (child instanceof ClassyNodeComposite) {

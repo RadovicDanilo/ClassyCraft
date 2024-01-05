@@ -5,8 +5,8 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Field;
 
 public class DrawFieldCommand extends AbstractCommand {
-    private Klasa diagramElement;
-    private Field field;
+    private final Klasa diagramElement;
+    private final Field field;
 
     public DrawFieldCommand(Klasa diagramElement, Field field) {
         this.diagramElement = diagramElement;

@@ -7,11 +7,11 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.util.ArrayList;
 
 public class EditInterfaceCommand extends AbstractCommand {
-    private Interface interfejs;
-    private String name;
-    private String oldName;
-    private ArrayList<Method> methods;
-    private ArrayList<Method> oldMethods;
+    private final Interface interfejs;
+    private final String name;
+    private final String oldName;
+    private final ArrayList<Method> methods;
+    private final ArrayList<Method> oldMethods;
 
     public EditInterfaceCommand(Interface interfejs, String name, ArrayList<Method> methods) {
         this.interfejs = interfejs;

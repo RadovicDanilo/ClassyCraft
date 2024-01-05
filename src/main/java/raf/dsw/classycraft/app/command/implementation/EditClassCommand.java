@@ -7,11 +7,11 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import java.util.ArrayList;
 
 public class EditClassCommand extends AbstractCommand {
-    private Klasa klasa;
-    private String name;
-    private ArrayList<ClassContent> contents;
-    private String oldName;
-    private ArrayList<ClassContent> oldContents;
+    private final Klasa klasa;
+    private final String name;
+    private final ArrayList<ClassContent> contents;
+    private final String oldName;
+    private final ArrayList<ClassContent> oldContents;
 
     public EditClassCommand(Klasa klasa, String name, ArrayList<ClassContent> contents) {
         this.klasa = klasa;

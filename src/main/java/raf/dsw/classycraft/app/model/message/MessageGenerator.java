@@ -66,6 +66,24 @@ public class MessageGenerator implements IPublisher {
             case DUPLICATE_FIELDS_OR_METHODS:
                 message = new Message(systemEvent, MessageType.ERROR, "Jedno ili vise polja/metoda su iste.\nPromene koje ste npravili nad njima nece biti primenjene");
                 break;
+            case BAD_PATH:
+                message = new Message(systemEvent, MessageType.ERROR, "Putanja nije ispravna");
+                break;
+            case NO_OPENED_DIAGRAM:
+                message = new Message(systemEvent, MessageType.ERROR, "Ne postoji otvoren diagram");
+                break;
+            case NO_DIAGRAM_SELECTED:
+                message = new Message(systemEvent, MessageType.ERROR, "Ne postoji izabran diagram");
+                break;
+            case NO_PROJECT_SELECTED:
+                message = new Message(systemEvent, MessageType.ERROR, "Nijedan projekat nije izabran");
+                break;
+            case CANNOT_RENAME_CONNECTION:
+                message = new Message(systemEvent, MessageType.ERROR, "Veza se ne moze preimenovati");
+                break;
+            case PROJECT_ALREADY_OPENED:
+                message = new Message(systemEvent, MessageType.ERROR, "Projekat je vec otvoren ili postoji vec jedan sa takvim imenom");
+                break;
             default:
                 return;
         }

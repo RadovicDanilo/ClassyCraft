@@ -137,7 +137,7 @@ public class Klasa extends InterClass {
         this.contents = contents;
         if (this.getParent() != null)
             ((Diagram) getParent()).notifySubscribers("");
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
         }
     }
@@ -157,7 +157,7 @@ public class Klasa extends InterClass {
         contents.sort(comparator);
 
         ((Diagram) getParent()).notifySubscribers("");
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
         }
     }
@@ -178,7 +178,7 @@ public class Klasa extends InterClass {
 
         };
         contents.sort(comparator);
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
         }
         ((Diagram) getParent()).notifySubscribers("");
@@ -186,14 +186,15 @@ public class Klasa extends InterClass {
 
     public void removeField(Field field) {
         contents.remove(field);
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
-        }        ((Diagram) getParent()).notifySubscribers("");
+        }
+        ((Diagram) getParent()).notifySubscribers("");
     }
 
     public void removeMethod(Method method) {
         contents.remove(method);
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
         }
         ((Diagram) getParent()).notifySubscribers("");

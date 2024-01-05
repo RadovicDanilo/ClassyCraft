@@ -172,7 +172,7 @@ public abstract class InterClass extends DiagramElement {
     }
 
     public void setVisibility(Visibility visibility) {
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
         }
 

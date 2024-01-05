@@ -9,9 +9,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MoveElementCommand extends AbstractCommand {
-    private ArrayList<ElementPainter> elements;
-    private Point start;
-    private Point end;
+    private final ArrayList<ElementPainter> elements;
+    private final Point start;
+    private final Point end;
 
     public MoveElementCommand(ArrayList<ElementPainter> elements, Point start, Point end) {
         this.elements = elements;
@@ -29,6 +29,8 @@ public class MoveElementCommand extends AbstractCommand {
     @Override
     public void doCommand() {
         for (ElementPainter e : elements) {
+            if (e instanceof ConnectionPainter)
+                continue;
             InterClass ic = (InterClass) e.getDiagramElement();
             ic.setX(ic.getX() + (end.x - start.x));
             ic.setY(ic.getY() + (end.y - start.y));
@@ -38,6 +40,8 @@ public class MoveElementCommand extends AbstractCommand {
     @Override
     public void undoCommand() {
         for (ElementPainter e : elements) {
+            if (e instanceof ConnectionPainter)
+                continue;
             InterClass ic = (InterClass) e.getDiagramElement();
             ic.setX(ic.getX() - (end.x - start.x));
             ic.setY(ic.getY() - (end.y - start.y));

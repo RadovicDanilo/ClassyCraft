@@ -1,12 +1,14 @@
 package main.java.raf.dsw.classycraft.app.controller.menu_and_toolbar;
 
 import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNodeComposite;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.Connection;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.InterClass;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,7 +31,7 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null || !(MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode() instanceof Project)) {
-            //TODO SYSTEM EVENT
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_PROJECT_SELECTED);
             return;
         }
         JFileChooser chooser = new JFileChooser();
@@ -39,6 +41,8 @@ public class ExportProjectAsJavaCodeAction extends AbstractClassyAction {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath();
             System.out.println(path);
+        } else {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }
         Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         initialPath = path;

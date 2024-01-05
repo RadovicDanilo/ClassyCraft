@@ -4,8 +4,8 @@ import main.java.raf.dsw.classycraft.app.command.AbstractCommand;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 
 public class DrawEnumFieldCommand extends AbstractCommand {
-    private Enum e;
-    private String name;
+    private final Enum e;
+    private final String name;
 
     public DrawEnumFieldCommand(Enum e, String field) {
         this.e = e;

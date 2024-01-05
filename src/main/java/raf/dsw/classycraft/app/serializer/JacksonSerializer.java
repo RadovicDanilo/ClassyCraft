@@ -1,12 +1,14 @@
 package main.java.raf.dsw.classycraft.app.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
-import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Project;
+import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,42 +24,48 @@ public class JacksonSerializer {
         int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath() + "\\" + project.getName() + ".json";
-        }
-        if (path.equals(""))
+        } else {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
             return;
+        }
         int i = 1;
         if (Files.exists(Paths.get(path))) {
             path = path.substring(0, path.length() - 5) + " (" + i + ").json";
         }
         while (Files.exists(Paths.get(path))) {
-            path = path.replace("(" + i + ")", "(" + i + 1 + ")");
+            int x = i + 1;
+            path = path.replace("(" + i + ")", "(" + x + ")");
             i++;
         }
         project.setResourcePath(path);
     }
 
-    public void save(Project project) {
+    public void saveProject(Project project) {
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(project.getResourcePath()), project);
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }
     }
 
-    public Project openProject(String path) {
+    public Project openProject() {
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON FILES", "json");
+        chooser.setFileFilter(filter);
+        String path = "";
+        int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            path = chooser.getSelectedFile().getPath();
+        } else {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
+
+        }
         try {
             return objectMapper.readValue(new File(path), Project.class);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }
-    }
-
-    public Diagram openDiagram(String path) {
-        try {
-            return objectMapper.readValue(new File(path), Diagram.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 
     public void saveDiagramTemplate(Diagram diagram) {
@@ -67,21 +75,30 @@ public class JacksonSerializer {
         int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath() + "\\" + diagram.getName() + ".json";
+        } else {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }
-        if (path.equals(""))
-            return;
         int i = 1;
         if (Files.exists(Paths.get(path))) {
             path = path.substring(0, path.length() - 5) + " (" + i + ").json";
         }
         while (Files.exists(Paths.get(path))) {
-            path = path.replace("(" + i + ")", "(" + i + 1 + ")");
+            int x = i + 1;
+            path = path.replace("(" + i + ")", "(" + x + ")");
             i++;
         }
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), diagram);
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
+        }
+    }
+
+    public Diagram openDiagram(String path) {
+        try {
+            return objectMapper.readValue(new File(path), Diagram.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

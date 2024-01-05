@@ -71,9 +71,9 @@ public class NewDiagramAction extends AbstractClassyAction {
         int returnVal = chooser.showOpenDialog(MainFrame.getInstance());
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = chooser.getSelectedFile().getPath();
+        } else {
+            ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }
-        if (path.equals(""))
-            return;
 
         JacksonSerializer jacksonSerializer = new JacksonSerializer();
         Diagram fromTemplate = jacksonSerializer.openDiagram(path);
@@ -103,7 +103,6 @@ public class NewDiagramAction extends AbstractClassyAction {
             if (diagramElement instanceof Klasa) {
                 dv.getElementPainters().add(new ClassPainter((Klasa) diagramElement));
             }
-            //TODO ulepsati ovo sa switch-em i smanjiti ovaj nesting
             if (diagramElement instanceof Enum) {
                 dv.getElementPainters().add(new EnumPainter((Enum) diagramElement));
             }

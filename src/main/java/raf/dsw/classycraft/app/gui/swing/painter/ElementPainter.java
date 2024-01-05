@@ -1,6 +1,7 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.painter;
 
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.DiagramElement;
 
 import java.awt.*;
@@ -12,6 +13,17 @@ public abstract class ElementPainter {
 
     public ElementPainter(DiagramElement diagramElement) {
         this.diagramElement = diagramElement;
+    }
+
+    public Graphics2D setStroke(Graphics2D g) {
+        if (((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getSelected().contains(this)) {
+            g.setColor(Color.RED);
+            g.setStroke(strokeDashed);
+        } else {
+            g.setColor(Color.BLACK);
+            g.setStroke(normalStroke);
+        }
+        return g;
     }
 
     public abstract boolean contains(Point p);

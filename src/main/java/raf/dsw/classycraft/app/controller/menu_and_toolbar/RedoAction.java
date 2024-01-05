@@ -5,14 +5,14 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class RedoAction extends AbstractClassyAction {
     public RedoAction() {
-        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/redo.png")).getImage())));
+        putValue(SMALL_ICON, loadIcon("/images/icons/redo.png"));
         putValue(NAME, "Redo");
         putValue(SHORT_DESCRIPTION, "Redo");
+        disable();
     }
 
     @Override
@@ -22,10 +22,10 @@ public class RedoAction extends AbstractClassyAction {
     }
 
     public void enable() {
-        putValue(SMALL_ICON, loadIcon("/images/icons/redo.png"));
+        super.setEnabled(true);
     }
 
     public void disable() {
-        putValue(SMALL_ICON, new ImageIcon(GrayFilter.createDisabledImage(((ImageIcon) loadIcon("/images/icons/redo.png")).getImage())));
+        super.setEnabled(false);
     }
 }

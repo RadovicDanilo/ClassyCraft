@@ -16,3 +16,7 @@
 [ERROR][28-12-2023 18:03:19] Vec postoji cvor sa datim imenom
 [ERROR][28-12-2023 18:07:04] veza vec postoji
 [ERROR][30-12-2023 14:08:10] Diagram se mogu praviti samo u projektima ili paketima
+[ERROR][05-01-2024 19:38:12] Povratna vrednost nije dobro uneta
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][05-01-2024 22:19:42] Putanja nije ispravna

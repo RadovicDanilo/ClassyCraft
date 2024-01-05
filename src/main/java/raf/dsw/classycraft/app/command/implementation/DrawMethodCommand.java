@@ -7,8 +7,8 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.inter
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;
 
 public class DrawMethodCommand extends AbstractCommand {
-    private InterClass interClass;
-    private Method method;
+    private final InterClass interClass;
+    private final Method method;
 
     public DrawMethodCommand(InterClass interClass, Method method) {
         this.interClass = interClass;
