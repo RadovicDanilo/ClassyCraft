@@ -107,8 +107,9 @@ public abstract class ClassyNode {
             }
         }
     }
+
     public void changed() {
-        if(this instanceof ProjectExplorer){
+        if (this instanceof ProjectExplorer) {
             return;
         }
         ClassyNode project = this;

@@ -16,13 +16,7 @@ public class GeneralisationPainter extends ConnectionPainter {
     @Override
     public void draw(Graphics2D g) {
         super.draw(g);
-        if (((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getSelected().contains(this)) {
-            g.setColor(Color.RED);
-            g.setStroke(strokeDashed);
-        } else {
-            g.setColor(Color.BLACK);
-            g.setStroke(normalStroke);
-        }
+        g = setStroke(g);
         Point a = getTwoClosestConnectionsPoints().getA();
         Point b = getTwoClosestConnectionsPoints().getB();
         g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(), (int) b.getY());

@@ -19,13 +19,7 @@ public class InterfacePainter extends InterClassPainter {
     @Override
     public void draw(Graphics2D g) {
         super.draw(g);
-        if (((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getSelected().contains(this)) {
-            g.setColor(Color.RED);
-            g.setStroke(strokeDashed);
-        } else {
-            g.setColor(Color.BLACK);
-            g.setStroke(normalStroke);
-        }
+        g = setStroke(g);
         int height = (2 + ((Interface) getDiagramElement()).getMethods().size()) * (g.getFontMetrics().getHeight() + 2);
         height += 2;
 

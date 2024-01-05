@@ -29,7 +29,7 @@ public class MoveElementCommand extends AbstractCommand {
     @Override
     public void doCommand() {
         for (ElementPainter e : elements) {
-            if(e instanceof ConnectionPainter)
+            if (e instanceof ConnectionPainter)
                 continue;
             InterClass ic = (InterClass) e.getDiagramElement();
             ic.setX(ic.getX() + (end.x - start.x));
@@ -40,7 +40,7 @@ public class MoveElementCommand extends AbstractCommand {
     @Override
     public void undoCommand() {
         for (ElementPainter e : elements) {
-            if(e instanceof ConnectionPainter)
+            if (e instanceof ConnectionPainter)
                 continue;
             InterClass ic = (InterClass) e.getDiagramElement();
             ic.setX(ic.getX() - (end.x - start.x));

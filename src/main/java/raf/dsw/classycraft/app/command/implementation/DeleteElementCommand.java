@@ -8,7 +8,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import java.util.ArrayList;
 
 public class DeleteElementCommand extends AbstractCommand {
-    ArrayList<ElementPainter> elementPainters;
+    private final ArrayList<ElementPainter> elementPainters;
 
     public DeleteElementCommand(ArrayList<ElementPainter> elementPainters) {
         this.elementPainters = elementPainters;

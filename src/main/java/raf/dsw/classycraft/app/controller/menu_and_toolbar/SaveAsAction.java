@@ -21,7 +21,7 @@ public class SaveAsAction extends AbstractClassyAction {
     public void actionPerformed(ActionEvent e) {
         ClassyNode project = MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
 
-        while(!(project instanceof Project)){
+        while (!(project instanceof Project)) {
             project = project.getParent();
         }
         JacksonSerializer jacksonSerializer = new JacksonSerializer();

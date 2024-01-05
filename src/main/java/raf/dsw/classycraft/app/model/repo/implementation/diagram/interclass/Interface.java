@@ -104,14 +104,15 @@ public class Interface extends InterClass {
         if (!methods.contains(m)) {
             methods.add(m);
         }
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
-        }        ((Diagram) getParent()).notifySubscribers("");
+        }
+        ((Diagram) getParent()).notifySubscribers("");
     }
 
     public void removeMethod(Method method) {
         methods.remove(method);
-        if(getParent() != null){
+        if (getParent() != null) {
             getParent().changed();
         }
         ((Diagram) getParent()).notifySubscribers("");

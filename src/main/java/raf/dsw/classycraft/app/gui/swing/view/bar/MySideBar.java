@@ -5,6 +5,7 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import javax.swing.*;
 
 public class MySideBar extends JToolBar {
+
     public MySideBar() {
         super(VERTICAL);
         setFloatable(false);

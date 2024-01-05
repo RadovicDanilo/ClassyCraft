@@ -1,6 +1,5 @@
 package main.java.raf.dsw.classycraft.app.state.concrete.draw_interclass.dcc;
 
-import main.java.raf.dsw.classycraft.app.command.implementation.DrawEnumFieldCommand;
 import main.java.raf.dsw.classycraft.app.command.implementation.DrawMethodCommand;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.painter.ElementPainter;
@@ -11,7 +10,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.Visibility;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Enum;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Interface;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.Klasa;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.interclass.content.Method;

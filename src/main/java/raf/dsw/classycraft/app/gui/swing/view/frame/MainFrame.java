@@ -22,7 +22,6 @@ public class MainFrame extends JFrame implements ISubscriber {
     private PackageView packageView;
     private ArrayList<DiagramView> diagramViews;
     private ClassyTreeImplementation classyTree;
-    private MyToolBar toolBar;
 
     private MainFrame() {
 
@@ -36,10 +35,6 @@ public class MainFrame extends JFrame implements ISubscriber {
             instance.initialize();
         }
         return instance;
-    }
-
-    public static void setInstance(MainFrame instance) {
-        MainFrame.instance = instance;
     }
 
     private void initialize() {
@@ -56,7 +51,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         setTitle("ClassyCrafT");
 
         MyMenuBar menu = new MyMenuBar();
-        toolBar = new MyToolBar();
+        MyToolBar toolBar = new MyToolBar();
         MySideBar sideBar = new MySideBar();
 
         setJMenuBar(menu);
@@ -77,9 +72,6 @@ public class MainFrame extends JFrame implements ISubscriber {
         return actionManager;
     }
 
-    public void setActionManager(ActionManager actionManager) {
-        this.actionManager = actionManager;
-    }
 
     @Override
     public void update(Object notification) {
@@ -112,33 +104,16 @@ public class MainFrame extends JFrame implements ISubscriber {
         return classyTree;
     }
 
-    public void setClassyTree(ClassyTreeImplementation classyTree) {
-        this.classyTree = classyTree;
-    }
-
-    public MyToolBar getToolBar() {
-        return toolBar;
-    }
-
-    public void setToolBar(MyToolBar toolBar) {
-        this.toolBar = toolBar;
-    }
 
     public PackageView getPackageView() {
         return packageView;
     }
 
-    public void setPackageView(PackageView packageView) {
-        this.packageView = packageView;
-    }
 
     public ArrayList<DiagramView> getDiagramViews() {
         return diagramViews;
     }
 
-    public void setDiagramViews(ArrayList<DiagramView> diagramViews) {
-        this.diagramViews = diagramViews;
-    }
 
     public void addDiagramView(DiagramView d) {
         if (d == null) {

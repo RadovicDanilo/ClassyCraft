@@ -6,12 +6,13 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import javax.swing.*;
 
 public class MyToolBar extends JToolBar {
+
     public MyToolBar() {
         super(HORIZONTAL);
         setFloatable(false);
         add(MainFrame.getInstance().getActionManager().getOpenAction());
-        add(MainFrame.getInstance().getActionManager().getSaveAsAction());
         add(MainFrame.getInstance().getActionManager().getSaveAction());
+        add(MainFrame.getInstance().getActionManager().getSaveAsAction());
         add(MainFrame.getInstance().getActionManager().getNewProjectAction());
         add(MainFrame.getInstance().getActionManager().getNewPackageAction());
         add(MainFrame.getInstance().getActionManager().getNewDiagramAction());

@@ -5,7 +5,6 @@ import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class UndoAction extends AbstractClassyAction {

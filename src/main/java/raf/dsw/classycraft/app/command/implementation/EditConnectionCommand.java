@@ -6,13 +6,13 @@ import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conec
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.diagram.conection.ConnectionWithField;
 
 public class EditConnectionCommand extends AbstractCommand {
-    ConnectionWithField connection;
-    String name;
-    Cardinality cardinality;
-    Visibility visibility;
-    String oldName;
-    Cardinality oldCardinality;
-    Visibility oldVisibility;
+    private final ConnectionWithField connection;
+    private final String name;
+    private final Cardinality cardinality;
+    private final Visibility visibility;
+    private final String oldName;
+    private final Cardinality oldCardinality;
+    private final Visibility oldVisibility;
 
     public EditConnectionCommand(ConnectionWithField connection, String name, Cardinality cardinality, Visibility visibility) {
         this.connection = connection;
