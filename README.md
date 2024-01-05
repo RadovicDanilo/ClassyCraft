@@ -1,4 +1,4 @@
-## ClassyCrafT: ##
+## ClassyCrafT ##
 ### Članovi tima: ###
 Danilo Radović 63/22 RN<br />
 Ognjen Tasić 135/23 RN<br />
