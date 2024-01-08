@@ -67,7 +67,7 @@ public class NewDiagramAction extends AbstractClassyAction {
         }
 
         JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\Documents\\Diagram templates\\"));
+        chooser.setCurrentDirectory(new File(ApplicationFramework.getInstance().TEMPLATES_PATH));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON FILES", "json");
         chooser.setFileFilter(filter);
         String path = "";

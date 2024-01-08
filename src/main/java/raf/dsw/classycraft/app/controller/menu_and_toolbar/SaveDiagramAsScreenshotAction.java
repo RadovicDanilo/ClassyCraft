@@ -35,7 +35,7 @@ public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
         Graphics2D g = image.createGraphics();
         diagramView.paint(g);
 
-        String path = System.getProperty("user.home") + "\\Documents\\Diagram screenshots\\" + diagramView.getDiagram().getName();
+        String path = ApplicationFramework.getInstance().SCREENSHOTS_PATH + diagramView.getDiagram().getName();
         int i = 1;
         if (Files.exists(Paths.get(path))) {
             path += " (" + i + ")";
