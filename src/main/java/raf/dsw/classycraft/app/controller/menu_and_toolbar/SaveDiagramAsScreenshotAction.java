@@ -4,10 +4,17 @@ import main.java.raf.dsw.classycraft.app.controller.AbstractClassyAction;
 import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
-import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramView;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
     public SaveDiagramAsScreenshotAction() {
@@ -22,8 +29,28 @@ public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.NO_OPENED_DIAGRAM);
             return;
         }
-        Diagram diagram = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getDiagram();
+        DiagramView diagramView = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView();
 
+        BufferedImage image = new BufferedImage(diagramView.getWidth(), diagramView.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = image.createGraphics();
+        diagramView.paint(g);
+
+        String path = System.getProperty("user.home") + "\\Documents\\Diagram screenshots\\" + diagramView.getDiagram().getName();
+        int i = 1;
+        if (Files.exists(Paths.get(path))) {
+            path += " (" + i + ")";
+        }
+        while (Files.exists(Paths.get(path))) {
+            int x = i + 1;
+            path = path.replace("(" + i + ")", "(" + x + ")");
+            i++;
+        }
+
+        try {
+            ImageIO.write(image, "png", new File(path));
+        } catch (IOException ioException) {
+            System.out.println(ioException.getMessage());
+        }
 
     }
 }

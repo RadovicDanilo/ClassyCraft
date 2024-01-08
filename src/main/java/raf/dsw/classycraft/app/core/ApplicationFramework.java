@@ -8,6 +8,8 @@ import main.java.raf.dsw.classycraft.app.model.message.MessageGenerator;
 import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepository;
 import main.java.raf.dsw.classycraft.app.model.repo.ClassyRepositoryImplementation;
 
+import java.io.File;
+
 
 public class ApplicationFramework {
     private static ApplicationFramework instance;
@@ -34,6 +36,8 @@ public class ApplicationFramework {
     }
 
     public void initialize() {
+        new File(System.getProperty("user.home") + "\\Documents\\Diagram screenshots\\").mkdirs();
+        new File(System.getProperty("user.home") + "\\Documents\\Diagram templates\\").mkdirs();
         MainFrame.getInstance().setVisible(true);
     }
 
