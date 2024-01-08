@@ -1,5 +1,7 @@
 package main.java.raf.dsw.classycraft.app.model.message;
 
+import javafx.application.Application;
+import main.java.raf.dsw.classycraft.app.core.ApplicationFramework;
 import main.java.raf.dsw.classycraft.app.observer.IPublisher;
 import main.java.raf.dsw.classycraft.app.observer.ISubscriber;
 import main.java.raf.dsw.classycraft.app.observer.notifications.SystemEvent;
@@ -83,6 +85,12 @@ public class MessageGenerator implements IPublisher {
                 break;
             case PROJECT_ALREADY_OPENED:
                 message = new Message(systemEvent, MessageType.ERROR, "Projekat je vec otvoren ili postoji vec jedan sa takvim imenom");
+                break;
+            case TEMPLATE_SAVED:
+                message = new Message(systemEvent, MessageType.INFO, "Template diagram je sacuvan u folderu " + ApplicationFramework.getInstance().TEMPLATES_PATH);
+                break;
+            case SCREENSHOT_SAVED:
+                message = new Message(systemEvent, MessageType.INFO, "Screenshot diagram je sacuvan u folderu " + ApplicationFramework.getInstance().SCREENSHOTS_PATH);
                 break;
             default:
                 return;

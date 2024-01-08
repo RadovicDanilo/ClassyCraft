@@ -16,7 +16,6 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
 
         BorderLayout borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
-
         this.diagramView = diagramView;
         this.add(diagramView, BorderLayout.CENTER);
 
@@ -26,10 +25,10 @@ public class DiagramScrollPane extends JPanel implements ISubscriber, ComponentL
         verticalScrollBar.addAdjustmentListener(diagramView);
         horizontalScrollBar.setVisible(true);
         verticalScrollBar.setVisible(true);
-
+        horizontalScrollBar.setValue(0);
+        verticalScrollBar.setValue(0);
         this.add(verticalScrollBar, BorderLayout.EAST);
         this.add(horizontalScrollBar, BorderLayout.SOUTH);
-
 
     }
 

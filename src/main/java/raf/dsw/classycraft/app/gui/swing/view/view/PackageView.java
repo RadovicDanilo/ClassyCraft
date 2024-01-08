@@ -1,5 +1,4 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
-
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
@@ -26,16 +25,18 @@ public class PackageView extends JPanel implements ISubscriber {
         super(new BorderLayout());
         stateManager = new StateManager();
         tabbedPane = new JTabbedPane();
+        tabbedPane.addChangeListener(new MyTabChangeListener());
         lbProjectName = new JLabel();
         this.add(lbProjectName, BorderLayout.NORTH);
         this.add(tabbedPane, BorderLayout.CENTER);
+
     }
 
     public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
         for (Component dv : tabbedPane.getComponents()) {
             MainFrame.getInstance().addDiagramView(((DiagramScrollPane) dv).getDiagramView());
         }
-        this.tabbedPane.removeAll();
+        tabbedPane.removeAll();
         if (selectedPackage != null) {
             selectedPackage.closedPane();
         }
@@ -48,23 +49,24 @@ public class PackageView extends JPanel implements ISubscriber {
             project = project.getParent();
         }
 
-        if (diagrams.size() == 0) return;
+        if (diagrams.size() == 0)
+            return;
 
         lbProjectName.setText("<html>" + project.getName() + "<br>Autor: " + ((Project) project).getAuthor() + "<html>");
         lbProjectName.setFont(new Font("Calibri", Font.BOLD, 14));
 
         for (Diagram diagram : diagrams) {
             DiagramView dv = new DiagramView(diagram);
-            DiagramScrollPane diagramScrollPane;
             for (int i = 0; i < MainFrame.getInstance().getDiagramViews().size(); i++) {
                 if (dv.equals(MainFrame.getInstance().getDiagramViews().get(i))) {
                     dv = MainFrame.getInstance().getDiagramViews().get(i);
                     break;
                 }
             }
-            diagramScrollPane = new DiagramScrollPane(dv);
-            this.tabbedPane.addTab(diagram.getName(), diagramScrollPane);
+            DiagramScrollPane diagramScrollPane = new DiagramScrollPane(dv);
+            tabbedPane.addTab(diagram.getName(), diagramScrollPane);
         }
+
     }
 
     @Override

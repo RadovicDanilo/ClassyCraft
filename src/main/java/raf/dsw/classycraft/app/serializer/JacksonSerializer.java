@@ -69,8 +69,7 @@ public class JacksonSerializer {
     }
 
     public void saveDiagramTemplate(Diagram diagram) {
-        //new File(System.getProperty("user.home") + "\\Documents\\Diagram templates\\").mkdirs();
-        String path = System.getProperty("user.home") + "\\Documents\\Diagram templates\\" + diagram.getName() + ".json";
+        String path = ApplicationFramework.getInstance().TEMPLATES_PATH + diagram.getName() + ".json";
         int i = 1;
         if (Files.exists(Paths.get(path))) {
             path = path.substring(0, path.length() - 5) + " (" + i + ").json";
@@ -82,6 +81,7 @@ public class JacksonSerializer {
         }
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), diagram);
+
         } catch (IOException ex) {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }

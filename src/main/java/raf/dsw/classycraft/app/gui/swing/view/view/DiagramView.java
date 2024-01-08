@@ -41,10 +41,12 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 
 
     public DiagramView(Diagram diagram) {
+
         MyMouseAdapter myMouseAdapter = new MyMouseAdapter(this);
         this.addMouseListener(myMouseAdapter);
         this.addMouseMotionListener(myMouseAdapter);
         this.addMouseWheelListener(myMouseAdapter);
+
         this.diagram = diagram;
         diagram.addSubscriber(this);
 
@@ -61,11 +63,11 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
         prevVerticalScrollVal = 0;
         prevHorizontalScrollVal = 0;
 
-        zoomFactor = 1;
+        zoomFactor = 1.0;
         zoomedToFit = false;
         zoomer = true;
+
         repaint();
-        zoomToFit();
 
     }
 

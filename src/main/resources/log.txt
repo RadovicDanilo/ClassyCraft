@@ -30,3 +30,19 @@
 [ERROR][05-01-2024 22:55:29] Ne postoji izabran diagram
 [ERROR][05-01-2024 22:55:32] Ne postoji otvoren diagram
 [ERROR][05-01-2024 22:55:34] Ne postoji izabran diagram
+[ERROR][08-01-2024 15:26:21] Ne postoji izabran diagram
+[ERROR][08-01-2024 17:07:31] Naziv polja nije dobro unet
+ Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
+ ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][08-01-2024 17:40:25] Putanja nije ispravna
+[ERROR][08-01-2024 17:40:26] Putanja nije ispravna
+[ERROR][08-01-2024 17:40:28] Putanja nije ispravna
+[ERROR][08-01-2024 18:03:19] veza vec postoji
+[ERROR][08-01-2024 18:03:22] veza vec postoji
+[ERROR][08-01-2024 18:03:26] veza vec postoji
+[ERROR][08-01-2024 18:03:51] veza vec postoji
+[ERROR][08-01-2024 18:04:06] veza vec postoji
+[ERROR][08-01-2024 18:04:21] veza vec postoji
+[INFO][08-01-2024 18:55:47] Screenshot diagram je sacuvan u folderu C:\Users\danil\Documents\Diagram screenshots\
+[INFO][08-01-2024 18:55:54] Template diagram je sacuvan u folderu C:\Users\danil\Documents\Diagram templates\
+[INFO][08-01-2024 18:56:02] Screenshot diagram je sacuvan u folderu C:\Users\danil\Documents\Diagram screenshots\
