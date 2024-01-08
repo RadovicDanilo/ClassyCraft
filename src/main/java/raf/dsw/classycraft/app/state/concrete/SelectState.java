@@ -45,6 +45,10 @@ public class SelectState extends StateImplement implements State {
 
     @Override
     public void mouseRelease(MouseEvent e, DiagramView diagramView) {
+        if(diagramView.getSelected().size() == 0) {
+            last = null;
+            return;
+        }
         diagramView.getCommandManager().addCommand(new MoveElementCommand(diagramView.getSelected(), start, last));
         last = null;
     }

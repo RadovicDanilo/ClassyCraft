@@ -58,14 +58,16 @@ public class DiagramView extends JPanel implements ISubscriber, AdjustmentListen
 
         selected = new ArrayList<>();
 
+        DiagramScrollPane dsp = ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent());
+
         prevVerticalScrollVal = 0;
         prevHorizontalScrollVal = 0;
 
         zoomFactor = 1;
         zoomedToFit = false;
         zoomer = true;
+
         repaint();
-        zoomToFit();
 
     }
 

@@ -1,5 +1,4 @@
 package main.java.raf.dsw.classycraft.app.gui.swing.view.view;
-
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
@@ -35,7 +34,7 @@ public class PackageView extends JPanel implements ISubscriber {
         for (Component dv : tabbedPane.getComponents()) {
             MainFrame.getInstance().addDiagramView(((DiagramScrollPane) dv).getDiagramView());
         }
-        this.tabbedPane.removeAll();
+        tabbedPane.removeAll();
         if (selectedPackage != null) {
             selectedPackage.closedPane();
         }
@@ -48,7 +47,8 @@ public class PackageView extends JPanel implements ISubscriber {
             project = project.getParent();
         }
 
-        if (diagrams.size() == 0) return;
+        if (diagrams.size() == 0)
+            return;
 
         lbProjectName.setText("<html>" + project.getName() + "<br>Autor: " + ((Project) project).getAuthor() + "<html>");
         lbProjectName.setFont(new Font("Calibri", Font.BOLD, 14));
@@ -63,8 +63,11 @@ public class PackageView extends JPanel implements ISubscriber {
                 }
             }
             diagramScrollPane = new DiagramScrollPane(dv);
-            this.tabbedPane.addTab(diagram.getName(), diagramScrollPane);
+            diagramScrollPane.getVerticalScrollBar().setValue(0);
+            diagramScrollPane.getHorizontalScrollBar().setValue(0);
+            tabbedPane.addTab(diagram.getName(), diagramScrollPane);
         }
+
     }
 
     @Override
