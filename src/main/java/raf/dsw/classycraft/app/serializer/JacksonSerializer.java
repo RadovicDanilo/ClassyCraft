@@ -81,6 +81,7 @@ public class JacksonSerializer {
         }
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), diagram);
+
         } catch (IOException ex) {
             ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.BAD_PATH);
         }

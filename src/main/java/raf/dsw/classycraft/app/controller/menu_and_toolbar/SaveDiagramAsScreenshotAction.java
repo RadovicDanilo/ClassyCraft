@@ -51,6 +51,7 @@ public class SaveDiagramAsScreenshotAction extends AbstractClassyAction {
         } catch (IOException ioException) {
             System.out.println(ioException.getMessage());
         }
+        ApplicationFramework.getInstance().getMessageGenerator().GenerateMessage(SystemEvent.SCREENSHOT_SAVED);
 
     }
 }
