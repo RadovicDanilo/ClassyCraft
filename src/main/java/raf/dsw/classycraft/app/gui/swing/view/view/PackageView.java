@@ -25,9 +25,11 @@ public class PackageView extends JPanel implements ISubscriber {
         super(new BorderLayout());
         stateManager = new StateManager();
         tabbedPane = new JTabbedPane();
+        tabbedPane.addChangeListener(new MyTabChangeListener());
         lbProjectName = new JLabel();
         this.add(lbProjectName, BorderLayout.NORTH);
         this.add(tabbedPane, BorderLayout.CENTER);
+
     }
 
     public void openTabs(List<Diagram> diagrams, Package selectedPackage) {
@@ -55,16 +57,13 @@ public class PackageView extends JPanel implements ISubscriber {
 
         for (Diagram diagram : diagrams) {
             DiagramView dv = new DiagramView(diagram);
-            DiagramScrollPane diagramScrollPane;
             for (int i = 0; i < MainFrame.getInstance().getDiagramViews().size(); i++) {
                 if (dv.equals(MainFrame.getInstance().getDiagramViews().get(i))) {
                     dv = MainFrame.getInstance().getDiagramViews().get(i);
                     break;
                 }
             }
-            diagramScrollPane = new DiagramScrollPane(dv);
-            diagramScrollPane.getVerticalScrollBar().setValue(0);
-            diagramScrollPane.getHorizontalScrollBar().setValue(0);
+            DiagramScrollPane diagramScrollPane = new DiagramScrollPane(dv);
             tabbedPane.addTab(diagram.getName(), diagramScrollPane);
         }
 

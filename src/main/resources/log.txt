@@ -34,3 +34,6 @@
 [ERROR][08-01-2024 17:07:31] Naziv polja nije dobro unet
  Savet: Nazivi svih polja, metoda i enuma kao i njihobih vrednosti moraj poceti slovom (malim ili velikim) 
  ostatak naziv sme samo da sadrzi alfanumericke karktere
+[ERROR][08-01-2024 17:40:25] Putanja nije ispravna
+[ERROR][08-01-2024 17:40:26] Putanja nije ispravna
+[ERROR][08-01-2024 17:40:28] Putanja nije ispravna

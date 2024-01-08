@@ -3,6 +3,7 @@ package main.java.raf.dsw.classycraft.app.gui.swing.tree.controller;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import main.java.raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
 import main.java.raf.dsw.classycraft.app.gui.swing.view.frame.MainFrame;
+import main.java.raf.dsw.classycraft.app.gui.swing.view.view.DiagramScrollPane;
 import main.java.raf.dsw.classycraft.app.model.repo.abs.ClassyNode;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Diagram;
 import main.java.raf.dsw.classycraft.app.model.repo.implementation.Package;
@@ -48,6 +49,7 @@ public class ClassyTreeOpenTabsListener implements MouseListener {
             return;
 
         MainFrame.getInstance().getPackageView().openTabs(diagrams, selectedPackage);
+        ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getCommandManager().refresh();
     }
 
     @Override

@@ -40,4 +40,17 @@ public class CommandManager {
         }
     }
 
+    public void refresh(){
+        if(currentCommand == 0){
+            MainFrame.getInstance().getActionManager().getUndoAction().disable();
+        }else {
+            MainFrame.getInstance().getActionManager().getUndoAction().enable();
+        }
+        if(currentCommand < commands.size()){
+            MainFrame.getInstance().getActionManager().getRedoAction().enable();
+        }else {
+            MainFrame.getInstance().getActionManager().getRedoAction().disable();
+        }
+    }
+
 }
