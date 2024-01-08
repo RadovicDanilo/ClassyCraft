@@ -8,9 +8,19 @@ import javax.swing.event.ChangeListener;
 public class MyTabChangeListener implements ChangeListener {
     @Override
     public void stateChanged(ChangeEvent e) {
-        System.out.println("TAB PROMENA");
-        if (MainFrame.getInstance().getPackageView().getTabbedPane().getTabCount() != 0) {
-            ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getCommandManager().refresh();
+        if (MainFrame.getInstance().getPackageView().getTabbedPane().getTabCount() == 0) {
+            return;
         }
+        if (MainFrame.getInstance().getPackageView().getTabbedPane() == null) {
+            return;
+        }
+        if (MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent() == null) {
+            return;
+        }
+        if (((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView() == null) {
+            return;
+        }
+        ((DiagramScrollPane) MainFrame.getInstance().getPackageView().getTabbedPane().getSelectedComponent()).getDiagramView().getCommandManager().refresh();
+
     }
 }
